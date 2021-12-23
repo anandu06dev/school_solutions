@@ -1,0 +1,27 @@
+#forms {
+    height: calc(100vh - 12rem);
+    overflow-y: auto;
+}
+
+
+
+$small_mobile: 320px;
+$medium_mobile: 375px;
+$large_mobile: 425px;
+
+
+@media screen and (max-width:$small_mobile) {
+    #forms {
+        height: calc(100vh - 9rem);
+    }
+}
+@media screen and (max-width:$medium_mobile) {
+    #forms {
+        height: calc(100vh - 9rem);
+    }
+}
+@media screen and (max-width:$large_mobile) {
+    #forms {
+        height: calc(100vh - 9rem);
+    }
+}

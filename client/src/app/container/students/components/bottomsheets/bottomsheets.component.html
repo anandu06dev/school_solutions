@@ -1,0 +1,50 @@
+<div class="bottom-sheet card border-0 bg-transparent h-50" style="overflow-y: auto;">
+    <div class="card-header w-100 bg-transparent d-flex justify-content-between align-item-center">
+        <div>{{label}}</div>
+        <div>
+            <!-- <span>
+                <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon" (click)="canEdit = !canEdit">
+                    <mat-icon>edit</mat-icon>
+                    
+                </button>
+            </span> -->
+            <!-- <mat-icon *ngIf="!canEdit">file</mat-icon> -->
+            <span>
+                <button mat-icon-button color="accent" aria-label="" (click)="clearBar()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body h-100 w-100 p-0 m-0" style="overflow-y: auto;">
+
+        <ng-container *ngIf="viewType === 'list'">
+            <ng-container *ngFor="let list of (renderData|keyvalue)">
+                <ng-container [ngTemplateOutlet]="lists" [ngTemplateOutletContext]="{list:list}">
+                </ng-container>
+            </ng-container>
+        </ng-container>
+    </div>
+
+    <!-- <div> Do you want to change status of <span>{{name}}</span> ? </div>
+    <button mat-button type="button" color="warn" (click)="clearBar()">Cancel</button>
+    <button mat-button class="change" type="submit" color="warn" (click)="changeStatus()">Change</button> -->
+</div>
+
+<ng-template #lists let-list="list">
+    <div class="d-grid" id="lists">
+
+        <div class="fw-bold text-capitalize">{{list?.key | sanitizecamelcaseString: 'student' : true}}  </div>
+        <div class="border-0 py-1">{{list?.value}}</div>
+        <!-- <div class="m-0 p-0">
+            <ng-container *ngIf="!canEdit">
+            </ng-container>
+            <ng-container *ngIf="canEdit">
+                <input type="text" class="" [value]="list?.value">
+            </ng-container>
+        </div> -->
+
+    </div>
+</ng-template>
+

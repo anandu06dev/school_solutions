@@ -1,0 +1,45 @@
+<!-- two line list -->
+
+<div class="card" id="mobileFriendlyLists">
+
+  <mat-selection-list #studentListsUi [multiple]="false">
+    <mat-list-option *ngFor="let student of _studentLists;odd as isOdd; even as isEven;" [value]="student"
+      [ngClass]="isEven ? 'bg-light-color' : ''" (click)="openBottomSheet(student)">
+      <!-- <img matListAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"> -->
+      <p matListAvatar class="mx-2 me-4" [attr.data-letters]="student.studentFirstName.charAt(0)"></p>
+
+      <div class="card border-0 bg-transparent">
+
+        <div class="d-flex justify-content-between">
+          <h3 matLine class="text-lowercase text-capitalize title m-0">
+            {{student?.studentFirstName}} {{student?.studentLastName}}
+          </h3>
+          <div class="d-none d-md-block">
+            <ng-container [ngTemplateOutlet]="studentChipLists" [ngTemplateOutletContext]="{student:student}">
+            </ng-container>
+          </div>
+        </div>
+        <small matLine class="text-secondary"># {{student.admissionId}} </small>
+        <small matLine class="demo-2 text-secondary">Blood Group - {{student.studentBloodGroup}} </small>
+        <div class="d-block d-md-none">
+          <ng-container [ngTemplateOutlet]="studentChipLists" [ngTemplateOutletContext]="{student:student}">
+          </ng-container>
+        </div>
+      </div>
+    </mat-list-option>
+    <hr>
+  </mat-selection-list>
+</div>
+
+
+
+<ng-template #studentChipLists let-student="student">
+
+  <mat-chip-list #chipList>
+    <mat-chip class="chip">{{student.studentClass}}</mat-chip>
+    <mat-chip class="chip">{{student.studentGender}}</mat-chip>
+
+  </mat-chip-list>
+
+</ng-template>
+

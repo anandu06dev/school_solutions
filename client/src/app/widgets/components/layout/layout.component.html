@@ -1,0 +1,25 @@
+<mat-sidenav-container color="primary">
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <ng-content select="[menu]"></ng-content>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+        <div class="content mat-elevation-z8">
+            <mat-toolbar select="[toolbar]" #content>
+
+                <button mat-icon-button (click)="toggle()" class="d-none d-md-block">
+
+
+                    <mat-icon>menu_icon</mat-icon>
+
+                </button>
+                <div class="d-block d-sm-block d-md-none d-lg-none"><ng-content  select="[routeSelected]"></ng-content></div>
+                <ng-content></ng-content>
+
+            </mat-toolbar>
+            <ng-content select="[container]">
+
+            </ng-content>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

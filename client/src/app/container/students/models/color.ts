@@ -1,0 +1,14 @@
+export const colorPreference = [
+    {
+        label: 'No Preference',
+        value: null,
+    },
+    {
+        label: 'Green',
+        value: 'green',
+    },
+    {
+        label: 'Blue',
+        value: 'blue',
+    },
+]

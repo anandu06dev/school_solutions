@@ -1,0 +1,105 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$client-primary: mat.define-palette(mat.$indigo-palette);
+$client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$client-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$client-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $client-primary,
+            accent: $client-accent,
+            warn: $client-warn,
+        ),
+    )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($client-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: 'Roboto Condensed', 'Roboto', 'Helvetica Neue', sans-serif;
+    letter-spacing: 1px;
+}
+
+::-webkit-scrollbar {
+    width: 0.5em !important;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey !important;
+    border: 1px solid slategrey !important;
+    border-radius: 20rem;
+}
+
+:host ::ng-deep .ag-theme-balham {
+    font-family: 'Roboto Condensed', sans-serif !important;
+}
+:host ::ng-deep .ag-body-horizontal-scroll-viewport {
+    overflow-x: scroll;
+}
+
+:host ::ng-deep .ag-theme-balham .ag-filter-toolpanel-header,
+:host ::ng-deep .ag-theme-balham .ag-filter-toolpanel-search,
+:host ::ng-deep .ag-theme-balham .ag-header-row,
+:host ::ng-deep .ag-theme-balham .ag-multi-filter-group-title-bar,
+:host ::ng-deep .ag-theme-balham .ag-status-bar {
+    font-weight: 400;
+}
+
+.ag-theme-balham [class^='ag-'],
+.ag-theme-balham [class^='ag-']:after,
+.ag-theme-balham [class^='ag-']:before,
+.ag-theme-balham [class^='ag-']:focus {
+    box-sizing: border-box;
+    outline: none;
+    border: 0 !important;
+}
+
+[data-letters]:before {
+    content: attr(data-letters);
+    display: inline-block;
+    font-size: 1em;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8em;
+    text-transform: capitalize;
+    text-align: center;
+    border-radius: 50%;
+    background: #9c27b0;
+    vertical-align: middle;
+    // margin-right: 1em;
+    color: white;
+}
+mat-bottom-sheet-container.mat-bottom-sheet-container[role="dialog"]{  
+  border-top-left-radius: 2rem !important;
+  border-top-right-radius: 2rem !important;
+}

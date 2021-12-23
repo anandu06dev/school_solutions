@@ -1,0 +1,119 @@
+#studentGrid {
+    width: 100%;
+    height: calc(100vh - 12rem) !important;
+    // height: 100%;
+}
+
+:host ::ng-deep .ag-theme-balham {
+    font-family: 'Robot Condensed', sans-serif !important;
+    // height: 450px !important;
+}
+:host ::ng-deep .ag-body-horizontal-scroll-viewport {
+    overflow-x: scroll;
+}
+
+:host ::ng-deep .ag-theme-balham .ag-filter-toolpanel-header,
+:host ::ng-deep .ag-theme-balham .ag-filter-toolpanel-search,
+:host ::ng-deep .ag-theme-balham .ag-header-row,
+:host ::ng-deep .ag-theme-balham .ag-multi-filter-group-title-bar,
+:host ::ng-deep .ag-theme-balham .ag-status-bar {
+    font-weight: 400;
+}
+
+:host
+    ::ng-deep
+    .ag-row-even.ag-row.ag-row-pinned.ag-row-level-0.ag-row-position-absolute.ag-row-first.ag-row {
+    background: #fcecd1;
+    font-size: 13px;
+    line-height: 19px;
+}
+
+:host
+    ::ng-deep
+    .ag-row-even.ag-row.ag-row-pinned.ag-row-level-0.ag-row-position-absolute.ag-row-first.ag-row.ag-row
+    .ag-cell.ag-cell-not-inline-editing.ag-cell-normal-height.ag-cell-value.ag-cell {
+    border: 0 !important;
+    font-weight: 500;
+}
+
+:host ::ng-deep .ag-grid-angular.ag-theme-balham {
+    height: 450px !important;
+}
+
+::ng-deep .ag-theme-balham .ag-header {
+    background-color: #6e59c2;
+    background-color: #6e59c2;
+    border-bottom: 1px solid;
+    border-bottom-color: #edecfc;
+    border-bottom-color: #edecfc;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+:host ::ng-deep .ag-row-even {
+    font-size: 13px;
+    line-height: 19px;
+}
+
+:host ::ng-deep .ag-theme-balham .ag-ltr .ag-cell {
+    border-right: 1px solid #d3d1ef;
+}
+
+::ng-deep .ag-theme-balham .ag-row-odd {
+    background-color: #eeeefb;
+    background-color: #eeeefb;
+    font-size: 13px;
+    line-height: 19px;
+    font-weight: 400;
+}
+
+::ng-deep .ag-theme-balham .ag-icon-menu:before {
+    content: '\f11d';
+    color: #efeefb;
+    font-size: 13px !important;
+    line-height: 19px !important;
+}
+
+::ng-deep .ag-theme-balham .ag-header-row {
+    color: #fff;
+    color: var(
+        --ag-header-foreground-color,
+        var(--ag-secondary-foreground-color, white)
+    );
+    height: 36px;
+}
+::ng-deep .ag-header-cell.ag-focus-managed[role='columnheader'] {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+::ng-deep .ag-theme-balham .ag-header-cell:after,
+::ng-deep .ag-theme-balham .ag-header-group-cell:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    display: block;
+    width: 1px;
+    height: 100%;
+    top: 0%;
+    background-color: hsla(204, 8%, 76%, 0.5);
+    background-color: var(
+        --ag-header-column-separator-color,
+        hsla(204, 8%, 76%, 0.5)
+    );
+}
+
+:host ::ng-deep .ag-body-viewport-wrapper.ag-layout-normal {
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+:host ::ng-deep .ag-center-cols-viewport {
+    overflow-x: auto !important;
+}
+
+:host ::ng-deep .ag-theme-balham input[class^='ag-'][type='text'] {
+    color: orangered;
+}
+

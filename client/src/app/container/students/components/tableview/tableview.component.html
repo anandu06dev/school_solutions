@@ -1,0 +1,17 @@
+<ag-grid-angular
+  [ngStyle]="_style"
+  class="ag-theme-balham"
+  [rowData]="rowData"  
+  [columnDefs]="columnDefinition"
+  [defaultColDef]="defaultColDef"
+  (selectionChanged)="onSelectionChanged($event)"
+  (gridReady)="onGridReady($event)"
+  class="ag-theme-balham"
+  
+  id="studentGrid"
+  >
+</ag-grid-angular>
+<!-- [debounceVerticalScrollbar]="true" -->
+<!-- [rowSelection]="rowSelectionForGrid" -->
+<!-- [rowHeight]="27"  -->
+<!-- [domLayout]="domLayout" -->

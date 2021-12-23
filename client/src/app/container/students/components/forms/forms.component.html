@@ -1,0 +1,106 @@
+<div class="card" id="forms">
+    <div class="card-body">
+
+        <form [formGroup]="studentForms" class="row">
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" matInput formControlName="studentFirstName" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter student's first name</mat-hint>
+                    <mat-error *ngIf="f.get('studentFirstName')?.hasError('required')">
+                        Please enter a student's firstname
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput formControlName="studentLastName" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter student's last name</mat-hint>
+                    <mat-error *ngIf="f.get('studentLastName')?.hasError('required')">
+                        Please enter a student's lastname
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Class</mat-label>
+
+                    <mat-select formControlName="studentClass" [errorStateMatcher]="matcher">
+                        <mat-option *ngFor="let item of classes" [value]="item.value">{{item.label}}</mat-option>
+                    </mat-select>
+                    <mat-hint>Enter student's current class</mat-hint>
+                    <mat-error *ngIf="f.get('studentClass')?.hasError('required')">
+                        Please select appropriate class
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Gender</mat-label>
+
+                    <mat-select formControlName="studentGender" [errorStateMatcher]="matcher">
+                        <mat-option *ngFor="let item of gender" [value]="item.value">{{item.label}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="f.get('studentGender')?.hasError('required')">
+                       Please select appropriate student gender
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Father Name</mat-label>
+                    <input type="text" matInput formControlName="studentFatherName" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter student's father name</mat-hint>
+                    <mat-error *ngIf="f.get('studentFatherName')?.hasError('required')">
+                        Please enter a student's father name
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Mother Name</mat-label>
+                    <input type="text" matInput formControlName="studentMotherName" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter student's mother name</mat-hint>
+                    <mat-error *ngIf="f.get('studentMotherName')?.hasError('required')">
+                        Please enter a student's mother name
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Admission Date</mat-label>
+
+                    <input matInput [matDatepicker]="admissionDate" formControlName="admissionDate">
+                    <mat-datepicker-toggle matSuffix [for]="admissionDate"></mat-datepicker-toggle>
+                    <mat-datepicker #admissionDate></mat-datepicker>
+                    <mat-hint>Enter student's admission date</mat-hint>
+                    <mat-error *ngIf="f.get('studentClass')?.hasError('required')">
+                        Please enter a student's admission date
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Date of Birth</mat-label>
+
+                    <input matInput [matDatepicker]="studentDOB" formControlName="studentDOB">
+                    <mat-datepicker-toggle matSuffix [for]="studentDOB"></mat-datepicker-toggle>
+                    <mat-datepicker #studentDOB></mat-datepicker>
+                    <mat-hint>Enter student's DOB</mat-hint>
+                    <mat-error *ngIf="f.get('studentDOB')?.hasError('required')">
+                        Please enter a student's Date of Birth
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+</div>

@@ -1,0 +1,22 @@
+
+.bottom-sheet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(45vh - 0.5rem) !important;
+    overflow-x: hidden;
+  
+}
+
+
+button {
+    margin-left: 5px;
+    color: black !important;
+}
+
+
+#lists{
+    grid-template-columns: 0.7fr 1fr;
+    grid-gap: 0.5rem;
+    // border-bottom: 1px solid silver;
+}
