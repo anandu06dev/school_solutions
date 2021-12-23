@@ -1,0 +1,7 @@
+
+Needs to change in .env for database. to map our db.
+GetByID
+GetByIDs
+GetByAll
+
+Projections -- 
