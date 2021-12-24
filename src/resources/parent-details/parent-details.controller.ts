@@ -7,8 +7,11 @@ import {
     Param,
     Delete,
 } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { ParentDetailDto } from './dto/parent-detail.dto'
 import { ParentDetailsService } from './parent-details.service'
+
+@ApiTags('parent-details')
 
 @Controller('parent-details')
 export class ParentDetailsController {

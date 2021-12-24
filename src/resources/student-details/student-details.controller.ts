@@ -10,6 +10,8 @@ import {
 import { StudentDetailsService } from './student-details.service'
 import { StudentDetailDto } from './dto/student-detail.dto'
 import { Projection } from '@resources/resource-model/resource.model'
+import { ApiTags } from '@nestjs/swagger'
+@ApiTags('student-details')
 
 @Controller('student-details')
 export class StudentDetailsController {
