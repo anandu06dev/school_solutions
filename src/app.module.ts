@@ -13,7 +13,7 @@ import { SiblingDetailsModule } from '@resources/sibling-details/sibling-details
 
 const MODULES = [
     DatabaseModule,
-    StudentsModule,
+    // StudentsModule,
     StudentDetailsModule,
     SiblingDetailsModule,
     ParentDetailsModule,

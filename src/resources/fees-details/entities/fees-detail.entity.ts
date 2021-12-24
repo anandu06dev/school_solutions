@@ -1,7 +1,10 @@
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('fees_details', { schema: 'app_schl_dev' })
 export class FeesDetails {
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
+
     @Column('varchar', {
         name: 'ADMN_NO',
         comment: 'Admission Number',

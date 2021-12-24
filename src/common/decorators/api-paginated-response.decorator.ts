@@ -1,5 +1,6 @@
 import { applyDecorators, Type } from '@nestjs/common'
 import { ApiExtraModels, ApiOkResponse, getSchemaPath } from '@nestjs/swagger'
+import { StudentDetailDto } from '@resources/student-details/dto/student-detail.dto'
 // import { NewStudentDTO, UpdateStudentDTO } from '@resources/students/dto'
 import { UpdateStudentDto } from '@resources/students/dto/update-student.dto'
 import { PageDto } from 'src/common/dtos'
@@ -10,7 +11,7 @@ export const ApiPaginatedResponse = <TModel extends Type<any>>(
     model: TModel
 ) => {
     return applyDecorators(
-        ApiExtraModels(PageDto, UpdateStudentDto),
+        ApiExtraModels(PageDto, StudentDetailDto),
         ApiOkResponse({
             description: 'Successfully received model list',
             schema: {

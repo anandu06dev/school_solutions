@@ -1,10 +1,18 @@
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 import { Gender, StudentCommunity } from '../enums/enum'
 import { AbstractEntity } from '@common/entities'
 
 @Entity({ name: 'students' })
 export class StudentEntity extends AbstractEntity {
+    @PrimaryGeneratedColumn()
+    @Column('int', {
+        default: 0,
+        primary: true,
+        name: 'ADMN_NO',
+        comment: ' Admission Number',
+    })
+    admissionNo: number
     @Column({
         type: 'date',
         nullable: false,

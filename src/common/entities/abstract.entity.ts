@@ -6,16 +6,16 @@ import {
 } from 'typeorm'
 
 export abstract class AbstractEntity {
-    @PrimaryGeneratedColumn()
-    @Exclude()
-    public id: number
+    // @PrimaryGeneratedColumn()
+    // @Exclude()
+    // public id: number
 
     @CreateDateColumn({
         type: 'timestamp',
         default: () => 'CURRENT_TIMESTAMP(6)',
     })
     @Exclude()
-    createdAt: Date
+    CRET_TS: Date
 
     @UpdateDateColumn({
         type: 'timestamp',
@@ -23,5 +23,5 @@ export abstract class AbstractEntity {
         onUpdate: 'CURRENT_TIMESTAMP(6)',
     })
     @Exclude()
-    updatedAt: Date
+    LAST_UPDT_TS: Date
 }

@@ -1,13 +1,15 @@
+import { AbstractEntity } from '@common/entities'
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('student_details', { schema: 'app_schl_dev' })
-export class StudentDetails {
+export class StudentDetails extends AbstractEntity {
     constructor(partial: StudentDetails) {
+        super()
         Object.assign(this, partial)
     }
     @PrimaryGeneratedColumn()
     @Column('int', {
-        default: 0,
+        default: 1000,
         primary: true,
         name: 'ADMN_NO',
         comment: ' Admission Number',

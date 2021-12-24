@@ -13,7 +13,7 @@ async function bootstrap() {
         { cors: true }
     )
     app.use(helmet())
-    app.use(RateLimit({ windowMs: 15 * 60 * 1000, max: 200 }))
+    // app.use(RateLimit({ windowMs: 15 * 60 * 1000, max: 200 }))
     // app.useGlobalInterceptors(new ClassSerializerInterceptor(reflector))
     // app.useGlobalFilters(
     //     new HttpExceptionFilter(reflector),
