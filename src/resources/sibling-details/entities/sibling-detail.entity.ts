@@ -7,46 +7,31 @@ export class SiblingDetails {
         comment: 'Admission Number',
         length: 50,
     })
-    admissionNo: string
+    admissionNo: number
 
-    @Column('int', { name: 'PRNT_CD', comment: 'PARENT CODE' })
-    parentCode: number
-
-    @Column('varchar', {
-        name: 'PRNT_EDUC',
-        nullable: true,
-        comment: 'PARENT EDUCATION',
-        length: 100,
-    })
-    parentEducation: string | null
+    @Column('int', { name: 'SBLN_RELA', comment: 'SIBLING RELATION' })
+    siblingRelation: number
 
     @Column('varchar', {
-        name: 'PRNT_OCCU',
+        name: 'SBLN_CLAS',
         nullable: true,
-        comment: 'PARENT OCCUPATION',
-        length: 100,
-    })
-    parentOccupation: string | null
-
-    @Column('int', {
-        name: 'PRNT_AADH_NO',
-        nullable: true,
-        comment: 'AADHAR CARD NUMBER( XXXX -XXXX-XXXX)',
-    })
-    parentAadharNo: number | null
-
-    @Column('int', {
-        name: 'PRNT_PHNE_NO',
-        nullable: true,
-        comment: 'PHONE NUMBER ( 12345 -12345)',
-    })
-    parentPhoneNo: number | null
-
-    @Column('varchar', {
-        name: 'PRNT_EMAIL_ID',
-        nullable: true,
-        comment: 'PARENT ADDRESS 5',
+        comment: 'SIBLING CLASS',
         length: 150,
     })
-    parentEmailId: string | null
+    siblingClass: string | null
+
+    @Column('timestamp', {
+        name: 'SBLN_DOB',
+        nullable: true,
+        comment: 'SIBLING DATE OF BIRTH',
+    })
+    siblingDob: Date | null
+
+    @Column('double', {
+        name: 'SBLN_DISCO',
+        nullable: true,
+        comment: 'SIBLING DISCOUNT',
+        precision: 22,
+    })
+    siblingDiscount: number | null
 }

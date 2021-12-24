@@ -1,26 +1,40 @@
-import { Injectable } from '@nestjs/common'
-import { CreateBusRouteDetailDto } from './dto/create-bus-route-detail.dto'
-import { UpdateBusRouteDetailDto } from './dto/update-bus-route-detail.dto'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { getCustomRepository, Repository } from 'typeorm'
+import { BusDetailRepository } from './customRepository/busroute-cstm-repository'
+import { BusRouteDetailDto } from './dto/bus-route-detail.dto'
+import { BusRouteDetails } from './entities/bus-route-detail.entity'
 
 @Injectable()
 export class BusRouteDetailsService {
-    create(createBusRouteDetailDto: CreateBusRouteDetailDto) {
-        return 'This action adds a new busRouteDetail'
+    busCtsmRepository = getCustomRepository(BusDetailRepository)
+
+    constructor(
+        @InjectRepository(BusRouteDetails)
+        private busRouteRepository: Repository<BusRouteDetails>
+    ) {}
+
+    create(busRouteDetailDto: BusRouteDetailDto) {
+        return this.busRouteRepository.save(busRouteDetailDto)
     }
 
-    findAll() {
-        return `This action returns all busRouteDetails`
+    async findAll(): Promise<BusRouteDetails[]> {
+        return this.busRouteRepository.find()
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} busRouteDetail`
+    findOne(id: number): Promise<BusRouteDetails> {
+        return this.busRouteRepository.findOne(id)
     }
 
-    update(id: number, updateBusRouteDetailDto: UpdateBusRouteDetailDto) {
-        return `This action updates a #${id} busRouteDetail`
+    async update(id: number, busRouteDetailDto: BusRouteDetailDto) {
+        const toUpdate = await this.busRouteRepository.findOne(id)
+        if (!toUpdate) {
+            throw new NotFoundException('BusRoute Details is not found')
+        }
+        return this.busRouteRepository.update(id, busRouteDetailDto)
     }
 
-    remove(id: number) {
-        return `This action removes a #${id} busRouteDetail`
+    async remove(id: number) {
+        await this.busRouteRepository.delete(id)
     }
 }

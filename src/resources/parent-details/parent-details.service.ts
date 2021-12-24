@@ -1,33 +1,39 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
-import { CreateParentDetailDto } from './dto/create-parent-detail.dto'
-import { UpdateParentDetailDto } from './dto/update-parent-detail.dto'
+import { getCustomRepository, Repository } from 'typeorm'
+import { ParentDetailRepository } from './customRepository/parent-cstm-repository'
+import { ParentDetailDto } from './dto/parent-detail.dto'
 import { ParentDetails } from './entities/parent-detail.entity'
 
 @Injectable()
 export class ParentDetailsService {
+    parentCtsmRepository = getCustomRepository(ParentDetailRepository)
+
     constructor(
         @InjectRepository(ParentDetails)
         private parentRepository: Repository<ParentDetails>
     ) {}
-    create(createParentDetailDto: CreateParentDetailDto) {
-        return 'This action adds a new parentDetail'
+    create(parentDetailDto: ParentDetailDto) {
+        return this.parentRepository.save(parentDetailDto)
     }
 
-    findAll() {
-        return `This action returns all parentDetails`
+    async findAll(): Promise<ParentDetails[]> {
+        return this.parentRepository.find()
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} parentDetail`
+    findOne(id: number): Promise<ParentDetails> {
+        return this.parentRepository.findOne(id)
     }
 
-    update(id: number, updateParentDetailDto: UpdateParentDetailDto) {
-        return `This action updates a #${id} parentDetail`
+    async update(id: number, parentDetailDto: ParentDetailDto) {
+        const toUpdate = await this.parentRepository.findOne(id)
+        if (!toUpdate) {
+            throw new NotFoundException('Parent is not found')
+        }
+        return this.parentRepository.update(id, parentDetailDto)
     }
 
-    remove(id: number) {
-        return `This action removes a #${id} parentDetail`
+    async remove(id: number) {
+        await this.parentRepository.delete(id)
     }
 }

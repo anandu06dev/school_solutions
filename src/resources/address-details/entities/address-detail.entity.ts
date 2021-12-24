@@ -66,5 +66,5 @@ export class AddressDetails {
     printAddressPstlCd: string | null
 
     @Column('varchar', { primary: true, name: 'ADMN_NO', length: 50 })
-    admissionNo: string
+    admissionNo: number
 }

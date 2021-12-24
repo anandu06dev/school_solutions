@@ -7,7 +7,7 @@ export class ParentDetails {
         comment: 'Admission Number',
         length: 50,
     })
-    admissionNo: string
+    admissionNo: number
 
     @Column('int', { name: 'PRNT_CD', comment: 'PARENT CODE' })
     parentCode: number

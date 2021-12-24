@@ -8,8 +8,7 @@ import {
     Delete,
 } from '@nestjs/common'
 import { AddressDetailsService } from './address-details.service'
-import { CreateAddressDetailDto } from './dto/create-address-detail.dto'
-import { UpdateAddressDetailDto } from './dto/update-address-detail.dto'
+import { AddressDetailDto } from './dto/address-detail.dto'
 
 @Controller('address-details')
 export class AddressDetailsController {
@@ -18,7 +17,7 @@ export class AddressDetailsController {
     ) {}
 
     @Post()
-    create(@Body() createAddressDetailDto: CreateAddressDetailDto) {
+    create(@Body() createAddressDetailDto: AddressDetailDto) {
         return this.addressDetailsService.create(createAddressDetailDto)
     }
 
@@ -35,7 +34,7 @@ export class AddressDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() updateAddressDetailDto: UpdateAddressDetailDto
+        @Body() updateAddressDetailDto: AddressDetailDto
     ) {
         return this.addressDetailsService.update(+id, updateAddressDetailDto)
     }

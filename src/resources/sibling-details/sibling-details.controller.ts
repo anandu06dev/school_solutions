@@ -7,9 +7,8 @@ import {
     Param,
     Delete,
 } from '@nestjs/common'
+import { SiblingDetailDto } from './dto/sibling-detail.dto'
 import { SiblingDetailsService } from './sibling-details.service'
-import { CreateSiblingDetailDto } from './dto/create-sibling-detail.dto'
-import { UpdateSiblingDetailDto } from './dto/update-sibling-detail.dto'
 
 @Controller('sibling-details')
 export class SiblingDetailsController {
@@ -18,8 +17,8 @@ export class SiblingDetailsController {
     ) {}
 
     @Post()
-    create(@Body() createSiblingDetailDto: CreateSiblingDetailDto) {
-        return this.siblingDetailsService.create(createSiblingDetailDto)
+    create(@Body() siblingDetailDto: SiblingDetailDto) {
+        return this.siblingDetailsService.create(siblingDetailDto)
     }
 
     @Get()
@@ -35,7 +34,7 @@ export class SiblingDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() updateSiblingDetailDto: UpdateSiblingDetailDto
+        @Body() updateSiblingDetailDto: SiblingDetailDto
     ) {
         return this.siblingDetailsService.update(+id, updateSiblingDetailDto)
     }

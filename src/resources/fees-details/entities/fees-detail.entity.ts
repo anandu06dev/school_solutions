@@ -7,7 +7,7 @@ export class FeesDetails {
         comment: 'Admission Number',
         length: 50,
     })
-    admissionNo: string
+    admissionNo: number
 
     @Column('timestamp', {
         name: 'FEES_DATE',

@@ -7,16 +7,15 @@ import {
     Param,
     Delete,
 } from '@nestjs/common'
+import { ParentDetailDto } from './dto/parent-detail.dto'
 import { ParentDetailsService } from './parent-details.service'
-import { CreateParentDetailDto } from './dto/create-parent-detail.dto'
-import { UpdateParentDetailDto } from './dto/update-parent-detail.dto'
 
 @Controller('parent-details')
 export class ParentDetailsController {
     constructor(private readonly parentDetailsService: ParentDetailsService) {}
 
     @Post()
-    create(@Body() createParentDetailDto: CreateParentDetailDto) {
+    create(@Body() createParentDetailDto: ParentDetailDto) {
         return this.parentDetailsService.create(createParentDetailDto)
     }
 
@@ -33,7 +32,7 @@ export class ParentDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() updateParentDetailDto: UpdateParentDetailDto
+        @Body() updateParentDetailDto: ParentDetailDto
     ) {
         return this.parentDetailsService.update(+id, updateParentDetailDto)
     }

@@ -7,7 +7,7 @@ export class BusRouteDetails {
         comment: 'Admission Number',
         length: 50,
     })
-    admissionNo: string
+    admissionNo: number
 
     @Column('int', { name: 'BUS_RUTE_CD', comment: 'BUS ROUTE' })
     busRouteCode: number

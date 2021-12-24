@@ -1,26 +1,40 @@
-import { Injectable } from '@nestjs/common'
-import { CreateAddressDetailDto } from './dto/create-address-detail.dto'
-import { UpdateAddressDetailDto } from './dto/update-address-detail.dto'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { getCustomRepository, Repository } from 'typeorm'
+import { AddressDetailRepository } from './customRepository/address-cstm-repository'
+import { AddressDetailDto } from './dto/address-detail.dto'
+import { AddressDetails } from './entities/address-detail.entity'
 
 @Injectable()
 export class AddressDetailsService {
-    create(createAddressDetailDto: CreateAddressDetailDto) {
-        return 'This action adds a new addressDetail'
+    addressCtsmRepository = getCustomRepository(AddressDetailRepository)
+
+    constructor(
+        @InjectRepository(AddressDetails)
+        private addressRepository: Repository<AddressDetails>
+    ) {}
+
+    create(addressDetailDto: AddressDetailDto) {
+        return this.addressRepository.save(addressDetailDto)
     }
 
-    findAll() {
-        return `This action returns all addressDetails`
+    async findAll(): Promise<AddressDetails[]> {
+        return this.addressRepository.find()
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} addressDetail`
+    findOne(id: number): Promise<AddressDetails> {
+        return this.addressRepository.findOne(id)
     }
 
-    update(id: number, updateAddressDetailDto: UpdateAddressDetailDto) {
-        return `This action updates a #${id} addressDetail`
+    async update(id: number, addressDetailDto: AddressDetailDto) {
+        const toUpdate = await this.addressRepository.findOne(id)
+        if (!toUpdate) {
+            throw new NotFoundException('Address is not found')
+        }
+        return this.addressRepository.update(id, addressDetailDto)
     }
 
-    remove(id: number) {
-        return `This action removes a #${id} addressDetail`
+    async remove(id: number) {
+        await this.addressRepository.delete(id)
     }
 }

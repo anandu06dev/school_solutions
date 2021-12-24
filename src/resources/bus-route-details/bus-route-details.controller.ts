@@ -8,8 +8,7 @@ import {
     Delete,
 } from '@nestjs/common'
 import { BusRouteDetailsService } from './bus-route-details.service'
-import { CreateBusRouteDetailDto } from './dto/create-bus-route-detail.dto'
-import { UpdateBusRouteDetailDto } from './dto/update-bus-route-detail.dto'
+import { BusRouteDetailDto } from './dto/bus-route-detail.dto'
 
 @Controller('bus-route-details')
 export class BusRouteDetailsController {
@@ -18,7 +17,7 @@ export class BusRouteDetailsController {
     ) {}
 
     @Post()
-    create(@Body() createBusRouteDetailDto: CreateBusRouteDetailDto) {
+    create(@Body() createBusRouteDetailDto: BusRouteDetailDto) {
         return this.busRouteDetailsService.create(createBusRouteDetailDto)
     }
 
@@ -35,7 +34,7 @@ export class BusRouteDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() updateBusRouteDetailDto: UpdateBusRouteDetailDto
+        @Body() updateBusRouteDetailDto: BusRouteDetailDto
     ) {
         return this.busRouteDetailsService.update(+id, updateBusRouteDetailDto)
     }

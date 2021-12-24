@@ -1,33 +1,39 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
-import { CreateFeesDetailDto } from './dto/create-fees-detail.dto'
-import { UpdateFeesDetailDto } from './dto/update-fees-detail.dto'
+import { getCustomRepository, Repository } from 'typeorm'
+import { FeeDetailRepository } from './customRepository/fee-cstm-repository'
+import { FeesDetailDto } from './dto/fees-detail.dto'
 import { FeesDetails } from './entities/fees-detail.entity'
 
 @Injectable()
 export class FeesDetailsService {
+    feeCtsmRepository = getCustomRepository(FeeDetailRepository)
+
     constructor(
         @InjectRepository(FeesDetails)
-        private feesRepository: Repository<FeesDetails>
+        private feesDetailRepository: Repository<FeesDetails>
     ) {}
-    create(createFeesDetailDto: CreateFeesDetailDto) {
-        return 'This action adds a new feesDetail'
+    create(feesDetailDto: FeesDetailDto) {
+        return this.feesDetailRepository.save(feesDetailDto)
     }
 
-    findAll() {
-        return `This action returns all feesDetails`
+    async findAll(): Promise<FeesDetails[]> {
+        return this.feesDetailRepository.find()
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} feesDetail`
+    findOne(id: number): Promise<FeesDetails> {
+        return this.feesDetailRepository.findOne(id)
     }
 
-    update(id: number, updateFeesDetailDto: UpdateFeesDetailDto) {
-        return `This action updates a #${id} feesDetail`
+    async update(id: number, feesDetailDto: FeesDetailDto) {
+        const toUpdate = await this.feesDetailRepository.findOne(id)
+        if (!toUpdate) {
+            throw new NotFoundException('Fee Details is not found')
+        }
+        return this.feesDetailRepository.update(id, feesDetailDto)
     }
 
-    remove(id: number) {
-        return `This action removes a #${id} feesDetail`
+    async remove(id: number) {
+        await this.feesDetailRepository.delete(id)
     }
 }
