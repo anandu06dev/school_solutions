@@ -76,7 +76,7 @@ export class StudentDetails extends AbstractEntity {
         nullable: true,
         comment: 'Student Date of Birth',
     })
-    studentDob: Date | null
+    studentDOB: Date | null
 
     @Column('varchar', { name: 'STUD_CASTE', nullable: true, length: 100 })
     studentCaste: string | null
@@ -151,7 +151,7 @@ export class StudentDetails extends AbstractEntity {
         comment: 'STUDENT EMIS NO',
         length: 100,
     })
-    studentEmisNo: string | null
+    studentEMINo: string | null
 
     @Column('varchar', {
         name: 'STUD_PREV_SCHL',
