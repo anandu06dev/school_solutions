@@ -1,16 +1,55 @@
+import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsEmail } from 'class-validator'
 import { UserEntity } from '../entities/user.entity'
 
 export class CreateUserDto {
-    @IsNotEmpty() username: string
-    @IsNotEmpty() password: string
-    @IsNotEmpty() @IsEmail() email: string
+    @ApiProperty({
+        example: 'userName',
+        type: 'text',
+        description: 'Describes about UserName',
+    })
+    @IsNotEmpty()
+    username: string
+    @ApiProperty({
+        example: 'password',
+        type: 'text',
+        description: 'Describes about Password',
+    })
+    @IsNotEmpty()
+    password: string
+    @ApiProperty({
+        example: 'email@schoolSolutions',
+        type: 'email',
+        description: 'Describes about Email',
+    })
+    @IsNotEmpty()
+    @IsEmail()
+    email: string
 }
 
 export class UserDto {
-    @IsNotEmpty() id: string
-    @IsNotEmpty() username: string
-    @IsNotEmpty() @IsEmail() email: string
+    @ApiProperty({
+        example: 'id',
+        type: 'text',
+        description: 'Describes about UniqueId Generated',
+    })
+    @IsNotEmpty()
+    id: string
+    @ApiProperty({
+        example: 'userName',
+        type: 'text',
+        description: 'Describes about UserName',
+    })
+    @IsNotEmpty()
+    username: string
+    @ApiProperty({
+        example: 'email@schoolSolutions',
+        type: 'email',
+        description: 'Describes about Email',
+    })
+    @IsNotEmpty()
+    @IsEmail()
+    email: string
 }
 
 export class LoginUserDto {
