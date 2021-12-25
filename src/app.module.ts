@@ -10,10 +10,14 @@ import { BusRouteDetailsModule } from '@resources/bus-route-details/bus-route-de
 import { FeesDetailsModule } from '@resources/fees-details/fees-details.module'
 import { ParentDetailsModule } from '@resources/parent-details/parent-details.module'
 import { SiblingDetailsModule } from '@resources/sibling-details/sibling-details.module'
+import { AuthModule } from '@resources/auth/auth.module'
+import { UserModule } from '@resources/user/user.module'
 
 const MODULES = [
     DatabaseModule,
     // StudentsModule,
+    UserModule,
+    AuthModule,
     StudentDetailsModule,
     SiblingDetailsModule,
     ParentDetailsModule,

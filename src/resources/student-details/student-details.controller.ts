@@ -6,13 +6,15 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
 } from '@nestjs/common'
 import { StudentDetailsService } from './student-details.service'
 import { StudentDetailDto } from './dto/student-detail.dto'
 import { Projection } from '@resources/resource-model/resource.model'
 import { ApiTags } from '@nestjs/swagger'
+import { AuthGuard } from '@nestjs/passport'
 @ApiTags('student-details')
-
+@UseGuards(AuthGuard())
 @Controller('student-details')
 export class StudentDetailsController {
     constructor(

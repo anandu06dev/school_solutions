@@ -13,12 +13,12 @@ export class AddressDetails {
     printAddressCd: string
 
     @Column('varchar', {
-        name: 'PRNT_ADRS_ADD1',
+        name: 'PRNT_ADRS_ADD21',
         nullable: true,
-        comment: ' PARENT ADDRESS 1',
-        length: 100,
+        comment: ' PARENT ADDRESS 21',
+        length: 110,
     })
-    printAddressAdd1: string | null
+    printAddressAdd21: string | null
 
     @Column('varchar', {
         name: 'PRNT_ADRS_ADD2',

@@ -140,4 +140,10 @@ export class StudentEntity extends AbstractEntity {
         nullable: false,
     })
     studentDiscount: number
+
+    @Column({
+        type: 'numeric',
+        nullable: false,
+    })
+    studentDiscount_2: number
 }
