@@ -1,13 +1,10 @@
-import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty } from 'class-validator'
+import { IsNotEmpty, IsOptional } from 'class-validator'
 import { Timestamp } from 'typeorm'
 
 export class StudentDetailDto {
-
     admissionNo?: number
-    
-    @IsNotEmpty()
 
+    @IsNotEmpty()
     admissionDate?: Timestamp
     @IsNotEmpty()
     studentFirstName?: string
@@ -22,7 +19,7 @@ export class StudentDetailDto {
     @IsNotEmpty()
     studentGender?: string
     @IsNotEmpty()
-    studentDob?: Timestamp
+    studentDOB?: Timestamp
     @IsNotEmpty()
     studentCaste?: string
     @IsNotEmpty()
@@ -42,11 +39,11 @@ export class StudentDetailDto {
     @IsNotEmpty()
     studentAadharNumber?: string
     @IsNotEmpty()
-    studentEmisNo?: string
+    studentEMINo?: string
     @IsNotEmpty()
     studentPreviousSchool?: string
     @IsNotEmpty()
     studentDiscount?: number
-    @IsNotEmpty()
+    @IsOptional()
     studentIsActive?: boolean
 }

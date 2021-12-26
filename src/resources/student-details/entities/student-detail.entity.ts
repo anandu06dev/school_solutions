@@ -172,6 +172,7 @@ export class StudentDetails extends AbstractEntity {
     @Column('int', {
         name: 'STUD_IS_ACTIVE',
         comment: 'STUDENT IS ACTIVE',
+        default: 1,
     })
     studentIsActive: boolean
 }
