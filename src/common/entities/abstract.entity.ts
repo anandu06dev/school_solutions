@@ -1,9 +1,5 @@
 import { Exclude } from 'class-transformer'
-import {
-    CreateDateColumn,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn,
-} from 'typeorm'
+import { CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 export abstract class AbstractEntity {
     // @PrimaryGeneratedColumn()
@@ -12,16 +8,16 @@ export abstract class AbstractEntity {
 
     @CreateDateColumn({
         type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP(6)',
+        default: () => new Date(),
     })
     @Exclude()
-    CRET_TS: Date
+    createdTimeStamp: Date
 
     @UpdateDateColumn({
         type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP(6)',
+        default: () => new Date(),
         onUpdate: 'CURRENT_TIMESTAMP(6)',
     })
     @Exclude()
-    LAST_UPDT_TS: Date
+    lastUpdatedts: Date
 }
