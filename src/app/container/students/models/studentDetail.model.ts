@@ -19,3 +19,5 @@ export const studentDetail = {
     studentPreviousSchool: '',
     studentDiscount: '',
 }
+
+

@@ -117,3 +117,6 @@
     color: orangered;
 }
 
+:host::ng-deep .ag-center-cols-viewport{
+    height: calc(100vh - 12rem) !important;
+}

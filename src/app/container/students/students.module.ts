@@ -21,6 +21,8 @@ import { SharedModule } from '@shared/shared.module'
 import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
 import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http'
+import { StudentapiService } from './services/studentapi.service'
 
 @NgModule({
     declarations: [
@@ -35,6 +37,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     imports: [
         CommonModule,
         StudentsRoutingModule,
+       
         MatTabsModule,
         MatCardModule,
         MatInputModule,
@@ -50,7 +53,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ],
     providers: [  
         MatDatepickerModule,  
-        MatNativeDateModule  
+        MatNativeDateModule ,
+        StudentapiService
     ],
 })
 export class StudentsModule {}

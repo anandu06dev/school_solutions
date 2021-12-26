@@ -2,14 +2,14 @@ export const studentTable = Array(100)
     .fill(0)
     .map((i, ind) => ({
         admissionId: ind,
-        admissionDate: new Date().getTime(),
+        admissionDate: new Date(),
         studentFirstName: `${generate(10)}`,
         studentClass: `class ${Math.floor(1 + Math.random() * 10)}`,
         studentLastName: `${generate(5)}`,
         studentFatherName: `fatherName ${ind + 1}`,
         studentMotherName: `motherName ${ind + 1}`,
         studentGender: ind % 2 === 0 ? 'male' : 'female',
-        studentDOB: new Date().getTime(),
+        studentDOB: new Date(),
         studentCaste: ind % 3 === 0 ? 'MBC' : 'BC',
         studentSubCaste: 'Sub caste' + ind,
         studentReligion: 'Student Religion' + ind,

@@ -6,7 +6,7 @@
     <mat-list-option *ngFor="let student of _studentLists;odd as isOdd; even as isEven;" [value]="student"
       [ngClass]="isEven ? 'bg-light-color' : ''" (click)="openBottomSheet(student)">
       <!-- <img matListAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"> -->
-      <p matListAvatar class="mx-2 me-4" [attr.data-letters]="student.studentFirstName.charAt(0)"></p>
+      <p matListAvatar class="mx-2 me-4" [attr.data-letters]="student?.studentFirstName | slice:0:1"></p>
 
       <div class="card border-0 bg-transparent">
 
@@ -36,8 +36,8 @@
 <ng-template #studentChipLists let-student="student">
 
   <mat-chip-list #chipList>
-    <mat-chip class="chip">{{student.studentClass}}</mat-chip>
-    <mat-chip class="chip">{{student.studentGender}}</mat-chip>
+    <mat-chip class="chip text-capitalize" *ngIf="student?.studentClass">class {{student.studentClass}}</mat-chip>
+    <mat-chip class="chip text-capitalize" *ngIf="student?.studentGender">{{student.studentGender| slice:0:1}}</mat-chip>
 
   </mat-chip-list>
 

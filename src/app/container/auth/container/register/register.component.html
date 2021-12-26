@@ -1,0 +1,41 @@
+<div class="card border-0 bg-light">
+
+    <form class="form card-body" [formGroup]="registerForm">
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>UserName</mat-label>
+            <input matInput placeholder="Username" value="" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Username" value="" formControlName="password">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Retype Password</mat-label>
+            <input [type]="hide ? 'password' : 'text'" matInput placeholder="Username" value=""
+                formControlName="retypePassword">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="f.get('retypePassword')?.hasError('required')">
+                Please retype password here
+            </mat-error>
+            <mat-error *ngIf="f.get('retypePassword')?.hasError('confirmedPassword')">
+                Please retype password and password should be same
+            </mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" value="" formControlName="email">
+            <mat-error *ngIf="f.get('email')?.hasError('required') || f.get('email')?.hasError('email')">
+                Please enter appropriate email Id
+            </mat-error>
+        </mat-form-field>
+        <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row justify-content-between">
+            <div class="m-1" *ngIf="toggleLogin">
+                <a mat-flat-button routerLink="/auth/login" class="text-primary">Move To Login &rarr;</a>
+            </div>
+            <div class="m-1"><button mat-raised-button class="btn shadow-sm bg-purple text-white" [disabled]="!registerForm.valid"
+                    (click)="register()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

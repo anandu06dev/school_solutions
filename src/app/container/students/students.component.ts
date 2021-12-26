@@ -1,17 +1,21 @@
 import { Component, OnInit, TemplateRef } from '@angular/core'
 import { BreakPointService } from '@shared/services/breakpoint.service'
+import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service'
 import { IStudentDetails } from '@utils/interfaces/studentData'
 import { Observable } from 'rxjs'
+import {  takeUntil, tap } from 'rxjs/operators'
+
+import { StudentapiService } from './services/studentapi.service'
 import {
     defaultColDefinition,
     studentDetailColDef,
 } from './studentTableDefinition'
-import { studentTable } from './studentTableMockData'
 
 @Component({
     selector: 'app-students',
     templateUrl: './students.component.html',
     styleUrls: ['./students.component.scss'],
+    providers:[AutoUnsubscribe]
 })
 export class StudentsComponent implements OnInit {
     public currentScreen$!: Observable<string>
@@ -38,8 +42,8 @@ export class StudentsComponent implements OnInit {
     studentColDef: any = []
     studentRowData: IStudentDetails[] = []
 
-    constructor(private breakPointService: BreakPointService) {
-        this.studentRowData = studentTable
+    constructor(private breakPointService: BreakPointService,private studentDetails:StudentapiService,private detroy$:AutoUnsubscribe) {
+        // this.studentRowData = studentTable
         this.studentColDef = [...studentDetailColDef]
         this.currentScreen$ = breakPointService.currentScreen
     }
@@ -50,7 +54,9 @@ export class StudentsComponent implements OnInit {
                 ? 'below'
                 : 'above'
         })
-        this.studentRowData = [...studentTable]
+        this.studentDetails.getStudentDetails().pipe(tap((data:any)=>{
+            this.studentRowData = data  ?  [...data] : []
+        }),takeUntil(this.detroy$)).subscribe()
     }
 
     getTimeLoaded(number = 0) {

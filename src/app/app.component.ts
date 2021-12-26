@@ -1,10 +1,11 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout'
 import { Component } from '@angular/core'
+import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router'
 import { BreakPointService } from '@shared/services/breakpoint.service'
 import { LocalstorageService } from '@shared/services/localstorage.service'
 import { IToolBarMenu } from '@utils/interfaces/toolbarmenu.interface'
 import { MenuItemDef } from 'ag-grid-community'
-import { Observable, of, Subject, takeUntil } from 'rxjs'
+import { filter, Observable, of, Subject, takeUntil } from 'rxjs'
 import { menu } from './app.model'
 
 @Component({
@@ -34,12 +35,26 @@ export class AppComponent {
     title = 'client'
     selectedMenu!: IToolBarMenu;
 
+    loadAuthModules:boolean = true;
+
     constructor(
         private breakpointObserver: BreakpointObserver,
         private breakPointService: BreakPointService,
         private storageService:LocalstorageService,
+        private router:Router
     ) {
-        this.loadLayout$ = of(true)
+        this.loadLayout$ = of(true);
+        let auth = ['/auth/login','/auth/register'];
+        
+        router.events.subscribe((url:any) =>{
+            if(url instanceof NavigationStart){
+               this.loadAuthModules = auth.includes(url.url) ? true : false
+            }
+            if(url instanceof NavigationEnd){
+                this.loadAuthModules = auth.includes(url.urlAfterRedirects) ? true : false;
+            }
+
+         });
 
         breakpointObserver
             .observe([
@@ -56,6 +71,7 @@ export class AppComponent {
                         let currentScreenSize =
                             this.displayNameMap.get(query) ?? 'Unknown'
                         breakPointService.currentScreen = currentScreenSize;
+                        this.storageService.setData({currentScreenSize:currentScreenSize})
                     }
                 }
             })
@@ -74,4 +90,5 @@ export class AppComponent {
     loadRouteToStorage(menu:IToolBarMenu):void{
         this.selectedMenu = {...menu};        
     }
+    //events.subscribe(d=>console.log(d))
 }

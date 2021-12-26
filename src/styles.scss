@@ -103,3 +103,8 @@ mat-bottom-sheet-container.mat-bottom-sheet-container[role="dialog"]{
   border-top-left-radius: 2rem !important;
   border-top-right-radius: 2rem !important;
 }
+
+$purple:  #6f42c1;
+.bg-purple{
+    background-color: $purple;
+}

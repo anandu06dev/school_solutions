@@ -8,6 +8,9 @@ import { MatMenuModule } from '@angular/material/menu'
 import { AppLoadingDirective } from './directives/app-loading.directive';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HotToastModule } from '@ngneat/hot-toast'
+
 const SHARED_MODS = [
     MatButtonModule,
     MatIconModule,
@@ -16,6 +19,9 @@ const SHARED_MODS = [
     MatBottomSheetModule,
     MatMenuModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
+    HotToastModule.forRoot(),
+    
 ]
 
 const SHARED_DECL = [AppLoadingDirective]

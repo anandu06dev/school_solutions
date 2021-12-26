@@ -35,7 +35,11 @@ export const studentDetailColDef = [
         width:50,
         valueFormatter: (params: any) => params.data.studentFirstName,
         cellRenderer:(params:any)=>{
-          return `<p data-letters="${params.data.studentFirstName.charAt(0)}"></p>`
+          if(params?.data?.studentFirstName){
+
+            return `<p data-letters="${params.data.studentFirstName.charAt(0)}"></p>`
+          }
+          return `<p></p>`
         }
       },
       {
@@ -56,6 +60,7 @@ export const studentDetailColDef = [
         filter: 'agTextColumnFilter',
 
         valueFormatter: (params: any) =>{
+          if(params?.data?.studentFirstName && params?.data?.studentLastName){}
           let s = `${params.data.studentFirstName} ${params.data.studentLastName}`;
           return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
         }

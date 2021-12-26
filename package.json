@@ -25,6 +25,8 @@
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
     "@angular/service-worker": "~13.0.0",
+    "@ngneat/hot-toast": "^4.0.1",
+    "@ngneat/overview": "^3.0.0",
     "ag-grid-angular": "^26.2.0",
     "ag-grid-community": "^26.2.0",
     "perfect-scrollbar": "^1.5.3",

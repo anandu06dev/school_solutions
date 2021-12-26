@@ -1,5 +1,3 @@
-<!-- <router-outlet></router-outlet> -->
-
 
 
 <ng-container *ngIf="(loadLayout$|async);else layout">
@@ -15,7 +13,13 @@
 
 
 <ng-template #layout>
-    <app-root-layout>
+
+    <ng-container *ngIf="loadAuthModules">
+        <router-outlet></router-outlet>
+    </ng-container>
+    
+
+    <app-root-layout *ngIf="!loadAuthModules">
 
         <div menu fxLayout="column" fxLayoutAlign="space-evenly center">
             <ng-container *ngTemplateOutlet="sidenavcontent"></ng-container>

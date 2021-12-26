@@ -1,0 +1,25 @@
+<div class="card border-0 bg-light">
+
+    <form class="form card-body" [formGroup]="LoginForm">
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>UserName</mat-label>
+            <input matInput placeholder="Username" value="" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Username" value="" formControlName="password">
+        </mat-form-field>
+       
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" value="" formControlName="email">
+            <mat-error *ngIf="f.get('email')?.hasError('required') || f.get('email')?.hasError('email')">
+                Please enter appropriate email Id
+            </mat-error>
+        </mat-form-field>
+        <div class="text-center">
+            <button mat-raised-button class="btn shadow-sm bg-purple text-white"
+                [disabled]="!LoginForm.valid" (click)="login()">Login</button>
+        </div>
+    </form>
+</div>

@@ -6,7 +6,7 @@ import PerfectScrollbar from "perfect-scrollbar"
   templateUrl: './tableview.component.html',
   styleUrls: ['./tableview.component.scss']
 })
-export class TableviewComponent implements OnInit {
+export class TableviewComponent {
   
   @Input() defaultColDef: any  = {
     // enableRowGroup: true,
@@ -37,14 +37,8 @@ export class TableviewComponent implements OnInit {
   }
   constructor() { }
 
-  ngOnInit(): void {
-  }
+ 
 
-  ngOnChanges(change:SimpleChange){
-    console.log(change)
-    // this.gridApi.setColumnDefs(change?.currentValue?);
-    // this.gridApi.setRowData(change?.currentValue);
-  }
 
   onSelectionChanged(event: any) {
     let selectedNodes = this.gridApi.getSelectedNodes();

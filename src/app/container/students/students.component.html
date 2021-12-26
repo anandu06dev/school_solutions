@@ -20,7 +20,7 @@
             </ng-template>
             
             <ng-container [ngSwitch]="true">
-                <ng-container *ngSwitchCase="tab.view === 'tableView'">
+                <ng-container *ngSwitchCase="tab.view === 'tableView'" class="d-sm-none">
                     <ng-container *ngTemplateOutlet="tableView"></ng-container>
                 </ng-container>
                 <ng-container *ngSwitchCase="tab.view === 'listView'">
