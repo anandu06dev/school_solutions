@@ -11,9 +11,10 @@ import {
 import { StudentDetailsService } from './student-details.service'
 import { StudentDetailDto } from './dto/student-detail.dto'
 import { Projection } from '@resources/resource-model/resource.model'
-import { ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 import { AuthGuard } from '@nestjs/passport'
 @ApiTags('student-details')
+@ApiBearerAuth()
 @UseGuards(AuthGuard())
 @Controller('student-details')
 export class StudentDetailsController {

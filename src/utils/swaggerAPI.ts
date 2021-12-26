@@ -6,10 +6,7 @@ export function createSwaggerAPI(app: INestApplication) {
         .setTitle('School solutions')
         .setDescription('School ERP solutions')
         .setVersion('1.0')
-        .addBearerAuth(
-            { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
-            'access-token'
-        )
+        .addBearerAuth()
         .build()
     const document = SwaggerModule.createDocument(app, config, {})
     SwaggerModule.setup('api', app, document)
