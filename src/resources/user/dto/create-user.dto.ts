@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, IsEmail } from 'class-validator'
+import { IsNotEmpty, IsEmail, IsOptional } from 'class-validator'
 import { UserEntity } from '../entities/user.entity'
 
 export class CreateUserDto {
@@ -22,6 +22,7 @@ export class CreateUserDto {
         type: 'email',
         description: 'Describes about Email',
     })
+    @IsOptional()
     @IsNotEmpty()
     @IsEmail()
     email: string
