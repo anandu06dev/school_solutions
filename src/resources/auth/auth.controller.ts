@@ -9,6 +9,7 @@ import {
     HttpException,
     HttpStatus,
 } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import {
     CreateUserDto,
     LoginUserDto,
@@ -17,7 +18,7 @@ import { AuthService, RegistrationStatus } from './auth.service'
 import { CreateAuthDto } from './dto/create-auth.dto'
 import { UpdateAuthDto } from './dto/update-auth.dto'
 import { LoginStatus } from './jwt.interface'
-
+@ApiTags('auth-details')
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
