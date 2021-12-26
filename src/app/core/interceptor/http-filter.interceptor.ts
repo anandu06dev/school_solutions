@@ -12,14 +12,12 @@ export class HttpFilter implements HttpInterceptor {
     constructor(private storage:LocalstorageService){}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('http-filter')
 
         return next.handle(this.addAuthentication(request));
     }
 
     private addAuthentication(request: HttpRequest<any>): HttpRequest<any> {
 
-      console.log(request)
 
         if (!request.url.includes('/auth/')) {
             const token =  this.storage.get('token');

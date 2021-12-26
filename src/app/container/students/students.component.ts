@@ -20,7 +20,7 @@ import {
 export class StudentsComponent implements OnInit {
     public currentScreen$!: Observable<string>
     headerPosition: 'above' | 'below' = 'above'
-
+    renderTabMenu : { label: string; view: string; icon?: string }[] =[];
     matTabMenu: { label: string; view: string; icon?: string }[] = [
         {
             label: 'table',
@@ -43,13 +43,16 @@ export class StudentsComponent implements OnInit {
     studentRowData: IStudentDetails[] = []
 
     constructor(private breakPointService: BreakPointService,private studentDetails:StudentapiService,private detroy$:AutoUnsubscribe) {
-        // this.studentRowData = studentTable
         this.studentColDef = [...studentDetailColDef]
         this.currentScreen$ = breakPointService.currentScreen
     }
 
     ngOnInit(): void {
         this.currentScreen$.pipe().subscribe((d) => {
+            this.renderTabMenu = [...this.matTabMenu]
+            if(d.toLowerCase().includes('small')){
+               this.renderTabMenu = this.matTabMenu.filter((i:any)=>(i.view != 'tableView') && i)                
+            }
             this.headerPosition = d.toLowerCase().includes('small')
                 ? 'below'
                 : 'above'

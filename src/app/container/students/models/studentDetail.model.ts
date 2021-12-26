@@ -1,12 +1,14 @@
 export const studentDetail = {
-    admissionDate: '',
+    admissionId:0,
+    admissionDate: new Date(),
     studentFirstName: '',
     studentClass: '',
+    studentCommunity: '',
     studentLastName: '',
     studentFatherName: '',
     studentMotherName: '',
     studentGender: '',
-    studentDOB: '',
+    studentDOB: new Date(),
     studentCaste: '',
     studentSubCaste: '',
     studentReligion: '',
@@ -14,10 +16,8 @@ export const studentDetail = {
     studentMotherToungue: '',
     studentLangaugeKnown: '',
     studentBloodGroup: '',
-    studentAadharNumber: '',
-    studentEMINo: '',
+    studentAadharNumber: 0,
+    studentEMINo: 0,
     studentPreviousSchool: '',
-    studentDiscount: '',
+    studentDiscount: 0,
 }
-
-

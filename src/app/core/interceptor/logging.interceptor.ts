@@ -24,7 +24,6 @@ export class LoggingInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('Loggin',this.canExecuteLogger)
     if (this.canExecuteLogger) {
       const startTime = Date.now();
       let status: string;

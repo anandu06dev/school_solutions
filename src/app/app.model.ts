@@ -45,4 +45,13 @@ export const menu:IToolBarMenu[] = [
         url:'/siblings'
 
     },
+    {
+        label: 'Logout',
+        icon: 'logout',
+        showOnMobile: false,
+        showOnTablet: false,
+        showOnDesktop: false,
+        url:'/logout'
+
+    },
 ]

@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http'
 import { StudentapiService } from './services/studentapi.service'
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,7 @@ import { StudentapiService } from './services/studentapi.service'
     imports: [
         CommonModule,
         StudentsRoutingModule,
-       
+        MatStepperModule,
         MatTabsModule,
         MatCardModule,
         MatInputModule,

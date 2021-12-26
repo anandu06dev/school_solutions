@@ -26,7 +26,6 @@ export class HttpErrorFilter implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('http-error')
     return next.handle(request).pipe(
       catchError((error: any) => {
         console.log(error);

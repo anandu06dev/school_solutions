@@ -7,7 +7,7 @@
     [selectedIndex]="1"
     animationDuration="1000ms"
 >
-    <ng-container *ngFor="let tab of matTabMenu">
+    <ng-container *ngFor="let tab of renderTabMenu">
         <!-- <p *ngIf="!(headerPosition === 'below')"> </p> -->
         <mat-tab
             label="table"
@@ -49,5 +49,5 @@
 </ng-template>
 
 <ng-template matTabContent #forForms>
-    <app-forms></app-forms>
+    <app-forms [trackScreenView]="currentScreen$ | async"></app-forms>
 </ng-template>
