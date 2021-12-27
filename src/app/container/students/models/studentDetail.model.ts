@@ -1,5 +1,5 @@
 export const studentDetail = {
-    admissionId:0,
+    admissionNo:'0',
     admissionDate: new Date(),
     studentFirstName: '',
     studentClass: '',
@@ -16,8 +16,8 @@ export const studentDetail = {
     studentMotherToungue: '',
     studentLangaugeKnown: '',
     studentBloodGroup: '',
-    studentAadharNumber: 0,
-    studentEMINo: 0,
+    studentAadharNumber: '',
+    studentEMINo: '0',
     studentPreviousSchool: '',
-    studentDiscount: 0,
+    studentDiscount: '0',
 }

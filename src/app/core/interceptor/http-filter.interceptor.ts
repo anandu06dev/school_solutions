@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 
 import { Injectable } from '@angular/core';
 import { LocalstorageService } from '@shared/services/localstorage.service';
+import { NotificationService } from '@shared/services/notification.service';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 
@@ -9,9 +10,12 @@ import { environment } from './../../../environments/environment';
 export class HttpFilter implements HttpInterceptor {
 
     // private apiUrl = environment.apiUrl;
-    constructor(private storage:LocalstorageService){}
+    constructor(private storage:LocalstorageService,private notifier:NotificationService){}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        if(request.method.toLowerCase().includes('patch')){
+            this.notifier.successNotification('Successfully Updated')
+        }
 
         return next.handle(this.addAuthentication(request));
     }

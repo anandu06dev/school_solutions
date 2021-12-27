@@ -2,7 +2,7 @@ export interface IStudentDetails{
     admissionDate?:         Date;
     studentFirstName?:      string;
     studentClass?:          string;
-    admissionId?:           number;
+    admissionNo?:           string;
     studentLastName?:       string;
     studentFatherName?:     string;
     studentMotherName?:     string;
@@ -15,8 +15,8 @@ export interface IStudentDetails{
     studentMotherToungue?:  string;
     studentLangaugeKnown?:  string;
     studentBloodGroup?:     string;
-    studentAadharNumber?:   number;
-    studentEMINo?:          number;
+    studentAadharNumber?:   string;
+    studentEMINo?:          string;
     studentPreviousSchool?: string;
-    studentDiscount?:       number;
+    studentDiscount?:       string;
 } 

@@ -8,6 +8,9 @@
   
 }
 
+:host ::ng-deep .mat-bottom-sheet-container-medium{
+    width: calc(100vw - 2rem) !important;
+}
 
 button {
     margin-left: 5px;

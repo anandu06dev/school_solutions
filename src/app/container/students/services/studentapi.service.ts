@@ -8,6 +8,7 @@ import {
   map,
   Observable,
   Subject,
+  tap,
 } from 'rxjs';
 import {
   MatSnackBar,
@@ -37,7 +38,7 @@ export class StudentapiService {
   constructor(private http: HttpClient) {}
 
   public getStudentDetails() {
-    let excludeKeys = ['cret_ts', 'LAST_UPDT_TS','studentIsActive'];
+    let excludeKeys = ['cret_ts', 'LAST_UPDT_TS', 'studentIsActive'];
     return this.http.get(`${this.baseURL}/${this.targetResource}`).pipe(
       map((data: any) =>
         data.map((i: any) => ({
@@ -47,5 +48,17 @@ export class StudentapiService {
       ),
       catchError((e) => handleError(e))
     );
+  }
+
+  public createStudentDetails(stud: IStudentDetails) {
+    return this.http
+      .post(`${this.baseURL}/${this.targetResource}`, { ...stud })
+      .pipe(tap((d) => console.log(d)));
+  }
+
+  public updateStudentDetails(stud: IStudentDetails) {
+    return this.http
+      .patch(`${this.baseURL}/${this.targetResource}/${stud.admissionNo}`, { ...stud })
+      .pipe(tap((d) => console.log(d)));
   }
 }

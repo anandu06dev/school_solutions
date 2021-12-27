@@ -8,8 +8,9 @@
   [defaultColDef]="defaultColDef"
   (selectionChanged)="onSelectionChanged($event)"
   (gridReady)="onGridReady($event)"
+  [rowSelection]="rowSelectionForGrid"
   class="ag-theme-balham"
-  
+  (selectionChanged)="onSelectionChanged($event)"
  
   >
 </ag-grid-angular>

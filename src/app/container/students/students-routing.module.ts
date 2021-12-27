@@ -3,7 +3,12 @@ import { RouterModule, Routes } from '@angular/router'
 import { StudentsComponent } from './students.component'
 
 const routes: Routes = [
-    { path: '', component: StudentsComponent}
+    { path: '', component: StudentsComponent},
+    { path: '/:id', component: StudentsComponent},
+    {
+        path: '**',
+        redirectTo: '',
+      },
 ]
 
 @NgModule({

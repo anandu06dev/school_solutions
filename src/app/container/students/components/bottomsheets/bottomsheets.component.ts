@@ -39,11 +39,16 @@ export class BottomsheetsComponent implements OnInit {
         }
     }
 
-    clearBar(): void {
-        this.bottomSheetRef.dismiss({
-            message: 'Cancel',
-            data: this.data,
-        })
+    clearBar(data:boolean): void {
+        if(data){
+            this.bottomSheetRef.dismiss({
+                message: 'Cancel',
+                data: this.data,
+            })
+        }
+        else{
+            this.bottomSheetRef.dismiss();
+        }
     }
 
     changeStatus() {

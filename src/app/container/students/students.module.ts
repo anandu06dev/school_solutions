@@ -5,7 +5,7 @@ import { StudentsRoutingModule } from './students-routing.module'
 import { StudentsComponent } from './students.component'
 import { TableviewComponent } from './components/tableview/tableview.component'
 import { ListviewComponent } from './components/listview/listview.component'
-import { FormsComponent } from './components/forms/forms.component'
+import { FormsComponent } from './components/studentForms/forms.component'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatCardModule } from '@angular/material/card'
 import { MatChipsModule } from '@angular/material/chips'
@@ -24,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http'
 import { StudentapiService } from './services/studentapi.service'
 import {MatStepperModule} from '@angular/material/stepper';
+import { NgxMaskModule } from 'ngx-mask'
 
 @NgModule({
     declarations: [
@@ -48,7 +49,7 @@ import {MatStepperModule} from '@angular/material/stepper';
         WidgetModule,
         AgGridModule.withComponents([]),
         ReactiveFormsModule,
-       
+        NgxMaskModule.forRoot(),
         MatDatepickerModule,
         MatNativeDateModule,
     ],

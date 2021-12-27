@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 import { HotToastService } from '@ngneat/hot-toast';
 import { LocalstorageService } from '@shared/services/localstorage.service';
 import { NotificationService } from '@shared/services/notification.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class HttpErrorFilter implements HttpInterceptor {
@@ -19,7 +20,8 @@ export class HttpErrorFilter implements HttpInterceptor {
 
   constructor(
     private notification: NotificationService,
-    private storage: LocalstorageService
+    private storage: LocalstorageService,
+    private router:Router
   ) {}
 
   intercept(
@@ -30,7 +32,13 @@ export class HttpErrorFilter implements HttpInterceptor {
       catchError((error: any) => {
         console.log(error);
 
+        if (error.status.toString() === '401') {
+          this.router.navigateByUrl('/auth/login')
+        }
         if (error.status.toString() === '400') {
+          if (error?.error?.name?.toLowerCase() === 'httperrorresponse') {
+            this.handleHTTPErrorResponse(error.error);
+          }
           if (error?.error?.name?.toLowerCase() === 'httpexception') {
             this.handleHTTPExceptions(error.error);
           }
@@ -45,6 +53,12 @@ export class HttpErrorFilter implements HttpInterceptor {
       })
     );
   }
+
+  private handleHTTPErrorResponse(e: any) {
+    this.notification.errorNotification(Array.isArray(e.message) ? e.message.join(): e.message)
+
+  }
+
 
   private handleHTTPExceptions(e: any) {
     // let style = {
