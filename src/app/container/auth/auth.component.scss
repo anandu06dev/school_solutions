@@ -2,3 +2,8 @@ $purple:  #6f42c1;
 .bg-purple{
     background-color: $purple;
 }
+
+.bg-lavendar-grad{
+    // background : linear-gradient(to right, rgb(165, 180, 252), rgb(192, 132, 252))
+    background: linear-gradient(rgb(165, 180, 252), rgb(192, 132, 252));
+}

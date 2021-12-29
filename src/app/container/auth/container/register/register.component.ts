@@ -11,7 +11,7 @@ import { NotificationService } from '@shared/services/notification.service';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { ILogin } from '@utils/interfaces/auth';
 import { ConfirmedValidator, deleteMentionedKeys } from '@utils/utility';
-import { takeUntil } from 'rxjs';
+import { pluck, takeUntil } from 'rxjs';
 import { AuthapiService } from '../../services/authapi.service';
 
 @Component({
@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   hide = true;
   toggleLogin = false;
+  showImage: boolean = false;
   constructor(
     public fb: FormBuilder,
     private authService: AuthapiService,
@@ -31,6 +32,7 @@ export class RegisterComponent implements OnInit {
     private notifier:NotificationService,
     private storage:LocalstorageService
   ) {
+  
     this.registerForm = this.fb.group(
       {
         username: ['', Validators.required],
@@ -52,7 +54,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    () => {};
+    this.storage.rxStorage.asObservable().pipe(pluck('currentScreenSize'),takeUntil(this.destroy$)).subscribe((screen)=>{
+      this.showImage = screen.toLowerCase().includes('small') ? false :true
+    })
   }
 
   register() {
