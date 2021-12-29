@@ -12,9 +12,9 @@ import { LocalstorageService } from '@shared/services/localstorage.service';
 import { fadeAnimation } from '@utils/animations';
 import { fader } from '@utils/animations/fader';
 import { IToolBarMenu } from '@utils/interfaces/toolbarmenu.interface';
+import { currentViewMapTable, RootMenu, screenObserve } from '@utils/utility';
 import { MenuItemDef } from 'ag-grid-community';
 import { filter, Observable, of, Subject, takeUntil } from 'rxjs';
-import { menu } from './app.model';
 
 @Component({
   selector: 'app-root',
@@ -29,18 +29,11 @@ export class AppComponent {
 
   loadLayout$: Observable<boolean> = of(false);
 
-  menuItems: IToolBarMenu[] = [...menu];
+  menuItems: IToolBarMenu[] = [...RootMenu];
   destroyed = new Subject<void>();
 
   // Create a map to display breakpoint names for demonstration purposes.
-  displayNameMap = new Map([
-    [Breakpoints.XSmall, 'XSmall'],
-    [Breakpoints.Small, 'Small'],
-    [Breakpoints.Tablet, 'Tablet'],
-    [Breakpoints.Medium, 'Medium'],
-    [Breakpoints.Large, 'Large'],
-    [Breakpoints.XLarge, 'XLarge'],
-  ]);
+  displayNameMap = currentViewMapTable;
 
   title = 'client';
   selectedMenu!: IToolBarMenu;
@@ -61,7 +54,7 @@ export class AppComponent {
         this.loadAuthModules = auth.includes(url.url) ? true : false;
       }
       if (url instanceof NavigationEnd) {
-        let urlNavigation = [...menu].find((i: any) => {
+        let urlNavigation = [...RootMenu].find((i: any) => {
           if (i.url === url?.urlAfterRedirects) return i;
         });
         this.loadRouteToStorage(urlNavigation as IToolBarMenu);
@@ -72,13 +65,7 @@ export class AppComponent {
     });
 
     breakpointObserver
-      .observe([
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge,
-      ])
+      .observe(screenObserve)
       .pipe(takeUntil(this.destroyed))
       .subscribe((result) => {
         for (const query of Object.keys(result.breakpoints)) {

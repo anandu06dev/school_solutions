@@ -1,0 +1,7 @@
+<nav color="transparent" mat-tab-nav-bar mat-stretch-tabs id="tab-group">
+    <a mat-tab-link *ngFor="let link of renderTabMenu" (click)="navigate(link)" class="text-lowercase text-capitalize"
+        [active]="activeLink?.url === link.url">
+        <mat-icon class="mx-2">{{ link?.icon }}</mat-icon>
+        {{ link.label }}
+    </a>
+</nav>

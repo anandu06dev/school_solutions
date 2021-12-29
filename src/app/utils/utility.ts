@@ -1,3 +1,4 @@
+import { Breakpoints } from '@angular/cdk/layout';
 import {
   FormControl,
   FormGroup,
@@ -8,6 +9,9 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { HotToastService } from '@ngneat/hot-toast';
 import { LocalstorageService } from '@shared/services/localstorage.service';
 import { EMPTY } from 'rxjs';
+import { RouterString } from '../routerStringDeclaration';
+import { INavTabMenu } from './interfaces/navTabMenu.interface';
+import { IToolBarMenu } from './interfaces/toolbarmenu.interface';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -61,3 +65,117 @@ export function ConfirmedValidator(
     }
   };
 }
+
+export const initTabMenuData = [
+  {
+    label: 'table',
+    url: '/table',
+    icon: 'table_view',
+    hideOnSmallDevice: true,
+  },
+  { label: 'list', url: '/list', icon: 'list_view', hideOnSmallDevice: false },
+  {
+    label: 'form',
+    url: '/form/new',
+    icon: 'fact_check',
+    hideOnSmallDevice: false,
+  },
+];
+
+/**
+ * enum for views deatils
+ *
+ */
+
+export const screenObserve: string[] = [
+  Breakpoints.XSmall,
+  Breakpoints.Small,
+  Breakpoints.Medium,
+  Breakpoints.Large,
+  Breakpoints.XLarge,
+];
+export const currentViewMapTable = new Map([
+  [Breakpoints.XSmall, 'XSmall'],
+  [Breakpoints.Small, 'Small'],
+  [Breakpoints.Tablet, 'Tablet'],
+  [Breakpoints.Medium, 'Medium'],
+  [Breakpoints.Large, 'Large'],
+  [Breakpoints.XLarge, 'XLarge'],
+]);
+
+/**
+ * This tab menu helper function can even be changed on future basd on requirements
+ *
+ */
+export const loadResponsiveTabMenu = (currentView?: string): INavTabMenu[] => {
+  if (!currentView) return initTabMenuData;
+  if (currentView?.toLowerCase().includes('small')) {
+    return initTabMenuData.filter(
+      (tab: INavTabMenu) => !tab.hideOnSmallDevice && tab
+    );
+  }
+  return initTabMenuData;
+};
+
+export const headerPositionOnsmallScreen = (
+  currentView?: string
+): 'below' | 'above' =>
+  currentView?.toLowerCase().includes('small') ? 'below' : 'above';
+
+
+
+export const RootMenu: IToolBarMenu[] = [
+  {
+    label: 'Dashboard',
+    icon: 'view_module',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.DASHBOARD}`,
+  },
+  {
+    label: 'Students',
+    icon: 'person',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.STUDENTS}`,
+
+  },
+  {
+    label: 'Fees',
+    icon: 'assessment',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.FEES}`,
+
+  },
+  {
+    label: 'Parents',
+    icon: 'wc',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.PARENTS}`,
+
+  },
+  {
+    label: 'Siblings',
+    icon: 'people',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.SIBILINGS}`,
+
+  },
+  {
+    label: 'Logout',
+    icon: 'logout',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.LOGOUT}`,
+
+  },
+];

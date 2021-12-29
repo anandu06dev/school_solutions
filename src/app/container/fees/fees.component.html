@@ -1,7 +1,4 @@
-<nav mat-tab-nav-bar mat-stretch-tabs id="tab-group">
-    <a mat-tab-link *ngFor="let link of renderTabMenu" (click)="navigate(link)" class="text-lowercase text-capitalize" routerLinkActive #rla="routerLinkActive" [active]="activeLink === link">
-        <mat-icon class="mx-2">{{ link?.icon }}</mat-icon>
-        {{link.label}}
-    </a>
-</nav>
-<router-outlet></router-outlet>
+<app-tab [featureModulePath]="currentfeatureModule"></app-tab>
+<div class="card border-0" style="height: calc(100vh - 12rem);overflow-y: auto;">
+    <router-outlet></router-outlet>
+</div>

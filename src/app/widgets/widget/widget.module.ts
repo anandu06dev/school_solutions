@@ -5,10 +5,12 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { LoadingComponent } from '@widgets/components/loading/loading.component'
 import { SharedModule } from '@shared/shared.module'
+import { MatTabsModule } from '@angular/material/tabs'
+import { AppMatTabComponent } from '@widgets/components/tab/tab.component'
 
 
-const DECLARATIONS = [RootLayoutComponent, LoadingComponent]
-const MODS = [MatSidenavModule, MatToolbarModule,SharedModule]
+const DECLARATIONS = [RootLayoutComponent, LoadingComponent,AppMatTabComponent]
+const MODS = [MatSidenavModule, MatToolbarModule,SharedModule,MatTabsModule]
 
 @NgModule({
     declarations: [...DECLARATIONS],

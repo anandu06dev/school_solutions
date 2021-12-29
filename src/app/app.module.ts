@@ -19,11 +19,10 @@ import { HttpErrorFilter } from '@core/interceptor/http-error-filter.interceptor
 import { HttpFilter } from '@core/interceptor/http-filter.interceptor';
 import { LoggingInterceptor } from '@core/interceptor/logging.interceptor';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HomeComponent } from './home/home.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
-  declarations: [AppComponent, NotfoundComponent, HomeComponent],
+  declarations: [AppComponent, NotfoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
