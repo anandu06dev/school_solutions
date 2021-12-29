@@ -28,7 +28,7 @@ export class FormsComponent implements OnInit {
   _currentScreenView: 'horizontal' | 'vertical' = 'horizontal';
   _getStudentDetails: IStudentDetails = {};
   updateFlag: Observable<boolean> = of(false);
-  updateOpr:boolean  =false;
+  updateOpr: boolean = false;
 
   @Input() set trackScreenView(value: string | null) {
     if (value) {
@@ -133,7 +133,13 @@ export class FormsComponent implements OnInit {
       )
       .subscribe((data: any) => {
         if (data?.data?.data) {
-          let temp = { ...studentDetail, ...data.data.data };
+          let temp = {}
+          if (this.updateOpr) {
+            temp = { ...studentDetail, ...data.data.data };
+          } else {
+            temp = { ...studentDetail };
+          }
+
           this._getStudentDetails = { ...temp };
           this.initChunkableForms(temp);
         }
@@ -143,7 +149,7 @@ export class FormsComponent implements OnInit {
     () => {};
   }
 
-  initChunkableForms(studentDetails: IStudentDetails|any={}) {
+  initChunkableForms(studentDetails: IStudentDetails | any = {}) {
     let studentPrimaryDetails: { [key: string]: any } = {};
     let studentReligionDetails: { [key: string]: any } = {};
     let studentIdDetails: { [key: string]: any } = {};
@@ -160,7 +166,10 @@ export class FormsComponent implements OnInit {
         studentIdDetails[i] = [studentDetails[i], [Validators.required]];
       }
       if (this.studentFeesRelatedInfoGroupedKeys.includes(i)) {
-        studentFeesRelatedInfoDetails[i] = [studentDetails[i], [Validators.required]];
+        studentFeesRelatedInfoDetails[i] = [
+          studentDetails[i],
+          [Validators.required],
+        ];
       }
     }
 
@@ -224,10 +233,10 @@ export class FormsComponent implements OnInit {
       ...this.studentReligionDetails.value,
     };
     this.api
-    .updateStudentDetails(temp)
-    .pipe(take(1))
-    .subscribe((d) => {
-        console.log(temp,d);
+      .updateStudentDetails(temp)
+      .pipe(take(1))
+      .subscribe((d) => {
+        console.log(temp, d);
         this.dataShare.tabindex = 1;
       });
   }

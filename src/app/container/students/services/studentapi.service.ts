@@ -58,7 +58,23 @@ export class StudentapiService {
 
   public updateStudentDetails(stud: IStudentDetails) {
     return this.http
-      .patch(`${this.baseURL}/${this.targetResource}/${stud.admissionNo}`, { ...stud })
+      .patch(`${this.baseURL}/${this.targetResource}/${stud.admissionNo}`, {
+        ...stud,
+      })
+      .pipe(tap((d) => console.log(d)));
+  }
+
+  public getStudentDetailsForSearch() {
+    return this.http
+      .post(`${this.baseURL}/${this.targetResource}/findByProjection`, {
+        projectionId: [
+          'studentFirstName',
+          'studentLastName',
+          'admissionNo',
+          'studentClass',
+        ],
+        isActive: 1,
+      })
       .pipe(tap((d) => console.log(d)));
   }
 }

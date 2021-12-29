@@ -25,6 +25,9 @@ import { HttpClientModule } from '@angular/common/http'
 import { StudentapiService } from './services/studentapi.service'
 import {MatStepperModule} from '@angular/material/stepper';
 import { NgxMaskModule } from 'ngx-mask'
+import { StudentSearchComponent } from './components/student-search/student-search.component'
+import { NgSelectModule } from '@ng-select/ng-select'
+import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'
 
 @NgModule({
     declarations: [
@@ -34,7 +37,7 @@ import { NgxMaskModule } from 'ngx-mask'
         FormsComponent,
         BottomsheetsComponent,
         BottomsheetPipe,
-        
+        StudentSearchComponent
     ],
     imports: [
         CommonModule,
@@ -52,11 +55,18 @@ import { NgxMaskModule } from 'ngx-mask'
         NgxMaskModule.forRoot(),
         MatDatepickerModule,
         MatNativeDateModule,
+        NgSelectModule,
+        NgOptionHighlightModule
     ],
     providers: [  
         MatDatepickerModule,  
         MatNativeDateModule ,
         StudentapiService
     ],
+    exports:[
+        NgSelectModule,
+        NgOptionHighlightModule,
+        StudentSearchComponent
+    ]
 })
 export class StudentsModule {}

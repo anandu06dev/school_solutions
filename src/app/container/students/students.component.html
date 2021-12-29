@@ -3,7 +3,6 @@
 <mat-tab-group mat-stretch-tabs [headerPosition]="headerPosition" id="tab-group" [selectedIndex]="selectedIndex$ | async"
    (selectedIndexChange)="updateTabIndex($event)" animationDuration="1000ms">
     <ng-container *ngFor="let tab of renderTabMenu">
-        <!-- <p *ngIf="!(headerPosition === 'below')"> </p> -->
         <mat-tab label="table" height="400" headerPosition="headerPosition">
             <ng-template mat-tab-label>
                 <mat-icon class="mx-2">{{ tab?.icon }}</mat-icon>
@@ -26,6 +25,8 @@
     </ng-container>
 </mat-tab-group>
 
+
+
 <ng-template matTabContent #tableView>
     <app-tableview [rowData]="studentRowData" [columnDefinition]="studentColDef"></app-tableview>
 </ng-template>
@@ -37,3 +38,4 @@
 <ng-template matTabContent #forForms>
     <app-forms [trackScreenView]="currentScreen$ | async"></app-forms>
 </ng-template>
+<!-- <app-student-search></app-student-search> -->

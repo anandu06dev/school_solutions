@@ -59,7 +59,7 @@ export class StudentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentScreen$.pipe().subscribe((d) => {
+    this.currentScreen$.pipe(takeUntil(this.detroy$)).subscribe((d) => {
       this.renderTabMenu = [...this.matTabMenu];
       if (d.toLowerCase().includes('small')) {
         this.renderTabMenu = this.matTabMenu.filter(
