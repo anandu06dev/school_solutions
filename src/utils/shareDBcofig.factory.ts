@@ -7,7 +7,7 @@ export const dbConfigSetUp = (configService: any): { [key: string]: any } => {
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
         autoLoadEntities: true,
-        synchronize: false,
+        synchronize: true,
         logging: true,
         logger: 'file',
     }
