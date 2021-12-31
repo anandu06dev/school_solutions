@@ -1,10 +1,9 @@
-import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common'
+import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { ExpressAdapter } from '@nestjs/platform-express'
 import { createSwaggerAPI } from '@utils/swaggerAPI'
 import { AppModule } from './app.module'
 import * as helmet from 'helmet'
-import * as RateLimit from 'express-rate-limit'
 async function bootstrap() {
     const app = await NestFactory.create(
         AppModule,
@@ -19,6 +18,8 @@ async function bootstrap() {
     //     new HttpExceptionFilter(reflector),
     //     new QueryFailedFilter(reflector)
     // )
+    // const { httpAdapter } = app.get(HttpAdapterHost)
+    // app.useGlobalFilters(new AllExceptionsFilter(httpAdapter))
     app.useGlobalPipes(
         new ValidationPipe({
             transform: true,
