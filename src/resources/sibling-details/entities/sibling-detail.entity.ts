@@ -2,13 +2,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('sibling_details', { schema: 'app_schl_dev' })
 export class SiblingDetails {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @Column('varchar', {
         name: 'ADMN_NO',
         comment: 'Admission Number',
         length: 50,
+        default: '1',
     })
     admissionNo: number
 
