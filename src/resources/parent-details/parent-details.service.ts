@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
 import { getCustomRepository, Repository } from 'typeorm'
 import { ParentDetailRepository } from './customRepository/parent-cstm-repository'
 import { ParentDetailDto } from './dto/parent-detail.dto'
@@ -21,8 +22,12 @@ export class ParentDetailsService {
         return this.parentRepository.find()
     }
 
-    findOne(id: number): Promise<ParentDetails> {
-        return this.parentRepository.findOne(id)
+    findOne(admissionNo: number): Promise<ParentDetails> {
+        return this.parentRepository.findOne({
+            where: {
+                ...LookForAdmissionId(admissionNo),
+            },
+        })
     }
 
     async update(id: number, parentDetailDto: ParentDetailDto) {

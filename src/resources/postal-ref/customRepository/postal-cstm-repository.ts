@@ -28,4 +28,28 @@ export class PostalRefRepository extends AbstractRepository<PostalRef> {
             take: 10,
         })
     }
+
+    getPostalNameByState(stateName: string) {
+        return this.repository.find({
+            where: {
+                ...(stateName && {
+                    stateName: ILike('%' + stateName + '%'),
+                }),
+            },
+        })
+    }
+
+    getPostalNameByDistrict(districtName: string) {
+        return this.repository.find({
+            where: {
+                ...(districtName && {
+                    districtName: ILike('%' + districtName + '%'),
+                }),
+            },
+        })
+    }
+
+    getAllStateName() {
+        return this.repository.createQueryBuilder().groupBy('stateName')
+    }
 }

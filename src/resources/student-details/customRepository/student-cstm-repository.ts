@@ -1,3 +1,4 @@
+import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
 import { EntityRepository, AbstractRepository, In, ILike } from 'typeorm'
 import { StudentDetails } from '../entities/student-detail.entity'
 
@@ -25,7 +26,7 @@ export class StudentDetailRepository extends AbstractRepository<StudentDetails> 
     findByIdAndIsActive(admissionNo: number) {
         return this.repository.findOne({
             where: {
-                admissionNo,
+                ...LookForAdmissionId(admissionNo),
                 studentIsActive: true,
             },
             order: {
@@ -45,13 +46,15 @@ export class StudentDetailRepository extends AbstractRepository<StudentDetails> 
     findByProjectionByIdAndActive(
         id: any,
         isActive: boolean,
-        admissionId: string[]
+        admissionNo: string[]
     ) {
         return this.repository.find({
             where: {
-                admissionNo: In(admissionId),
+                //  ...{},
+                admissionNo: In(admissionNo),
                 studentIsActive: isActive,
             },
+
             select: id,
             order: {
                 studentFirstName: 'ASC',
