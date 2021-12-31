@@ -19,7 +19,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
         const response = context.getResponse<Response>()
         const request = context.getRequest<Request>()
         let message = (exception as any).message.message
-
+        let defaultstatus = HttpStatus.INTERNAL_SERVER_ERROR
+        const statusmessage = 'Something Went Wrong , Please Try Again Later'
         let status = HttpStatus.INTERNAL_SERVER_ERROR
 
         let code = 'HttpException'
@@ -44,11 +45,23 @@ export class HttpExceptionFilter implements ExceptionFilter {
                 code = (exception as any).code
                 break
             default:
-                status = HttpStatus.INTERNAL_SERVER_ERROR
+                defaultstatus = HttpStatus.INTERNAL_SERVER_ERROR
         }
 
+        // response
+        //     .status(status)
+        //     .json(GlobalResponseError(status, message, code, request))
+
         response
-            .status(status)
-            .json(GlobalResponseError(status, message, code, request))
+            .status(defaultstatus)
+            .json(
+                GlobalResponseError(
+                    defaultstatus,
+                    message,
+                    statusmessage,
+                    code,
+                    request
+                )
+            )
     }
 }
