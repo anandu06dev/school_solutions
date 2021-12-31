@@ -14,6 +14,7 @@ import { UserModule } from '@resources/user/user.module'
 import { APP_FILTER } from '@nestjs/core'
 import { ExceptionsLoggerFilter } from '@common/log/Exceptionlogger.log'
 import { HttpExceptionFilter } from '@common/filter/http.exception.filter'
+import { PostalRefModule } from '@resources/postal-ref/postal-ref.module'
 
 const MODULES = [
     DatabaseModule,
@@ -26,6 +27,7 @@ const MODULES = [
     FeesDetailsModule,
     BusRouteDetailsModule,
     AddressDetailsModule,
+    PostalRefModule,
 ]
 
 @Module({

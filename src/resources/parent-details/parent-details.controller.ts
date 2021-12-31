@@ -12,7 +12,6 @@ import { ParentDetailDto } from './dto/parent-detail.dto'
 import { ParentDetailsService } from './parent-details.service'
 
 @ApiTags('parent-details')
-
 @Controller('parent-details')
 export class ParentDetailsController {
     constructor(private readonly parentDetailsService: ParentDetailsService) {}

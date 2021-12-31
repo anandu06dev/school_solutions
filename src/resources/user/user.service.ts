@@ -9,7 +9,7 @@ import {
 } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { UserEntity } from './entities/user.entity'
-
+import * as bcrypt from 'bcrypt'
 @Injectable()
 export class UserService {
     constructor(
@@ -32,11 +32,13 @@ export class UserService {
         if (!user) {
             throw new HttpException('User not found', HttpStatus.UNAUTHORIZED)
         }
-
+        const hashedPassword = await bcrypt.hash(password, 10)
+        const isMatch = await bcrypt.compare(password, hashedPassword)
+        console.log(hashedPassword, isMatch)
         // compare passwords
-        const areEqual = user.password === password ? true : false
+        // const areEqual = user.password === password ? true : false
 
-        if (!areEqual) {
+        if (!isMatch) {
             throw new HttpException(
                 'Invalid credentials',
                 HttpStatus.UNAUTHORIZED
@@ -53,26 +55,41 @@ export class UserService {
     }
 
     async create(userDto: CreateUserDto): Promise<UserDto> {
-        const { username, password, email } = userDto
+        try {
+            const { username, password, email } = userDto
+            const hashedPassword = await bcrypt.hash(password, 10)
+            console.log('hashedPassword', hashedPassword, userDto)
+            // check if the user exists in the db
+            const userInDb = await this.userRepo.findOne({
+                where: { username },
+            })
+            if (userInDb) {
+                throw new HttpException(
+                    'User already exists',
+                    HttpStatus.BAD_REQUEST
+                )
+            }
 
-        // check if the user exists in the db
-        const userInDb = await this.userRepo.findOne({
-            where: { username },
-        })
-        if (userInDb) {
+            const user: UserEntity = await this.userRepo.create({
+                username,
+                password: hashedPassword,
+                email,
+            })
+            await this.userRepo.save(user)
+            user.password = undefined
+            return toUserDto(user)
+        } catch (error) {
+            if (error?.code === '400') {
+                throw new HttpException(
+                    'User with that email already exists',
+                    HttpStatus.BAD_REQUEST
+                )
+            }
             throw new HttpException(
-                'User already exists',
-                HttpStatus.BAD_REQUEST
+                'Something went wrong',
+                HttpStatus.INTERNAL_SERVER_ERROR
             )
         }
-
-        const user: UserEntity = await this.userRepo.create({
-            username,
-            password,
-            email,
-        })
-        await this.userRepo.save(user)
-        return toUserDto(user)
     }
 
     update(id: number, updateUserDto: UpdateUserDto) {
