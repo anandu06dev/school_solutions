@@ -1,9 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import {
+    LookForAdmissionId,
+    LookForId,
+} from '@resources/resources-util/resource-query-util'
 import { getCustomRepository, Repository } from 'typeorm'
 import { FeeDetailRepository } from './customRepository/fee-cstm-repository'
 import { FeesDetailDto } from './dto/fees-detail.dto'
+import { UpdateFeesDetailDto } from './dto/update-fees-detail.dto'
 import { FeesDetails } from './entities/fees-detail.entity'
 
 @Injectable()
@@ -30,8 +34,13 @@ export class FeesDetailsService {
         })
     }
 
-    async update(id: number, feesDetailDto: FeesDetailDto) {
-        const toUpdate = await this.feesDetailRepository.findOne(id)
+    async update(id: string, feesDetailDto: UpdateFeesDetailDto) {
+        const toUpdate = await this.feesDetailRepository.findOne({
+            where: {
+                ...LookForId(id),
+                ...LookForAdmissionId(feesDetailDto.admissionNo),
+            },
+        })
         if (!toUpdate) {
             throw new NotFoundException('Fee Details is not found')
         }

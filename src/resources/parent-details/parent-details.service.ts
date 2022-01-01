@@ -1,9 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import {
+    LookForAdmissionId,
+    LookForId,
+} from '@resources/resources-util/resource-query-util'
 import { getCustomRepository, Repository } from 'typeorm'
 import { ParentDetailRepository } from './customRepository/parent-cstm-repository'
 import { ParentDetailDto } from './dto/parent-detail.dto'
+import { UpdateParentDetailDto } from './dto/update-parent-detail.dto'
 import { ParentDetails } from './entities/parent-detail.entity'
 
 @Injectable()
@@ -30,8 +34,13 @@ export class ParentDetailsService {
         })
     }
 
-    async update(id: number, parentDetailDto: ParentDetailDto) {
-        const toUpdate = await this.parentRepository.findOne(id)
+    async update(id: string, parentDetailDto: UpdateParentDetailDto) {
+        const toUpdate = await this.parentRepository.findOne({
+            where: {
+                ...LookForId(id),
+                ...LookForAdmissionId(parentDetailDto.admissionNo),
+            },
+        })
         if (!toUpdate) {
             throw new NotFoundException('Parent is not found')
         }

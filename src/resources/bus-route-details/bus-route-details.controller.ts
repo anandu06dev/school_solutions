@@ -10,6 +10,7 @@ import {
 import { ApiTags } from '@nestjs/swagger'
 import { BusRouteDetailsService } from './bus-route-details.service'
 import { BusRouteDetailDto } from './dto/bus-route-detail.dto'
+import { UpdateBusRouteDetailDto } from './dto/update-bus-route-detail.dto'
 
 @ApiTags('bus-route-details')
 @Controller('bus-route-details')
@@ -36,9 +37,9 @@ export class BusRouteDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() updateBusRouteDetailDto: BusRouteDetailDto
+        @Body() updateBusRouteDetailDto: UpdateBusRouteDetailDto
     ) {
-        return this.busRouteDetailsService.update(+id, updateBusRouteDetailDto)
+        return this.busRouteDetailsService.update(id, updateBusRouteDetailDto)
     }
 
     @Delete(':id')

@@ -1,9 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import {
+    LookForAdmissionId,
+    LookForId,
+} from '@resources/resources-util/resource-query-util'
 import { getCustomRepository, Repository } from 'typeorm'
 import { BusDetailRepository } from './customRepository/busroute-cstm-repository'
 import { BusRouteDetailDto } from './dto/bus-route-detail.dto'
+import { UpdateBusRouteDetailDto } from './dto/update-bus-route-detail.dto'
 import { BusRouteDetails } from './entities/bus-route-detail.entity'
 
 @Injectable()
@@ -31,8 +35,13 @@ export class BusRouteDetailsService {
         })
     }
 
-    async update(id: number, busRouteDetailDto: BusRouteDetailDto) {
-        const toUpdate = await this.busRouteRepository.findOne(id)
+    async update(id: string, busRouteDetailDto: UpdateBusRouteDetailDto) {
+        const toUpdate = await this.busRouteRepository.findOne({
+            where: {
+                ...LookForId(id),
+                ...LookForAdmissionId(busRouteDetailDto.admissionNo),
+            },
+        })
         if (!toUpdate) {
             throw new NotFoundException('BusRoute Details is not found')
         }

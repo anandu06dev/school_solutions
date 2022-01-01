@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { FeesDetailDto } from './dto/fees-detail.dto'
+import { UpdateFeesDetailDto } from './dto/update-fees-detail.dto'
 import { FeesDetailsService } from './fees-details.service'
 
 @ApiTags('fees-details')
@@ -34,9 +35,9 @@ export class FeesDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() updateFeesDetailDto: FeesDetailDto
+        @Body() updateFeesDetailDto: UpdateFeesDetailDto
     ) {
-        return this.feesDetailsService.update(+id, updateFeesDetailDto)
+        return this.feesDetailsService.update(id, updateFeesDetailDto)
     }
 
     @Delete(':id')

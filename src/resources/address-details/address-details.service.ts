@@ -1,9 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import {
+    LookForAdmissionId,
+    LookForId,
+} from '@resources/resources-util/resource-query-util'
 import { getCustomRepository, Repository } from 'typeorm'
 import { AddressDetailRepository } from './customRepository/address-cstm-repository'
 import { AddressDetailDto } from './dto/address-detail.dto'
+import { UpdateAddressDetailDto } from './dto/update-address-detail.dto'
 import { AddressDetails } from './entities/address-detail.entity'
 
 @Injectable()
@@ -31,8 +35,13 @@ export class AddressDetailsService {
         })
     }
 
-    async update(id: number, addressDetailDto: AddressDetailDto) {
-        const toUpdate = await this.addressRepository.findOne(id)
+    async update(id: string, addressDetailDto: UpdateAddressDetailDto) {
+        const toUpdate = await this.addressRepository.findOne({
+            where: {
+                ...LookForId(id),
+                ...LookForAdmissionId(addressDetailDto.admissionNo),
+            },
+        })
         if (!toUpdate) {
             throw new NotFoundException('Address is not found')
         }

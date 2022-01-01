@@ -2,12 +2,20 @@ import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty } from 'class-validator'
 
 export class UpdateParentDetailDto {
-    admissionNo: number
     @ApiProperty({
         example: '1234',
-        type: 'number',
-        description: 'Describes about ParentCode',
+        type: 'text',
+        description: 'Describes about admissionNo',
     })
+    @IsNotEmpty()
+    admissionNo: number
+    @ApiProperty({
+        example: '123123213213-213213123-safsaf',
+        type: 'text',
+        description: 'Describes about id/unique id ',
+    })
+    @IsNotEmpty()
+    id: string
     @IsNotEmpty()
     parentCode?: number
     @ApiProperty({
