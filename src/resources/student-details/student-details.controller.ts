@@ -7,6 +7,7 @@ import {
     Param,
     Delete,
     UseGuards,
+    ValidationPipe,
 } from '@nestjs/common'
 import { StudentDetailsService } from './student-details.service'
 import { StudentDetailDto } from './dto/student-detail.dto'
@@ -72,7 +73,7 @@ export class StudentDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() studentDetails: UpdateStudentDetailDto
+        @Body(new ValidationPipe()) studentDetails: UpdateStudentDetailDto
     ) {
         console.log(studentDetails, id)
         return this.studentDetailsService.update(+id, studentDetails)

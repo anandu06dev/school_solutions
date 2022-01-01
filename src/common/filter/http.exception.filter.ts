@@ -18,12 +18,17 @@ export class HttpExceptionFilter implements ExceptionFilter {
         const context = host.switchToHttp()
         const response = context.getResponse<Response>()
         const request = context.getRequest<Request>()
-        let message = (exception as any).message.message
-        let status = HttpStatus.INTERNAL_SERVER_ERROR
+        // const message = (exception as any).message.message
+        // const status = HttpStatus.INTERNAL_SERVER_ERROR
 
-        let code = 'HttpException'
+        // const code = 'HttpException'
+        let { status, code, message } = exception as any
 
-        console.log('exception', exception.constructor)
+        console.log(
+            'exception',
+            exception.constructor,
+            (exception as any)?.response.message.join(',')
+        )
         switch (exception.constructor) {
             case HttpException:
                 status = (exception as HttpException).getStatus()
@@ -46,9 +51,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
                 code = (exception as any).code
                 break
             default:
-                status = (exception as any).status
-                message = (exception as any).message
-                code = (exception as any).code
+                const respMesage = (exception as any)?.response.message
+                message =
+                    respMesage && Array.isArray(respMesage)
+                        ? respMesage.join(',') + '  ' + message
+                        : message
         }
 
         response

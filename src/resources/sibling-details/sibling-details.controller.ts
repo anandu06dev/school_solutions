@@ -9,10 +9,10 @@ import {
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { SiblingDetailDto } from './dto/sibling-detail.dto'
+import { UpdateSiblingDetailDto } from './dto/update-sibling-detail.dto'
 import { SiblingDetailsService } from './sibling-details.service'
 
 @ApiTags('sibling-details')
-
 @Controller('sibling-details')
 export class SiblingDetailsController {
     constructor(
@@ -37,9 +37,9 @@ export class SiblingDetailsController {
     @Patch(':id')
     update(
         @Param('id') id: string,
-        @Body() updateSiblingDetailDto: SiblingDetailDto
+        @Body() updateSiblingDetailDto: UpdateSiblingDetailDto
     ) {
-        return this.siblingDetailsService.update(+id, updateSiblingDetailDto)
+        return this.siblingDetailsService.update(id, updateSiblingDetailDto)
     }
 
     @Delete(':id')
