@@ -24,6 +24,11 @@ export class SiblingDetailsController {
         return this.siblingDetailsService.create(siblingDetailDto)
     }
 
+    @Get('findByAdmissionId/:id')
+    findByAdmissionId(@Param('id') id: number[]) {
+        return this.siblingDetailsService.findByAdmissionId(id)
+    }
+
     @Get()
     findAll() {
         return this.siblingDetailsService.findAll()

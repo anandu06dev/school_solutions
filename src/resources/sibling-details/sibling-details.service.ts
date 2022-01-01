@@ -4,7 +4,7 @@ import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
-import { getCustomRepository, Repository } from 'typeorm'
+import { getCustomRepository, In, Repository } from 'typeorm'
 import { SiblingDetailRepository } from './customRepository/sibling-cstm-repository'
 import { SiblingDetailDto } from './dto/sibling-detail.dto'
 import { UpdateSiblingDetailDto } from './dto/update-sibling-detail.dto'
@@ -31,6 +31,14 @@ export class SiblingDetailsService {
         return this.siblingRepository.findOne({
             where: {
                 ...LookForAdmissionId(admissionNo),
+            },
+        })
+    }
+
+    findByAdmissionId(admissionNo: number[]): Promise<SiblingDetails[]> {
+        return this.siblingRepository.find({
+            where: {
+                admissionNo: In(admissionNo),
             },
         })
     }
