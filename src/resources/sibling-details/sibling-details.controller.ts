@@ -25,7 +25,7 @@ export class SiblingDetailsController {
     }
 
     @Get('findByAdmissionId/:id')
-    findByAdmissionId(@Param('id') id: number[]) {
+    findByAdmissionId(@Param('id') id: string) {
         return this.siblingDetailsService.findByAdmissionId(id)
     }
 

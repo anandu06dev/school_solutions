@@ -35,10 +35,10 @@ export class SiblingDetailsService {
         })
     }
 
-    findByAdmissionId(admissionNo: number[]): Promise<SiblingDetails[]> {
+    findByAdmissionId(admissionNo: string): Promise<SiblingDetails[]> {
         return this.siblingRepository.find({
             where: {
-                admissionNo: In(admissionNo),
+                admissionNo: In([admissionNo]),
             },
         })
     }
