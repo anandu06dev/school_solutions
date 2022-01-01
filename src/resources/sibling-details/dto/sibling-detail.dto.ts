@@ -3,6 +3,7 @@ import { IsNotEmpty } from 'class-validator'
 import { Timestamp } from 'typeorm'
 
 export class SiblingDetailDto {
+    @IsNotEmpty()
     admissionNo?: number
     @ApiProperty({
         example: 'Class',

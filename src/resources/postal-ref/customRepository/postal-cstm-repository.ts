@@ -50,6 +50,15 @@ export class PostalRefRepository extends AbstractRepository<PostalRef> {
     }
 
     getAllStateName() {
-        return this.repository.createQueryBuilder().groupBy('stateName')
+        //     return this.repository
+        //         .createQueryBuilder('postal_ref')
+        //         .select('postal_ref.stateName')
+        //         .addSelect('COUNT(postal_ref.stateName)', 'count')
+        //         .groupBy('postal_ref.stateName')
+        // }
+        console.log('getAllStateName')
+        return this.repository.query(
+            `select stateName from postal_ref group by stateName;`
+        )
     }
 }

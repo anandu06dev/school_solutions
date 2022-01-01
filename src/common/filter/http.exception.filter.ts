@@ -26,8 +26,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
         console.log(
             'exception',
-            exception.constructor,
-            (exception as any)?.response.message.join(',')
+            exception.constructor,exception,
+            (exception as any)?.response?.message.join(',')
         )
         switch (exception.constructor) {
             case HttpException:
@@ -51,7 +51,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
                 code = (exception as any).code
                 break
             default:
-                const respMesage = (exception as any)?.response.message
+                const respMesage = (exception as any)?.response?.message
                 message =
                     respMesage && Array.isArray(respMesage)
                         ? respMesage.join(',') + '  ' + message

@@ -8,39 +8,43 @@ import { PostalRefProjection } from './modal/postal-ref-projection'
 
 @Injectable()
 export class PostalRefService {
-    postalRefRepository = getCustomRepository(PostalRefRepository)
+    postalRefCstmRepository = getCustomRepository(PostalRefRepository)
 
     constructor(
         @InjectRepository(PostalRef)
-        private parentRepository: Repository<PostalRef>
+        private postalRepository: Repository<PostalRef>
     ) {}
     create(postalRef: PostalRefDto) {
-        return this.parentRepository.save(postalRef)
+        return this.postalRepository.save(postalRef)
     }
 
     async findAll(): Promise<PostalRef[]> {
-        return this.parentRepository.find()
+        return this.postalRepository.find()
     }
 
     findOne(id: number): Promise<PostalRef> {
-        return this.parentRepository.findOne(id)
+        return this.postalRepository.findOne(id)
     }
 
     async update(id: number, postalRef: PostalRefDto) {
-        const toUpdate = await this.parentRepository.findOne(id)
+        const toUpdate = await this.postalRepository.findOne(id)
         if (!toUpdate) {
             throw new NotFoundException('Parent is not found')
         }
-        return this.parentRepository.update(id, postalRef)
+        return this.postalRepository.update(id, postalRef)
     }
 
     async remove(id: number) {
-        await this.parentRepository.delete(id)
+        await this.postalRepository.delete(id)
     }
 
     async findByProjection(
         projection: PostalRefProjection
     ): Promise<PostalRefDto[]> {
-        return this.postalRefRepository.searchByPostalref(projection)
+        return this.postalRefCstmRepository.searchByPostalref(projection)
+    }
+
+    async getAllState(): Promise<PostalRefDto[]> {
+        return this.postalRefCstmRepository.getAllStateName()
     }
 }

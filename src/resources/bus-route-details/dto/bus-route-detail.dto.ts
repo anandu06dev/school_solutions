@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty } from 'class-validator'
 
 export class BusRouteDetailDto {
+    @IsNotEmpty()
     admissionNo?: number
     @ApiProperty({
         example: '33',

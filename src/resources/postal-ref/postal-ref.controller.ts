@@ -37,6 +37,11 @@ export class PostalRefController {
         return this.postalRefService.findOne(+id)
     }
 
+    @Get('getAllState')
+    getAllState() {
+        return this.postalRefService.getAllState()
+    }
+
     @Patch(':id')
     update(@Param('id') id: string, @Body() updatePostalRefDto: PostalRefDto) {
         return this.postalRefService.update(+id, updatePostalRefDto)
