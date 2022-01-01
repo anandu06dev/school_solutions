@@ -33,7 +33,10 @@ export class BusRouteDetailsController {
     findOne(@Param('id') id: string) {
         return this.busRouteDetailsService.findOne(+id)
     }
-
+    @Get('findByAdmissionId/:id')
+    findByAdmissionId(@Param('id') id: string) {
+        return this.busRouteDetailsService.findByAdmissionId(id)
+    }
     @Patch(':id')
     update(
         @Param('id') id: string,

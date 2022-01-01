@@ -4,7 +4,7 @@ import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
-import { getCustomRepository, Repository } from 'typeorm'
+import { getCustomRepository, In, Repository } from 'typeorm'
 import { ParentDetailRepository } from './customRepository/parent-cstm-repository'
 import { ParentDetailDto } from './dto/parent-detail.dto'
 import { UpdateParentDetailDto } from './dto/update-parent-detail.dto'
@@ -30,6 +30,13 @@ export class ParentDetailsService {
         return this.parentRepository.findOne({
             where: {
                 ...LookForAdmissionId(admissionNo),
+            },
+        })
+    }
+    findByAdmissionId(admissionNo: string): Promise<ParentDetails[]> {
+        return this.parentRepository.find({
+            where: {
+                admissionNo: In([admissionNo]),
             },
         })
     }

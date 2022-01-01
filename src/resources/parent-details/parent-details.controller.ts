@@ -32,6 +32,10 @@ export class ParentDetailsController {
         return this.parentDetailsService.findOne(+id)
     }
 
+    @Get('findByAdmissionId/:id')
+    findByAdmissionId(@Param('id') id: string) {
+        return this.parentDetailsService.findByAdmissionId(id)
+    }
     @Patch(':id')
     update(
         @Param('id') id: string,

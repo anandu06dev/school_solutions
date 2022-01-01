@@ -4,7 +4,7 @@ import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
-import { getCustomRepository, Repository } from 'typeorm'
+import { getCustomRepository, In, Repository } from 'typeorm'
 import { BusDetailRepository } from './customRepository/busroute-cstm-repository'
 import { BusRouteDetailDto } from './dto/bus-route-detail.dto'
 import { UpdateBusRouteDetailDto } from './dto/update-bus-route-detail.dto'
@@ -31,6 +31,14 @@ export class BusRouteDetailsService {
         return this.busRouteRepository.findOne({
             where: {
                 ...LookForAdmissionId(admissionNo),
+            },
+        })
+    }
+
+    findByAdmissionId(admissionNo: string): Promise<BusRouteDetails[]> {
+        return this.busRouteRepository.find({
+            where: {
+                admissionNo: In([admissionNo]),
             },
         })
     }

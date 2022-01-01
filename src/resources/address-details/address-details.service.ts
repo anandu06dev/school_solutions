@@ -4,7 +4,7 @@ import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
-import { getCustomRepository, Repository } from 'typeorm'
+import { getCustomRepository, In, Repository } from 'typeorm'
 import { AddressDetailRepository } from './customRepository/address-cstm-repository'
 import { AddressDetailDto } from './dto/address-detail.dto'
 import { UpdateAddressDetailDto } from './dto/update-address-detail.dto'
@@ -31,6 +31,14 @@ export class AddressDetailsService {
         return this.addressRepository.findOne({
             where: {
                 ...LookForAdmissionId(admissionNo),
+            },
+        })
+    }
+
+    findByAdmissionId(admissionNo: string): Promise<AddressDetails[]> {
+        return this.addressRepository.find({
+            where: {
+                admissionNo: In([admissionNo]),
             },
         })
     }

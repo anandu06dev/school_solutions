@@ -4,7 +4,7 @@ import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
-import { getCustomRepository, Repository } from 'typeorm'
+import { getCustomRepository, In, Repository } from 'typeorm'
 import { FeeDetailRepository } from './customRepository/fee-cstm-repository'
 import { FeesDetailDto } from './dto/fees-detail.dto'
 import { UpdateFeesDetailDto } from './dto/update-fees-detail.dto'
@@ -30,6 +30,14 @@ export class FeesDetailsService {
         return this.feesDetailRepository.findOne({
             where: {
                 ...LookForAdmissionId(admissionNo),
+            },
+        })
+    }
+
+    findByAdmissionId(admissionNo: string): Promise<FeesDetails[]> {
+        return this.feesDetailRepository.find({
+            where: {
+                admissionNo: In([admissionNo]),
             },
         })
     }

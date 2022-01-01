@@ -32,6 +32,11 @@ export class FeesDetailsController {
         return this.feesDetailsService.findOne(+id)
     }
 
+    @Get('findByAdmissionId/:id')
+    findByAdmissionId(@Param('id') id: string) {
+        return this.feesDetailsService.findByAdmissionId(id)
+    }
+
     @Patch(':id')
     update(
         @Param('id') id: string,

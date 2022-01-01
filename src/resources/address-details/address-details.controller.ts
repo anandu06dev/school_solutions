@@ -34,6 +34,11 @@ export class AddressDetailsController {
         return this.addressDetailsService.findOne(+id)
     }
 
+    @Get('findByAdmissionId/:id')
+    findByAdmissionId(@Param('id') id: string) {
+        return this.addressDetailsService.findByAdmissionId(id)
+    }
+
     @Patch(':id')
     update(
         @Param('id') id: string,
