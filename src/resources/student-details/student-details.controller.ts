@@ -13,6 +13,8 @@ import { StudentDetailDto } from './dto/student-detail.dto'
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 import { AuthGuard } from '@nestjs/passport'
 import { Projection } from '@resources/resource-model/resource.model'
+import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
+import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
 @ApiTags('student-details')
 @ApiBearerAuth()
 @UseGuards(AuthGuard())
@@ -68,13 +70,22 @@ export class StudentDetailsController {
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() studentDetails: StudentDetailDto) {
+    update(
+        @Param('id') id: string,
+        @Body() studentDetails: UpdateStudentDetailDto
+    ) {
         console.log(studentDetails, id)
         return this.studentDetailsService.update(+id, studentDetails)
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) {
-        return this.studentDetailsService.remove(+id)
+    remove(
+        @Param('id') id: string,
+        @Body() deletestudentDetails: DeleteStudentDetailDto
+    ) {
+        return this.studentDetailsService.updateStudentStatus(
+            +id,
+            deletestudentDetails
+        )
     }
 }

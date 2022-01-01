@@ -35,11 +35,6 @@ const MODULES = [
     controllers: [AppController],
     providers: [
         AppService,
-
-        {
-            provide: APP_FILTER,
-            useClass: ExceptionsLoggerFilter,
-        },
         {
             provide: APP_FILTER,
             useClass: HttpExceptionFilter,

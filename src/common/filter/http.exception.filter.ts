@@ -19,15 +19,16 @@ export class HttpExceptionFilter implements ExceptionFilter {
         const response = context.getResponse<Response>()
         const request = context.getRequest<Request>()
         let message = (exception as any).message.message
-        let defaultstatus = HttpStatus.INTERNAL_SERVER_ERROR
-        const statusmessage = 'Something Went Wrong , Please Try Again Later'
         let status = HttpStatus.INTERNAL_SERVER_ERROR
 
         let code = 'HttpException'
 
+        console.log('exception', exception.constructor)
         switch (exception.constructor) {
             case HttpException:
                 status = (exception as HttpException).getStatus()
+                message = (exception as HttpException).message
+                code = (exception as any).code
                 break
             case QueryFailedError: // this is a TypeOrm error
                 status = HttpStatus.UNPROCESSABLE_ENTITY
@@ -45,23 +46,13 @@ export class HttpExceptionFilter implements ExceptionFilter {
                 code = (exception as any).code
                 break
             default:
-                defaultstatus = HttpStatus.INTERNAL_SERVER_ERROR
+                status = (exception as any).status
+                message = (exception as any).message
+                code = (exception as any).code
         }
 
-        // response
-        //     .status(status)
-        //     .json(GlobalResponseError(status, message, code, request))
-
         response
-            .status(defaultstatus)
-            .json(
-                GlobalResponseError(
-                    defaultstatus,
-                    message,
-                    statusmessage,
-                    code,
-                    request
-                )
-            )
+            .status(status)
+            .json(GlobalResponseError(status, message, code, request))
     }
 }

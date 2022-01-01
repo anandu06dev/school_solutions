@@ -4,7 +4,9 @@ import { Projection } from '@resources/resource-model/resource.model'
 import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
 import { getCustomRepository, Repository } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
+import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
 import { StudentDetailDto } from './dto/student-detail.dto'
+import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
 import { StudentDetails } from './entities/student-detail.entity'
 
 @Injectable()
@@ -36,16 +38,33 @@ export class StudentDetailsService {
         })
     }
 
-    async update(id: number, updateStudentDetailDto: StudentDetailDto) {
-        const toUpdate = await this.studentRepository.findOne(id)
-        if (!toUpdate) {
-            throw new NotFoundException('Student is not found')
+    async update(id: number, updateStudentDetailDto: UpdateStudentDetailDto) {
+        try {
+            const toUpdate = await this.studentRepository.findOne(id)
+            console.log(toUpdate)
+            if (!toUpdate) {
+                throw new NotFoundException('Student is not found')
+            }
+            return this.studentRepository.update(id, updateStudentDetailDto)
+        } catch (e: unknown) {
+            console.log(e)
         }
-        return this.studentRepository.update(id, updateStudentDetailDto)
     }
 
-    async remove(id: number) {
-        await this.studentRepository.delete(id)
+    async updateStudentStatus(
+        id: number,
+        deleteStudentDetailDto: DeleteStudentDetailDto
+    ) {
+        try {
+            const toUpdate = await this.studentRepository.findOne(id)
+            console.log(toUpdate)
+            if (!toUpdate) {
+                throw new NotFoundException('Student is not found')
+            }
+            return this.studentRepository.update(id, deleteStudentDetailDto)
+        } catch (e: unknown) {
+            console.log(e)
+        }
     }
 
     async findByProjection(id: Projection): Promise<StudentDetails[]> {
