@@ -13,6 +13,7 @@ export class AutoUnsubscribe extends Observable<void> implements OnDestroy {
     ngOnDestroy(): void {
         // emit destroy event when component that injects
         // `Destroy` provider is destroyed
+        console.count('unsubscribe count ')
         this.destroySubject$.next()
         this.destroySubject$.complete()
     }

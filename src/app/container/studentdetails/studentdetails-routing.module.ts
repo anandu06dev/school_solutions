@@ -39,7 +39,8 @@ const routes: Routes = [
           students: StudentdetailsResolver,
         },
       },
-      // {path:'',redirectTo:'/table',pathMatch:'full'}
+      { path: '', redirectTo: 'list', pathMatch: 'full', },
+
     ],
   },
 ];

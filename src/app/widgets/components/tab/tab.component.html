@@ -1,6 +1,6 @@
 <nav color="transparent" mat-tab-nav-bar mat-stretch-tabs id="tab-group">
     <a mat-tab-link *ngFor="let link of renderTabMenu" [attr.id]="link.label" (click)="navigate(link)" class="text-lowercase text-capitalize"
-     [active]="true"   [active]="activeLink?.url === link.url">
+     [active]="link | tabPipe : url">
         <mat-icon class="mx-2">{{ link?.icon }}</mat-icon>
         {{ link.label }} 
     </a>

@@ -7,6 +7,7 @@ import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { ISiblings } from '@utils/interfaces/sibilings.interface';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import { take, takeUntil } from 'rxjs';
+import { RouterString } from 'src/app/routerStringDeclaration';
 import { BottomsheetsComponent, IShowTableOnBottomSheet } from '../../components/bottomsheets/bottomsheets.component';
 import { sibilingFormModel } from '../../models/sibiling.model';
 import { SiblingapiService } from '../../services/siblingapi.service';
@@ -80,7 +81,7 @@ export class SibilingstableComponent implements OnInit {
     });
     sheetRef.afterDismissed().subscribe((data) => {
       if (data) {
-        this.router.navigateByUrl(`studentSiblings/form/edit/${data?.id}`)
+        this.router.navigateByUrl(`${RouterString.SIBILINGS}/form/edit/${data?.id}`)
       }
     });
   }

@@ -1,16 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ISiblings } from '@utils/interfaces/sibilings.interface';
 import { Observable } from 'rxjs';
+import { RouterString } from 'src/app/routerStringDeclaration';
 import { IShowTableOnBottomSheet, BottomsheetsComponent } from '../../components/bottomsheets/bottomsheets.component'
 
 @Component({
   selector: 'app-sibilings-list',
   templateUrl: './sibilings-list.component.html',
-  styleUrls: ['./sibilings-list.component.scss']
+  styleUrls: ['./sibilings-list.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class SibilingsListComponent implements OnInit {
 
@@ -46,9 +48,8 @@ export class SibilingsListComponent implements OnInit {
       },
     });
     sheetRef.afterDismissed().subscribe((data) => {
-      console.log(data)
       if (data) {
-        this.router.navigateByUrl(`studentSibilings/form/edit/${data?.id}`)
+        this.router.navigateByUrl(`${RouterString.SIBILINGS}/form/edit/${data?.id}`)
       }
     });
   }

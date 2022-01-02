@@ -27,8 +27,7 @@ import { BottomsheetsComponent } from './components/bottomsheets/bottomsheets.co
     SibilingsListComponent,
     SibilingsformsComponent,
     BottomsheetsComponent,
-    BottomsheetPipe,
-  ],
+      ],
   imports: [
     CommonModule,
     SibilingsRoutingModule,

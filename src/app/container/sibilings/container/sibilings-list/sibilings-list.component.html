@@ -7,6 +7,6 @@
     </mat-list>
     <mat-list-option *ngFor="let sibling of obs |async;odd as isOdd; even as isEven;" [value]="sibling"
         [ngClass]="isEven ? 'bg-light-color' : ''" (click)="openBottomSheet(sibling)">
-        {{sibling}}
+        {{sibling | json}}
     </mat-list-option>
 </mat-selection-list>

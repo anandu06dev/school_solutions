@@ -15,13 +15,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { StudentSearchComponent } from '@widgets/components/student-search/student-search.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TabPipe } from '@widgets/components/tab/tab.pipe';
 
 const DECLARATIONS = [
   RootLayoutComponent,
   LoadingComponent,
   AppMatTabComponent,
   QuickNavigationMenuComponent,
-  StudentSearchComponent
+  StudentSearchComponent,
+  TabPipe
 ];
 const MODS = [
   MatSidenavModule,

@@ -19,7 +19,7 @@ export class AppMatTabComponent {
   renderTabMenu: INavTabMenu[] = [];
   headerPosition: 'above' | 'below' = 'above';
   activeLink: any;
-  url: boolean = false;
+  url: any;
 
   @Input() featureModulePath: string = '';
 
@@ -36,12 +36,19 @@ export class AppMatTabComponent {
         })
       )
       .subscribe();
+
+      this.router.events.pipe(takeUntil(this.destroy$)).subscribe(d=>{
+        if(d instanceof NavigationEnd){
+          this.url = d.urlAfterRedirects
+        }
+      })
   }
+ 
 
   navigate(link: any) {
-    this.activeLink =
-      this.renderTabMenu.find((i) => i.url === link.url) ||
-      this.renderTabMenu[0];
+    // this.activeLink =
+    //   this.renderTabMenu.find((i) => i.url === link.url) ||
+    //   this.renderTabMenu[0];
     this.router.navigateByUrl(this.featureModulePath + link?.url);
   }
 }

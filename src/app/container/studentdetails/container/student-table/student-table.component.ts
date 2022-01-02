@@ -8,6 +8,7 @@ import { IStudentSearchModel } from '@utils/interfaces/studentSearch.interface';
 import { studentDetail } from '../../models/studentDetail.model';
 import { IShowTableOnBottomSheet, BottomsheetsComponent } from '../../components/bottomsheets/bottomsheets.component';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { RouterString } from 'src/app/routerStringDeclaration';
 
 @Component({
   selector: 'app-student-table',
@@ -64,7 +65,7 @@ export class StudentTableComponent implements OnInit {
     });
     sheetRef.afterDismissed().subscribe((data) => {
       if (data) {
-        this.router.navigateByUrl(`students/form/edit/${data?.admissionNo}`)
+        this.router.navigateByUrl(`${RouterString.STUDENTS}/form/edit/${data?.admissionNo}`)
       }
     });
   }

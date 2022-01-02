@@ -45,6 +45,7 @@ const routes: Routes = [
           studentId: SiblingStudentBasedResolver,
         },
       },
+      { path: '', redirectTo: 'list', pathMatch: 'full', },
     ],
   },
 ];

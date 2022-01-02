@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import { Observable } from 'rxjs';
+import { RouterString } from 'src/app/routerStringDeclaration';
 import {
   BottomsheetsComponent,
   IShowTableOnBottomSheet,
@@ -52,7 +53,7 @@ export class StudentListComponent implements OnInit {
     });
     sheetRef.afterDismissed().subscribe((data) => {
       if (data) {
-        this.router.navigateByUrl(`students/form/edit/${data?.admissionNo}`)
+        this.router.navigateByUrl(`${RouterString.STUDENTS}/form/edit/${data?.admissionNo}`)
       }
     });
   }
