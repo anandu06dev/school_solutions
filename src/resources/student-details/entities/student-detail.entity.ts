@@ -1,5 +1,6 @@
 import { AbstractEntity } from '@common/entities'
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('student_details', { schema: 'app_schl_dev' })
 export class StudentDetails extends AbstractEntity {
@@ -175,4 +176,7 @@ export class StudentDetails extends AbstractEntity {
         default: 1,
     })
     studentIsActive: boolean
+
+    @OneToMany((type) => SiblingDetails, (siblings) => siblings.studentDetails)
+    siblings: SiblingDetails[]
 }

@@ -39,6 +39,7 @@ export class SiblingDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
+            // relations: ['studentDetails'],
         })
     }
 
@@ -83,7 +84,17 @@ export class SiblingDetailsService {
     }
 
     async findByAllSibDetails() {
-        //  await this.siblingCtsmRepository.findByAllSibDetails()
+        try {
+            //  await this.siblingCtsmRepository.findByAllSibDetails()
+            await this.siblingRepository.find({
+                relations: ['student_details'],
+                where: {
+                    admissionNo: 1001,
+                },
+            })
+        } catch (Error) {
+            console.log(Error)
+        }
     }
 
     private async joinStudentDetails(genericData: Promise<any[]>) {

@@ -29,6 +29,10 @@ export class SiblingDetailsController {
         return this.siblingDetailsService.findByAdmissionId(id)
     }
 
+    @Get('findByAllSibDetails')
+    findByAllSibDetails() {
+        return this.siblingDetailsService.findByAllSibDetails()
+    }
     @Get()
     findAll() {
         return this.siblingDetailsService.findAll()

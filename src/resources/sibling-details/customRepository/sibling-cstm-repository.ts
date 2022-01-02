@@ -14,4 +14,16 @@ import { SiblingDetails } from '../entities/sibling-detail.entity'
  */
 
 @EntityRepository(SiblingDetails)
-export class SiblingDetailRepository extends AbstractRepository<SiblingDetails> {}
+export class SiblingDetailRepository extends AbstractRepository<SiblingDetails> {
+    // .leftJoinAndSelect("user.profile", "profile")
+    // findByAllSibDetails() {
+    //     try {
+    //         return this.repository
+    //             .createQueryBuilder('sibling')
+    //             .leftJoinAndSelect({})
+    //             .getMany()
+    //     } catch (Error) {
+    //         console.log(Error)
+    //     }
+    // }
+}
