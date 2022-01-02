@@ -75,7 +75,7 @@ export class AddressDetails {
     })
     printAddressPstlCd: string | null
 
-    @Column('varchar', { primary: true, name: 'ADMN_NO', length: 50 })
+    @Column('varchar', { primary: true, name: 'ADMN_NO' })
     admissionNo: number
 
     @ManyToOne(() => StudentDetails, (student) => student.siblings)

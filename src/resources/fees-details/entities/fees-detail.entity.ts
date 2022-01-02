@@ -15,7 +15,6 @@ export class FeesDetails {
     @Column('varchar', {
         name: 'ADMN_NO',
         comment: 'Admission Number',
-        length: 50,
     })
     admissionNo: number
 
