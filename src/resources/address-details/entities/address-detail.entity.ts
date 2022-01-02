@@ -25,7 +25,7 @@ export class AddressDetails {
         comment: ' PARENT ADDRESS 21',
         length: 110,
     })
-    printAddressAdd21: string | null
+    printAddressAdd1: string | null
 
     @Column('varchar', {
         name: 'PRNT_ADRS_ADD2',
