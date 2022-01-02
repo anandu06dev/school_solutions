@@ -4,6 +4,8 @@ import {
     MatBottomSheetRef,
     MAT_BOTTOM_SHEET_DATA,
 } from '@angular/material/bottom-sheet'
+import { IToolBarMenu } from '@utils/interfaces/toolbarmenu.interface';
+import { RootMenu } from '@utils/utility';
 @Component({
     selector: 'app-student-bottom-sheet',
     templateUrl: './bottomsheets.component.html',
@@ -12,20 +14,24 @@ import {
 export class BottomsheetsComponent implements OnInit {
     _bottomSheet: boolean = false
     @Input() set openBottomSheet(value: boolean) {}
-    name!: string
+    name: string = "";
+
     canEdit:boolean = false;
     viewType: 'table' | 'list' = 'list'
     renderData : { [label: string]: string }={}
     label :string= ''
-  
+    listIcon:boolean = false;
+    router:any[] = RootMenu.length ? [...RootMenu] : []
 
     constructor(
         private bottomSheetRef: MatBottomSheetRef<BottomsheetsComponent>,
         @Inject(MAT_BOTTOM_SHEET_DATA) public data: IShowTableOnBottomSheet
-    ) {}
-
+    ) {
+    }
+    
     ngOnInit(): void {
-      console.log(this.data)
+        this.router =this.modifiedQuickLinkOfRouter()
+   
         if (this.data.viewType) {
             this.viewType = this.data.viewType
         }
@@ -34,8 +40,9 @@ export class BottomsheetsComponent implements OnInit {
             this.label = this.data.label
         }
         if(this.data.renderData){
-          
-          this.renderData = {...this.data.renderData}
+            
+            this.renderData = {...this.data.renderData}
+            this.name = `${this.renderData['studentFirstName']} ${this.renderData['studentLastName']}`
         }
     }
 
@@ -60,6 +67,24 @@ export class BottomsheetsComponent implements OnInit {
 
     updateListValue(){
 
+    }
+
+    modifiedQuickLinkOfRouter(){
+        
+        let router = this.router.length>0 ? this.router.filter((i)=>{
+            let exclude = ['students','dashboard','logout'];
+            let item = i?.label?.toLowerCase() || ''
+            if(!exclude.includes(item)) return i;
+        }) : []
+        return router;
+    }
+
+    n(){
+        this.bottomSheetRef.dismiss();
+    }
+
+    toggleList(){
+        this.listIcon = !this.listIcon
     }
 }
 

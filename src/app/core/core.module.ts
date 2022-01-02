@@ -13,8 +13,7 @@ import { BreakPointService } from '@shared/services/breakpoint.service';
 const providers = [
   { provide: 'Window', useValue: window },
   LocalstorageService,
-  BreakPointService,
-  
+  BreakPointService,  
 ];
 
 @NgModule({

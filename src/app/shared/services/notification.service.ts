@@ -47,6 +47,6 @@ export class NotificationService {
       .includes('small')
       ? this.small_screen_position
       : this.large_screen_position;
-    this.toaster.error(message, { position,style });
+    this.toaster.error(message, { position,style,dismissible:true,});
   }
 }

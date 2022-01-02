@@ -5,12 +5,13 @@
 
 <ng-template #loader>
     <div style="display: grid;place-items: center;height:100vh">
-        <app-loading-comp [showText]="true" [setText]="'Loading...'"></app-loading-comp>
+        <app-loading-comp [showText]="showText" [setText]="'Loading...'"></app-loading-comp>
     </div>
 </ng-template>
 
 
 <ng-template #layout>
+    <!-- <div class="loading position-absolute top-50 start-50 translate-middle" *ngIf="showText">Loading</div> -->
 
     <ng-container *ngIf="loadAuthModules">
         <!-- <div [@routeAnimations]="prepareRoute(outlet)">
@@ -21,6 +22,7 @@
 
 
     <app-root-layout *ngIf="!loadAuthModules">
+
 
         <div menu fxLayout="column" fxLayoutAlign="space-evenly center">
             <ng-container *ngTemplateOutlet="sidenavcontent"></ng-container>
@@ -109,3 +111,4 @@
 
 
 </ng-template>
+

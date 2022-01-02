@@ -44,7 +44,7 @@ export class StudentsComponent implements OnInit {
 
   studentColDef: any = [];
   studentRowData: IStudentDetails[] = [];
-  selectedIndex$: Observable<0 | 1 | 2 | 3 | 4>;
+  selectedIndex$: any| Observable<0 | 1 | 2 | 3 | 4>;
 
   constructor(
     private breakPointService: BreakPointService,
@@ -55,7 +55,7 @@ export class StudentsComponent implements OnInit {
   ) {
     this.studentColDef = [...studentDetailColDef];
     this.currentScreen$ = breakPointService.currentScreen;
-    this.selectedIndex$ = this.dataShare.tabIndex$;
+    // this.selectedIndex$ = this.dataShare.tabIndex$;
   }
 
   ngOnInit(): void {
@@ -71,6 +71,7 @@ export class StudentsComponent implements OnInit {
         : 'above';
     });
     this.getStudentDetails();
+    this.updateTabIndex(0)
   }
 
 
@@ -80,7 +81,7 @@ export class StudentsComponent implements OnInit {
     .pipe(
       tap((data: any) => {
         this.studentRowData = data ? [...data] : [];
-        this.dataShare.updateAllStudentDetails(this.studentRowData);
+        // this.dataShare.updateAllStudentDetails(this.studentRowData);
       }),
       take(1)
     )
@@ -99,7 +100,7 @@ export class StudentsComponent implements OnInit {
       });
   }
   updateTabIndex(e:any){
-    this.dataShare.tabindex = e;
+    // this.dataShare.tabindex = e;
     /**this api call will be trigger based on table or list */
     if(e<2){
         this.getStudentDetails()

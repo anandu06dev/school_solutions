@@ -16,12 +16,13 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { deleteMentionedKeys, handleError } from '@utils/utility';
-import { studentDetail } from '../models/studentDetail.model';
+import { studentDetail } from '../../studentdetails/models/studentDetail.model';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class StudentapiService {
-  private baseURL: string = 'http://localhost:3000';
+  private baseURL: string = environment.apiUrl;
 
   private targetResource: string = 'student-details';
 

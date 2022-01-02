@@ -14,7 +14,7 @@ export class HttpFilter implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if(request.method.toLowerCase().includes('patch')){
-            this.notifier.successNotification('Successfully Updated')
+            // this.notifier.successNotification('Successfully Updated')
         }
 
         return next.handle(this.addAuthentication(request));

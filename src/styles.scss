@@ -47,7 +47,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0.5em !important;
+    height: 0.5rem !important;
+    width: 0.5rem !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -83,6 +84,9 @@ body {
     outline: none;
     border: 0 !important;
 }
+.cursor-pointer{
+    cursor: pointer;
+}
 
 [data-letters]:before {
     content: attr(data-letters);
@@ -108,8 +112,16 @@ $purple:  #6f42c1;
 .bg-purple{
     background-color: $purple;
 }
+.text-purple{
+    color: $purple;
+}
 .mat-bottom-sheet-container-medium {
     min-width: calc(100vw - 2rem);
 }
 
 @import "~@ng-select/ng-select/themes/material.theme.css";
+
+.mat-form-field-appearance-fill .mat-form-field-flex{
+    background: rgb(0 0 0 / 0.2%);
+}
+

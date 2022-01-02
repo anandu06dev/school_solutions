@@ -25,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { StudentapiService } from './services/studentapi.service'
 import {MatStepperModule} from '@angular/material/stepper';
 import { NgxMaskModule } from 'ngx-mask'
-import { StudentSearchComponent } from './components/student-search/student-search.component'
 import { NgSelectModule } from '@ng-select/ng-select'
 import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'
 
@@ -37,7 +36,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'
         FormsComponent,
         BottomsheetsComponent,
         BottomsheetPipe,
-        StudentSearchComponent
+        
     ],
     imports: [
         CommonModule,
@@ -47,10 +46,10 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'
         MatCardModule,
         MatInputModule,
         MatChipsModule,
+        // AgGridModule.withComponents([]),
         MatSelectModule,
-        MatListModule,
+        // MatListModule,
         WidgetModule,
-        AgGridModule.withComponents([]),
         ReactiveFormsModule,
         NgxMaskModule.forRoot(),
         MatDatepickerModule,
@@ -61,12 +60,9 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'
     providers: [  
         MatDatepickerModule,  
         MatNativeDateModule ,
-        StudentapiService
     ],
     exports:[
-        NgSelectModule,
-        NgOptionHighlightModule,
-        StudentSearchComponent
+       
     ]
 })
 export class StudentsModule {}

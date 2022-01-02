@@ -8,6 +8,7 @@ import { FeeslistComponent } from './container/feeslist/feeslist.component';
 import { FeestableComponent } from './container/feestable/feestable.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { WidgetModule } from '@widgets/widget/widget.module';
+import { StudentsModule } from '../students/students.module';
 
 @NgModule({
   declarations: [

@@ -7,12 +7,13 @@ import {
 } from '@angular/common/http';
 import { catchError, filter, finalize, switchMap, take } from 'rxjs/operators';
 
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HotToastService } from '@ngneat/hot-toast';
 import { LocalstorageService } from '@shared/services/localstorage.service';
 import { NotificationService } from '@shared/services/notification.service';
 import { Router } from '@angular/router';
-
+import { AuthapiService } from 'src/app/container/auth/services/authapi.service';
+declare var window:Window;
 @Injectable({ providedIn: 'root' })
 export class HttpErrorFilter implements HttpInterceptor {
   isRefreshingToken = false;
@@ -20,6 +21,7 @@ export class HttpErrorFilter implements HttpInterceptor {
 
   constructor(
     private notification: NotificationService,
+   private auth:AuthapiService,
     private storage: LocalstorageService,
     private router:Router
   ) {}
@@ -30,10 +32,14 @@ export class HttpErrorFilter implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error: any) => {
-        console.log(error);
-
+      
+        if (error.status.toString() === '500') {
+          this.genericMessage({message:`Something went wrong. Please try later`})
+        }
         if (error.status.toString() === '401') {
-          this.router.navigateByUrl('/auth/login')
+          this.router.navigateByUrl('auth/login');
+          // window.location.reload()
+          
         }
         if (error.status.toString() === '400') {
           if (error?.error?.name?.toLowerCase() === 'httperrorresponse') {
@@ -59,6 +65,10 @@ export class HttpErrorFilter implements HttpInterceptor {
 
   }
 
+  private genericMessage(e: any) {
+    this.notification.errorNotification(Array.isArray(e.message) ? e.message.join(): e.message)
+
+  }
 
   private handleHTTPExceptions(e: any) {
     // let style = {

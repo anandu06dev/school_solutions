@@ -13,13 +13,13 @@
             <input type="password" matInput placeholder="Username" value="" formControlName="password">
         </mat-form-field>
        
-        <mat-form-field class="w-100" appearance="fill">
+        <!-- <mat-form-field class="w-100" appearance="fill">
             <mat-label>Email</mat-label>
             <input type="email" matInput placeholder="Email" value="" formControlName="email">
             <mat-error *ngIf="f.get('email')?.hasError('required') || f.get('email')?.hasError('email')">
                 Please enter appropriate email Id
             </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
         <div class="text-center">
             <button mat-raised-button class="btn shadow-sm bg-purple text-white"
                 [disabled]="!LoginForm.valid" (click)="login()">Login</button>

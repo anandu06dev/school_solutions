@@ -5,6 +5,8 @@ export const enum RouterString{
    STUDENTS =  'students',
    PARENTS =  'parents',
    AUTH =  'auth',
+   BUSROUTE = 'busRoute',
+   ADDRESS = 'address',
    LOGOUT = 'logout'
 
 }

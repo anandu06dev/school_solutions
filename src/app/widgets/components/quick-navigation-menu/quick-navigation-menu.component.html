@@ -1,0 +1,38 @@
+<div class="">
+    <div class="d-flex px-2 py-2 border border-light shadow-sm rounded">
+        <div>
+            <p matListAvatar class="mx-2 me-4" [attr.data-letters]=" name | slice:0:1"></p>
+        </div>
+        <div>
+            <div class="card-text fw-bold letter-spacing">{{name}}</div>
+            <div class="card-text text-secondary text-purple"># {{admissionNo}}</div>
+        </div>
+    </div>
+    <div class="card border-0 m-0 w-75 mx-auto position-relative shadow rounded-pill" style="top:-1rem;z-index:20">
+        <small class="d-block border-0 bg-transparent card-header m-0 p-0 text-center text-secondary">Quick Links</small>
+        <div class="d-flex p-2 px-3 justify-content-between text-purple">
+            <ng-content [select]="quick-nav">
+                
+            </ng-content>
+            <!-- <div>
+               
+                <a class="btn-link text-purple" routerLink='assessment'>
+                    <mat-icon>assessment</mat-icon>
+                </a>
+            </div>
+            <div>
+              
+                <a class="btn-link" [routerLink]="'assessment'">
+                    <mat-icon>wc</mat-icon>
+                </a>
+            </div>
+
+            <div>
+               
+                <a class="btn-link" [routerLink]="'assessment'">
+                    <mat-icon>people</mat-icon>
+                </a>
+            </div> -->
+        </div>
+    </div>
+</div>

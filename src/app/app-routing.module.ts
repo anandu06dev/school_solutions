@@ -12,13 +12,19 @@ const routes: Routes = [
       ),
     data: { animationState: 'fadeAnimation' },
   },
+  // {
+  //   path: RouterString.STUDENTS+'sdfsdfsdf',
+  //   loadChildren: () =>
+  //     import('./container/students/students.module').then(
+  //       (m) => m.StudentsModule
+  //     ),
+  //   data: { animationState: 'fadeAnimation' },
+  // },
   {
-    path: RouterString.STUDENTS,
+    path: RouterString.AUTH,
     loadChildren: () =>
-      import('./container/students/students.module').then(
-        (m) => m.StudentsModule
-      ),
-    data: { animationState: 'fadeAnimation' },
+      import('./container/auth/auth.module').then((m) => m.AuthModule),
+    data: { animationState: 'fader' },
   },
   {
     path: RouterString.AUTH,
@@ -26,7 +32,6 @@ const routes: Routes = [
       import('./container/auth/auth.module').then((m) => m.AuthModule),
     data: { animationState: 'fader' },
   },
-
   {
     path: RouterString.FEES,
 
@@ -45,14 +50,34 @@ const routes: Routes = [
     path: RouterString.SIBILINGS,
 
     loadChildren: () =>
-      import('./container/sibilings/sibilings.module').then((m) => m.SibilingsModule),
-    data: { animationState: 'fader' },
+      import('./container/sibilings/sibilings.module').then(
+        (m) => m.SibilingsModule
+      ),
+    data: { animationState: 'fader', reload: true },
   },
-
+  {
+    path: RouterString.BUSROUTE,
+    loadChildren: () =>
+      import('./container/bus-route/bus-route.module').then(
+        (m) => m.BusRouteModule
+      ),
+  },
+  {
+    path: RouterString.ADDRESS,
+    loadChildren: () =>
+      import('./container/address/address.module').then((m) => m.AddressModule),
+  },
+  {
+    path: RouterString.STUDENTS,
+    loadChildren: () =>
+      import('./container/studentdetails/studentdetails.module').then(
+        (m) => m.StudentdetailsModule
+      ),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{enableTracing:true})],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

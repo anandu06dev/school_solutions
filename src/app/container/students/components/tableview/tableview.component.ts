@@ -87,9 +87,9 @@ export class TableviewComponent {
     });
     sheetRef.afterDismissed().subscribe((data) => {
       if (data) {
-        this.dataShare.updateSingleStudentDetails(data);
-        this.dataShare.updateFlag(true);
-        this.dataShare.tabindex = 2
+        // this.dataShare.updateSingleStudentDetails(data);
+        // this.dataShare.updateFlag(true);
+        // this.dataShare.tabindex = 2
       }
     });
   }

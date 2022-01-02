@@ -20,6 +20,8 @@ import { HttpFilter } from '@core/interceptor/http-filter.interceptor';
 import { LoggingInterceptor } from '@core/interceptor/logging.interceptor';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { AgGridModule } from 'ag-grid-angular';
+import { CachingInterceptorService } from '@core/interceptor/cache-http-interceptor.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NotfoundComponent],
@@ -37,7 +39,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
-    HotToastModule.forRoot(),
+    HotToastModule.forRoot({}),
   ],
   providers: [
     { provide: MatBottomSheetRef, useValue: {} },
@@ -45,6 +47,11 @@ import { HotToastModule } from '@ngneat/hot-toast';
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpFilter, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorFilter, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CachingInterceptorService,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [BottomsheetsComponent],

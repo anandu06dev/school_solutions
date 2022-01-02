@@ -1,1 +1,99 @@
-<p>parents-forms works!</p>
+<div class="card border-0">
+    <form [formGroup]="parentDetailForm">
+        <div class="card-body">
+            <app-student-search (selectedValueEvent)="selectedValue($event)"></app-student-search>
+            <label class="position-relative" style="top:-4.5rem">Search By Admission Number</label>
+        </div>
+        <div class="card-body py-0 my-0">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Parent/Gauardian</mat-label>
+
+                        <mat-select formControlName="parentCode" [errorStateMatcher]="matcher">
+                            <mat-option value="">--</mat-option>
+
+                            <mat-option *ngFor="let item of parenting" [value]="item.value">{{item.label}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="parentForm.get('parentCode')?.hasError('required')">
+                            Please select appropriate parent role
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+               
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Parent Education</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="parentEducation"
+                            [errorStateMatcher]="matcher">
+                        <mat-hint>Enter student parent educations details</mat-hint>
+                        <mat-error *ngIf="parentForm.get('parentEducation')?.hasError('required')">
+                            Please enter a student's  parent education details
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Parent Occupation</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="parentOccupation"
+                            [errorStateMatcher]="matcher">
+                        <mat-hint>Enter student parent occupation details</mat-hint>
+                        <mat-error *ngIf="parentForm.get('parentOccupation')?.hasError('required')">
+                            Please enter a student's  parent occupation details
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Parent Aadhar Number</mat-label>
+                        <input type="text" mask="0000-0000-0000" placeholder="XXXX-XXXX-XXXX" matInput
+                            formControlName="parentAadharNo" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter student's parent Aadhar Number</mat-hint>
+                        <mat-error *ngIf="parentForm.get('parentAadharNo')?.hasError('required')">
+                            Please enter a student's parent Aadhar Number
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Parent Phone Number</mat-label>
+                        <input type="text"  prefix="+91" mask="(00) 00 000 000" placeholder="XXXXXXXXXX" matInput
+                            formControlName="parentPhoneNo" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter student's parent phone number</mat-hint>
+                        <mat-error *ngIf="parentForm.get('parentPhoneNo')?.hasError('required')">
+                            Please enter a student's parent phone number
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Parent Email Id</mat-label>
+                        <input type="email"  placeholder="abc@xyz.com" matInput
+                            formControlName="parentEmailId" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter student's parent phone number</mat-hint>
+                        <mat-error *ngIf="parentForm.get('parentEmailId')?.hasError('required')">
+                            Please enter a student's parent email id
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+               
+                <div class="col-12 my-1">
+                    <div class="text-end">
+
+                        <button mat-raised-button class="shadow-sm" type="button" *ngIf="!toggleSaveButton"
+                            (click)="update()" [disabled]="!parentForm.valid">Update</button>
+                        <button mat-raised-button class="shadow-sm" type="button" *ngIf="toggleSaveButton"
+                            (click)="add()" [disabled]="!parentForm.valid">Save</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

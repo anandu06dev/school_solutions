@@ -1,1 +1,51 @@
-<p>sibilingstable works!</p>
+<div class="card">
+  <div class="card-body" style="overflow-x: auto">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="d-none">Id</th>
+        <td mat-cell *matCellDef="let column" class="d-none">{{ column.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="admissionNo">
+        <th mat-header-cell *matHeaderCellDef>Admission Number</th>
+        <td mat-cell *matCellDef="let column">{{ column.admissionNo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="siblingClass">
+        <th mat-header-cell *matHeaderCellDef>Sibling Class</th>
+        <td mat-cell *matCellDef="let column">{{ column.siblingClass }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="siblingRelation">
+        <th mat-header-cell *matHeaderCellDef>Sibling Relation</th>
+        <td mat-cell *matCellDef="let column">{{ column.siblingRelation }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="siblingDob">
+        <th mat-header-cell *matHeaderCellDef>Sibling DOB</th>
+        <td mat-cell *matCellDef="let column">{{ column.siblingDob }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="siblingDiscount">
+        <th mat-header-cell *matHeaderCellDef>Sibling Discount</th>
+        <td mat-cell *matCellDef="let column">{{ column.siblingDiscount }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        class="cursor-pointer"
+        (click)="selectedRows(row)"
+        [class.row-is-selected]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
+    </table>
+  </div>
+  <div class="card-footer">
+    <mat-paginator
+      [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons
+      aria-label=""
+    >
+    </mat-paginator>
+  </div>
+</div>

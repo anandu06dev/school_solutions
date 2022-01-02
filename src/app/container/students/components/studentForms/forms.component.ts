@@ -5,7 +5,7 @@ import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import { MyErrorStateMatcher } from '@utils/utility';
 import { filter, Observable, of, switchMap, take, takeUntil, tap } from 'rxjs';
-import { studentDetail } from '../../models/studentDetail.model';
+import { studentDetail } from '../../../studentdetails/models/studentDetail.model';
 import { StudentDatashareService } from '../../services/student-datashare.service';
 import { StudentapiService } from '../../services/studentapi.service';
 
@@ -119,31 +119,31 @@ export class FormsComponent implements OnInit {
   ) {
     this.classes = this.generateStudentClass();
     this.bloodGroup = this.generateBloodGroup();
-    this.updateFlag = dataShare.updateOperation$;
+    // this.updateFlag = dataShare.updateOperation$;
   }
 
   ngOnInit(): void {
     this.initChunkableForms(studentDetail);
-    this.dataShare.updateOperation$
-      .pipe(
-        tap((d) => (this.updateOpr = d)),
-        filter((i) => i),
-        switchMap(() => this.dataShare.singleStudentDetails$),
-        takeUntil(this.destroy$)
-      )
-      .subscribe((data: any) => {
-        if (data?.data?.data) {
-          let temp = {}
-          if (this.updateOpr) {
-            temp = { ...studentDetail, ...data.data.data };
-          } else {
-            temp = { ...studentDetail };
-          }
+    // this.dataShare.updateOperation$
+    //   .pipe(
+    //     tap((d) => (this.updateOpr = d)),
+    //     filter((i) => i),
+    //     switchMap(() => this.dataShare.singleStudentDetails$),
+    //     takeUntil(this.destroy$)
+    //   )
+    //   .subscribe((data: any) => {
+    //     if (data?.data?.data) {
+    //       let temp = {}
+    //       if (this.updateOpr) {
+    //         temp = { ...studentDetail, ...data.data.data };
+    //       } else {
+    //         temp = { ...studentDetail };
+    //       }
 
-          this._getStudentDetails = { ...temp };
-          this.initChunkableForms(temp);
-        }
-      });
+    //       this._getStudentDetails = { ...temp };
+    //       this.initChunkableForms(temp);
+    //     }
+    //   });
   }
   ngAfterViewInit() {
     () => {};
@@ -220,7 +220,7 @@ export class FormsComponent implements OnInit {
       .createStudentDetails(temp)
       .pipe(take(1))
       .subscribe((d) => {
-        this.dataShare.tabindex = 1;
+        // this.dataShare.tabindex = 1;
       });
   }
   update() {
@@ -237,7 +237,7 @@ export class FormsComponent implements OnInit {
       .pipe(take(1))
       .subscribe((d) => {
         console.log(temp, d);
-        this.dataShare.tabindex = 1;
+        // this.dataShare.tabindex = 1;
       });
   }
 }

@@ -1,4 +1,7 @@
 import { Breakpoints } from '@angular/cdk/layout';
+import { Observable, defer, isObservable, of, throwError } from 'rxjs';
+import { shareReplay, first, mergeMap } from 'rxjs/operators';
+
 import {
   FormControl,
   FormGroup,
@@ -42,7 +45,8 @@ export function deleteMentionedKeys(
 }
 
 export function handleError(e: any) {
-  return EMPTY;
+  // console.log(e)
+  return of(false);
 }
 
 export function ConfirmedValidator(
@@ -122,8 +126,6 @@ export const headerPositionOnsmallScreen = (
 ): 'below' | 'above' =>
   currentView?.toLowerCase().includes('small') ? 'below' : 'above';
 
-
-
 export const RootMenu: IToolBarMenu[] = [
   {
     label: 'Dashboard',
@@ -140,7 +142,6 @@ export const RootMenu: IToolBarMenu[] = [
     showOnTablet: false,
     showOnDesktop: false,
     url: `/${RouterString.STUDENTS}`,
-
   },
   {
     label: 'Fees',
@@ -149,7 +150,6 @@ export const RootMenu: IToolBarMenu[] = [
     showOnTablet: false,
     showOnDesktop: false,
     url: `/${RouterString.FEES}`,
-
   },
   {
     label: 'Parents',
@@ -158,7 +158,6 @@ export const RootMenu: IToolBarMenu[] = [
     showOnTablet: false,
     showOnDesktop: false,
     url: `/${RouterString.PARENTS}`,
-
   },
   {
     label: 'Siblings',
@@ -167,7 +166,22 @@ export const RootMenu: IToolBarMenu[] = [
     showOnTablet: false,
     showOnDesktop: false,
     url: `/${RouterString.SIBILINGS}`,
-
+  },
+  {
+    label: 'Bus Route',
+    icon: 'directions_bus',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.BUSROUTE}`,
+  },
+  {
+    label: 'Address',
+    icon: 'import_contacts',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.ADDRESS}`,
   },
   {
     label: 'Logout',
@@ -176,6 +190,55 @@ export const RootMenu: IToolBarMenu[] = [
     showOnTablet: false,
     showOnDesktop: false,
     url: `/${RouterString.LOGOUT}`,
-
   },
 ];
+export const dateHelper = (timeStamp: number) =>
+  new Date(timeStamp).toISOString().split('T')[0];
+
+export const generateBloodGroup = () => {
+  return [
+    { label: 'A +ve', value: 'A +ve' },
+    { label: 'A -ve', value: 'A -ve' },
+
+    { label: 'B +ve', value: 'B +ve' },
+    { label: 'B -ve', value: 'B -ve' },
+    { label: 'AB +ve', value: 'AB +ve' },
+    { label: 'AB -ve', value: 'AB -ve' },
+
+    { label: 'O +ve', value: 'O +ve' },
+    { label: 'O -ve', value: 'O -ve' },
+  ];
+};
+
+export const generateStudentClass = (): any => {
+  let studentClass: string[] = ['preKG', 'LKG', 'UKG'];
+  return Array(15)
+    .fill(0)
+    .map((item, index) => {
+      if (index <= 2) {
+        return { label: studentClass[index], value: studentClass[index] };
+      }
+      return { label: `class ${index - 2}`, value: index - 2 };
+    });
+};
+
+let returnObs$: Observable<any>;
+const createReturnObs = (
+  obs: Observable<any>,
+  time: number,
+  bufferReplays: number
+) => (returnObs$ = obs.pipe(shareReplay(bufferReplays, time)));
+
+export function renewCacheOnTimer(
+  obs: Observable<any>,
+  time: number,
+  bufferReplays: number = 1
+) {
+  return createReturnObs(obs, time, bufferReplays).pipe(
+    first(
+      null,
+      defer(() => createReturnObs(obs, time, bufferReplays))
+    ),
+    mergeMap((d) => (isObservable(d) ? d : of(d)))
+  );
+}

@@ -10,6 +10,14 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { AgGridModule } from 'ag-grid-angular'
+import { MatListModule } from '@angular/material/list'
+import { MatFormField } from '@angular/material/form-field'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatTableModule } from '@angular/material/table'
+import { MatTooltipModule } from '@angular/material/tooltip'
+
 
 const SHARED_MODS = [
     MatButtonModule,
@@ -20,6 +28,13 @@ const SHARED_MODS = [
     MatMenuModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatTooltipModule,
+    AgGridModule.withComponents([]),
+    MatListModule,
     HotToastModule.forRoot(),    
 ]
 

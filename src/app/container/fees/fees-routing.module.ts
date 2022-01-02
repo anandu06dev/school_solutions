@@ -9,10 +9,14 @@ const routes: Routes = [
   { path: '', component: FeesComponent,children:[
     
      { path: 'form/:id', component: FeesformComponent },
-     { path: 'form/:id/:students', component: FeesformComponent },
+     { path: 'form/:id/:feesId', component: FeesformComponent },
      { path: 'table', component: FeestableComponent },
+     { path: 'table/:students', component: FeestableComponent },
+
     
      { path: 'list', component: FeeslistComponent },
+     { path: 'list/:students', component: FeeslistComponent },
+
 
   ] },
  

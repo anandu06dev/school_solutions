@@ -1,1 +1,85 @@
-<p>sibilingsforms works!</p>
+<div class="card border-0">
+    <form [formGroup]="siblingDetailsForms">
+
+    
+        <div class="card-body mb-0 pb-0" *ngIf="!toggleSaveButton">
+          <pre>{{siblingDetails | json}}</pre> 
+          
+        </div>
+        <div class="card-body mb-0 pb-0" *ngIf="toggleSaveButton">
+           
+            <app-student-search (selectedValueEvent)="selectedValue($event)"></app-student-search>
+
+            <label class="position-relative" style="top:-4.5rem">Search By Admission Number</label>
+   
+        </div>
+        <div class="card-body py-0 my-0">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Relationship</mat-label>
+
+                        <mat-select formControlName="siblingRelation" [errorStateMatcher]="matcher">
+                            <mat-option value="">--</mat-option>
+
+                            <mat-option *ngFor="let item of relation" [value]="item.value">{{item.label}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="sibilingForm.get('siblingRelation')?.hasError('required')">
+                            Please select appropriate relation type gender
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Class</mat-label>
+                        <mat-select formControlName="siblingClass" [errorStateMatcher]="matcher">
+                            <mat-option value="">--</mat-option>
+
+                            <mat-option *ngFor="let item of classes" [value]="item.value">{{item.label}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-hint>Enter student's sibiling class</mat-hint>
+                        <mat-error *ngIf="sibilingForm.get('siblingClass')?.hasError('required')">
+                            Please select appropriate sibiling class
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Sibling Discount</mat-label>
+                        <input type="text" mask="00" matInput placeholder="XX" formControlName="siblingDiscount"
+                            [errorStateMatcher]="matcher">
+                        <mat-hint>Enter student sibiling discount</mat-hint>
+                        <mat-error *ngIf="sibilingForm.get('siblingDiscount')?.hasError('required')">
+                            Please enter a student's sibiling discount
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Sibling DOB</mat-label>
+
+                        <input matInput [matDatepicker]="siblingDOBDate" formControlName="siblingDob">
+                        <mat-datepicker-toggle matSuffix [for]="siblingDOBDate"></mat-datepicker-toggle>
+                        <mat-datepicker #siblingDOBDate></mat-datepicker>
+                        <mat-hint>Enter student's admission date</mat-hint>
+                        <mat-error *ngIf="sibilingForm.get('siblingDob')?.hasError('required')">
+                            Please enter a student's admission date
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-12 my-1">
+                    <div class="text-end">
+
+                        <button  mat-raised-button class="shadow-sm"  type="button" *ngIf="!toggleSaveButton" (click)="update()" [disabled]="!siblingDetailsForms.valid">Update</button>
+                        <button mat-raised-button class="shadow-sm" type="button" *ngIf="toggleSaveButton" (click)="add()" [disabled]="!siblingDetailsForms.valid">Save</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

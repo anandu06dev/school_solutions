@@ -12,9 +12,15 @@ const routes: Routes = [
     component: ParentsComponent,
     children: [
       { path: 'form/:id', component: ParentsFormsComponent },
-      { path: 'form/:id/:students', component: ParentsFormsComponent },
+      { path: 'form/:id/:parentsId', component: ParentsFormsComponent },
       { path: 'table', component: ParentsTableComponent },
       { path: 'list', component: ParentsListComponent },
+      
+      { path: 'table/:students', component: ParentsTableComponent },
+ 
+     
+    
+      { path: 'list/:students', component: ParentsListComponent },
     ],
   },
 ];

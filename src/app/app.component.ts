@@ -1,6 +1,7 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import {
+  ActivationEnd,
   NavigationEnd,
   NavigationStart,
   Router,
@@ -25,6 +26,7 @@ import { filter, Observable, of, Subject, takeUntil } from 'rxjs';
 export class AppComponent {
   username = 'Srini';
   role = 'Admin';
+  showText:boolean = true;
   toggleSidebar: boolean = false;
 
   loadLayout$: Observable<boolean> = of(false);
@@ -50,8 +52,13 @@ export class AppComponent {
     let auth = ['/auth/login', '/auth/register'];
 
     router.events.subscribe((url: any) => {
+     
+
+     
+
       if (url instanceof NavigationStart) {
         this.loadAuthModules = auth.includes(url.url) ? true : false;
+        this.showText = true;
       }
       if (url instanceof NavigationEnd) {
         let urlNavigation = [...RootMenu].find((i: any) => {
@@ -61,7 +68,10 @@ export class AppComponent {
         this.loadAuthModules = auth.includes(url.urlAfterRedirects)
           ? true
           : false;
+        this.showText=false
+    
       }
+     
     });
 
     breakpointObserver

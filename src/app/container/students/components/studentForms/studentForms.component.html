@@ -90,7 +90,7 @@
                                 <mat-datepicker-toggle matSuffix [for]="admissionDate"></mat-datepicker-toggle>
                                 <mat-datepicker #admissionDate></mat-datepicker>
                                 <mat-hint>Enter student's admission date</mat-hint>
-                                <mat-error *ngIf="fstudentPrimaryDetails.get('studentClass')?.hasError('required')">
+                                <mat-error *ngIf="fstudentPrimaryDetails.get('admissionDate')?.hasError('required')">
                                     Please enter a student's admission date
                                 </mat-error>
                             </mat-form-field>

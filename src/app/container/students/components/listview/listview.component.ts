@@ -46,13 +46,13 @@ export class ListviewComponent {
     });
     sheetRef.afterDismissed().subscribe((data) => {
       if (data) {
-        this.dataShare.updateSingleStudentDetails(data);
-        this.dataShare.updateFlag(true);
-        this.dataShare.tabindex = this.trackScreenView
-          .toLowerCase()
-          .includes('small')
-          ? 1
-          : 2;
+        // this.dataShare.updateSingleStudentDetails(data);
+        // this.dataShare.updateFlag(true);
+        // this.dataShare.tabindex = this.trackScreenView
+        //   .toLowerCase()
+        //   .includes('small')
+        //   ? 1
+        //   : 2;
       }
     });
   }

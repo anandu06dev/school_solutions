@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ILogin } from '@utils/interfaces/auth';
 import { environment } from 'src/environments/environment';
 
@@ -21,4 +22,6 @@ export class AuthapiService {
     let login = 'auth/login'
     return this.http.post(this.apiUrl+'/'+login,{...data})
   }
+
+ 
 }

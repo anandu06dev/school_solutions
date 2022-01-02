@@ -1,0 +1,25 @@
+export const studentDetail = {
+    admissionNo:'',
+    studentFirstName: '',
+    studentLastName: '',
+    studentClass: '',
+    admissionDate: '',
+    studentFatherName: '',
+    studentMotherName: '',
+    studentGender: '',
+    studentDOB: '',
+    studentBloodGroup: '',
+    studentCaste: '',
+    studentSubCaste: '',
+    studentCommunity: '',
+    studentReligion: '',
+    studentNationality: '',
+    studentAadharNumber: '',
+    studentMotherToungue: '',
+    studentLangaugeKnown: '',
+    studentEMINo: '0',
+    studentPreviousSchool: '',
+    studentDiscount: '0',
+}
+
+

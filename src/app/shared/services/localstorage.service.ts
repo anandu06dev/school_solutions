@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, pluck } from 'rxjs'
 
 @Injectable({
     providedIn: 'root',
@@ -12,7 +12,7 @@ export class LocalstorageService {
     public rxStorage = new BehaviorSubject<any>(this.data)
 
     constructor() {
-        this.loadStorage()
+        Promise.resolve(this.loadStorage()).then(()=>this.updateStorage())
     }
 
     loadStorage(store = 'local') {
@@ -58,5 +58,9 @@ export class LocalstorageService {
     removeAll() {
         this.data = {}
         this.updateStorage()
+    }
+
+    storageSelector(key:string){
+        return this.rxStorage.asObservable().pipe(pluck(key))
     }
 }
