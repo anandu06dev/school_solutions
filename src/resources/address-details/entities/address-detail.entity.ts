@@ -20,7 +20,7 @@ export class AddressDetails {
     printAddressCd: string
 
     @Column('varchar', {
-        name: 'PRNT_ADRS_ADD21',
+        name: 'PRNT_ADRS_ADD1',
         nullable: true,
         comment: ' PARENT ADDRESS 21',
         length: 110,
