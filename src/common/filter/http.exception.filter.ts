@@ -24,11 +24,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
         // const code = 'HttpException'
         let { status, code, message } = exception as any
 
-        console.log(
-            'exception',
-            exception.constructor,exception,
-            (exception as any)?.response?.message.join(',')
-        )
         switch (exception.constructor) {
             case HttpException:
                 status = (exception as HttpException).getStatus()

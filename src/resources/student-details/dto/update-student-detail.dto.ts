@@ -8,6 +8,12 @@ Mandatory : AdmissionNo In GET Parameter
 */
 
 export class UpdateStudentDetailDto {
+    @IsNotEmpty()
+    @ApiProperty({
+        example: '1234',
+        type: 'text',
+        description: 'Describes about admissionNo',
+    })
     admissionNo?: number
     @ApiProperty({
         example: '31-12-9999',
