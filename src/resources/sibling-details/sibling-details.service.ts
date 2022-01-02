@@ -28,7 +28,9 @@ export class SiblingDetailsService {
 
     async findAll() {
         try {
-            return await this.joinStudentDetails(this.siblingRepository.find())
+            return await this.siblingRepository.find({
+                relations: ['studentDetails'],
+            })
         } catch (e) {
             console.log(e)
         }
@@ -45,22 +47,12 @@ export class SiblingDetailsService {
 
     async findByAdmissionId(admissionNo: string) {
         try {
-            const siblingDetails = await this.siblingRepository.find({
+            return await this.siblingRepository.find({
                 where: {
                     admissionNo: In([admissionNo]),
                 },
+                relations: ['studentDetails'],
             })
-
-            const studentDetails = await this.studentDtls.find({
-                where: {
-                    admissionNo: In([admissionNo]),
-                },
-            })
-            const siblings = siblingDetails.map((item: any) => {
-                item['studentDetails'] = studentDetails[0]
-                return item
-            })
-            return siblings
         } catch (e) {
             console.log(e)
         }
@@ -95,25 +87,5 @@ export class SiblingDetailsService {
         } catch (Error) {
             console.log(Error)
         }
-    }
-
-    private async joinStudentDetails(genericData: Promise<any[]>) {
-        const data = await genericData
-        const admissionNo: string | number[] = data.map((i) => i.admissionNo)
-        const studentDetailsRes = await this.studentDtls.find({
-            where: {
-                admissionNo: In([admissionNo]),
-            },
-        })
-        const res = []
-        for (const item of data) {
-            const student = studentDetailsRes.filter(
-                (i) => +item['admissionNo'] === +i['admissionNo'] && i
-            )
-            item['studentDetails'] = student[0]
-            res.push(item)
-        }
-
-        return res
     }
 }

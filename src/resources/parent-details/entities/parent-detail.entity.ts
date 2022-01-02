@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { StudentDetails } from '@resources/student-details/entities/student-detail.entity'
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+} from 'typeorm'
 
 @Entity('parent_details', { schema: 'app_schl_dev' })
 export class ParentDetails {
@@ -52,4 +59,8 @@ export class ParentDetails {
         length: 150,
     })
     parentEmailId: string | null
+
+    @ManyToOne(() => StudentDetails, (student) => student.siblings)
+    @JoinColumn({ name: 'ADMN_NO', referencedColumnName: 'admissionNo' })
+    studentDetails: StudentDetails
 }

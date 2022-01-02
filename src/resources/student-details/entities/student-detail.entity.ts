@@ -1,4 +1,8 @@
 import { AbstractEntity } from '@common/entities'
+import { AddressDetails } from '@resources/address-details/entities/address-detail.entity'
+import { BusRouteDetails } from '@resources/bus-route-details/entities/bus-route-detail.entity'
+import { FeesDetails } from '@resources/fees-details/entities/fees-detail.entity'
+import { ParentDetails } from '@resources/parent-details/entities/parent-detail.entity'
 import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
@@ -179,4 +183,22 @@ export class StudentDetails extends AbstractEntity {
 
     @OneToMany((type) => SiblingDetails, (siblings) => siblings.studentDetails)
     siblings: SiblingDetails[]
+
+    @OneToMany((type) => ParentDetails, (parents) => parents.studentDetails)
+    parents: ParentDetails[]
+
+    @OneToMany((type) => FeesDetails, (fees) => fees.studentDetails)
+    fees: FeesDetails[]
+
+    @OneToMany(
+        (type) => BusRouteDetails,
+        (busRouteDetails) => busRouteDetails.studentDetails
+    )
+    busRouteDetails: BusRouteDetails[]
+
+    @OneToMany(
+        (type) => AddressDetails,
+        (addresses) => addresses.studentDetails
+    )
+    addresses: AddressDetails[]
 }

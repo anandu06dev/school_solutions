@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm'
+import { StudentDetails } from '@resources/student-details/entities/student-detail.entity'
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+} from 'typeorm'
 
 @Entity('bus_route_details', { schema: 'app_schl_dev' })
 export class BusRouteDetails {
@@ -60,4 +67,8 @@ export class BusRouteDetails {
         length: 150,
     })
     busRouteInsDtl: string | null
+
+    @ManyToOne(() => StudentDetails, (student) => student.siblings)
+    @JoinColumn({ name: 'ADMN_NO', referencedColumnName: 'admissionNo' })
+    studentDetails: StudentDetails
 }

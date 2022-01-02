@@ -1,9 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { StudentDetails } from '@resources/student-details/entities/student-detail.entity'
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+} from 'typeorm'
 
 @Entity('fees_details', { schema: 'app_schl_dev' })
 export class FeesDetails {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @Column('varchar', {
         name: 'ADMN_NO',
@@ -53,4 +60,8 @@ export class FeesDetails {
         length: 500,
     })
     feesNotes: string | null
+
+    @ManyToOne(() => StudentDetails, (student) => student.siblings)
+    @JoinColumn({ name: 'ADMN_NO', referencedColumnName: 'admissionNo' })
+    studentDetails: StudentDetails
 }

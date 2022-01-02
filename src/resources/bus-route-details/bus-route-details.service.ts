@@ -24,7 +24,9 @@ export class BusRouteDetailsService {
     }
 
     async findAll(): Promise<BusRouteDetails[]> {
-        return this.busRouteRepository.find()
+        return this.busRouteRepository.find({
+            relations: ['studentDetails'],
+        })
     }
 
     findOne(admissionNo: number): Promise<BusRouteDetails> {
@@ -40,6 +42,7 @@ export class BusRouteDetailsService {
             where: {
                 admissionNo: In([admissionNo]),
             },
+            relations: ['studentDetails'],
         })
     }
 

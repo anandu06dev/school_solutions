@@ -23,7 +23,9 @@ export class ParentDetailsService {
     }
 
     async findAll(): Promise<ParentDetails[]> {
-        return this.parentRepository.find()
+        return this.parentRepository.find({
+            relations: ['studentDetails'],
+        })
     }
 
     findOne(admissionNo: number): Promise<ParentDetails> {
@@ -38,6 +40,8 @@ export class ParentDetailsService {
             where: {
                 admissionNo: In([admissionNo]),
             },
+
+            relations: ['studentDetails'],
         })
     }
 

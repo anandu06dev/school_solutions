@@ -24,7 +24,9 @@ export class AddressDetailsService {
     }
 
     async findAll(): Promise<AddressDetails[]> {
-        return this.addressRepository.find()
+        return this.addressRepository.find({
+            relations: ['studentDetails'],
+        })
     }
 
     findOne(admissionNo: number): Promise<AddressDetails> {
@@ -40,6 +42,7 @@ export class AddressDetailsService {
             where: {
                 admissionNo: In([admissionNo]),
             },
+            relations: ['studentDetails'],
         })
     }
 

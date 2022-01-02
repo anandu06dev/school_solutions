@@ -23,7 +23,9 @@ export class FeesDetailsService {
     }
 
     async findAll(): Promise<FeesDetails[]> {
-        return this.feesDetailRepository.find()
+        return this.feesDetailRepository.find({
+            relations: ['studentDetails'],
+        })
     }
 
     findOne(admissionNo: number): Promise<FeesDetails> {
@@ -31,6 +33,7 @@ export class FeesDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
+            relations: ['studentDetails'],
         })
     }
 
