@@ -16,9 +16,11 @@ import { AuthGuard } from '@nestjs/passport'
 import { Projection } from '@resources/resource-model/resource.model'
 import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
+import { IsPostalCode } from 'class-validator'
+import { PageOptionsDto } from '@common/dtos/page-options.dto'
 @ApiTags('student-details')
 @ApiBearerAuth()
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 @Controller('student-details')
 export class StudentDetailsController {
     constructor(
@@ -48,6 +50,11 @@ export class StudentDetailsController {
     @Get()
     findAll() {
         return this.studentDetailsService.findAll()
+    }
+
+    @Post('/pageable/studentdetails')
+    getPageableStudentDetails(@Body() pageOptions: PageOptionsDto) {
+        return this.studentDetailsService.getPageableStudents(pageOptions)
     }
 
     @Get('/findByIdandActive/:id')
