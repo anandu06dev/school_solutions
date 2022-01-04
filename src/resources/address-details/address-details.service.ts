@@ -34,6 +34,7 @@ export class AddressDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
+            relations: ['studentDetails'],
         })
     }
 

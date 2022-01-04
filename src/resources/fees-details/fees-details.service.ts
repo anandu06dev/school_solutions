@@ -42,6 +42,7 @@ export class FeesDetailsService {
             where: {
                 admissionNo: In([admissionNo]),
             },
+            relations: ['studentDetails'],
         })
     }
 

@@ -33,6 +33,7 @@ export class ParentDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
+            relations: ['studentDetails'],
         })
     }
     findByAdmissionId(admissionNo: string): Promise<ParentDetails[]> {

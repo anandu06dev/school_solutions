@@ -41,7 +41,7 @@ export class SiblingDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
-            // relations: ['studentDetails'],
+            relations: ['studentDetails'],
         })
     }
 

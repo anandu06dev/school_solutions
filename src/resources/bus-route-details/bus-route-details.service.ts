@@ -34,6 +34,7 @@ export class BusRouteDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
+            relations: ['studentDetails'],
         })
     }
 
