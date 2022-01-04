@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IsAuthenticatedGuard } from '@core/gaurds/is-authenticated.guard';
+import { RolesGuard } from '@core/gaurds/roles.guard';
+import { AccessDeniedComponent } from './notAccess';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { RouterString } from './routerStringDeclaration';
 
@@ -11,40 +14,41 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
     data: { animationState: 'fadeAnimation' },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard],
   },
   // {
-  //   path: RouterString.STUDENTS+'sdfsdfsdf',
+  //   path: RouterString.AUTH,
   //   loadChildren: () =>
-  //     import('./container/students/students.module').then(
-  //       (m) => m.StudentsModule
-  //     ),
-  //   data: { animationState: 'fadeAnimation' },
+  //     import('./container/auth/auth.module').then((m) => m.AuthModule),
+  //   data: { animationState: 'fader' },
+  //   runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+  //   canActivate: [IsAuthenticatedGuard, RolesGuard],
   // },
   {
     path: RouterString.AUTH,
     loadChildren: () =>
       import('./container/auth/auth.module').then((m) => m.AuthModule),
     data: { animationState: 'fader' },
-  },
-  {
-    path: RouterString.AUTH,
-    loadChildren: () =>
-      import('./container/auth/auth.module').then((m) => m.AuthModule),
-    data: { animationState: 'fader' },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
   },
   {
     path: RouterString.FEES,
 
     loadChildren: () =>
       import('./container/fees/fees.module').then((m) => m.FeesModule),
-    data: { animationState: 'fader' },
+    data: { animationState: 'fader', roles: ['FULL_ADMIN', 'NAIVE_USER'] },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard, RolesGuard],
   },
   {
     path: RouterString.PARENTS,
 
     loadChildren: () =>
       import('./container/parents/parents.module').then((m) => m.ParentsModule),
-    data: { animationState: 'fader' },
+    data: { animationState: 'fader', roles: ['FULL_ADMIN', 'NAIVE_USER'] },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard, RolesGuard],
   },
   {
     path: RouterString.SIBILINGS,
@@ -53,7 +57,13 @@ const routes: Routes = [
       import('./container/sibilings/sibilings.module').then(
         (m) => m.SibilingsModule
       ),
-    data: { animationState: 'fader', reload: true },
+    data: {
+      animationState: 'fader',
+      reload: true,
+      roles: ['FULL_ADMIN', 'NAIVE_USER'],
+    },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard, RolesGuard],
   },
   {
     path: RouterString.BUSROUTE,
@@ -61,11 +71,21 @@ const routes: Routes = [
       import('./container/bus-route/bus-route.module').then(
         (m) => m.BusRouteModule
       ),
+    data: { animationState: 'fader', reload: true, roles: ['FULL_ADMIN'] },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard, RolesGuard],
   },
   {
     path: RouterString.ADDRESS,
     loadChildren: () =>
       import('./container/address/address.module').then((m) => m.AddressModule),
+    data: {
+      animationState: 'fader',
+      reload: true,
+      roles: ['FULL_ADMIN', 'NAIVE_USER'],
+    },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard, RolesGuard],
   },
   {
     path: RouterString.STUDENTS,
@@ -73,7 +93,14 @@ const routes: Routes = [
       import('./container/studentdetails/studentdetails.module').then(
         (m) => m.StudentdetailsModule
       ),
+    data: { animationState: 'fader', reload: true, roles: ['FULL_ADMIN'] },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard, RolesGuard],
   },
+
+  { path: 'noAccess', component: AccessDeniedComponent },
+
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
 
 @NgModule({

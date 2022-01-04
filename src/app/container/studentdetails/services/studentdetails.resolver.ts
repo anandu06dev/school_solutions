@@ -30,7 +30,7 @@ export class StudentFormBasedResolver implements Resolve<boolean> {
     state: RouterStateSnapshot
   ): Observable<any> {
     let studentId = route.paramMap.get('admissionNo') || ''
-    console.log(studentId)
+  
     return this.api.getStudentDetailsById(studentId).pipe(catchError((e) =>{throw e}));
   }
 }

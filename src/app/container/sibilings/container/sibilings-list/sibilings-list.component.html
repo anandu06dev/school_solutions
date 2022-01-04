@@ -6,7 +6,28 @@
         </div>
     </mat-list>
     <mat-list-option *ngFor="let sibling of obs |async;odd as isOdd; even as isEven;" [value]="sibling"
-        [ngClass]="isEven ? 'bg-light-color' : ''" (click)="openBottomSheet(sibling)">
-        {{sibling | json}}
+        [ngClass]="isEven ? 'bg-light-color' : ''"  class="py-2" (click)="openBottomSheet(sibling)">
+        <div class="card bg-transparent mx-0 border-0 rounded shadow">
+            <div class="card-header bg-transparent border-0">
+               <span>                   #{{sibling.admissionNo}} 
+               </span>
+               {{sibling.studentFirstName}}
+            </div>
+            <div class="card-body py-1" matLine>
+                <div class="d-flex justify-content-between flex-column flex-sm-column flex-md-row">
+                    <div class="" matLine>
+
+                        <p ><span class="fw-bold">Relation : </span>{{sibling.siblingRelation}}</p>
+                        <p ><span class="fw-bold">D.O.B :</span>{{sibling.siblingDob | date:'dd-MM-yyyy'}}</p>
+                    </div>
+                    <div class="ml-0" matLine>
+                        <span class="shadow-sm py-1 px-2 rounded-pill ml-1"> class {{sibling.siblingClass}}</span>
+                        <span class="shadow-sm py-1 px-2 rounded-pill mx-3"> Dis. {{sibling.siblingDiscount}}</span>
+    
+                    </div>
+                </div>
+                  
+            </div>
+        </div>
     </mat-list-option>
 </mat-selection-list>

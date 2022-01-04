@@ -9,7 +9,6 @@ import { environment } from '../environments/environment';
 import { CoreModule } from '@core/core.module';
 import { WidgetModule } from '@widgets/widget/widget.module';
 import { SharedModule } from '@shared/shared.module';
-import { BottomsheetsComponent } from './container/students/components/bottomsheets/bottomsheets.component';
 import {
   MatBottomSheetRef,
   MAT_BOTTOM_SHEET_DATA,
@@ -22,9 +21,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { AgGridModule } from 'ag-grid-angular';
 import { CachingInterceptorService } from '@core/interceptor/cache-http-interceptor.interceptor';
+import { AccessDeniedComponent } from './notAccess';
 
 @NgModule({
-  declarations: [AppComponent, NotfoundComponent],
+  declarations: [AppComponent, NotfoundComponent,AccessDeniedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -54,6 +54,6 @@ import { CachingInterceptorService } from '@core/interceptor/cache-http-intercep
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [BottomsheetsComponent],
+  entryComponents: [],
 })
 export class AppModule {}

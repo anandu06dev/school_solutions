@@ -11,6 +11,7 @@ import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { ILogin } from '@utils/interfaces/auth';
 import { ConfirmedValidator, deleteMentionedKeys } from '@utils/utility';
 import { pluck, takeUntil } from 'rxjs';
+import { RouterString } from 'src/app/routerStringDeclaration';
 import { AuthapiService } from '../../services/authapi.service';
 
 @Component({
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
       .subscribe((d: any) => {
         if (d?.accessToken) {
           this.storage.setData({ token: d.accessToken });
-          this.router.navigateByUrl('/students');
+          this.router.navigateByUrl(RouterString.DASHBOARD);
         }
       });
   }

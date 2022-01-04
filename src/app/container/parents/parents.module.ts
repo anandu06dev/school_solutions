@@ -7,7 +7,6 @@ import { ParentsTableComponent } from './containers/parents-table/parents-table.
 import { ParentsListComponent } from './containers/parents-list/parents-list.component';
 import { ParentsFormsComponent } from './containers/parents-forms/parents-forms.component';
 import { WidgetModule } from '@widgets/widget/widget.module';
-import { StudentsModule } from '../students/students.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';

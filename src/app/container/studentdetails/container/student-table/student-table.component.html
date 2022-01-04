@@ -1,6 +1,5 @@
-<!-- <pre>{{studentDetails | json}}</pre>> -->
 
-<div class="card">
+<div class="card d-none d-sm-none d-md-flex">
     <div class="card-body" style="overflow-x: auto;">
 
         <table mat-table [dataSource]="dataSource">
@@ -24,7 +23,7 @@
 
             <ng-container matColumnDef="studentLastName">
                 <th mat-header-cell *matHeaderCellDef>Lastname</th>
-                <td mat-cell *matCellDef="let column">{{ column.studentLastName }}</td>
+                <td mat-cell *matCellDef="let column" class="">{{ column.studentLastName }}</td>
             </ng-container>
 
             <ng-container matColumnDef="admissionDate">

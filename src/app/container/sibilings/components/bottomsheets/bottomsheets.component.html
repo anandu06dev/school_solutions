@@ -66,7 +66,7 @@
 
         <ng-container *ngFor="let routes of router">
             <div>
-                <a class="btn-link text-purple" [routerLink]="[routes?.url ,'form','edit',list?.admissionNo]"  (click)="clearBar(false)">
+                <a class="btn-link text-purple" [routerLink]="[routes?.url ,'list',list?.admissionNo]"  (click)="clearBar(false)">
                     <mat-icon class="text-purple"  matTooltip="Links {{routes?.label}} forms">{{routes?.icon}}</mat-icon>
                 </a>
             </div>

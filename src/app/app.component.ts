@@ -15,7 +15,7 @@ import { fader } from '@utils/animations/fader';
 import { IToolBarMenu } from '@utils/interfaces/toolbarmenu.interface';
 import { currentViewMapTable, RootMenu, screenObserve } from '@utils/utility';
 import { MenuItemDef } from 'ag-grid-community';
-import { filter, Observable, of, Subject, takeUntil } from 'rxjs';
+import { delay, filter, Observable, of, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +26,7 @@ import { filter, Observable, of, Subject, takeUntil } from 'rxjs';
 export class AppComponent {
   username = 'Srini';
   role = 'Admin';
-  showText:boolean = true;
+  showText: boolean = true;
   toggleSidebar: boolean = false;
 
   loadLayout$: Observable<boolean> = of(false);
@@ -49,29 +49,25 @@ export class AppComponent {
     private router: Router
   ) {
     this.loadLayout$ = of(true);
-    let auth = ['/auth/login', '/auth/register'];
+    let auth = ['/auth/login', '/auth/register','/noAccess'];
 
-    router.events.subscribe((url: any) => {
-     
-
-     
-
+    router.events.pipe().subscribe((url: any) => {
       if (url instanceof NavigationStart) {
         this.loadAuthModules = auth.includes(url.url) ? true : false;
         this.showText = true;
+        // this.loadLayout$ = of(true)
       }
       if (url instanceof NavigationEnd) {
         let urlNavigation = [...RootMenu].find((i: any) => {
           if (i.url === url?.urlAfterRedirects) return i;
+          // this.loadLayout$ = of(false)
         });
         this.loadRouteToStorage(urlNavigation as IToolBarMenu);
         this.loadAuthModules = auth.includes(url.urlAfterRedirects)
-          ? true
-          : false;
-        this.showText=false
-    
+        ? true
+        : false;
+        this.showText = false;
       }
-     
     });
 
     breakpointObserver
@@ -97,6 +93,7 @@ export class AppComponent {
     setTimeout(() => {
       this.loadLayout$ = of(false);
     }, 0.5 * 1000);
+    this.storageService.setData({role:'FULL_ADMIN'})
   }
 
   loadRouteToStorage(menu: IToolBarMenu): void {

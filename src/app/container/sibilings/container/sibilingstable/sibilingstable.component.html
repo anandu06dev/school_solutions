@@ -1,9 +1,13 @@
-<div class="card">
+<div class="card d-none d-sm-none d-md-flex">
   <div class="card-body" style="overflow-x: auto">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="d-none">Id</th>
         <td mat-cell *matCellDef="let column" class="d-none">{{ column.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="studentFirstName">
+        <th mat-header-cell *matHeaderCellDef class="freezeColumn">First Name</th>
+        <td mat-cell *matCellDef="let column" class="freezeColumn">{{ column.studentFirstName }}</td>
       </ng-container>
       <ng-container matColumnDef="admissionNo">
         <th mat-header-cell *matHeaderCellDef>Admission Number</th>
@@ -22,7 +26,7 @@
 
       <ng-container matColumnDef="siblingDob">
         <th mat-header-cell *matHeaderCellDef>Sibling DOB</th>
-        <td mat-cell *matCellDef="let column">{{ column.siblingDob }}</td>
+        <td mat-cell *matCellDef="let column">{{ column.siblingDob | date:'dd-MM-yyyy'}}</td>
       </ng-container>
 
       <ng-container matColumnDef="siblingDiscount">
@@ -49,3 +53,5 @@
     </mat-paginator>
   </div>
 </div>
+
+

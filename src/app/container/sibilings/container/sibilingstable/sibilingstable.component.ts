@@ -24,7 +24,7 @@ export class SibilingstableComponent implements OnInit {
   siblingDetails:ISiblings[]=[];
 
   siblingDetaails: any;
-  displayedColumns: string[] = [...Object.keys(sibilingFormModel)];
+  displayedColumns: string[] = ['studentFirstName',...Object.keys(sibilingFormModel)]
   dataSource = new MatTableDataSource<ISiblings[]>([]);
   clickedRows = new Set<ISiblings>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,6 +37,15 @@ export class SibilingstableComponent implements OnInit {
   ) {
     this.siblingDetaails = this.actRoute.snapshot?.data?.['siblings'] || [];
 
+    this.siblingDetaails =  this.addStudentFirstName(this.siblingDetaails)
+
+  }
+
+  private addStudentFirstName(data:[]){
+    return data.length ? data.map((i:any)=>{
+      i.studentFirstName = i.studentDetails.studentFirstName;
+      return i;
+    }):[]
   }
   
   ngAfterViewInit() {

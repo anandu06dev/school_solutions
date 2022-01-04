@@ -8,7 +8,6 @@ import { AddresstableComponent } from './container/addresstable/addresstable.com
 import { AddresslistComponent } from './container/addresslist/addresslist.component';
 import { AddressFormsComponent } from './container/address-forms/address-forms.component';
 import { WidgetModule } from '@widgets/widget/widget.module';
-import { StudentsModule } from '../students/students.module';
 
 
 @NgModule({

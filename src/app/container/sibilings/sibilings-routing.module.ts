@@ -34,7 +34,7 @@ const routes: Routes = [
         path: 'table/:students',
         component: SibilingstableComponent,
         resolve: {
-          studentId: SiblingStudentBasedResolver,
+          siblings: SiblingStudentBasedResolver,
         },
       },
 
@@ -42,7 +42,7 @@ const routes: Routes = [
         path: 'list/:students',
         component: SibilingsListComponent,
         resolve: {
-          studentId: SiblingStudentBasedResolver,
+          siblings: SiblingStudentBasedResolver,
         },
       },
       { path: '', redirectTo: 'list', pathMatch: 'full', },

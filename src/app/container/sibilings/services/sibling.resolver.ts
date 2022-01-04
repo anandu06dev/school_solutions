@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
-import { catchError, EMPTY, Observable, of, throwError } from 'rxjs';
+import { catchError, EMPTY, map, Observable, of, tap, throwError } from 'rxjs';
 import { SiblingapiService } from './siblingapi.service';
 
 @Injectable({
@@ -19,6 +19,15 @@ export class SiblingResolver implements Resolve<boolean> {
   ): Observable<any> {
     // console.log('Called Get Siblings in resolver...', route);
     return this.api.getAllSiblings().pipe(
+      tap((d) => console.log(d)),
+      map((itm: any) => {
+        return itm.map((i:any)=>{
+          i.siblingRelation = +i.siblingRelation === 1 ? 'Brother' : 'Sister';
+          i.studentFirstName = i.studentDetails.studentFirstName;
+          return i;
+
+        })
+      }),
       catchError((e) => {
         throw e;
       })
@@ -35,7 +44,18 @@ export class SiblingStudentBasedResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> {
-    let studentId = route.paramMap.get('students') || ''
-    return this.api.getSiblingDetailBasedOnAdmissionId(studentId);
+    console.log(route.paramMap.get('students'));
+    let studentId = route.paramMap.get('students') || '';
+    return this.api.getSiblingDetailBasedOnAdmissionId(studentId).pipe(
+      tap((d) => console.log(d)),
+      map((itm: any) => {
+       return itm.map((i:any)=>{
+          i.siblingRelation = +i.siblingRelation === 1 ? 'Brother' : 'Sister';
+          i.studentFirstName = i.studentDetails.studentFirstName;
+          return i;
+
+        })
+      }),
+    );
   }
 }

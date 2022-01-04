@@ -7,7 +7,6 @@ import { BusRoutetableComponent } from './container/bus-routetable/bus-routetabl
 import { BusRoutelistComponent } from './container/bus-routelist/bus-routelist.component';
 import { BusRouteformsComponent } from './container/bus-routeforms/bus-routeforms.component';
 import { WidgetModule } from '@widgets/widget/widget.module';
-import { StudentsModule } from '../students/students.module';
 
 @NgModule({
   declarations: [

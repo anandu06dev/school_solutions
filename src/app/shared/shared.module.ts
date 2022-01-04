@@ -16,7 +16,8 @@ import { MatFormField } from '@angular/material/form-field'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableModule } from '@angular/material/table'
-import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RoleDirective } from './directives/role.directive'
 
 
 const SHARED_MODS = [
@@ -41,7 +42,7 @@ const SHARED_MODS = [
 const SHARED_DECL = [AppLoadingDirective]
 
 @NgModule({
-    declarations: [...SHARED_DECL],
+    declarations: [...SHARED_DECL, RoleDirective],
     imports: [CommonModule, ...SHARED_MODS],
     exports: [SHARED_MODS,SHARED_DECL],
     

@@ -31,6 +31,8 @@ export class BottomsheetsComponent implements OnInit {
     
     ngOnInit(): void {
         this.router =this.modifiedQuickLinkOfRouter()
+        let data = {...this.data.data,...this.data.data?.studentDetails}
+        
    
         if (this.data.viewType) {
             this.viewType = this.data.viewType
@@ -40,9 +42,8 @@ export class BottomsheetsComponent implements OnInit {
             this.label = this.data.label
         }
         if(this.data.renderData){
-            
-            this.renderData = {...this.data.renderData}
-            // this.name = `${this.renderData['studentFirstName']} ${this.renderData['studentLastName']}`
+            this.renderData = {...data}
+            this.name = `${this.renderData['studentFirstName']}`
         }
     }
 
@@ -86,6 +87,8 @@ export class BottomsheetsComponent implements OnInit {
 }
 
 export interface IShowTableOnBottomSheet {
+    studentDetails?: any;
+  
     viewType: ViewType
     config?: { [key: string]: any }
     renderData:{ [key: string]: string }

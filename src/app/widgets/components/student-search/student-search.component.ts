@@ -14,7 +14,7 @@ import {
   Subject,
   filter,
 } from 'rxjs';
-import { StudentapiService } from 'src/app/container/students/services/studentapi.service';
+import { StudentapiService } from 'src/app/container/studentdetails/services/studentapi.service';
 
 @Component({
   selector: 'app-student-search',

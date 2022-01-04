@@ -7,7 +7,7 @@ import { SibilingstableComponent } from './container/sibilingstable/sibilingstab
 import { SibilingsListComponent } from './container/sibilings-list/sibilings-list.component';
 import { SibilingsformsComponent } from './container/sibilingsforms/sibilingsforms.component';
 import { WidgetModule } from '@widgets/widget/widget.module';
-import { StudentsModule } from '../students/students.module';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -16,8 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from '@shared/shared.module';
-import { MatIconModule } from '@angular/material/icon';
-import { BottomsheetPipe } from '../students/pipes/bottomsheet.pipe';
 import { BottomsheetsComponent } from './components/bottomsheets/bottomsheets.component';
 
 @NgModule({
@@ -37,8 +35,7 @@ import { BottomsheetsComponent } from './components/bottomsheets/bottomsheets.co
     MatDatepickerModule,
     SharedModule,
     MatNativeDateModule,
-    MatSelectModule,
-    
+    MatSelectModule,    
     NgxMaskModule.forRoot(),
   ],
   providers:[

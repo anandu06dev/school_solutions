@@ -205,7 +205,7 @@ export class StudentFormsComponent implements OnInit {
       ...this.studentFeesRelatedInfoDetails.value,
       ...this.studentReligionDetails.value,
     };
-    console.log(temp)
+
     this.api
     .updateStudentDetails(temp)
     .pipe(take(1))
