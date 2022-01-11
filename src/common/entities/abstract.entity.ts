@@ -9,17 +9,15 @@ export abstract class AbstractEntity {
     @CreateDateColumn({
         type: 'timestamp',
         name: 'CRET_TS',
-        default: () => new Date(),
+        default: () => 'CURRENT_TIMESTAMP',
     })
-    @Exclude()
     createdTimeStamp: Date
 
     @UpdateDateColumn({
         type: 'timestamp',
         name: 'LAST_UPDT_TS',
-        default: () => new Date(),
-        onUpdate: 'CURRENT_TIMESTAMP(6)',
+        default: () => 'CURRENT_TIMESTAMP',
+        onUpdate: 'CURRENT_TIMESTAMP',
     })
-    @Exclude()
     lastUpdatedts: Date
 }
