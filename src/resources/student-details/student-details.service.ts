@@ -1,8 +1,11 @@
 import { PageOptionsDto, PageMetaDto, PageDto } from '@common/dtos'
-import { Injectable, NotFoundException } from '@nestjs/common'
+import { QueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
+import { Catch, Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import { FeesDetails } from '@resources/fees-details/entities/fees-detail.entity'
 import { Projection } from '@resources/resource-model/resource.model'
 import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
 import { getCustomRepository, Repository } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
@@ -113,18 +116,106 @@ export class StudentDetailsService {
         return studentCtsmRepository.findByIdAndIsActive(id)
     }
 
-    async getPageableStudents(pageOptionsDto: PageOptionsDto): Promise<any> {
-        const queryBuilder =
-            this.studentRepository.createQueryBuilder('student_details')
-        queryBuilder
-            //.orderBy('student.createdAt', pageOptionsDto.order)
-            .skip(pageOptionsDto.skip)
-            .take(pageOptionsDto.take)
+    // async getPageableStudents(
+    //     pageOptionsDto: QueryPageOptionsDto
+    // ): Promise<any> {
+    //     const queryBuilder =
+    //         this.studentRepository.createQueryBuilder('student_details')
 
-        const itemCount = await queryBuilder.getCount()
-        const { entities } = await queryBuilder.getRawAndEntities()
-        const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto })
+    //     console.log(pageOptionsDto)
+    //     //  if (pageOptionsDto.showStudentDetails) {
+    //     // queryBuilder.where(
+    //     //     'student_details.admissionNo in (' + pageOptionsDto.aid + ')'
+    //     // )
 
-        return new PageDto(entities, pageMetaDto)
+    //     // queryBuilder
+    //     //     .where('student_details.active =:active', { active: true })
+    //     //     .andWhere(
+    //     //         'student_details.admissionNo IN (' + pageOptionsDto.aid + ')'
+    //     //     )
+    //     //  }
+    //     // if (pageOptionsDto.showStudentDetails) {
+    //     queryBuilder.leftJoinAndSelect(
+    //         SiblingDetails,
+    //         'sb',
+    //         'sb.studentDetails = student_details.admissionNo'
+    //     )
+    //     // }
+
+    //     queryBuilder
+    //         .orderBy('student_details.createdTimeStamp', pageOptionsDto.order)
+    //         .skip(pageOptionsDto.skip)
+    //         .take(pageOptionsDto.take)
+    //     console.log(queryBuilder.getSql())
+
+    //     const itemCount = await queryBuilder.getCount()
+    //     //const  data = await queryBuilder.getRawMany()
+    //     const { raw, entities } = await queryBuilder.getRawAndEntities()
+    //     console.log(raw)
+    //     const { sb_id } = raw[0]
+    //     const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto })
+
+    //     return new PageDto(entities, pageMetaDto)
+    // }
+
+    async getPageableStudents(
+        pageOptionsDto: QueryPageOptionsDto
+    ): Promise<any> {
+        let itemCount
+        let raw
+        console.log(pageOptionsDto)
+        try {
+            const queryBuilder =
+                this.studentRepository.createQueryBuilder('student_details')
+
+            if (pageOptionsDto.showStudentDetails) {
+                queryBuilder.leftJoinAndSelect(
+                    'student_details.siblings',
+                    'siblings'
+                )
+                queryBuilder.leftJoinAndSelect(
+                    'student_details.parents',
+                    'parents'
+                )
+                queryBuilder.leftJoinAndSelect('student_details.fees', 'fees')
+                queryBuilder.leftJoinAndSelect(
+                    'student_details.busRouteDetails',
+                    'busRouteDetails'
+                )
+                queryBuilder.leftJoinAndSelect(
+                    'student_details.addresses',
+                    'addresses'
+                )
+            }
+            queryBuilder.where(
+                'student_details.studentIsActive =:studentIsActive',
+                {
+                    studentIsActive: 1,
+                }
+            )
+            // if (pageOptionsDto.aid) {
+            //     console.log(pageOptionsDto.aid)
+            //     queryBuilder.andWhere(
+            //         'student_details.admissionNo IN (:...aid)',
+            //         { aid: pageOptionsDto.aid }
+            //     )
+            //     console.log(queryBuilder.getSql())
+            // }
+
+            queryBuilder
+                .orderBy(
+                    'student_details.createdTimeStamp',
+                    pageOptionsDto.order
+                )
+                .skip(pageOptionsDto.skip)
+                .take(pageOptionsDto.take)
+            itemCount = await queryBuilder.getCount()
+            raw = await queryBuilder.getMany()
+
+            const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto })
+            return new PageDto(raw, pageMetaDto)
+        } catch (e) {
+            console.log(e)
+        }
     }
 }

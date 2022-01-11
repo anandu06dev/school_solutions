@@ -56,14 +56,13 @@ export class StudentDetailsController {
     }
 
     @Get('/pageable/studentdetails')
-    getPageableGetStudentDetails(
-        @Query('pagination') pagination?: QueryPageOptionsDto
-    ) {
+    getPageableGetStudentDetails(@Query() pagination?: QueryPageOptionsDto) {
+        console.log('pagination $$$$$$$$$$$$$$$$$44', pagination)
         return this.studentDetailsService.getPageableStudents(pagination)
     }
 
     @Post('/pageable/studentdetails')
-    getPageableStudentDetails(@Body() pageOptions: PageOptionsDto) {
+    getPageableStudentDetails(@Body() pageOptions: QueryPageOptionsDto) {
         return this.studentDetailsService.getPageableStudents(pageOptions)
     }
 
