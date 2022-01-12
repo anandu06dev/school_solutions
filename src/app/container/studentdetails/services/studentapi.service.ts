@@ -12,12 +12,21 @@ export class StudentapiService {
   private baseURL: string = environment.apiUrl;
 
   private targetResource: string = 'student-details';
+  private targetResource2: string = 'studentdetails';
 
   constructor(private http: HttpClient) {}
 
-  getStudentDetails = () =>
+  getStudentDetails= () =>
     this.http
       .get(`${this.baseURL}/${this.targetResource}`)
+      .pipe(catchError((e) => handleError(e)));
+  getStudentDetails2 = () =>
+    this.http
+      .post(`${this.baseURL}/${this.targetResource}/pageable/${this.targetResource2}`, {
+        order: 'ASC',
+        page: 1,
+        take: 10,
+      })
       .pipe(catchError((e) => handleError(e)));
   createStudentDetails = (stud: IStudentDetails) =>
     this.http
@@ -25,11 +34,11 @@ export class StudentapiService {
       .pipe(catchError((e) => handleError(e)));
 
   updateStudentDetails = (stud: IStudentDetails) =>
-  this.http
+    this.http
       .patch(`${this.baseURL}/${this.targetResource}/${stud.admissionNo}`, {
         ...stud,
       })
-      .pipe(catchError((e) => handleError(e)))
+      .pipe(catchError((e) => handleError(e)));
 
   getStudentDetailsById = (studId: string) =>
     this.http

@@ -6,28 +6,55 @@
         </div>
     </mat-list>
     <mat-list-option *ngFor="let sibling of obs |async;odd as isOdd; even as isEven;" [value]="sibling"
-        [ngClass]="isEven ? 'bg-light-color' : ''"  class="py-2" (click)="openBottomSheet(sibling)">
+        [ngClass]="isEven ? 'bg-light-color' : ''" class="py-2" (click)="openBottomSheet(sibling)">
         <div class="card bg-transparent mx-0 border-0 rounded shadow">
-            <div class="card-header bg-transparent border-0">
-               <span>                   #{{sibling.admissionNo}} 
-               </span>
-               {{sibling.studentFirstName}}
-            </div>
-            <div class="card-body py-1" matLine>
-                <div class="d-flex justify-content-between flex-column flex-sm-column flex-md-row">
-                    <div class="" matLine>
+            <div class="card-header py-1 bg-transparent border-0">
+                <span> #{{sibling.admissionNo}}
+                </span>
+                <span class="text-capitalize">
 
-                        <p ><span class="fw-bold">Relation : </span>{{sibling.siblingRelation}}</p>
-                        <p ><span class="fw-bold">D.O.B :</span>{{sibling.siblingDob | date:'dd-MM-yyyy'}}</p>
+                    {{sibling.studentFirstName}}
+                </span>
+            </div>
+            <div class="card-body py-1 w-100" matLine>
+                <div class="d-flex justify-content-between flex-column flex-sm-column flex-md-row">
+                  
+                 
+                    <div class="ml-0">
+
+                        <div class="text-secondary"><span class="fw-bold">Relation : </span>{{sibling.siblingRelation}}
+                        </div>
+                        <div class="text-secondary"><span class="fw-bold">D.O.B :</span>{{sibling.siblingDob |
+                            date:'dd-MM-yyyy'}}</div>
                     </div>
-                    <div class="ml-0" matLine>
-                        <span class="shadow-sm py-1 px-2 rounded-pill ml-1"> class {{sibling.siblingClass}}</span>
-                        <span class="shadow-sm py-1 px-2 rounded-pill mx-3"> Dis. {{sibling.siblingDiscount}}</span>
-    
+                    <div class="ml-0">
+                        <!-- <span class="shadow-sm rounded-pill ml-1 bg-purple text-white"> class {{sibling.siblingClass}} %</span>
+                        <span class="shadow-sm rounded-pill mx-3 bg-purple text-white"> Dis. {{sibling.siblingDiscount}} %</span>
+     -->
+                        <ng-container [ngTemplateOutlet]="studentChipLists"
+                            [ngTemplateOutletContext]="{sibling:sibling}">
+                        </ng-container>
                     </div>
                 </div>
-                  
+
             </div>
         </div>
     </mat-list-option>
 </mat-selection-list>
+
+
+
+<ng-template #studentChipLists let-sibling="sibling">
+
+    <mat-chip-list #chipList>
+        <mat-chip class="chip text-capitalize" *ngIf="sibling?.siblingClass">
+            class {{sibling.siblingClass}}
+
+        </mat-chip>
+        <mat-chip class="chip text-capitalize" *ngIf="sibling?.siblingDiscount">
+            <small class="d-block">Disc. {{sibling.siblingDiscount}} %</small>
+        </mat-chip>
+
+    </mat-chip-list>
+
+</ng-template>

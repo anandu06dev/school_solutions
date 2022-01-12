@@ -60,30 +60,6 @@ body {
     border: 1px solid slategrey !important;
     border-radius: 20rem;
 }
-
-:host ::ng-deep .ag-theme-balham {
-    font-family: 'Roboto Condensed', sans-serif !important;
-}
-:host ::ng-deep .ag-body-horizontal-scroll-viewport {
-    overflow-x: scroll;
-}
-
-:host ::ng-deep .ag-theme-balham .ag-filter-toolpanel-header,
-:host ::ng-deep .ag-theme-balham .ag-filter-toolpanel-search,
-:host ::ng-deep .ag-theme-balham .ag-header-row,
-:host ::ng-deep .ag-theme-balham .ag-multi-filter-group-title-bar,
-:host ::ng-deep .ag-theme-balham .ag-status-bar {
-    font-weight: 400;
-}
-
-.ag-theme-balham [class^='ag-'],
-.ag-theme-balham [class^='ag-']:after,
-.ag-theme-balham [class^='ag-']:before,
-.ag-theme-balham [class^='ag-']:focus {
-    box-sizing: border-box;
-    outline: none;
-    border: 0 !important;
-}
 .cursor-pointer{
     cursor: pointer;
 }
@@ -124,4 +100,10 @@ $purple:  #6f42c1;
 .mat-form-field-appearance-fill .mat-form-field-flex{
     background: rgb(0 0 0 / 0.2%);
 }
-
+.chip {
+    background: #3f51b5;
+    color: whitesmoke;
+    font-size: 0.8rem;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}

@@ -5,9 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TabPipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): boolean {
-    if(args[0]){
-      return args[0].toLowerCase().includes(value.label.toLowerCase())
+  transform(value: any, url:string): boolean {
+    console.log(value,url)
+    if(url){
+      return url.toLowerCase().includes(value.label.toLowerCase())
     }else{
       return false;
     }

@@ -164,31 +164,3 @@ $layout-bg:#673ab7;
         clip-path: inset(0 0 0 100%);
     }
 }
-
-// //--- ## BASIC #############
-// body {
-//     background: #e8ebf3;
-//     opacity: 0.6;
-//     height: 100vh;
-//     font: 400 16px 'Varela Round', sans-serif;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     .socials {
-//         position: fixed;
-//         display: block;
-//         left: 20px;
-//         bottom: 20px;
-//         > a {
-//             display: block;
-//             width: 30px;
-//             opacity: 0.2;
-//             transform: scale(var(--scale, 0.8));
-//             transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
-//             &:hover {
-//                 --scale: 1;
-//             }
-//         }
-//     }
-// }

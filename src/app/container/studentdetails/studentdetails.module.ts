@@ -32,14 +32,13 @@ import { MatInputModule } from '@angular/material/input';
   ],
   imports: [
     CommonModule,
-    MatChipsModule,
+ 
     NgxMaskModule.forRoot(),
     StudentdetailsRoutingModule,
     WidgetModule,
     MatStepperModule,
     MatCardModule,
     MatInputModule,
-    MatChipsModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,

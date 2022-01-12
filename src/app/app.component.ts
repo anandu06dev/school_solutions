@@ -2,7 +2,9 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import {
   ActivationEnd,
+  NavigationCancel,
   NavigationEnd,
+  NavigationError,
   NavigationStart,
   Router,
   RouterEvent,
@@ -15,7 +17,19 @@ import { fader } from '@utils/animations/fader';
 import { IToolBarMenu } from '@utils/interfaces/toolbarmenu.interface';
 import { currentViewMapTable, RootMenu, screenObserve } from '@utils/utility';
 import { MenuItemDef } from 'ag-grid-community';
-import { delay, filter, Observable, of, Subject, takeUntil } from 'rxjs';
+import {
+  debounceTime,
+  delay,
+  EMPTY,
+  filter,
+  map,
+  Observable,
+  of,
+  startWith,
+  Subject,
+  takeUntil,
+  tap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -49,26 +63,30 @@ export class AppComponent {
     private router: Router
   ) {
     this.loadLayout$ = of(true);
-    let auth = ['/auth/login', '/auth/register','/noAccess'];
+    let auth = ['/auth/login', '/auth/register', '/noAccess'];
 
-    router.events.pipe().subscribe((url: any) => {
-      if (url instanceof NavigationStart) {
-        this.loadAuthModules = auth.includes(url.url) ? true : false;
-        this.showText = true;
-        // this.loadLayout$ = of(true)
-      }
-      if (url instanceof NavigationEnd) {
-        let urlNavigation = [...RootMenu].find((i: any) => {
-          if (i.url === url?.urlAfterRedirects) return i;
-          // this.loadLayout$ = of(false)
-        });
-        this.loadRouteToStorage(urlNavigation as IToolBarMenu);
-        this.loadAuthModules = auth.includes(url.urlAfterRedirects)
-        ? true
-        : false;
-        this.showText = false;
-      }
-    });
+    router.events
+      .pipe(
+        takeUntil(this.destroyed),
+        tap((route) => this.routeUiInit(auth, route)),
+        delay(10), // just for fancy animation
+        filter(
+          (e) =>
+            e instanceof NavigationStart ||
+            e instanceof NavigationEnd ||
+            e instanceof NavigationCancel ||
+            e instanceof NavigationError
+        )
+        // debounceTime(500)
+      )
+      .subscribe((e) => {
+        if (e instanceof NavigationEnd) {
+          this.routeUiEnd(auth, e);
+        }
+        if (e instanceof NavigationCancel || e instanceof NavigationError) {
+          this.router.navigateByUrl('/auth/login');
+        }
+      });
 
     breakpointObserver
       .observe(screenObserve)
@@ -90,19 +108,21 @@ export class AppComponent {
     this.destroyed.complete();
   }
   ngOnInit(): void {
-    setTimeout(() => {
-      this.loadLayout$ = of(false);
-    }, 0.5 * 1000);
-    this.storageService.setData({role:'FULL_ADMIN'})
+    this.loadLayout$ = of(false).pipe(delay(2 * 1000)); // jsut for fancy animation
+    this.storageService.setData({ role: 'FULL_ADMIN' });
   }
 
   loadRouteToStorage(menu: IToolBarMenu): void {
+    
     this.selectedMenu = { ...menu };
     if (this.selectedMenu.url?.toLowerCase().includes('logout')) {
       this.router.navigateByUrl('/auth/login');
       this.loadAuthModules = false;
+    } else {
+     
     }
   }
+
   prepareRoute(outlet: RouterOutlet) {
     return (
       outlet &&
@@ -110,5 +130,20 @@ export class AppComponent {
       outlet.activatedRouteData['animationState']
     );
   }
-  //events.subscribe(d=>console.log(d))
+
+  routeUiInit(auth: any, url: any) {
+    this.showText = true;
+    this.loadAuthModules = auth.includes(url.url) ? true : false;
+  }
+
+  routeUiEnd(auth: any, url: any): Observable<any> {
+    let urlNavigation = [...RootMenu].find((i: any) => {
+      if (i.url === url?.urlAfterRedirects) return i;
+      // this.loadLayout$ = of(false)
+    });
+    this.loadRouteToStorage(urlNavigation as IToolBarMenu);
+    this.loadAuthModules = auth.includes(url.urlAfterRedirects) ? true : false;
+    this.showText = false;
+    return EMPTY;
+  }
 }

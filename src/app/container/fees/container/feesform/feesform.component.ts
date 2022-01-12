@@ -13,4 +13,12 @@ export class FeesformComponent implements OnInit {
     ()=>{}
   }
 
+  selectedValue(event: any) {
+    console.log(event)
+    this.updateAddmissinNo(event);
+  }
+  updateAddmissinNo(value: any) {
+    console.log(value)
+    // this.siblingDetailsForms.patchValue({ admissionNo: value });
+  }
 }

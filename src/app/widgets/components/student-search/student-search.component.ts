@@ -33,9 +33,7 @@ export class StudentSearchComponent implements OnInit {
   //     "studentLastName": "Raghunath"
   //   }))
   filteredOptions!: Observable<string[]>;
-
-
- 
+  private studentDetails:any = {};
 
   @Output() selectedValueEvent = new EventEmitter<number | string>();
   constructor(
@@ -51,19 +49,21 @@ export class StudentSearchComponent implements OnInit {
     this.myControl.valueChanges
       .pipe(debounceTime(100), takeUntil(this.destroy$))
       .subscribe((d) => {
-      this.selectedValueEvent.emit(d)
+        this.selectedValueEvent.emit(this.studentDetails[d]);
       });
   }
 
   getFreshStudentData() {
-
-    if(this.students.getValue().length === 0){
-
+    if (this.students.getValue().length === 0) {
       this.api
         .getStudentDetailsForSearch()
         .pipe(take(1))
         .subscribe((d) => {
           if (Array.isArray(d)) {
+            d.map((i) => {
+              this.studentDetails[i['admissionNo']] = {};
+              this.studentDetails[i['admissionNo']] = i;
+            });
             this.students.next([...d]);
           } else {
             this.students.next([]);

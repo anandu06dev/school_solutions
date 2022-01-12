@@ -17,7 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableModule } from '@angular/material/table'
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { RoleDirective } from './directives/role.directive'
+import { RoleDirective } from './directives/role.directive';
+import { DebounceDirective } from './directives/debounce.directive'
+import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
+import { NgxMaskModule } from 'ngx-mask'
 
 
 const SHARED_MODS = [
@@ -34,15 +38,18 @@ const SHARED_MODS = [
     MatPaginatorModule,
     MatIconModule,
     MatTooltipModule,
-    AgGridModule.withComponents([]),
+    ReactiveFormsModule,
+    MatInputModule,
     MatListModule,
+    MatSelectModule,    
+    NgxMaskModule.forRoot(),
     HotToastModule.forRoot(),    
 ]
 
-const SHARED_DECL = [AppLoadingDirective]
+const SHARED_DECL = [AppLoadingDirective,RoleDirective,DebounceDirective]
 
 @NgModule({
-    declarations: [...SHARED_DECL, RoleDirective],
+    declarations: [...SHARED_DECL, RoleDirective, DebounceDirective],
     imports: [CommonModule, ...SHARED_MODS],
     exports: [SHARED_MODS,SHARED_DECL],
     

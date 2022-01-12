@@ -100,7 +100,7 @@ const routes: Routes = [
 
   { path: 'noAccess', component: AccessDeniedComponent },
 
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
 ];
 
 @NgModule({

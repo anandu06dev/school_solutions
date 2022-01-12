@@ -52,29 +52,29 @@ export class RolesGuard implements CanActivate {
   //   return this.runGaurd();
   // }
 
-  private isAdmin(passedRoles: string[]) {
-    console.log(passedRoles)
-    let isAdmin =
-      this.storage.get('role') === 'FULL_ADMIN' &&
-      passedRoles.includes('FULL_ADMIN')
-        ? true
-        : false;
-    if (!isAdmin) this.router.navigateByUrl('/notAccess');
-    return isAdmin;
-  }
-  private isNaiveUser(passedRoles: string[]) {
-    let isStudents =
-      this.storage.get('role') === 'NAIVE_USER' &&
-      passedRoles.includes('NAIVE_USER')
-        ? true
-        : false;
-    if (!isStudents) this.router.navigateByUrl('/notAccess');
-    return isStudents;
-  }
+  // private isAdmin(passedRoles: string[]) {
+  //   console.log(passedRoles)
+  //   let isAdmin =
+  //     this.storage.get('role') === 'FULL_ADMIN' &&
+  //     passedRoles.includes('FULL_ADMIN')
+  //       ? true
+  //       : false;
+  //   if (!isAdmin) this.router.navigateByUrl('/notAccess');
+  //   return isAdmin;
+  // }
+  // private isNaiveUser(passedRoles: string[]) {
+  //   let isStudents =
+  //     this.storage.get('role') === 'NAIVE_USER' &&
+  //     passedRoles.includes('NAIVE_USER')
+  //       ? true
+  //       : false;
+  //   if (!isStudents) this.router.navigateByUrl('/notAccess');
+  //   return isStudents;
+  // }
 
   private runGaurd(passedRoles: string[]) {
     let roles = this.storage.get('role');
-    console.log(roles,passedRoles);
+  
     if(passedRoles.includes(roles)){
 
       return true;

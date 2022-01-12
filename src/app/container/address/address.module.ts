@@ -8,6 +8,7 @@ import { AddresstableComponent } from './container/addresstable/addresstable.com
 import { AddresslistComponent } from './container/addresslist/addresslist.component';
 import { AddressFormsComponent } from './container/address-forms/address-forms.component';
 import { WidgetModule } from '@widgets/widget/widget.module';
+import { SharedModule } from '@shared/shared.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { WidgetModule } from '@widgets/widget/widget.module';
   ],
   imports: [
     CommonModule,
-    AddressRoutingModule,WidgetModule
+    AddressRoutingModule,WidgetModule,
+    SharedModule
   ]
 })
 export class AddressModule { }

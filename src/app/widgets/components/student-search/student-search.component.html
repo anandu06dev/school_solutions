@@ -10,8 +10,13 @@
             </div>
             <div class="text-wrap mx-auto ms-1">
                 <div>{{item?.studentFirstName}} {{item?.studentLastName}}</div>
-                <small class="text-secondary text-start" [ngOptionHighlight]="search"><span class="fw-bold">ADM No. </span>
-                    {{item.admissionNo}}</small>
+                <small>
+                    <span class="text-secondary text-start"></span>
+                    <span class="fw-bold">ADM No. </span>
+                    <span class="fw-bold" [ngOptionHighlight]="search"> {{item.admissionNo}}</span>
+
+                </small>
+             
             </div>
             <div class="text-center">
                 <small class="badge text-purple">{{item.studentClass}}</small>

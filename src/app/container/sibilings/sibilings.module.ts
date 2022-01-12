@@ -30,13 +30,9 @@ import { BottomsheetsComponent } from './components/bottomsheets/bottomsheets.co
     CommonModule,
     SibilingsRoutingModule,
     WidgetModule,    
-    ReactiveFormsModule,
-    MatInputModule,
     MatDatepickerModule,
     SharedModule,
     MatNativeDateModule,
-    MatSelectModule,    
-    NgxMaskModule.forRoot(),
   ],
   providers:[
     MatDatepickerModule,  

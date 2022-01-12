@@ -1,6 +1,88 @@
 <div class="card border-0">
-    <div class="card-body">
+    <div class="card-header text-secondary">Enter Student Address</div>
+    <div class="card-body pb-0 mb-0">
+        <label class="position-relative" style="top:0.5rem">Search By Admission Number</label>
         <app-student-search></app-student-search>
-        <label class="position-relative" style="top:-4.5rem">Search By Admission Number</label>
+    </div>
+    <div class="card-body pt-0">
+        <div class="alert alert-info"><strong>Note : </strong>We help you in populate address if you directly type
+            pincode</div>
+        <div class="row" [formGroup]="addressFormDetails">
+            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Address 1</mat-label>
+                    <input type="text" matInput formControlName="addr1" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter address Details</mat-hint>
+                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                        Please enter address details
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Address 2</mat-label>
+                    <input type="text" matInput formControlName="addr2" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter address Details</mat-hint>
+                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                        Please enter address details
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Address 3</mat-label>
+                    <input type="text" matInput formControlName="addr3" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter address Details</mat-hint>
+                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                        Please enter address details
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Address 4</mat-label>
+                    <input type="text" matInput formControlName="addr4" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter address Details</mat-hint>
+                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                        Please enter address details
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Address 5</mat-label>
+                    <input type="text" matInput formControlName="addr5" [errorStateMatcher]="matcher">
+                    <mat-hint>Enter address Details</mat-hint>
+                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                        Please enter address details
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <mat-form-field class="w-100" appearance="fill">
+
+                <mat-label>DistrictName</mat-label>
+
+                <mat-select formControlName="districtName" [errorStateMatcher]="matcher">
+                    <mat-option value="">--</mat-option>
+
+                    <mat-option value="permanent">Permanent</mat-option>
+                    <mat-option value="residential">Residential</mat-option>
+                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                        Please enter address details
+                    </mat-error> -->
+                </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <mat-form-field class="w-100" appearance="fill">
+
+                <mat-label>PostalCode</mat-label>
+                <input type="text" matInput placeholder="XXX XXX" mask="XXX XXX" formControlName="postalcode" [errorStateMatcher]="matcher">
+
+              
+                </mat-form-field>
+            </div>
+        </div>
     </div>
 </div>

@@ -16,6 +16,7 @@ import { StudentSearchComponent } from '@widgets/components/student-search/stude
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TabPipe } from '@widgets/components/tab/tab.pipe';
+import { MatChipsModule } from '@angular/material/chips';
 
 const DECLARATIONS = [
   RootLayoutComponent,
@@ -31,6 +32,7 @@ const MODS = [
   SharedModule,
   MatTabsModule,
   MatTooltipModule,
+  MatChipsModule,
   NgSelectModule,
   NgOptionHighlightModule, 
 ];

@@ -27,7 +27,9 @@ export class StudentTableComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngOnInit(): void {
-    this.studentDetails = this.actRoute.snapshot?.data?.['student'] || [];
+    console.log(this.actRoute.snapshot)
+    this.studentDetails = this.actRoute.snapshot?.data?.['students'] || [];
+    console.log(this.studentDetails)
     this.dataSource = new MatTableDataSource<IStudentDetails>(
       this.studentDetails
     );

@@ -36,15 +36,15 @@ export class AppMatTabComponent {
         })
       )
       .subscribe();
-
-      this.router.events.pipe(takeUntil(this.destroy$)).subscribe(d=>{
-        if(d instanceof NavigationEnd){
-          this.url = d.urlAfterRedirects
-        }
-      })
   }
- 
 
+  ngOnInit() {
+    this.fetchRouterUrl()
+  }
+
+  fetchRouterUrl() {
+    this.url = this.router.url;
+  }
   navigate(link: any) {
     // this.activeLink =
     //   this.renderTabMenu.find((i) => i.url === link.url) ||
