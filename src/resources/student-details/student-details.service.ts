@@ -6,7 +6,7 @@ import { FeesDetails } from '@resources/fees-details/entities/fees-detail.entity
 import { Projection } from '@resources/resource-model/resource.model'
 import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
 import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
-import { getCustomRepository, Repository } from 'typeorm'
+import { getCustomRepository, QueryBuilder, Repository } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
 import { StudentDetailDto } from './dto/student-detail.dto'
@@ -167,40 +167,70 @@ export class StudentDetailsService {
         try {
             const queryBuilder =
                 this.studentRepository.createQueryBuilder('student_details')
+            // if (pageOptionsDto.showStudentDetails !== 'false') {
+            //     console.log('showStudentDetails', pageOptionsDto.aid)
+            //     queryBuilder.leftJoinAndSelect(
+            //         'student_details.siblings',
+            //         'siblings'
+            //     )
+            //     queryBuilder.leftJoinAndSelect(
+            //         'student_details.parents',
+            //         'parents'
+            //     )
+            //     queryBuilder.leftJoinAndSelect('student_details.fees', 'fees')
+            //     queryBuilder.leftJoinAndSelect(
+            //         'student_details.busRouteDetails',
+            //         'busRouteDetails'
+            //     )
+            //     queryBuilder.leftJoinAndSelect(
+            //         'student_details.addresses',
+            //         'addresses'
+            //     )
+            // }
 
-            if (pageOptionsDto.showStudentDetails) {
-                queryBuilder.leftJoinAndSelect(
-                    'student_details.siblings',
-                    'siblings'
-                )
-                queryBuilder.leftJoinAndSelect(
-                    'student_details.parents',
-                    'parents'
-                )
-                queryBuilder.leftJoinAndSelect('student_details.fees', 'fees')
-                queryBuilder.leftJoinAndSelect(
-                    'student_details.busRouteDetails',
-                    'busRouteDetails'
-                )
-                queryBuilder.leftJoinAndSelect(
-                    'student_details.addresses',
-                    'addresses'
-                )
-            }
+            // if (pageOptionsDto.showStudentDetails !== 'false') {
+            //     getStudentDetailCustomQueryBuilder(
+            //         queryBuilder,
+            //         [
+            //             'siblings',
+            //             'parents',
+            //             'fees',
+            //             'busRouteDetails',
+            //             'addresses',
+            //         ],
+            //         'student_details'
+            //     )
+            // }
             queryBuilder.where(
                 'student_details.studentIsActive =:studentIsActive',
                 {
                     studentIsActive: 1,
                 }
             )
-            // if (pageOptionsDto.aid) {
-            //     console.log(pageOptionsDto.aid)
-            //     queryBuilder.andWhere(
-            //         'student_details.admissionNo IN (:...aid)',
-            //         { aid: pageOptionsDto.aid }
-            //     )
-            //     console.log(queryBuilder.getSql())
-            // }
+            if (pageOptionsDto.aid) {
+                console.log(pageOptionsDto.aid)
+                queryBuilder.andWhere(
+                    'student_details.admissionNo IN (:...aid)',
+                    { aid: pageOptionsDto.aid.split(',') }
+                )
+            }
+            const queryJoin: string[] = [
+                'siblings',
+                'parents',
+                'fees',
+                'busRouteDetails',
+                'addresses',
+            ]
+            const mainjoin = 'student_details'
+            if (pageOptionsDto.showStudentDetails !== 'false') {
+                queryJoin.forEach((item) =>
+                    //`${mainjoin}.${item}`, `${item}`
+                    queryBuilder.leftJoinAndSelect(
+                        `${mainjoin}.${item}`,
+                        `${item}`
+                    )
+                )
+            }
 
             queryBuilder
                 .orderBy(
@@ -209,13 +239,32 @@ export class StudentDetailsService {
                 )
                 .skip(pageOptionsDto.skip)
                 .take(pageOptionsDto.take)
-            itemCount = await queryBuilder.getCount()
-            raw = await queryBuilder.getMany()
-
-            const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto })
-            return new PageDto(raw, pageMetaDto)
+            console.log(queryBuilder.getSql())
+            const raw = await queryBuilder.getManyAndCount()
+            const pageMetaDto = new PageMetaDto({
+                itemCount: raw[1],
+                pageOptionsDto,
+            })
+            return new PageDto(raw[0], pageMetaDto)
         } catch (e) {
             console.log(e)
         }
+    }
+}
+
+// sibilings,parents,fees,busRouteDetails,addresses
+//'student_details.fees', 'fees'
+function getStudentDetailCustomQueryBuilder(
+    qb: any,
+    query: string[],
+    mainjoin: string
+) {
+    try {
+        return query.map((item) => {
+            console.log(`${mainjoin}.${item}`, `${item}`)
+            return qb.leftJoinAndSelect(`${mainjoin}.${item}`, `${item}`)
+        })
+    } catch (e) {
+        console.log(e)
     }
 }
