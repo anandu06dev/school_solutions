@@ -1,12 +1,23 @@
 import { PageMetaDto, PageDto } from '@common/dtos'
-import { QueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
+import { StudentQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import {
     AllowedEntity,
     Projection,
 } from '@resources/resource-model/resource.model'
-import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import { QueryEntityRestrictionException } from '@resources/resources-exception/QueryEntityRestrictionException'
+import {
+    getQueryJoin,
+    getRecordStatus,
+    getSecondaryJoinAndIdCondition,
+    getStudentAddmissionCondition,
+    orderBy,
+} from '@resources/resources-util/resource-query-constants'
+import {
+    getConditionlessQb,
+    LookForAdmissionId,
+} from '@resources/resources-util/resource-query-util'
 import { getCustomRepository, Repository, SelectQueryBuilder } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
@@ -117,137 +128,48 @@ export class StudentDetailsService {
         return studentCtsmRepository.findByIdAndIsActive(id)
     }
 
-    async getConditionlessQb(
-        qb: SelectQueryBuilder<AllowedEntity>,
-        param: { [key: string]: any } = {
-            primaryJoin: 'student_details',
-            where: [
-                {
-                    condition:
-                        'student_details.studentIsActive =:studentIsActive',
-                    params: { studentIsActive: 1 },
-                },
-            ],
-            queryJoin: [
-                'siblings',
-                'parents',
-                'fees',
-                'busRouteDetails',
-                'addresses',
-            ],
-        }
-    ): Promise<SelectQueryBuilder<AllowedEntity>> {
-        if (param?.where && Array.isArray(param.where)) {
-            // param.where.forEach((where, index) => {
-            //     if (index === 0) qb.where(where.condition, where.params)
-            //     else qb.andWhere(where.condition, where.params)
-            // })
-            for (let i = 0; i < param.where.length; i++) {
-                const where = param.where[i]
-                if (i === 0) qb.where(where.condition, where.params)
-                else qb.andWhere(where.condition, where.params)
-            }
-        }
-        if (
-            param.primaryJoin &&
-            Array.isArray(param.queryJoin) &&
-            param?.queryJoin
-        ) {
-            // param.queryJoin.forEach((queryJoin) => {
-            //     qb.leftJoinAndSelect(
-            //         param.primaryJoin + '.' + queryJoin,
-            //         queryJoin
-            //     )
-            // })
-            console.dir(param.primaryJoin + '.' + param.queryJoin)
-            for (let i = 0; i < param.queryJoin.length; i++) {
-                const queryJoin = param.queryJoin[i]
-                console.dir(queryJoin, param.primaryJoin + '.' + queryJoin)
-                qb.leftJoinAndSelect(
-                    param.primaryJoin + '.' + queryJoin,
-                    queryJoin
-                )
-            }
-        }
-        console.log(qb.getSql())
-        return await qb
-    }
-
     async getPageableStudents(
-        pageOptionsDto: QueryPageOptionsDto
+        pageOptionsDto: StudentQueryPageOptionsDto
     ): Promise<any> {
-        let itemCount
-        let raw
-        console.log(pageOptionsDto)
-        try {
+        // try {
+        if (Array.isArray(pageOptionsDto.join) && pageOptionsDto.uniqueId) {
+            throw new QueryEntityRestrictionException()
+        } else {
             let queryBuilder = this.studentRepository.createQueryBuilder(
-                'student_details'
+                pageOptionsDto.primaryJoin
             ) as SelectQueryBuilder<AllowedEntity>
-            queryBuilder = await this.getConditionlessQb(queryBuilder)
-            // queryBuilder.where(
-            //     'student_details.studentIsActive =:studentIsActive',
-            //     {
-            //         studentIsActive: 1,
-            //     }
-            // )
-            // if (pageOptionsDto.aid) {
-            //     console.log(pageOptionsDto.aid)
-            //     queryBuilder.andWhere(
-            //         'student_details.admissionNo IN (:...aid)',
-            //         { aid: pageOptionsDto.aid.split(',') }
-            //     )
-            // }
-            // const queryJoin: string[] = [
-            //     'siblings',
-            //     'parents',
-            //     'fees',
-            //     'busRouteDetails',
-            //     'addresses',
-            // ]
-            // const mainjoin = 'student_details'
-            // if (pageOptionsDto.showStudentDetails !== 'false') {
-            //     queryJoin.forEach((item) =>
-            //         //`${mainjoin}.${item}`, `${item}`
-            //         queryBuilder.leftJoinAndSelect(
-            //             `${mainjoin}.${item}`,
-            //             `${item}`
-            //         )
-            //     )
-            // }
+            queryBuilder = await getConditionlessQb(queryBuilder, {
+                primaryJoin: pageOptionsDto.primaryJoin,
+                where: [
+                    getRecordStatus(pageOptionsDto.activeRecords),
+                    getStudentAddmissionCondition(pageOptionsDto.aid),
+                    pageOptionsDto.getOtherDetails === 'true'
+                        ? getSecondaryJoinAndIdCondition(
+                              pageOptionsDto.uniqueId,
+                              pageOptionsDto.join
+                          )
+                        : {},
+                ],
+                queryJoin:
+                    pageOptionsDto.getOtherDetails === 'true'
+                        ? getQueryJoin(pageOptionsDto.join)
+                        : [],
+            })
+            console.log(pageOptionsDto.join)
             console.log(queryBuilder.getSql())
-            queryBuilder
-                .orderBy(
-                    'student_details.createdTimeStamp',
-                    pageOptionsDto.order
-                )
-                .skip(pageOptionsDto.skip)
-                .take(pageOptionsDto.take)
-            console.log(queryBuilder.getSql())
+
+            queryBuilder = await orderBy(queryBuilder, pageOptionsDto)
+
+            queryBuilder.skip(pageOptionsDto.skip)
+            queryBuilder.take(pageOptionsDto.take)
             const raw = await queryBuilder.getManyAndCount()
             const pageMetaDto = new PageMetaDto({
                 itemCount: raw[1],
                 pageOptionsDto,
             })
             return new PageDto(raw[0], pageMetaDto)
-        } catch (e) {
-            console.log(e)
         }
     }
 }
 
-// sibilings,parents,fees,busRouteDetails,addresses
-//'student_details.fees', 'fees'
-function getStudentDetailCustomQueryBuilder(
-    qb: any,
-    query: string[],
-    mainjoin: string
-) {
-    try {
-        return query.map((item) => {
-            console.log(`${mainjoin}.${item}`, `${item}`)
-            return qb.leftJoinAndSelect(`${mainjoin}.${item}`, `${item}`)
-        })
-    } catch (e) {
-        console.log(e)
-    }
-}
+// Helper Function many and count or raw , orderby , groupby

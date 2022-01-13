@@ -1,33 +1,43 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
-import { BusRouteDetails } from '@resources/bus-route-details/entities/bus-route-detail.entity'
-import { FeesDetails } from '@resources/fees-details/entities/fees-detail.entity'
-import { ParentDetails } from '@resources/parent-details/entities/parent-detail.entity'
-import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
-import { StudentDetails } from '@resources/student-details/entities/student-detail.entity'
-import { Transform, Type } from 'class-transformer'
+import { Type } from 'class-transformer'
 import {
-    IsArray,
-    IsBoolean,
     IsEnum,
     IsInt,
     IsNotEmpty,
     IsOptional,
-    IsString,
     Max,
     Min,
 } from 'class-validator'
-import { trace } from 'console'
-import { JoinProjection, Order } from '../constants'
+import {
+    JoinProjection,
+    Order,
+    OrderByFields,
+    RecordStatus,
+} from '../constants'
 
-export class QueryPageOptionsDto {
-    @ApiPropertyOptional({ enum: Order, default: Order.ASC })
+export class BaseQueryPageOptionsDto {
+    @ApiPropertyOptional({
+        enum: Order,
+        default: Order.ASC,
+        description: 'Describes about Order',
+    })
     @IsEnum(Order)
     @IsOptional()
     readonly order?: Order = Order.ASC
 
     @ApiPropertyOptional({
+        enum: OrderByFields,
+        default: 'createdTimeStamp',
+        description: 'Describes about Order By Created Time Stamp',
+    })
+    @IsEnum(OrderByFields)
+    @IsOptional()
+    readonly orderByField?: OrderByFields = OrderByFields.CREATED_TIME_STAMP
+
+    @ApiPropertyOptional({
         minimum: 1,
         default: 1,
+        description: 'Describes about Page',
     })
     @Type(() => Number)
     @IsInt()
@@ -39,6 +49,7 @@ export class QueryPageOptionsDto {
         minimum: 1,
         maximum: 50,
         default: 10,
+        description: 'Describes about no of records',
     })
     @Type(() => Number)
     @IsInt()
@@ -53,21 +64,43 @@ export class QueryPageOptionsDto {
 
     @ApiPropertyOptional({
         default: false,
+        description: 'Describes about multiple relations/join',
     })
     @Type(() => String)
     @IsOptional()
     @IsNotEmpty()
-    showStudentDetails: string
+    getOtherDetails: string
+
+    @ApiPropertyOptional({
+        enum: RecordStatus,
+        default: RecordStatus.IsActive,
+        description: 'Describes about Record Status',
+    })
+    @IsEnum(RecordStatus)
+    @IsOptional()
+    readonly activeRecords?: RecordStatus = RecordStatus.IsActive
+    @ApiProperty({
+        enum: [JoinProjection.STUDENT_DETAILS],
+        default: JoinProjection.STUDENT_DETAILS,
+        isArray: false,
+        readOnly: true,
+        required: true,
+        description: 'Describes about Join Projection',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly primaryJoin: string
 
     @ApiPropertyOptional({
         minimum: 1,
         default: '1,2',
+        description: 'Describes about AdmissionIds',
     })
     @Type(() => String)
     @IsOptional()
     readonly aid: string
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         enum: [
             JoinProjection.SIBLINGS,
             JoinProjection.PARENTS,
@@ -77,6 +110,8 @@ export class QueryPageOptionsDto {
         ],
         default: [JoinProjection.SIBLINGS, JoinProjection.PARENTS],
         isArray: true,
+        required: false,
+        description: 'Describes about JoinProjection',
     })
     @IsOptional()
     readonly join: string[] = [JoinProjection.SIBLINGS, JoinProjection.PARENTS]
@@ -85,8 +120,23 @@ export class QueryPageOptionsDto {
         minimum: 1,
         default:
             'c7409a8e-f507-4a77-98a0-fca2ed08adf4,c7409a8e-f507-4a77-98a0-fca2ed08adf4',
+        description: 'Describes about UniqueId of the entity',
     })
     @Type(() => String)
     @IsOptional()
     readonly uniqueId: string
+}
+
+export class StudentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
+    @ApiProperty({
+        enum: [JoinProjection.STUDENT_DETAILS],
+        default: JoinProjection.STUDENT_DETAILS,
+        isArray: false,
+        readOnly: true,
+        required: true,
+        description: 'Describes about Join Projection',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly primaryJoin: string
 }

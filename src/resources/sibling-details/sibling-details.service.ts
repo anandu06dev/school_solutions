@@ -1,3 +1,5 @@
+import { PageOptionsDto, PageMetaDto, PageDto } from '@common/dtos'
+import { BaseQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import {
@@ -86,6 +88,50 @@ export class SiblingDetailsService {
             })
         } catch (Error) {
             console.log(Error)
+        }
+    }
+
+    async getPageableSibDetails(
+        pageOptionsDto: BaseQueryPageOptionsDto
+    ): Promise<any> {
+        try {
+            const queryBuilder =
+                this.siblingRepository.createQueryBuilder('sibling_details')
+            // if (pageOptionsDto.showStudentDetails) {
+            // queryBuilder.leftJoinAndSelect(
+            //     'sibling_details.studentDetails',
+            //     'studentDetails'
+            // )
+            // getADmnno ffrom unique id then pass the admno to main query to maintain same structure.
+            queryBuilder.leftJoinAndSelect(
+                'sibling_details.studentDetails',
+                'studentDetails'
+            )
+            //}
+            // queryBuilder.where(
+            //     'student_details.studentIsActive =:studentIsActive',
+            //     {
+            //         studentIsActive: 1,
+            //     }
+            // )
+            queryBuilder.where('sibling_details.id =:id', {
+                id: 'c7409a8e-f507-4a77-98a0-fca2ed08adf4',
+            })
+            queryBuilder
+                //.orderBy('student.createdAt', pageOptionsDto.order)
+                .skip(pageOptionsDto.skip)
+                .take(pageOptionsDto.take)
+
+            //const itemCount = await queryBuilder.getCount()
+            const raw = await queryBuilder.getManyAndCount()
+            const pageMetaDto = new PageMetaDto({
+                itemCount: raw[1],
+                pageOptionsDto,
+            })
+
+            return new PageDto(raw[0], pageMetaDto)
+        } catch (e) {
+            console.log(e)
         }
     }
 }

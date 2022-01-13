@@ -1,3 +1,4 @@
+import { BaseQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
 import {
     Controller,
     Get,
@@ -6,6 +7,7 @@ import {
     Patch,
     Param,
     Delete,
+    Query,
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { SiblingDetailDto } from './dto/sibling-detail.dto'
@@ -41,6 +43,18 @@ export class SiblingDetailsController {
     @Get(':id')
     findOne(@Param('id') id: string) {
         return this.siblingDetailsService.findOne(+id)
+    }
+
+    @Get('/pageable/siblingdetails')
+    getPageableGetStudentDetails(
+        @Query('pagination') pagination?: BaseQueryPageOptionsDto
+    ) {
+        return this.siblingDetailsService.getPageableSibDetails(pagination)
+    }
+
+    @Post('/pageable/siblingdetails')
+    getPageableStudentDetails(@Body() pageOptions: BaseQueryPageOptionsDto) {
+        return this.siblingDetailsService.getPageableSibDetails(pageOptions)
     }
 
     @Patch(':id')

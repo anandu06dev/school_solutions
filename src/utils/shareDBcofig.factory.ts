@@ -10,6 +10,6 @@ export const dbConfigSetUp = (configService: any): { [key: string]: any } => {
         synchronize: false,
         logging: true,
         logger: 'file',
-        debug: true,
+        debug: false,
     }
 }

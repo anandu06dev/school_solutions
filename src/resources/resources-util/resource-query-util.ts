@@ -42,3 +42,20 @@ export async function getConditionlessQb(
     }
     return await qb
 }
+
+// sibilings,parents,fees,busRouteDetails,addresses
+//'student_details.fees', 'fees'
+function getStudentDetailCustomQueryBuilder(
+    qb: any,
+    query: string[],
+    mainjoin: string
+) {
+    try {
+        return query.map((item) => {
+            console.log(`${mainjoin}.${item}`, `${item}`)
+            return qb.leftJoinAndSelect(`${mainjoin}.${item}`, `${item}`)
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}

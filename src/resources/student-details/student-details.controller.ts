@@ -6,21 +6,16 @@ import {
     Patch,
     Param,
     Delete,
-    UseGuards,
     ValidationPipe,
     Query,
 } from '@nestjs/common'
 import { StudentDetailsService } from './student-details.service'
 import { StudentDetailDto } from './dto/student-detail.dto'
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
-import { AuthGuard } from '@nestjs/passport'
 import { Projection } from '@resources/resource-model/resource.model'
 import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
-import { IsPostalCode } from 'class-validator'
-import { PageOptionsDto } from '@common/dtos/page-options.dto'
-import { Order } from '@common/constants'
-import { QueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
+import { BaseQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
 @ApiTags('student-details')
 @ApiBearerAuth()
 // @UseGuards(AuthGuard())
@@ -56,13 +51,15 @@ export class StudentDetailsController {
     }
 
     @Get('/pageable/studentdetails')
-    getPageableGetStudentDetails(@Query() pagination?: QueryPageOptionsDto) {
+    getPageableGetStudentDetails(
+        @Query() pagination?: BaseQueryPageOptionsDto
+    ) {
         console.log('pagination $$$$$$$$$$$$$$$$$44', pagination)
         return this.studentDetailsService.getPageableStudents(pagination)
     }
 
     @Post('/pageable/studentdetails')
-    getPageableStudentDetails(@Body() pageOptions: QueryPageOptionsDto) {
+    getPageableStudentDetails(@Body() pageOptions: BaseQueryPageOptionsDto) {
         return this.studentDetailsService.getPageableStudents(pageOptions)
     }
 
