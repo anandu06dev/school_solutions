@@ -20,12 +20,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
+import { StudentGridComponent } from './container/student-grid/student-grid.component';
 
 @NgModule({
   declarations: [
     StudentdetailsComponent,
     StudentTableComponent,
     StudentListComponent,
+    StudentGridComponent,
     StudentFormsComponent,
     BottomsheetsComponent,
     BottomsheetPipe,

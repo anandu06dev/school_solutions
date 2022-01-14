@@ -7,7 +7,8 @@ import {
   loadResponsiveTabMenu,
   headerPositionOnsmallScreen,
 } from '@utils/utility';
-import { takeUntil, tap } from 'rxjs';
+import { Observable, takeUntil, tap } from 'rxjs';
+import { RouterString } from 'src/app/routerStringDeclaration';
 
 @Component({
   selector: 'app-tab',
@@ -21,34 +22,40 @@ export class AppMatTabComponent {
   activeLink: any;
   url: any;
 
+  currentView:any;
+  tabMenu!: Observable<any>;
+
   @Input() featureModulePath: string = '';
+  formMenu!: INavTabMenu;
 
   constructor(
     private destroy$: AutoUnsubscribe,
     private breakPointService: BreakPointService,
     private router: Router
   ) {
-    this.breakPointService.currentScreen
-      .pipe(
-        takeUntil(this.destroy$),
-        tap((d: any) => {
-          this.renderTabMenu = loadResponsiveTabMenu(d);
-        })
-      )
-      .subscribe();
+    this.tabMenu = this.breakPointService.currentScreen.pipe(
+      tap((d:any) => {
+        let renderTabMenu = loadResponsiveTabMenu(d);
+        this.formMenu = {...renderTabMenu[(renderTabMenu.length)-1]}
+        this.renderTabMenu = renderTabMenu.filter((i) => i.url !== 'form');
+      })
+    );
   }
 
   ngOnInit() {
-    this.fetchRouterUrl()
+    this.fetchRouterUrl();
+   
   }
 
   fetchRouterUrl() {
     this.url = this.router.url;
   }
   navigate(link: any) {
+    
     // this.activeLink =
     //   this.renderTabMenu.find((i) => i.url === link.url) ||
     //   this.renderTabMenu[0];
+    this.currentView = link.label
     this.router.navigateByUrl(this.featureModulePath + link?.url);
   }
 }

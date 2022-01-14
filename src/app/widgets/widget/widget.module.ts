@@ -17,6 +17,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TabPipe } from '@widgets/components/tab/tab.pipe';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const DECLARATIONS = [
   RootLayoutComponent,
@@ -32,6 +34,7 @@ const MODS = [
   SharedModule,
   MatTabsModule,
   MatTooltipModule,
+  MatMenuModule,
   MatChipsModule,
   NgSelectModule,
   NgOptionHighlightModule, 

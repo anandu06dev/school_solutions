@@ -2,8 +2,8 @@
 
    <img src="/assets/icons/img/admin.svg" *ngIf="showImage" class="card-img-top mx-auto mt-5 mb-2" height="150" alt="images">
 
-    <form class="form clay card-body bg-white rounded deep-border-curve" [formGroup]="LoginForm">
-        <p class="text-muted">Enter Login Credentials</p>
+    <form class="form clay card-body bg-white rounded deep-border-curve pb-4" [formGroup]="LoginForm">
+        <h4 class="text-muted text-center mat-line">Login</h4>
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>UserName</mat-label>
             <input matInput placeholder="Username" value="" formControlName="username">
@@ -21,7 +21,7 @@
             </mat-error>
         </mat-form-field> -->
         <div class="text-center">
-            <button mat-raised-button class="btn shadow-sm bg-purple text-white"
+            <button mat-raised-button class="clay bg-purple text-white"
                 [disabled]="!LoginForm.valid" (click)="login()">Login</button>
         </div>
     </form>

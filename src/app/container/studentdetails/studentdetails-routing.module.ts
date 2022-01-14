@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentFormsComponent } from './container/student-forms/student-forms.component';
+import { StudentGridComponent } from './container/student-grid/student-grid.component';
 import { StudentListComponent } from './container/student-list/student-list.component';
 import { StudentTableComponent } from './container/student-table/student-table.component';
 import {
@@ -35,6 +36,13 @@ const routes: Routes = [
       {
         path: 'list',
         component: StudentListComponent,
+        resolve: {
+          students: StudentdetailsResolver,
+        },
+      },
+      {
+        path: 'grid',
+        component: StudentGridComponent,
         resolve: {
           students: StudentdetailsResolver,
         },

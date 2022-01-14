@@ -42,7 +42,7 @@ export class CachingInterceptorService implements HttpInterceptor {
         // Filter since we are interested in caching the response only, not progress events
         filter((res) => res instanceof HttpResponse),
         // Share replay will cache the response
-        shareReplay(1)
+        // shareReplay(1)
       ));
     // pipe first() to cause the observable to complete after it emits the response
     // This mimics the behaviour of Observables returned by Angular's httpClient.get()
