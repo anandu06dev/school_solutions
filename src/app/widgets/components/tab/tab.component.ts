@@ -21,6 +21,7 @@ export class AppMatTabComponent {
   headerPosition: 'above' | 'below' = 'above';
   activeLink: any;
   url: any;
+  value:string=''
 
   currentView:any;
   tabMenu!: Observable<any>;

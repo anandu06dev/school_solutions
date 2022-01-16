@@ -21,6 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { StudentGridComponent } from './container/student-grid/student-grid.component';
+import { MatCustomTableComponent } from '@widgets/mat-custom-table/mat-custom-table.component';
+import { MatCustomTableModule } from '@widgets/mat-custom-table/mat-custom-table.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { StudentGridComponent } from './container/student-grid/student-grid.comp
     NgxMaskModule.forRoot(),
     StudentdetailsRoutingModule,
     WidgetModule,
+    MatCustomTableModule,
     MatStepperModule,
     MatCardModule,
     MatInputModule,

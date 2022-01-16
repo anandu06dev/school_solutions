@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="card d-none d-sm-none d-md-flex">
     <div class="card-body" style="overflow-x: auto;">
 
@@ -133,4 +133,15 @@
         <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons aria-label="">
         </mat-paginator>
     </div>
+</div> -->
+
+
+<!-- <app-table></app-table> -->
+<div class="card d-none d-sm-none d-md-flex">
+<app-mat-custom-table
+ (action)="onTableAction($event)"
+  [dataset]="data" 
+  [tableConfig]="tableConf"
+  [colDef]="columns">
+</app-mat-custom-table>
 </div>

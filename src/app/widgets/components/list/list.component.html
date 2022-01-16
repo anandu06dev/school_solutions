@@ -1,0 +1,90 @@
+<div class="d-flex shadow-sm p-2">
+    <!-- <p matListAvatar class="mx-2 me-4" [attr.data-letters]="student?.studentFirstName | slice:0:1"></p> -->
+    <ng-container [ngTemplateOutlet]="showAvatar" [ngTemplateOutletContext]="{ cardData: cardData }"></ng-container>
+    <div class="d-flex justify-content-between w-100">
+        <div class="ms-0 mx-auto">
+            <ng-container [ngTemplateOutlet]="mainInfo" [ngTemplateOutletContext]="{ cardData: cardData }">
+            </ng-container>
+            <ng-container [ngTemplateOutlet]="subInfo1" [ngTemplateOutletContext]="{ cardData: cardData }">
+            </ng-container>
+            <ng-container [ngTemplateOutlet]="subInfo2" [ngTemplateOutletContext]="{ cardData: cardData }">
+            </ng-container>
+
+            <div class="d-block d-sm-none my-1">
+                <ng-container [ngTemplateOutlet]="chipList" [ngTemplateOutletContext]="{ cardData: cardData }">
+                </ng-container>
+            </div>
+        </div>
+        <div class="d-none d-sm-block">
+            <ng-container [ngTemplateOutlet]="chipList" [ngTemplateOutletContext]="{ cardData: cardData }">
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #showAvatar let-cardData="cardData">
+    <div class="my-auto"><p *ngIf="cardData?.avatarInfo?.key" matListAvatar class="mx-2 me-4 my-auto"
+        [attr.data-letters]="data[cardData?.avatarInfo?.key] | slice :0:1"></p>
+        </div>
+</ng-template>
+
+<ng-template #mainInfo let-cardData="cardData">
+    <div>
+        <h3 matLine class="text-lowercase text-capitalize title m-0">
+            <span *ngIf="cardData?.mainInfo?.key">
+                {{ data[cardData?.mainInfo?.key] }}
+            </span>
+            <span *ngIf="cardData?.mainInfo?.secKey">
+                {{ data[cardData?.mainInfo?.secKey] }}
+            </span>
+        </h3>
+    </div>
+</ng-template>
+
+<ng-template #subInfo1 let-cardData="cardData">
+    
+    <ng-container *ngIf="cardData?.sub1Info">
+        <div *ngIf="cardData?.sub1Info?.show">
+            <small matLine class="text-secondary">
+                <span *ngIf="cardData?.sub1Info.label">{{ cardData?.sub1Info.label }}</span>
+                <span *ngIf="cardData?.sub1Info.key">{{ data[cardData.sub1Info.key] }}</span>
+            </small>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #subInfo2 let-cardData="cardData">
+    <ng-container *ngIf="cardData?.sub2Info">
+        <div *ngIf="cardData?.sub2Info.show">
+            <small matLine class="text-secondary">
+                <span *ngIf="cardData?.sub2Info.label">{{ cardData.sub2Info.label }}</span>
+                <span *ngIf="cardData?.sub2Info.key">{{ data[cardData.sub2Info.key] }}</span>
+            </small>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #chipList let-cardData="cardData">
+    <mat-chip-list #chipList>
+        <ng-container *ngIf="cardData?.chip1Info">
+            <mat-chip class="clay chip text-capitalize" *ngIf="cardData?.chip1Info?.show">
+                <span *ngIf="cardData?.chip1Info.label">{{ cardData?.chip1Info?.label }}</span>
+                <span *ngIf="cardData.chip1Info.key" class="ms-1">
+                    <span *ngIf="!cardData.chip1Info.trim"> {{ data[cardData.chip1Info.key] }} </span>
+                    <span *ngIf="cardData.chip1Info.trim"> {{ data[cardData.chip1Info.key] |
+                        slice:0:cardData.chip1Info.trim}} </span>
+                </span>
+            </mat-chip>
+        </ng-container>
+        <ng-container *ngIf="cardData?.chip2Info">
+            <mat-chip class="clay chip text-capitalize" *ngIf="cardData?.chip2Info.show">
+               
+                <span *ngIf="cardData.chip2Info.key">
+                    <span *ngIf="!cardData.chip2Info.trim"> {{ data[cardData.chip2Info.key] }} </span>
+                    <span *ngIf="cardData.chip2Info.trim"> {{ data[cardData.chip2Info.key] |
+                        slice:0:cardData.chip2Info.trim}} </span>
+                </span>
+            </mat-chip>
+        </ng-container>
+    </mat-chip-list>
+</ng-template>

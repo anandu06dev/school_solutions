@@ -3,6 +3,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListConfig } from '@utils/interfaces/listConfig';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import { Observable } from 'rxjs';
 import { RouterString } from 'src/app/routerStringDeclaration';
@@ -20,6 +21,37 @@ export class StudentListComponent implements OnInit {
   dataSource = new MatTableDataSource<IStudentDetails>([]);
   studentDetails: any;
   _studentLists: any = [];
+  listconfig:ListConfig = {
+    avatarInfo:{
+      key:'studentFirstName',
+      show:true
+    },
+    mainInfo:{
+      key:'studentFirstName',
+      secKey:'studentLastName',
+    },
+    sub1Info:{
+      key:'admissionNo',
+      label:'#',
+      show:true,
+    },
+    sub2Info:{
+      key:'studentBloodGroup',
+      label:'Blood Group',
+      show:true
+    },
+    chip1Info:{
+      key:'studentClass',
+      label:'class',
+      show:true
+    },
+    chip2Info:{
+      key:'studentGender',
+      label:'class',
+      show:true,
+      trim:1
+    }
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   obs!: Observable<any>;
@@ -32,11 +64,7 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentDetails = this.actRoute.snapshot?.data?.['students'] || [];
-    this.dataSource = new MatTableDataSource<IStudentDetails>(
-      this.studentDetails
-    );
-    this.obs = this.dataSource.connect();
-    this.dataSource.paginator = this.paginator;
+  
   }
 
  
@@ -60,9 +88,4 @@ export class StudentListComponent implements OnInit {
 
 
 
-  ngOnDestroy() {
-    if (this.dataSource) {
-      this.dataSource.disconnect();
-    }
-  }
 }

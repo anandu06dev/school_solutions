@@ -7,21 +7,20 @@
 </nav> -->
 <nav *ngIf="tabMenu | async">
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-           
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-auto">
+            <span mat-line class="ms-2 text-capitalize">Viewing as {{'' | tabPipe : url}} </span>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 text-end">
-            <button mat-button [matMenuTriggerFor]="menu">View</button>
-            <mat-menu #menu="matMenu">
-                <ng-container *ngFor="let link of renderTabMenu">
-                    <button [class.active]="link | tabPipe : url" mat-menu-item (click)="navigate(link)"
-                        class="text-capitalize">
-                        <mat-icon class="me-2">{{ link?.icon }}</mat-icon>
-                        {{ link.label }}
-                    </button>
-                </ng-container>
-            </mat-menu>
-            <button mat-button (click)="navigate(formMenu)">Add New</button>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-end" id="tabIcons">
+            <button mat-raised-button class="align-middle m-1" (click)="navigate(formMenu)">
+                <mat-icon class="">add_circle</mat-icon>
+                Add New
+            </button>
+            <button mat-raised-button [matMenuTriggerFor]="menu" class="align-middle m-1">
+                <mat-icon class="">view_array</mat-icon>
+                View
+            </button>
+
+          
         </div>
     </div>
     <!-- <div class="d-flex">
@@ -31,3 +30,13 @@
         </div>
     </div> -->
 </nav>
+
+<mat-menu #menu="matMenu">
+    <ng-container *ngFor="let link of renderTabMenu">
+        <button [class.active]="" mat-menu-item (click)="navigate(link)"
+            class="text-capitalize">
+            <mat-icon class="me-2">{{ link?.icon }}</mat-icon>
+            {{ link.label }}
+        </button>
+    </ng-container>
+</mat-menu>

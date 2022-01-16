@@ -19,6 +19,9 @@ import { TabPipe } from '@widgets/components/tab/tab.pipe';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatSortModule } from '@angular/material/sort';
+import { FormsModule } from '@angular/forms';
+import { ListComponent } from '@widgets/components/list/list.component';
 
 const DECLARATIONS = [
   RootLayoutComponent,
@@ -26,11 +29,13 @@ const DECLARATIONS = [
   AppMatTabComponent,
   QuickNavigationMenuComponent,
   StudentSearchComponent,
-  TabPipe
+  TabPipe,
+  ListComponent
+  
 ];
 const MODS = [
   MatSidenavModule,
-  MatToolbarModule,
+  MatToolbarModule,FormsModule,
   SharedModule,
   MatTabsModule,
   MatTooltipModule,
@@ -38,6 +43,9 @@ const MODS = [
   MatChipsModule,
   NgSelectModule,
   NgOptionHighlightModule, 
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
 ];
 
 @NgModule({

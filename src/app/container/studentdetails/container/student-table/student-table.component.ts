@@ -1,14 +1,10 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
-import { IStudentDetails } from '@utils/interfaces/studentData';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { IStudentSearchModel } from '@utils/interfaces/studentSearch.interface';
-import { studentDetail } from '../../models/studentDetail.model';
-import { IShowTableOnBottomSheet, BottomsheetsComponent } from '../../components/bottomsheets/bottomsheets.component';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { RouterString } from 'src/app/routerStringDeclaration';
+import { OnInit,Component } from "@angular/core";
+import { MatBottomSheet } from "@angular/material/bottom-sheet";
+import { ActivatedRoute, Router } from "@angular/router";
+import { TableColumn, TableConfig } from "@utils/interfaces/tableColumn";
+import { generateTableColumnHeader } from "@utils/utility";
+import { TableConsts } from "@widgets/mat-custom-table/consts/table";
+import { studentDetail } from "../../models/studentDetail.model";
 
 @Component({
   selector: 'app-student-table',
@@ -16,65 +12,28 @@ import { RouterString } from 'src/app/routerStringDeclaration';
   styleUrls: ['./student-table.component.scss'],
 })
 export class StudentTableComponent implements OnInit {
-  studentDetails!: IStudentDetails[];
+
   constructor(private actRoute: ActivatedRoute, private bottomSheet: MatBottomSheet,private router:Router) {}
 
-  displayedColumns: string[] = ['avatar', ...Object.keys(studentDetail)];
-  dataSource = new MatTableDataSource<IStudentDetails>([]);
-  clickedRows = new Set<IStudentDetails>();
 
-  multiselect:boolean = false;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  ngOnInit(): void {
-    console.log(this.actRoute.snapshot)
-    this.studentDetails = this.actRoute.snapshot?.data?.['students'] || [];
-    console.log(this.studentDetails)
-    this.dataSource = new MatTableDataSource<IStudentDetails>(
-      this.studentDetails
-    );
+  columns = generateTableColumnHeader(Object.keys(studentDetail));
+  tableConf:TableConfig = {
+    showAvatar:true,
+    showCheckBox:false,
+    avatarKey:'studentFirstName',
+    stickyColumn:'studentFirstName'
+    
+  }
+  
+  data: any[]=[];
+  ngOnInit() {
+    this.data = this.actRoute.snapshot?.data?.['students'] || [];
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+
+  onTableAction(event:any) {
+    console.log('event', event)
   }
 
-  selectedRows(row: IStudentDetails) {
-    if(this.multiselect){
-      if (this.clickedRows.has(row)) {
-        this.clickedRows.delete(row);
-      } else {
-        this.clickedRows.add(row);
-      }
-
-    }else{
-      this.clickedRows.clear()
-      this.clickedRows.add(row);
-
-    }
-    this.openBottomSheet(row)
-  }
-  openBottomSheet(student: IStudentDetails) {
-    let forBottomSheet: IShowTableOnBottomSheet;
-
-    let sheetRef = this.bottomSheet.open(BottomsheetsComponent, {
-      data: {
-        viewType: 'list',
-        renderData: { ...student },
-        data: { ...student },
-        label: 'Student lists',
-      },
-    });
-    sheetRef.afterDismissed().subscribe((data) => {
-      if (data) {
-        this.router.navigateByUrl(`${RouterString.STUDENTS}/form/edit/${data?.admissionNo}`)
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.dataSource) {
-      this.dataSource.disconnect();
-    }
-  }
+  
 }

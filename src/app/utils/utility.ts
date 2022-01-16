@@ -15,6 +15,9 @@ import { EMPTY } from 'rxjs';
 import { RouterString } from '../routerStringDeclaration';
 import { INavTabMenu } from './interfaces/navTabMenu.interface';
 import { IToolBarMenu } from './interfaces/toolbarmenu.interface';
+import { studentDetail } from '../container/studentdetails/models/studentDetail.model';
+import { TableColumn, TableConfig } from './interfaces/tableColumn';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -127,6 +130,14 @@ export const headerPositionOnsmallScreen = (
   currentView?: string
 ): 'below' | 'above' =>
   currentView?.toLowerCase().includes('small') ? 'below' : 'above';
+
+export const listInitSubData = {
+  label: '',
+  key: '',
+  secKey: '',
+  show: false,
+  trim:0
+};
 
 export const RootMenu: IToolBarMenu[] = [
   {
@@ -243,4 +254,33 @@ export function renewCacheOnTimer(
     ),
     mergeMap((d) => (isObservable(d) ? d : of(d)))
   );
+}
+
+export function generateTableColumnHeader(detail: string[]): TableColumn[] {
+  let d = [...detail];
+  return d.map((item) => {
+    let temp: TableColumn = {
+      columnDef: '',
+      header: '',
+      showAvatar: false,
+      showCheckBox: false,
+      avatarString: undefined,
+    };
+    temp.columnDef = item;
+    temp.header = convertCamelCaseToNormalText(item);
+    return temp;
+  });
+}
+
+export function convertCamelCaseToNormalText(text: string): string {
+  const result = text.replace(/([A-Z])/g, ' $1');
+  return result.charAt(0).toUpperCase() + result.slice(1);
+}
+
+export function CustomPaginator() {
+  const customPaginatorIntl = new MatPaginatorIntl();
+
+  customPaginatorIntl.itemsPerPageLabel = 'Showing:';
+
+  return customPaginatorIntl;
 }
