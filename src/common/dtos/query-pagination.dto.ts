@@ -63,15 +63,6 @@ export class BaseQueryPageOptionsDto {
     }
 
     @ApiPropertyOptional({
-        default: false,
-        description: 'Describes about multiple relations/join',
-    })
-    @Type(() => String)
-    @IsOptional()
-    @IsNotEmpty()
-    getOtherDetails: string
-
-    @ApiPropertyOptional({
         enum: RecordStatus,
         default: RecordStatus.IsActive,
         description: 'Describes about Record Status',
@@ -99,6 +90,15 @@ export class BaseQueryPageOptionsDto {
     @Type(() => String)
     @IsOptional()
     readonly aid: string
+
+    @ApiPropertyOptional({
+        default: false,
+        description: 'Describes about multiple relations/join',
+    })
+    @Type(() => String)
+    @IsOptional()
+    @IsNotEmpty()
+    getOtherDetails: string
 
     @ApiPropertyOptional({
         enum: [

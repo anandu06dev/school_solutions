@@ -142,7 +142,9 @@ export class StudentDetailsService {
                 primaryJoin: pageOptionsDto.primaryJoin,
                 where: [
                     getRecordStatus(pageOptionsDto.activeRecords),
-                    getStudentAddmissionCondition(pageOptionsDto.aid),
+                    pageOptionsDto.aid
+                        ? getStudentAddmissionCondition(pageOptionsDto.aid)
+                        : {},
                     pageOptionsDto.getOtherDetails === 'true'
                         ? getSecondaryJoinAndIdCondition(
                               pageOptionsDto.uniqueId,
