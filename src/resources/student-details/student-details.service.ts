@@ -1,7 +1,11 @@
 import { PageMetaDto, PageDto } from '@common/dtos'
-import { StudentQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
-import { Injectable, NotFoundException } from '@nestjs/common'
+import {
+    SiblingQueryPageOptionsDto,
+    StudentQueryPageOptionsDto,
+} from '@common/dtos/query-pagination.dto'
+import { Injectable, NotFoundException, Scope } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import { getPageableStudentsRepo } from '@resources/repository.module'
 import {
     AllowedEntity,
     Projection,
@@ -18,6 +22,7 @@ import {
     getConditionlessQb,
     LookForAdmissionId,
 } from '@resources/resources-util/resource-query-util'
+import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
 import { getCustomRepository, Repository, SelectQueryBuilder } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
@@ -127,50 +132,10 @@ export class StudentDetailsService {
         )
         return studentCtsmRepository.findByIdAndIsActive(id)
     }
-
     async getPageableStudents(
-        pageOptionsDto: StudentQueryPageOptionsDto
+        pageOptionsDto: StudentQueryPageOptionsDto | SiblingQueryPageOptionsDto
     ): Promise<any> {
-        // try {
-        if (Array.isArray(pageOptionsDto.join) && pageOptionsDto.uniqueId) {
-            throw new QueryEntityRestrictionException()
-        } else {
-            let queryBuilder = this.studentRepository.createQueryBuilder(
-                pageOptionsDto.primaryJoin
-            ) as SelectQueryBuilder<AllowedEntity>
-            queryBuilder = await getConditionlessQb(queryBuilder, {
-                primaryJoin: pageOptionsDto.primaryJoin,
-                where: [
-                    getRecordStatus(pageOptionsDto.activeRecords),
-                    pageOptionsDto.aid
-                        ? getStudentAddmissionCondition(pageOptionsDto.aid)
-                        : {},
-                    pageOptionsDto.getOtherDetails === 'true'
-                        ? getSecondaryJoinAndIdCondition(
-                              pageOptionsDto.uniqueId,
-                              pageOptionsDto.join
-                          )
-                        : {},
-                ],
-                queryJoin:
-                    pageOptionsDto.getOtherDetails === 'true'
-                        ? getQueryJoin(pageOptionsDto.join)
-                        : [],
-            })
-            console.log(pageOptionsDto.join)
-            console.log(queryBuilder.getSql())
-
-            queryBuilder = await orderBy(queryBuilder, pageOptionsDto)
-
-            queryBuilder.skip(pageOptionsDto.skip)
-            queryBuilder.take(pageOptionsDto.take)
-            const raw = await queryBuilder.getManyAndCount()
-            const pageMetaDto = new PageMetaDto({
-                itemCount: raw[1],
-                pageOptionsDto,
-            })
-            return new PageDto(raw[0], pageMetaDto)
-        }
+        return getPageableStudentsRepo(pageOptionsDto, this.studentRepository)
     }
 }
 

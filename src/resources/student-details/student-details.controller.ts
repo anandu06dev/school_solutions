@@ -15,7 +15,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 import { Projection } from '@resources/resource-model/resource.model'
 import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
-import { BaseQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
+import { StudentQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
 @ApiTags('student-details')
 @ApiBearerAuth()
 // @UseGuards(AuthGuard())
@@ -52,14 +52,14 @@ export class StudentDetailsController {
 
     @Get('/pageable/studentdetails')
     getPageableGetStudentDetails(
-        @Query() pagination?: BaseQueryPageOptionsDto
+        @Query() pagination?: StudentQueryPageOptionsDto
     ) {
         console.log('pagination $$$$$$$$$$$$$$$$$44', pagination)
         return this.studentDetailsService.getPageableStudents(pagination)
     }
 
     @Post('/pageable/studentdetails')
-    getPageableStudentDetails(@Body() pageOptions: BaseQueryPageOptionsDto) {
+    getPageableStudentDetails(@Body() pageOptions: StudentQueryPageOptionsDto) {
         return this.studentDetailsService.getPageableStudents(pageOptions)
     }
 

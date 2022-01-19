@@ -1,12 +1,21 @@
-import { PageOptionsDto, PageMetaDto, PageDto } from '@common/dtos'
-import { BaseQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
-import { Injectable, NotFoundException } from '@nestjs/common'
+import { SiblingQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
+import {
+    Inject,
+    Injectable,
+    NotFoundException,
+    OnModuleInit,
+} from '@nestjs/common'
+import { ContextIdFactory, ModuleRef } from '@nestjs/core'
 import { InjectRepository } from '@nestjs/typeorm'
+import { getPageableStudentsRepo } from '@resources/repository.module'
 import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
+import { StudentDetailRepository } from '@resources/student-details/customRepository/student-cstm-repository'
 import { StudentDetails } from '@resources/student-details/entities/student-detail.entity'
+import { StudentDetailsService } from '@resources/student-details/student-details.service'
+import { StudentRepository } from '@resources/students/repositories/student.repository'
 import { getCustomRepository, In, Repository } from 'typeorm'
 import { SiblingDetailRepository } from './customRepository/sibling-cstm-repository'
 import { SiblingDetailDto } from './dto/sibling-detail.dto'
@@ -14,16 +23,27 @@ import { UpdateSiblingDetailDto } from './dto/update-sibling-detail.dto'
 import { SiblingDetails } from './entities/sibling-detail.entity'
 
 @Injectable()
-export class SiblingDetailsService {
+export class SiblingDetailsService implements OnModuleInit {
     siblingCtsmRepository = getCustomRepository(SiblingDetailRepository)
-
+    studentService: StudentDetailsService
     constructor(
         @InjectRepository(SiblingDetails)
         private siblingRepository: Repository<SiblingDetails>,
-        @InjectRepository(StudentDetails)
-        private studentDtls: Repository<StudentDetails>
+        private moduleRef: ModuleRef
     ) {}
-
+    async onModuleInit() {
+        const contextId = ContextIdFactory.create()
+        this.moduleRef.registerRequestByContextId(
+            StudentDetailsService,
+            contextId
+        )
+        this.studentService = await this.moduleRef.resolve(
+            StudentDetailsService,
+            contextId,
+            { strict: false }
+        )
+        console.log(this.studentService) // true
+    }
     create(siblingDetailDto: SiblingDetailDto) {
         return this.siblingRepository.save(siblingDetailDto)
     }
@@ -92,46 +112,8 @@ export class SiblingDetailsService {
     }
 
     async getPageableSibDetails(
-        pageOptionsDto: BaseQueryPageOptionsDto
+        pageOptionsDto: SiblingQueryPageOptionsDto
     ): Promise<any> {
-        try {
-            const queryBuilder =
-                this.siblingRepository.createQueryBuilder('sibling_details')
-            // if (pageOptionsDto.showStudentDetails) {
-            // queryBuilder.leftJoinAndSelect(
-            //     'sibling_details.studentDetails',
-            //     'studentDetails'
-            // )
-            // getADmnno ffrom unique id then pass the admno to main query to maintain same structure.
-            queryBuilder.leftJoinAndSelect(
-                'sibling_details.studentDetails',
-                'studentDetails'
-            )
-            //}
-            // queryBuilder.where(
-            //     'student_details.studentIsActive =:studentIsActive',
-            //     {
-            //         studentIsActive: 1,
-            //     }
-            // )
-            queryBuilder.where('sibling_details.id =:id', {
-                id: 'c7409a8e-f507-4a77-98a0-fca2ed08adf4',
-            })
-            queryBuilder
-                //.orderBy('student.createdAt', pageOptionsDto.order)
-                .skip(pageOptionsDto.skip)
-                .take(pageOptionsDto.take)
-
-            //const itemCount = await queryBuilder.getCount()
-            const raw = await queryBuilder.getManyAndCount()
-            const pageMetaDto = new PageMetaDto({
-                itemCount: raw[1],
-                pageOptionsDto,
-            })
-
-            return new PageDto(raw[0], pageMetaDto)
-        } catch (e) {
-            console.log(e)
-        }
+      return await this.studentService.getPageableStudents(pageOptionsDto)
     }
 }

@@ -47,40 +47,20 @@ export class BaseQueryPageOptionsDto {
 
     @ApiPropertyOptional({
         minimum: 1,
-        maximum: 50,
+        maximum: 1000,
         default: 10,
         description: 'Describes about no of records',
     })
     @Type(() => Number)
     @IsInt()
     @Min(1)
-    @Max(50)
+    @Max(1000)
     @IsOptional()
     readonly take?: number = 10
 
     get skip(): number {
         return (this.page - 1) * this.take
     }
-
-    @ApiPropertyOptional({
-        enum: RecordStatus,
-        default: RecordStatus.IsActive,
-        description: 'Describes about Record Status',
-    })
-    @IsEnum(RecordStatus)
-    @IsOptional()
-    readonly activeRecords?: RecordStatus = RecordStatus.IsActive
-    @ApiProperty({
-        enum: [JoinProjection.STUDENT_DETAILS],
-        default: JoinProjection.STUDENT_DETAILS,
-        isArray: false,
-        readOnly: true,
-        required: true,
-        description: 'Describes about Join Projection',
-    })
-    @Type(() => String)
-    @IsOptional()
-    readonly primaryJoin: string
 
     @ApiPropertyOptional({
         minimum: 1,
@@ -92,6 +72,15 @@ export class BaseQueryPageOptionsDto {
     readonly aid: string
 
     @ApiPropertyOptional({
+        enum: RecordStatus,
+        default: RecordStatus.IsActive,
+        description: 'Describes about Record Status',
+    })
+    @IsEnum(RecordStatus)
+    @IsOptional()
+    readonly activeRecords?: RecordStatus = RecordStatus.IsActive
+
+    @ApiPropertyOptional({
         default: false,
         description: 'Describes about multiple relations/join',
     })
@@ -100,6 +89,18 @@ export class BaseQueryPageOptionsDto {
     @IsNotEmpty()
     getOtherDetails: string
 
+    @ApiPropertyOptional({
+        minimum: 1,
+        default:
+            'c7409a8e-f507-4a77-98a0-fca2ed08adf4,c7409a8e-f507-4a77-98a0-fca2ed08adf4',
+        description: 'Describes about UniqueId of the entity',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly uniqueId: string
+}
+
+export class StudentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
     @ApiPropertyOptional({
         enum: [
             JoinProjection.SIBLINGS,
@@ -116,18 +117,6 @@ export class BaseQueryPageOptionsDto {
     @IsOptional()
     readonly join: string[] = [JoinProjection.SIBLINGS, JoinProjection.PARENTS]
 
-    @ApiPropertyOptional({
-        minimum: 1,
-        default:
-            'c7409a8e-f507-4a77-98a0-fca2ed08adf4,c7409a8e-f507-4a77-98a0-fca2ed08adf4',
-        description: 'Describes about UniqueId of the entity',
-    })
-    @Type(() => String)
-    @IsOptional()
-    readonly uniqueId: string
-}
-
-export class StudentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
     @ApiProperty({
         enum: [JoinProjection.STUDENT_DETAILS],
         default: JoinProjection.STUDENT_DETAILS,
@@ -139,4 +128,33 @@ export class StudentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
     @Type(() => String)
     @IsOptional()
     readonly primaryJoin: string
+}
+
+export class SiblingQueryPageOptionsDto extends BaseQueryPageOptionsDto {
+    @ApiProperty({
+        enum: [JoinProjection.STUDENT_DETAILS],
+        default: JoinProjection.STUDENT_DETAILS,
+        isArray: false,
+        required: true,
+        description: 'Describes about Join Projection',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly primaryJoin: string
+    @ApiPropertyOptional({
+        default: JoinProjection.STUDENT_DETAILS,
+        isArray: false,
+        required: true,
+        description: 'Describes about Join Projection',
+    })
+    @IsOptional()
+    readonly tesjoin: string
+    @ApiPropertyOptional({
+        enum: [JoinProjection.SIBLINGS],
+        default: JoinProjection.SIBLINGS,
+        isArray: false,
+        description: 'Describes about Optional JoinProjection',
+    })
+    @IsOptional()
+    readonly join: string[] = [JoinProjection.SIBLINGS]
 }

@@ -1,4 +1,4 @@
-import { BaseQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
+import { SiblingQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
 import {
     Controller,
     Get,
@@ -47,13 +47,15 @@ export class SiblingDetailsController {
 
     @Get('/pageable/siblingdetails')
     getPageableGetStudentDetails(
-        @Query('pagination') pagination?: BaseQueryPageOptionsDto
+        @Query() pageOptions?: SiblingQueryPageOptionsDto
     ) {
-        return this.siblingDetailsService.getPageableSibDetails(pagination)
+        console.log(pageOptions,'pageOptions')
+        return this.siblingDetailsService.getPageableSibDetails(pageOptions)
     }
 
     @Post('/pageable/siblingdetails')
-    getPageableStudentDetails(@Body() pageOptions: BaseQueryPageOptionsDto) {
+    getPageableStudentDetails(@Body() pageOptions: SiblingQueryPageOptionsDto) {
+        console.log(pageOptions,'pageOptions')
         return this.siblingDetailsService.getPageableSibDetails(pageOptions)
     }
 
