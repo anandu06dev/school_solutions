@@ -63,8 +63,7 @@ export class StudentListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.studentDetails = this.actRoute.snapshot?.data?.['students'] || [];
-  
+    this.studentDetails = this.actRoute.snapshot?.data?.['students'] || [];  
   }
 
  

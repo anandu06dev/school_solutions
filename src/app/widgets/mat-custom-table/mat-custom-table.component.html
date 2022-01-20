@@ -52,7 +52,7 @@
             [indeterminate]="selection.hasValue() && !isAllSelected()">
           </mat-checkbox>
         </mat-header-cell>
-        <mat-cell *cdkCellDef="let row">
+        <mat-cell *cdkCellDef="let row"  style="width: 20px;">
           <mat-checkbox color="primary" (click)="$event.stopPropagation()"
             (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
           </mat-checkbox>
@@ -61,15 +61,18 @@
       <!-- avatar Image header -->
       <ng-container matColumnDef="avatar" *ngIf="tableConf.avatarKey && tableConf.showAvatar">
         <mat-header-cell *matHeaderCellDef>Avatar</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">
+        <mat-cell *cdkCellDef="let row" style="width: 20px;">
           <p matListAvatar class="mx-2 me-4"
           [attr.data-letters]="row[tableConf.avatarKey] | slice:0:1"></p>
         </mat-cell>
       </ng-container>
       <!-- table dynamic columns -->
       <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef" [sticky]="isSticky(column.columnDef)">
-        <mat-header-cell *cdkHeaderCellDef mat-sort-header class="">{{ column.header }}</mat-header-cell>
-        <mat-cell *cdkCellDef="let row" class="text-capitalize" matRipple>{{ row[column.columnDef] }}</mat-cell>
+      
+        <mat-header-cell *cdkHeaderCellDef mat-sort-header class="" [style.width.px]="column.width">{{ column.header }}</mat-header-cell>
+        <mat-cell *cdkCellDef="let row" [style.width.px]="column.width"  class="text-capitalizes" matRipple>
+          {{ row[column.columnDef] }}
+        </mat-cell>
       </ng-container>
 
       <!-- table action column -->
@@ -80,7 +83,7 @@
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" class="my-2 shadow-sm"
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="my-2 mx-1 shadow-sm cursor-pointer"
         [class.selectedRow]="clickedRows.has(row)" (click)="selectedRows(row)"
         ></mat-row>
       </mat-table>

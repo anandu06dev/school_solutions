@@ -9,7 +9,7 @@
 }
 
 .small-sheet-height{
-    height: calc(34vh - 0.5rem) !important;
+    height:calc(38vh - 0.5rem) !important
 }
 
 :host ::ng-deep .mat-bottom-sheet-container-medium{
@@ -28,4 +28,64 @@ button {
     grid-template-columns: 0.7fr 1fr;
     grid-gap: 0.5rem;
     // border-bottom: 1px solid silver;
+}
+
+
+
+.social_links
+{
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.social_links .combo
+{
+    transform: scale(0.9);
+    transition: 0.4s ease-in;
+ 
+    height: 2.5rem;
+    width: 2.5rem;
+    
+    filter: drop-shadow(0 0 1rem #6f42c1);
+}
+.combo .circle
+{
+    color: #f9f9f9;
+    transition: 0.4s ease-in;
+    font-size: 3em;
+}
+.combo .icon
+{
+    color: #444343;
+    font-size: 2rem;
+    transform: translateY(1px);
+    transition: 0.2s ease-in;
+}
+.combo:hover
+{
+    transform: scale(1.1);
+}
+.combo:hover , .combo:hover .icon
+{
+    color:white;
+}
+.ig:hover , .ig:hover .circle
+{
+    color:#e91e63;
+}
+.fb:hover , .fb:hover .circle
+{
+    color:#2196f3;
+}
+.yt:hover , .yt:hover .circle
+{
+    color:#f44336;
+}
+.tw:hover , .tw:hover .circle
+{
+    color:#2196f3;
+}
+.gt:hover , .gt:hover .circle{
+    color: #1f1f1f;
 }

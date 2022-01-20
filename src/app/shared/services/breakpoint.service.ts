@@ -13,7 +13,7 @@ export class BreakPointService{
     set currentScreen(value:any){
         this._currentScreen.next(value);
     }
-    get currentScreen(){
+    get currentScreen$(){
         return this._currentScreen.asObservable()
     }
 }

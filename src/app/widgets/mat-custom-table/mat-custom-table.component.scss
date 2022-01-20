@@ -87,10 +87,10 @@
 
 /*  */
 :host ::ng-deep mat-header-cell, mat-cell{
-  flex: 0 0 200px;
-  border:0!important;
-  width: auto;
-  justify-content: space-around;
+  // flex: 0 0 200px;
+  // border:0!important;
+  // width: auto;
+  // justify-content: space-around;
   // box-shadow: 2px;
   // box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
@@ -109,7 +109,7 @@
   justify-content:flex-start
 }
 .selectedRow{
-  border:1px solid #673ab7
+  outline:1px solid #673ab7
 }
 
 #table-card{

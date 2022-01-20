@@ -79,10 +79,7 @@ body {
     // margin-right: 1em;
     color: white;
 }
-mat-bottom-sheet-container.mat-bottom-sheet-container[role="dialog"]{  
-  border-top-left-radius: 2rem !important;
-  border-top-right-radius: 2rem !important;
-}
+
 
 $purple:  #6f42c1;
 .bg-purple{
@@ -144,10 +141,12 @@ $default-shadow-inset-secondary: 8px 8px 16px 0 rgba(255, 255, 255, 0.2);
     overflow-x: hidden !important;
 }
 
-:root {
-    --nm: 6px 6px 16px 0 rgba(0, 0, 0, 0.2),
-    -6px -6px 16px 0 rgba(255, 255, 255, 1);
+mat-bottom-sheet-container.mat-bottom-sheet-container[role="dialog"]{  
+    border-top-left-radius: 2rem !important;
+    border-top-right-radius: 2rem !important;
+    box-shadow: 0 35px 68px 0 rgb(103 58 183 /20%), inset 0 -8px 12px 0 rgb(0 0 0 / 20%);
+  }
 
-    --nm-inset:inset 4px 4px 8px 0 rgba(0, 0, 0, 0.2),
-    inset -4px -4px 8px 0 rgba(255, 255, 255, 0.8);
-}
+  .quickLink-icon{
+      font-size: 12px;
+  }

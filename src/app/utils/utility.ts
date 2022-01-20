@@ -264,10 +264,14 @@ export function generateTableColumnHeader(detail: string[]): TableColumn[] {
       header: '',
       showAvatar: false,
       showCheckBox: false,
-      avatarString: undefined,
-    };
+      width:150
+     };
     temp.columnDef = item;
+    if(temp.columnDef === 'admissionNo'){
+      temp.width = 10;
+    }
     temp.header = convertCamelCaseToNormalText(item);
+    console.log(temp)
     return temp;
   });
 }

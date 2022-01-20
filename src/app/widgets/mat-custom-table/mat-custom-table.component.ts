@@ -33,14 +33,22 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
 
   // @Input() columns!: Array<TableColumn>;
   @Input() set tableConfig(value: TableConfig) {
-    this.tableConf = { ...value };
-    if(value.avatarKey && value.showAvatar){
+    if (value.avatarKey && value.showAvatar) {
       this.appendavatar();
     }
+    value.multiSelect = true;
+    if (value.multiSelect) {
+      // this.appendCheckBox();
+    }
+    this.tableConf = { ...value };
   }
   @Input() set colDef(value: Array<TableColumn>) {
     this.columns = [...value];
-    this.dynamicWidth = value.length * 200; // this pixels is connected to mat column default pixels
+    let reduced = value
+      .map((i) => (i?.width ? i.width : 150)) //default width is 150px
+      .reduce((acc: number, curr: number) => {console.log(curr);return acc + curr}, 0);
+      console.log(reduced)
+    this.updateWidth(reduced); // this pixels is connected to mat column default pixels
   }
   @Input() dataset: Array<any> = [];
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
@@ -110,14 +118,31 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
   }
 
   isSticky(key: string) {
-    console.log(key);
     if (this.tableConf.stickyColumn === key) return true;
     return false;
   }
 
   selectedRows(row: any) {
+    let selectedRows;
+
+    if (this.tableConf.multiSelect) {
+      if (this.clickedRows.has(row)) {
+        this.clickedRows.delete(row);
+      } else {
+        this.clickedRows.add(row);
+      }
+    } else {
+      this.clickedRows.clear();
+      this.clickedRows.add(row);
+    }
+    selectedRows = Array.from(this.clickedRows);
+    this.emitSelectedRow.emit({ selectedRows });
+  }
+
+  selectedRowbck(row: any) {
     this.clickedRows.clear();
     this.clickedRows.add(row);
+    let selectedRows;
 
     if (this.tableConf.multiSelect) {
       if (this.clickedRows.has(row)) {
@@ -126,7 +151,12 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
         this.clickedRows.add(row);
       }
     }
+    selectedRows = Array.from(this.clickedRows);
+    // selectedRows = selectedRows[selectedRows.length-1]
 
-    this.emitSelectedRow.emit({ selectedRows: this.clickedRows });
+    this.emitSelectedRow.emit({ selectedRows });
+  }
+  updateWidth(len: number) {
+    this.dynamicWidth = len;
   }
 }

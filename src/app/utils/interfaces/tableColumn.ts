@@ -5,7 +5,7 @@
     showCheckBox?:boolean
     isSortable?:boolean
     showAvatar?:boolean
-    avatarString?:string
+    width?:number
 
  }
 

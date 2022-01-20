@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { BreakPointService } from '@shared/services/breakpoint.service';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import {
@@ -8,7 +9,7 @@ import {
   generateStudentClass,
   MyErrorStateMatcher,
 } from '@utils/utility';
-import { Observable, of, take, takeUntil } from 'rxjs';
+import { Observable, of, take, takeUntil, tap } from 'rxjs';
 import { studentDetail } from '../../models/studentDetail.model';
 import { StudentapiService } from '../../services/studentapi.service';
 
@@ -29,13 +30,13 @@ export class StudentFormsComponent implements OnInit {
   toggleSaveButton: boolean=false;
   studentDetailBasedOnAdmissionNumber: any;
 
-  @Input() set trackScreenView(value: string | null) {
-    if (value) {
-      this._currentScreenView = value.toLowerCase().includes('small')
-        ? 'vertical'
-        : 'horizontal';
-    }
-  }
+  // @Input() set trackScreenView(value: string | null) {
+  //   if (value) {
+  //     this._currentScreenView = value.toLowerCase().includes('small')
+  //       ? 'vertical'
+  //       : 'horizontal';
+  //   }
+  // }
 
   studentPrimaryDetails!: FormGroup;
   studentReligionDetails!: FormGroup;
@@ -114,22 +115,22 @@ export class StudentFormsComponent implements OnInit {
     private fb: FormBuilder,
     private api: StudentapiService,
     private actRoute: ActivatedRoute,
-    private destroy$:AutoUnsubscribe
+    private destroy$:AutoUnsubscribe,
+    private breakPoint:BreakPointService
   ) {
     this.classes = generateStudentClass();
     this.bloodGroup = generateBloodGroup();
     this.studentDetailBasedOnAdmissionNumber = actRoute.snapshot.data?.['student']
-    console.log()
+  
+   this.breakPoint.currentScreen$.pipe(takeUntil(this.destroy$),tap((d)=>{
+    this._currentScreenView = d.toLowerCase().includes('small') ? 'vertical' : 'horizontal'
+   })).subscribe()
 
     this.actRoute.params
       .pipe(takeUntil(this.destroy$))
       .subscribe(({action,admissionNo}) => {
         this.action = action;
-        console.log(action,admissionNo)
         this.toggleSaveButton = this.action === 'edit' ? false : true;
-        // if (siblingsId) {
-        //   this.siblingDetails.id = siblingsId ? siblingsId : '';
-        // }
       });
   }
 

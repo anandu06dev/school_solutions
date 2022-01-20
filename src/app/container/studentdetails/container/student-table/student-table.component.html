@@ -139,7 +139,7 @@
 <!-- <app-table></app-table> -->
 <div class="card d-none d-sm-none d-md-flex">
 <app-mat-custom-table
- (action)="onTableAction($event)"
+ (emitSelectedRow)="onTableAction($event)"
   [dataset]="data" 
   [tableConfig]="tableConf"
   [colDef]="columns">

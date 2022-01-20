@@ -34,7 +34,7 @@ export class AppMatTabComponent {
     private breakPointService: BreakPointService,
     private router: Router
   ) {
-    this.tabMenu = this.breakPointService.currentScreen.pipe(
+    this.tabMenu = this.breakPointService.currentScreen$.pipe(
       tap((d:any) => {
         let renderTabMenu = loadResponsiveTabMenu(d);
         this.formMenu = {...renderTabMenu[(renderTabMenu.length)-1]}
