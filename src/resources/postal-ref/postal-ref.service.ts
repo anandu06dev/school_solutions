@@ -3,11 +3,10 @@ import { PageOptionsDto } from '@common/dtos/page-options.dto'
 import { PageDto } from '@common/dtos/page.dto'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { getCustomRepository, ILike, Like, Repository } from 'typeorm'
+import { getCustomRepository, Repository } from 'typeorm'
 import { PostalRefRepository } from './customRepository/postal-cstm-repository'
 import { PostalRefDto } from './dto/create-postal-ref.dto'
 import { PostalRef } from './entities/postal-ref.entity'
-import { PostalRefProjection } from './modal/postal-ref-projection'
 
 @Injectable()
 export class PostalRefService {

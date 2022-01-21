@@ -1,29 +1,13 @@
-import { PageMetaDto, PageDto } from '@common/dtos'
 import {
     SiblingQueryPageOptionsDto,
     StudentQueryPageOptionsDto,
 } from '@common/dtos/query-pagination.dto'
-import { Injectable, NotFoundException, Scope } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { getPageableStudentsRepo } from '@resources/repository.module'
-import {
-    AllowedEntity,
-    Projection,
-} from '@resources/resource-model/resource.model'
-import { QueryEntityRestrictionException } from '@resources/resources-exception/QueryEntityRestrictionException'
-import {
-    getQueryJoin,
-    getRecordStatus,
-    getSecondaryJoinAndIdCondition,
-    getStudentAddmissionCondition,
-    orderBy,
-} from '@resources/resources-util/resource-query-constants'
-import {
-    getConditionlessQb,
-    LookForAdmissionId,
-} from '@resources/resources-util/resource-query-util'
-import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
-import { getCustomRepository, Repository, SelectQueryBuilder } from 'typeorm'
+import { Projection } from '@resources/resource-model/resource.model'
+import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import { getCustomRepository, Repository } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
 import { StudentDetailDto } from './dto/student-detail.dto'
