@@ -1,3 +1,5 @@
+import { groupBy } from 'rxjs'
+import { cache } from 'src/migrations/migration-db-connection'
 import { EntityRepository, AbstractRepository, ILike, In } from 'typeorm'
 import { PostalRef } from '../entities/postal-ref.entity'
 import { PostalRefProjection } from '../modal/postal-ref-projection'
@@ -40,6 +42,7 @@ export class PostalRefRepository extends AbstractRepository<PostalRef> {
     }
 
     getPostalNameByDistrict(districtName: string) {
+        console.log(districtName)
         return this.repository.find({
             where: {
                 ...(districtName && {
@@ -49,16 +52,21 @@ export class PostalRefRepository extends AbstractRepository<PostalRef> {
         })
     }
 
+    getPostalNameByPinCode(pincode: string) {
+        console.log(pincode)
+        return this.repository.find({
+            where: {
+                ...(pincode && {
+                    pincode: ILike('%' + pincode + '%'),
+                }),
+            },
+        })
+    }
+
     getAllStateName() {
-        //     return this.repository
-        //         .createQueryBuilder('postal_ref')
-        //         .select('postal_ref.stateName')
-        //         .addSelect('COUNT(postal_ref.stateName)', 'count')
-        //         .groupBy('postal_ref.stateName')
-        // }
-        console.log('getAllStateName')
-        return this.repository.query(
-            `select stateName from postal_ref group by stateName;`
-        )
+        return this.repository
+            .createQueryBuilder('postal_ref')
+            .groupBy('postal_ref.stateName')
+            .getMany()
     }
 }

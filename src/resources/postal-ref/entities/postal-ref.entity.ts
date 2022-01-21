@@ -1,12 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryColumn } from 'typeorm'
 
 @Entity('postal_ref', { schema: 'app_schl_dev' })
 export class PostalRef {
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     @Column('int', {
         default: 1,
         primary: true,
-        name: 'Id',
+        name: 'id',
         comment: 'Postal Unique Id',
     })
     id: BigInt

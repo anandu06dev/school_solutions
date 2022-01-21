@@ -1,3 +1,4 @@
+import { PageOptionsDto } from '@common/dtos'
 import {
     Controller,
     Get,
@@ -6,16 +7,18 @@ import {
     Patch,
     Param,
     Delete,
+    Query,
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { PostalRefDto } from './dto/create-postal-ref.dto'
-import { PostalRefProjection } from './modal/postal-ref-projection'
 import { PostalRefService } from './postal-ref.service'
 
 @ApiTags('postal-ref')
 @Controller('postal-ref')
 export class PostalRefController {
-    constructor(private readonly postalRefService: PostalRefService) {}
+    constructor(private readonly postalRefService: PostalRefService) {
+        console.log('PostalRefController')
+    }
 
     @Post()
     create(@Body() createPostalRefDto: PostalRefDto) {
@@ -27,19 +30,42 @@ export class PostalRefController {
         return this.postalRefService.findAll()
     }
 
-    @Post('findByProjection')
-    findByProjection(@Body() postalRef: PostalRefProjection) {
-        return this.postalRefService.findByProjection(postalRef)
-    }
-
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.postalRefService.findOne(+id)
-    }
-
+    // @Post('findByProjection')
+    // findByProjection(@Body() postalRef: PostalRefProjection) {
+    //     return this.postalRefService.findByProjection(postalRef)
+    // }
     @Get('getAllState')
     getAllState() {
+        console.log('getAllState')
         return this.postalRefService.getAllState()
+    }
+
+    @Get('/getPostalNameByState/:stateName')
+    getPostalNameByState(@Param('stateName') stateName: string) {
+        console.log('getPostalNameByState', stateName)
+        return this.postalRefService.getPostalNameByState(stateName)
+    }
+
+    @Get('/getPostalNameByDistrict/:districtName')
+    getPostalNameByDistrict(@Param('districtName') districtName: string) {
+        console.log('districtName', districtName)
+        return this.postalRefService.getPostalNameByDistrict(districtName)
+    }
+
+    @Get('/getPostalNameByPinCode/:pincode')
+    getPostalNameByPinCode(@Param('pincode') pincode: string) {
+        console.log('pincode', pincode)
+        return this.postalRefService.getPostalNameByDistrict(pincode)
+    }
+
+    @Get('/pageable/postalRef')
+    getPageableGetStudentDetails(@Query() pagination?: PageOptionsDto) {
+        return this.postalRefService.getPageablePostalRef(pagination)
+    }
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        console.log('findOne')
+        return this.postalRefService.findOne(+id)
     }
 
     @Patch(':id')

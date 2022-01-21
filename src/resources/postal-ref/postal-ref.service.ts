@@ -1,6 +1,9 @@
+import { PageMetaDto } from '@common/dtos/page-meta.dto'
+import { PageOptionsDto } from '@common/dtos/page-options.dto'
+import { PageDto } from '@common/dtos/page.dto'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { getCustomRepository, Repository } from 'typeorm'
+import { getCustomRepository, ILike, Like, Repository } from 'typeorm'
 import { PostalRefRepository } from './customRepository/postal-cstm-repository'
 import { PostalRefDto } from './dto/create-postal-ref.dto'
 import { PostalRef } from './entities/postal-ref.entity'
@@ -38,13 +41,57 @@ export class PostalRefService {
         await this.postalRepository.delete(id)
     }
 
-    async findByProjection(
-        projection: PostalRefProjection
+    async getPostalNameByDistrict(
+        districtName: string
     ): Promise<PostalRefDto[]> {
-        return this.postalRefCstmRepository.searchByPostalref(projection)
+        return await this.postalRefCstmRepository.getPostalNameByDistrict(
+            districtName
+        )
+    }
+
+    async getPostalNameByState(stateName: string): Promise<PostalRefDto[]> {
+        return await this.postalRefCstmRepository.getPostalNameByState(
+            stateName
+        )
     }
 
     async getAllState(): Promise<PostalRefDto[]> {
-        return this.postalRefCstmRepository.getAllStateName()
+        try {
+            console.log('getAllState')
+            return await this.postalRefCstmRepository.getAllStateName()
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async getPostalNameByPinCode(pincode: string): Promise<PostalRefDto[]> {
+        try {
+            console.log('getAllState')
+            return await this.postalRefCstmRepository.getPostalNameByPinCode(
+                pincode
+            )
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async getPageablePostalRef(pageOptionsDto: PageOptionsDto): Promise<any> {
+        try {
+            const queryBuilder =
+                this.postalRepository.createQueryBuilder('postal_ref')
+            queryBuilder
+                .orderBy('postal_ref.districtName', pageOptionsDto.order)
+                .skip(pageOptionsDto.skip)
+                .take(pageOptionsDto.take)
+
+            const raw = await queryBuilder.getManyAndCount()
+            const pageMetaDto = new PageMetaDto({
+                itemCount: raw[1],
+                pageOptionsDto,
+            })
+            return new PageDto(raw[0], pageMetaDto)
+        } catch (e) {
+            console.log(e)
+        }
     }
 }
