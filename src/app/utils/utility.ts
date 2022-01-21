@@ -136,7 +136,7 @@ export const listInitSubData = {
   key: '',
   secKey: '',
   show: false,
-  trim:0
+  trim: 0,
 };
 
 export const RootMenu: IToolBarMenu[] = [
@@ -264,14 +264,14 @@ export function generateTableColumnHeader(detail: string[]): TableColumn[] {
       header: '',
       showAvatar: false,
       showCheckBox: false,
-      width:150
-     };
+      width: 150,
+    };
     temp.columnDef = item;
-    if(temp.columnDef === 'admissionNo'){
+    if (temp.columnDef === 'admissionNo') {
       temp.width = 10;
     }
     temp.header = convertCamelCaseToNormalText(item);
-    console.log(temp)
+    console.log(temp);
     return temp;
   });
 }
@@ -288,3 +288,12 @@ export function CustomPaginator() {
 
   return customPaginatorIntl;
 }
+
+export const listConfigKeys = [
+  'mainInfo',
+  'avatarInfo',
+  'sub1Info',
+  'sub2Info',
+  'chip1Info',
+  'chip2Info',
+];
