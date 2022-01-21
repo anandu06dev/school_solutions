@@ -1,6 +1,7 @@
 import { PageMetaDto } from '@common/dtos/page-meta.dto'
 import { PageOptionsDto } from '@common/dtos/page-options.dto'
 import { PageDto } from '@common/dtos/page.dto'
+import { QueryPostalRefDto } from '@common/dtos/query-postal-pagination.dto'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { getCustomRepository, Repository } from 'typeorm'
@@ -68,6 +69,17 @@ export class PostalRefService {
             console.log('getAllState')
             return await this.postalRefCstmRepository.getPostalNameByPinCode(
                 pincode
+            )
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async getPostalName(postalOptions: QueryPostalRefDto): Promise<any> {
+        try {
+            console.log('getAllState')
+            return this.postalRefCstmRepository.searchByPostalrefPagination(
+                postalOptions
             )
         } catch (e) {
             console.log(e)

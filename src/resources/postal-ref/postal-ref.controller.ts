@@ -1,4 +1,5 @@
 import { PageOptionsDto } from '@common/dtos'
+import { QueryPostalRefDto } from '@common/dtos/query-postal-pagination.dto'
 import {
     Controller,
     Get,
@@ -62,6 +63,12 @@ export class PostalRefController {
     getPageableGetStudentDetails(@Query() pagination?: PageOptionsDto) {
         return this.postalRefService.getPageablePostalRef(pagination)
     }
+
+    @Get('/pageable/getPostalName')
+    getPostalName(@Query() pagination?: QueryPostalRefDto) {
+        return this.postalRefService.getPostalName(pagination)
+    }
+
     @Get(':id')
     findOne(@Param('id') id: string) {
         console.log('findOne')
