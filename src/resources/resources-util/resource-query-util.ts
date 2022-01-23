@@ -1,3 +1,4 @@
+import { getRepository, InsertResult } from 'typeorm'
 import {
     AllowedEntity,
     ICustomQueryBuilder,
@@ -58,4 +59,86 @@ function getStudentDetailCustomQueryBuilder(
     } catch (e) {
         console.log(e)
     }
+}
+
+/**
+ * Upsert for TypeORM on PostgreSQL
+ * Returns InsertResult object (contains ID)
+ * @param repo Repository
+ * @param {object | object[]} data Data to upsert. Can be object or array
+ * @param {string} primaryKey Name of column that is primary key
+ * @returns {Promise<InsertResult>}
+ */
+export default function upsert(
+    Entity,
+    data,
+    primaryKey: string,
+    allowedColumns?: string[]
+): Promise<InsertResult | any> {
+    const repo = getRepository(Entity)
+    //const entitiy = getEntity
+    const temp = {}
+    const keys = Object.keys(data)
+    for (let i = 0; i < keys.length; i++) {
+        console.log('allowedColumns', allowedColumns, data[i])
+        if (allowedColumns.includes(keys[i])) {
+            temp[keys[i]] = data[keys[i]]
+            console.log('temp', temp, data[keys[i]], keys[i])
+        } else {
+            console.log(temp, allowedColumns[i], data[i])
+        }
+    }
+    console.log('temp', temp, allowedColumns, 'tests')
+    // const keys = console.log(data, primaryKey,temp)
+    return repo.upsert([temp], [primaryKey])
+}
+
+// if (keys.length < 1) {
+//     throw new Error('Cannot upsert without any values specified')
+// }
+// const row = Array.isArray(data) ? data[0] : data
+// const keys = Object.keys(row)
+// const updateStr = keys
+//     .map((key) => `"${key}" = EXCLUDED."${key}"`)
+//     .join(',')
+// .orUpdate({
+//     conflict_target: [primaryKey],
+//     overwrite: [`${updateStr}`],
+// })
+// .orUpdate(`("${primaryKey}") DO UPDATE SET ${updateStr}`)
+
+// export default function upsert(
+//     Entity,
+//     data,
+//     primaryKey: string,
+//     allowedColumns?: string[]
+// ): Promise<InsertResult> {
+//     const repo = getRepository(Entity)
+//     const temp = {}
+//     const keys = Object.keys(data)
+//     for (let i = 0; i < keys.length; i++) {
+//         console.log('allowedColumns', allowedColumns, data[i])
+//         if (allowedColumns.includes(keys[i])) {
+//             temp[keys[i]] = data[keys[i]]
+//             console.log('temp', temp, data[keys[i]], keys[i])
+//         } else {
+//             console.log(temp, allowedColumns[i], data[i])
+//         }
+//     }
+//     // const keys = console.log(data, primaryKey,temp)
+//     return repo.upsert([data], [primaryKey])
+// }
+
+export function getAllowedKeys(obj, mainKey, accessKey) {
+    const temp = []
+    if (obj && mainKey && accessKey) {
+        for (const item of Object.keys(obj[mainKey])) {
+            if (obj[mainKey][item]['access'][accessKey] === true) {
+                temp.push(item)
+            }
+        }
+    } else {
+        throw new Error(`need 3 parameters`)
+    }
+    return temp
 }
