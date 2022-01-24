@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, IsOptional } from 'class-validator'
+import { STUDENT_DTO } from '@resources/resources-util/resource-dto-all'
+import { Expose } from 'class-transformer'
+import { IsNotEmpty, IsObject, IsOptional } from 'class-validator'
 import { Timestamp } from 'typeorm'
 
 export class StudentDetailDto {
@@ -9,6 +11,7 @@ export class StudentDetailDto {
         type: 'text',
         description: 'Describes about AdmissionDate -dd/mm/yyyy',
     })
+    @Expose()
     @IsNotEmpty()
     admissionDate?: Timestamp
     @ApiProperty({
@@ -151,4 +154,10 @@ export class StudentDetailDto {
     })
     @IsOptional()
     studentIsActive?: boolean
+
+    public config() {
+        return {
+            ...STUDENT_DTO,
+        }
+    }
 }

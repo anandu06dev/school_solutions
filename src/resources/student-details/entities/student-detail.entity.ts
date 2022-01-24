@@ -5,6 +5,7 @@ import { FeesDetails } from '@resources/fees-details/entities/fees-detail.entity
 import { ParentDetails } from '@resources/parent-details/entities/parent-detail.entity'
 import { SiblingDetails } from '@resources/sibling-details/entities/sibling-detail.entity'
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity'
 
 @Entity('student_details', { schema: 'app_schl_dev' })
 export class StudentDetails extends AbstractEntity {

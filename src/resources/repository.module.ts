@@ -5,7 +5,6 @@ import {
     StudentQueryPageOptionsDto,
     SiblingQueryPageOptionsDto,
 } from '@common/dtos/query-pagination.dto'
-import { async } from 'rxjs'
 import { Repository, SelectQueryBuilder } from 'typeorm'
 import { AllowedEntity } from './resource-model/resource.model'
 import { QueryEntityRestrictionException } from './resources-exception/QueryEntityRestrictionException'
@@ -17,7 +16,6 @@ import {
     orderBy,
 } from './resources-util/resource-query-constants'
 import { getConditionlessQb } from './resources-util/resource-query-util'
-import { SiblingDetails } from './sibling-details/entities/sibling-detail.entity'
 import { StudentDetails } from './student-details/entities/student-detail.entity'
 
 export async function getPageableStudentsRepo(
@@ -51,8 +49,8 @@ export async function getPageableStudentsRepo(
                     ? getQueryJoin(pageOptionsDto.join)
                     : [],
         })
-        console.log(pageOptionsDto.join)
-        console.log(queryBuilder.getSql())
+        // console.log(pageOptionsDto.join)
+        // console.log(queryBuilder.getSql())
 
         queryBuilder = await orderBy(queryBuilder, pageOptionsDto)
 

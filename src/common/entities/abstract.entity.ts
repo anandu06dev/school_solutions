@@ -1,25 +1,30 @@
 import { Exclude } from 'class-transformer'
-import { CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import {
+    BeforeInsert,
+    Column,
+    CreateDateColumn,
+    Timestamp,
+    UpdateDateColumn,
+} from 'typeorm'
 
 export abstract class AbstractEntity {
     // @PrimaryGeneratedColumn()
     // @Exclude()
     // public id: number
 
-    @CreateDateColumn({
-        type: 'timestamp',
-        name: 'CRET_TS',
-        default: () => new Date(),
-    })
-    @Exclude()
-    createdTimeStamp: Date
+    // @CreateDateColumn({
+    //     name: 'CRET_TS',
+    // })
+    // createdTimeStamp: Date
 
-    @UpdateDateColumn({
-        type: 'timestamp',
-        name: 'LAST_UPDT_TS',
-        default: () => new Date(),
-        onUpdate: 'CURRENT_TIMESTAMP(6)',
-    })
-    @Exclude()
-    lastUpdatedts: Date
+    @CreateDateColumn({ type: 'timestamp', name: 'CRET_TS' })
+    createdTimeStamp: Timestamp
+
+    //   @UpdateDateColumn({
+    //     type: 'timestamp',
+    //     name: 'LAST_UPDT_TS',
+    //     default: () => 'CURRENT_TIMESTAMP',
+    //     onUpdate: 'CURRENT_TIMESTAMP(6)',
+    // })
+    // lastUpdatedts: Date
 }

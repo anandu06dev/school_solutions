@@ -1,4 +1,9 @@
-import { Module } from '@nestjs/common'
+import {
+    MiddlewareConsumer,
+    Module,
+    NestModule,
+    RequestMethod,
+} from '@nestjs/common'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
@@ -12,14 +17,17 @@ import { SiblingDetailsModule } from '@resources/sibling-details/sibling-details
 import { AuthModule } from '@resources/auth/auth.module'
 import { UserModule } from '@resources/user/user.module'
 import { APP_FILTER } from '@nestjs/core'
-import { ExceptionsLoggerFilter } from '@common/log/Exceptionlogger.log'
 import { HttpExceptionFilter } from '@common/filter/http.exception.filter'
 import { PostalRefModule } from '@resources/postal-ref/postal-ref.module'
+import { StudentsModule } from '@resources/students/students.module'
+import { DatabaseMiddleware } from '@common/middleware/DatabaseMiddleware'
+import { UserRoleModule } from '@resources/user-role/user-role.module'
 
 const MODULES = [
     DatabaseModule,
-    // StudentsModule,
+    StudentsModule,
     UserModule,
+    UserRoleModule,
     AuthModule,
     StudentDetailsModule,
     SiblingDetailsModule,
@@ -40,5 +48,16 @@ const MODULES = [
             useClass: HttpExceptionFilter,
         },
     ],
+    exports: [StudentDetailsModule],
 })
-export class AppModule {}
+export class AppModule {
+//implements NestModule {
+    // configure(consumer: MiddlewareConsumer) {
+    //     consumer.apply(LoggerMiddleware).forRoutes('student-details')
+    // }
+    // configure(consumer: MiddlewareConsumer) {
+    //     consumer
+    //         .apply(DatabaseMiddleware)
+    //         .forRoutes({ path: '*', method: RequestMethod.ALL })
+    // }
+}

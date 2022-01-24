@@ -6,7 +6,12 @@ import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { getPageableStudentsRepo } from '@resources/repository.module'
 import { Projection } from '@resources/resource-model/resource.model'
-import { LookForAdmissionId } from '@resources/resources-util/resource-query-util'
+import { GET_ALL_DTO } from '@resources/resources-util/resource-dto-all'
+import upsert, {
+    initRolesRules,
+    LookForAdmissionId,
+} from '@resources/resources-util/resource-query-util'
+import { classToClass, classToPlain } from 'class-transformer'
 import { getCustomRepository, Repository } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
@@ -25,6 +30,41 @@ export class StudentDetailsService {
 
     create(createStudentDetailDto: StudentDetailDto) {
         return this.studentRepository.save(createStudentDetailDto)
+    }
+
+    async createorUpdate(createStudentDetailDto: StudentDetailDto) {
+        try {
+            return await upsert(
+                StudentDetails,
+                createStudentDetailDto,
+                'admissionNo'
+            )
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async upsert(createStudentDetailDto: StudentDetailDto) {
+        try {
+            const allowedColumns = ['id', 'admissionNo', 'studentFirstName']
+            const data = createStudentDetailDto
+            const temp = {}
+            const keys = Object.keys(data)
+            for (let i = 0; i < keys.length; i++) {
+                console.log('allowedColumns', allowedColumns, data[i])
+                if (allowedColumns.includes(keys[i])) {
+                    temp[keys[i]] = data[keys[i]]
+                    console.log('temp', temp, data[keys[i]], keys[i])
+                } else {
+                    console.log(temp, allowedColumns[i], data[i])
+                }
+            }
+            console.log('temp', temp, allowedColumns, 'tests')
+
+            await this.studentRepository.upsert([temp], ['admissionNo'])
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     async findAll(): Promise<StudentDetails[]> {
@@ -120,6 +160,18 @@ export class StudentDetailsService {
         pageOptionsDto: StudentQueryPageOptionsDto | SiblingQueryPageOptionsDto
     ): Promise<any> {
         return getPageableStudentsRepo(pageOptionsDto, this.studentRepository)
+    }
+
+    async getRolesRules() {
+        const studentDetails = { ...classToClass(new StudentDetailDto()) }
+
+        const allDto = { ...GET_ALL_DTO }
+        console.log(
+            'temp',
+            studentDetails,
+            JSON.parse(JSON.stringify(new StudentDetailDto()))
+        )
+        return await initRolesRules(allDto, true)
     }
 }
 

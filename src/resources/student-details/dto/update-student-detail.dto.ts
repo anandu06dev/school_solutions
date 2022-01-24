@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
+import { STUDENT_DTO } from '@resources/resources-util/resource-dto-all'
 import { IsNotEmpty, IsOptional } from 'class-validator'
 import { Timestamp } from 'typeorm'
 /* 
@@ -175,4 +176,10 @@ export class UpdateStudentDetailDto {
     @IsOptional()
     @IsNotEmpty()
     studentDiscount?: number
+
+    public config() {
+        return {
+            ...STUDENT_DTO,
+        }
+    }
 }

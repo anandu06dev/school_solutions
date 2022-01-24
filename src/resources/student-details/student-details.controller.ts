@@ -25,10 +25,15 @@ export class StudentDetailsController {
         private readonly studentDetailsService: StudentDetailsService
     ) {}
 
+    @Get('RolesRules')
+    getRolesRules() {
+        return this.studentDetailsService.getRolesRules()
+    }
+
     @Post()
     create(@Body() createStudentDetailDto: StudentDetailDto) {
         console.log(createStudentDetailDto)
-        return this.studentDetailsService.create(createStudentDetailDto)
+        return this.studentDetailsService.upsert(createStudentDetailDto)
     }
 
     @Post('/findByProjection')
@@ -89,7 +94,7 @@ export class StudentDetailsController {
         @Body(new ValidationPipe()) studentDetails: UpdateStudentDetailDto
     ) {
         console.log(studentDetails, id)
-        return this.studentDetailsService.update(+id, studentDetails)
+        return this.studentDetailsService.createorUpdate(studentDetails)
     }
 
     @Delete(':id')
