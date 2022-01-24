@@ -1,3 +1,4 @@
+import { PageOptionsDto, PageMetaDto, PageDto } from '@common/dtos'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import {
@@ -61,5 +62,20 @@ export class FeesDetailsService {
 
     async remove(id: number) {
         await this.feesDetailRepository.delete(id)
+    }
+
+    async getPageableFeesDetails(pageOptionsDto: PageOptionsDto): Promise<any> {
+        const queryBuilder =
+            this.feesDetailRepository.createQueryBuilder('fees_details')
+        queryBuilder
+            //.orderBy('student.createdAt', pageOptionsDto.order)
+            .skip(pageOptionsDto.skip)
+            .take(pageOptionsDto.take)
+
+        const itemCount = await queryBuilder.getCount()
+        const { entities } = await queryBuilder.getRawAndEntities()
+        const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto })
+
+        return new PageDto(entities, pageMetaDto)
     }
 }

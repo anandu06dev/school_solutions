@@ -1,3 +1,4 @@
+import { PageOptionsDto } from '@common/dtos'
 import {
     Controller,
     Get,
@@ -6,6 +7,7 @@ import {
     Patch,
     Param,
     Delete,
+    Query,
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { FeesDetailDto } from './dto/fees-detail.dto'
@@ -36,7 +38,15 @@ export class FeesDetailsController {
     findByAdmissionId(@Param('id') id: string) {
         return this.feesDetailsService.findByAdmissionId(id)
     }
+    @Get('/pageable/feedetails')
+    getPageableFeeDetails(@Query('pagination') pagination?: PageOptionsDto) {
+        return this.feesDetailsService.getPageableFeesDetails(pagination)
+    }
 
+    @Post('/pageable/feedetails')
+    getPageFeeDetails(@Body() pageOptions: PageOptionsDto) {
+        return this.feesDetailsService.getPageableFeesDetails(pageOptions)
+    }
     @Patch(':id')
     update(
         @Param('id') id: string,

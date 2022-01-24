@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { FeesDetailsService } from './fees-details.service'
-import { FeesDetailsController } from './fees-details.controller'
+import { FeesDetailsService } from './fees-details.v1.service'
+import { FeesDetailsController } from './fees-details.v1.controller'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { FeesDetails } from './entities/fees-detail.entity'
 
