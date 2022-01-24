@@ -1,5 +1,5 @@
-export const enum SHOOL_SOLS {
-    STUDENTDETIALS = 'studentDetails',
+export const enum SCHOOL_SOLS {
+    STUDENTDETAILS = 'studentDetails',
     SIBLINGDETAILS = 'siblingDetails',
     FEESDETAILS = 'feesDetails',
     PARENTDETAILS = 'parentDetails',

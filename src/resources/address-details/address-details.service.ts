@@ -5,6 +5,7 @@ import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
+import { SCHOOL_SOLS } from '@utils/apiEnums'
 import { getCustomRepository, In, Repository } from 'typeorm'
 import { AddressDetailRepository } from './customRepository/address-cstm-repository'
 import { AddressDetailDto } from './dto/address-detail.dto'
@@ -26,7 +27,7 @@ export class AddressDetailsService {
 
     async findAll(): Promise<AddressDetails[]> {
         return this.addressRepository.find({
-            relations: ['studentDetails'],
+            relations: [SCHOOL_SOLS.STUDENTDETAILS],
         })
     }
 
@@ -35,7 +36,7 @@ export class AddressDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
-            relations: ['studentDetails'],
+            relations: [SCHOOL_SOLS.STUDENTDETAILS],
         })
     }
 
@@ -44,7 +45,7 @@ export class AddressDetailsService {
             where: {
                 admissionNo: In([admissionNo]),
             },
-            relations: ['studentDetails'],
+            relations: [SCHOOL_SOLS.STUDENTDETAILS],
         })
     }
 

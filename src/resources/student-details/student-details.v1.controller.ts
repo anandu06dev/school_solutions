@@ -15,10 +15,11 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
 import { StudentQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
-@ApiTags('/v1/student-details')
+import { SCHOOL_SOLS } from '@utils/apiEnums'
+@ApiTags('/v1/' + SCHOOL_SOLS.STUDENTDETAILS)
 @ApiBearerAuth()
 // @UseGuards(AuthGuard())
-@Controller('/v1/student-details')
+@Controller('/v1/' + SCHOOL_SOLS.STUDENTDETAILS)
 export class StudentDetailsController {
     constructor(
         private readonly studentDetailsService: StudentDetailsService
@@ -29,7 +30,7 @@ export class StudentDetailsController {
         return this.studentDetailsService.createorUpdate(createStudentDetailDto)
     }
 
-    @Get('/studentdetails')
+    @Get(`/${SCHOOL_SOLS.STUDENTDETAILS}`)
     getPageableGetStudentDetails(
         @Query() pagination?: StudentQueryPageOptionsDto
     ) {

@@ -5,15 +5,6 @@ import { ParentDetailDtoConfig } from '@resources/parent-details/dto/parent-deta
 import { SiblingDetailDtoConfig } from '@resources/sibling-details/dto/sibling-detail.dto.config'
 import { StudentDetailDtoConfig } from '@resources/student-details/dto/student-detail.dto.config'
 
-export const DTO_PROVIDERS = [
-    StudentDetailDtoConfig,
-    SiblingDetailDtoConfig,
-    FeesDetailDtoconfig,
-    BusRouteDetailDtoConfig,
-    ParentDetailDtoConfig,
-    AddressDetailDtoConfig,
-]
-
 export const GET_ALL_CONFIG_DTOS = {
     studentDetails: { ...new StudentDetailDtoConfig() },
     siblingDetails: { ...new SiblingDetailDtoConfig() },

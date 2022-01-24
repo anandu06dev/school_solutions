@@ -7,6 +7,7 @@ import upsert, {
     LookForId,
 } from '@resources/resources-util/resource-query-util'
 import { StudentDetailsService } from '@resources/student-details/student-details.v1.service'
+import { SCHOOL_SOLS } from '@utils/apiEnums'
 import { getCustomRepository, In, Repository } from 'typeorm'
 import { SiblingDetailRepository } from './customRepository/sibling-cstm-repository'
 import { SiblingDetailDto } from './dto/sibling-detail.dto'
@@ -42,7 +43,7 @@ export class SiblingDetailsService implements OnModuleInit {
     async findAll() {
         try {
             return await this.siblingRepository.find({
-                relations: ['studentDetails'],
+                relations: [SCHOOL_SOLS.STUDENTDETAILS],
             })
         } catch (e) {
             console.log(e)
@@ -54,7 +55,7 @@ export class SiblingDetailsService implements OnModuleInit {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
-            relations: ['studentDetails'],
+            relations: [SCHOOL_SOLS.STUDENTDETAILS],
         })
     }
 
@@ -64,7 +65,7 @@ export class SiblingDetailsService implements OnModuleInit {
                 where: {
                     admissionNo: In([admissionNo]),
                 },
-                relations: ['studentDetails'],
+                relations: [SCHOOL_SOLS.STUDENTDETAILS],
             })
         } catch (e) {
             console.log(e)

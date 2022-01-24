@@ -5,6 +5,7 @@ import {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
+import { SCHOOL_SOLS } from '@utils/apiEnums'
 import { getCustomRepository, In, Repository } from 'typeorm'
 import { ParentDetailRepository } from './customRepository/parent-cstm-repository'
 import { ParentDetailDto } from './dto/parent-detail.dto'
@@ -25,7 +26,7 @@ export class ParentDetailsService {
 
     async findAll(): Promise<ParentDetails[]> {
         return this.parentRepository.find({
-            relations: ['studentDetails'],
+            relations: [SCHOOL_SOLS.STUDENTDETAILS],
         })
     }
 
@@ -34,7 +35,7 @@ export class ParentDetailsService {
             where: {
                 ...LookForAdmissionId(admissionNo),
             },
-            relations: ['studentDetails'],
+            relations: [SCHOOL_SOLS.STUDENTDETAILS],
         })
     }
     findByAdmissionId(admissionNo: string): Promise<ParentDetails[]> {
@@ -43,7 +44,7 @@ export class ParentDetailsService {
                 admissionNo: In([admissionNo]),
             },
 
-            relations: ['studentDetails'],
+            relations: [SCHOOL_SOLS.STUDENTDETAILS],
         })
     }
 
