@@ -1,7 +1,4 @@
-import {
-    SiblingQueryPageOptionsDto,
-    StudentQueryPageOptionsDto,
-} from '@common/dtos/query-pagination.dto'
+import { StudentQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { getPageableStudentsRepo } from '@resources/repository.module'
