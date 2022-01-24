@@ -40,7 +40,7 @@ export class UserRole extends AbstractEntity {
     roleAccess: string
 
     @UpdateDateColumn({ type: 'timestamp', name: 'LAST_UPDT_BY' })
-    createdTimeStamp: Timestamp
+    updatedBy: Timestamp
 
     @ManyToOne(() => UserEntity, (user) => user.userRole)
     @JoinColumn({ name: 'USER_ID', referencedColumnName: 'id' })
