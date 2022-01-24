@@ -164,13 +164,8 @@ export class ParentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
     @Type(() => String)
     @IsOptional()
     readonly primaryJoin: string = JoinProjection.STUDENT_DETAILS
-    @ApiPropertyOptional({
-        enum: [JoinProjection.PARENTS],
-        default: JoinProjection.PARENTS,
-        required: true,
-        isArray: false,
-        description: 'Describes about JoinProjection , linked with the show',
-    })
+
+    @ApiHideProperty()
     @Type(() => String)
     @IsOptional()
     readonly join: string[] = [JoinProjection.PARENTS]

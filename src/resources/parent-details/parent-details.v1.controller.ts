@@ -14,7 +14,7 @@ import { ParentDetailDto } from './dto/parent-detail.dto'
 import { UpdateParentDetailDto } from './dto/update-parent-detail.dto'
 import { ParentDetailsService } from './parent-details.v1.service'
 
-@ApiTags('parent-details')
+@ApiTags('/v1/parent-details')
 // @UseGuards(AuthGuard())
 @Controller('/v1/parent-details')
 export class ParentDetailsController {
