@@ -1,3 +1,4 @@
+import { PageOptionsDto } from '@common/dtos'
 import {
     Controller,
     Get,
@@ -6,6 +7,7 @@ import {
     Patch,
     Param,
     Delete,
+    Query,
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { AddressDetailsService } from './address-details.service'
@@ -37,6 +39,17 @@ export class AddressDetailsController {
     @Get('findByAdmissionId/:id')
     findByAdmissionId(@Param('id') id: string) {
         return this.addressDetailsService.findByAdmissionId(id)
+    }
+    @Get('/pageable/addressdetails')
+    getPageableGetStudentDetails(
+        @Query('pagination') pagination?: PageOptionsDto
+    ) {
+        return this.addressDetailsService.getPageableAddressDetails(pagination)
+    }
+
+    @Post('/pageable/addressdetails')
+    getPageableStudentDetails(@Body() pageOptions: PageOptionsDto) {
+        return this.addressDetailsService.getPageableAddressDetails(pageOptions)
     }
 
     @Patch(':id')

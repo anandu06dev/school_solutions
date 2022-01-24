@@ -34,7 +34,7 @@ export class StudentDetailsService {
     }
 
     async getPageableStudents(
-        pageOptionsDto: StudentQueryPageOptionsDto | SiblingQueryPageOptionsDto
+        pageOptionsDto: StudentQueryPageOptionsDto
     ): Promise<any> {
         return getPageableStudentsRepo(pageOptionsDto, this.studentRepository)
     }
