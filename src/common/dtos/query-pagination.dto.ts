@@ -142,19 +142,13 @@ export class SiblingQueryPageOptionsDto extends BaseQueryPageOptionsDto {
     @IsOptional()
     readonly primaryJoin: string
     @ApiPropertyOptional({
-        default: JoinProjection.STUDENT_DETAILS,
-        isArray: false,
-        required: true,
-        description: 'Describes about Join Projection',
-    })
-    @IsOptional()
-    readonly tesjoin: string
-    @ApiPropertyOptional({
         enum: [JoinProjection.SIBLINGS],
         default: JoinProjection.SIBLINGS,
+        required: true,
         isArray: false,
-        description: 'Describes about Optional JoinProjection',
+        description: 'Describes about Join Projection',
     })
+    @Type(() => String)
     @IsOptional()
     readonly join: string[] = [JoinProjection.SIBLINGS]
 }

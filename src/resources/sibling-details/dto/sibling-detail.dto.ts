@@ -16,6 +16,7 @@ export class SiblingDetailDto {
         example: 'Brother/Sister',
         type: 'number',
         description: 'Describes about SiblingRelation',
+        default: 1,
     })
     @IsNotEmpty()
     siblingRelation?: number

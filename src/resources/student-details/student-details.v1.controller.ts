@@ -26,7 +26,6 @@ export class StudentDetailsController {
 
     @Post()
     create(@Body() createStudentDetailDto: StudentDetailDto) {
-        console.log(createStudentDetailDto)
         return this.studentDetailsService.createorUpdate(createStudentDetailDto)
     }
 
@@ -34,16 +33,11 @@ export class StudentDetailsController {
     getPageableGetStudentDetails(
         @Query() pagination?: StudentQueryPageOptionsDto
     ) {
-        console.log('pagination $$$$$$$$$$$$$$$$$44', pagination)
         return this.studentDetailsService.getPageableStudents(pagination)
     }
 
-    @Patch(':id')
-    update(
-        @Param('id') id: string,
-        @Body(new ValidationPipe()) studentDetails: UpdateStudentDetailDto
-    ) {
-        console.log(studentDetails, id)
+    @Patch()
+    update(@Body(new ValidationPipe()) studentDetails: UpdateStudentDetailDto) {
         return this.studentDetailsService.createorUpdate(studentDetails)
     }
 

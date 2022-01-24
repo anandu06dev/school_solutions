@@ -76,58 +76,22 @@ export default function upsert(
     allowedColumns?: string[]
 ): Promise<InsertResult | any> {
     const repo = getRepository(Entity)
-    //const entitiy = getEntity
-    const temp = {}
-    const keys = Object.keys(data)
-    for (let i = 0; i < keys.length; i++) {
-        console.log('allowedColumns', allowedColumns, data[i])
-        if (allowedColumns.includes(keys[i])) {
-            temp[keys[i]] = data[keys[i]]
-            console.log('temp', temp, data[keys[i]], keys[i])
-        } else {
-            console.log(temp, allowedColumns[i], data[i])
+    let temp = data
+    if (allowedColumns) {
+        temp = {}
+        const keys = Object.keys(data)
+        for (let i = 0; i < keys.length; i++) {
+            console.log('allowedColumns', allowedColumns, data[i])
+            if (allowedColumns.includes(keys[i])) {
+                temp[keys[i]] = data[keys[i]]
+                console.log('temp', temp, data[keys[i]], keys[i])
+            } else {
+                console.log(temp, allowedColumns[i], data[i])
+            }
         }
     }
-    console.log('temp', temp, allowedColumns, 'tests')
-    // const keys = console.log(data, primaryKey,temp)
     return repo.upsert([temp], [primaryKey])
 }
-
-// if (keys.length < 1) {
-//     throw new Error('Cannot upsert without any values specified')
-// }
-// const row = Array.isArray(data) ? data[0] : data
-// const keys = Object.keys(row)
-// const updateStr = keys
-//     .map((key) => `"${key}" = EXCLUDED."${key}"`)
-//     .join(',')
-// .orUpdate({
-//     conflict_target: [primaryKey],
-//     overwrite: [`${updateStr}`],
-// })
-// .orUpdate(`("${primaryKey}") DO UPDATE SET ${updateStr}`)
-
-// export default function upsert(
-//     Entity,
-//     data,
-//     primaryKey: string,
-//     allowedColumns?: string[]
-// ): Promise<InsertResult> {
-//     const repo = getRepository(Entity)
-//     const temp = {}
-//     const keys = Object.keys(data)
-//     for (let i = 0; i < keys.length; i++) {
-//         console.log('allowedColumns', allowedColumns, data[i])
-//         if (allowedColumns.includes(keys[i])) {
-//             temp[keys[i]] = data[keys[i]]
-//             console.log('temp', temp, data[keys[i]], keys[i])
-//         } else {
-//             console.log(temp, allowedColumns[i], data[i])
-//         }
-//     }
-//     // const keys = console.log(data, primaryKey,temp)
-//     return repo.upsert([data], [primaryKey])
-// }
 
 export function getAllowedKeys(obj, mainKey, accessKey) {
     const temp = []
@@ -140,5 +104,47 @@ export function getAllowedKeys(obj, mainKey, accessKey) {
     } else {
         throw new Error(`need 3 parameters`)
     }
+    return temp
+}
+
+export function appendAccess(d, util = false) {
+    return Object.fromEntries(
+        Object.keys(d).map((item) => {
+            const temp = []
+            temp[0] = item
+            temp[1] = {
+                access: {
+                    read: false,
+                    write: false,
+                    update: false,
+                    delete: false,
+                },
+            }
+            if (util) {
+                temp[1] = { ...temp[1], ...{ util: { isOptional: false } } }
+            }
+            return temp
+        })
+    )
+}
+
+export function initRolesRules(allDto, util = false) {
+    const temp = JSON.parse(JSON.stringify(allDto))
+    for (const table of Object.keys(temp))
+        for (const column of Object.keys(temp[table])) {
+            temp[table][column] = {
+                access: {
+                    read: false,
+                    write: false,
+                    update: false,
+                    delete: false,
+                },
+            }
+            if (util) {
+                temp[table][column]['util'] = {
+                    isOptional: false,
+                }
+            }
+        }
     return temp
 }

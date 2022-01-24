@@ -19,7 +19,12 @@ export class SiblingDetails {
     })
     admissionNo: number
 
-    @Column('int', { name: 'SBLN_RELA', comment: 'SIBLING RELATION' })
+    @Column('varchar', {
+        name: 'SBLN_RELA',
+        default: 0,
+        nullable: true,
+        comment: 'SIBLING RELATION',
+    })
     siblingRelation: number
 
     @Column('varchar', {

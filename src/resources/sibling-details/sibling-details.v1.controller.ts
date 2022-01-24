@@ -12,10 +12,10 @@ import {
 import { ApiTags } from '@nestjs/swagger'
 import { SiblingDetailDto } from './dto/sibling-detail.dto'
 import { UpdateSiblingDetailDto } from './dto/update-sibling-detail.dto'
-import { SiblingDetailsService } from './sibling-details.service'
+import { SiblingDetailsService } from './sibling-details.v1.service'
 
 @ApiTags('sibling-details')
-@Controller('sibling-details')
+@Controller('/v1/sibling-details')
 export class SiblingDetailsController {
     constructor(
         private readonly siblingDetailsService: SiblingDetailsService
@@ -26,44 +26,15 @@ export class SiblingDetailsController {
         return this.siblingDetailsService.createorUpdate(siblingDetailDto)
     }
 
-    @Get('findByAdmissionId/:id')
-    findByAdmissionId(@Param('id') id: string) {
-        return this.siblingDetailsService.findByAdmissionId(id)
-    }
-
-    @Get('findByAllSibDetails')
-    findByAllSibDetails() {
-        return this.siblingDetailsService.findByAllSibDetails()
-    }
-    @Get()
-    findAll() {
-        return this.siblingDetailsService.findAll()
-    }
-
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.siblingDetailsService.findOne(+id)
-    }
-
-    @Get('/pageable/siblingdetails')
+    @Get('/siblingdetails')
     getPageableGetStudentDetails(
         @Query() pageOptions?: SiblingQueryPageOptionsDto
     ) {
-        console.log(pageOptions,'pageOptions')
         return this.siblingDetailsService.getPageableSibDetails(pageOptions)
     }
 
-    @Post('/pageable/siblingdetails')
-    getPageableStudentDetails(@Body() pageOptions: SiblingQueryPageOptionsDto) {
-        console.log(pageOptions,'pageOptions')
-        return this.siblingDetailsService.getPageableSibDetails(pageOptions)
-    }
-
-    @Patch(':id')
-    update(
-        @Param('id') id: string,
-        @Body() updateSiblingDetailDto: UpdateSiblingDetailDto
-    ) {
+    @Patch()
+    update(@Body() updateSiblingDetailDto: UpdateSiblingDetailDto) {
         return this.siblingDetailsService.createorUpdate(updateSiblingDetailDto)
     }
 

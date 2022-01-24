@@ -1,21 +1,12 @@
 import { SiblingQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
-import {
-    Inject,
-    Injectable,
-    NotFoundException,
-    OnModuleInit,
-} from '@nestjs/common'
+import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common'
 import { ContextIdFactory, ModuleRef } from '@nestjs/core'
 import { InjectRepository } from '@nestjs/typeorm'
-import { getPageableStudentsRepo } from '@resources/repository.module'
-import {
+import upsert, {
     LookForAdmissionId,
     LookForId,
 } from '@resources/resources-util/resource-query-util'
-import { StudentDetailRepository } from '@resources/student-details/customRepository/student-cstm-repository'
-import { StudentDetails } from '@resources/student-details/entities/student-detail.entity'
-import { StudentDetailsService } from '@resources/student-details/student-details.service'
-import { StudentRepository } from '@resources/students/repositories/student.repository'
+import { StudentDetailsService } from '@resources/student-details/student-details.v1.service'
 import { getCustomRepository, In, Repository } from 'typeorm'
 import { SiblingDetailRepository } from './customRepository/sibling-cstm-repository'
 import { SiblingDetailDto } from './dto/sibling-detail.dto'
@@ -114,6 +105,16 @@ export class SiblingDetailsService implements OnModuleInit {
     async getPageableSibDetails(
         pageOptionsDto: SiblingQueryPageOptionsDto
     ): Promise<any> {
-      return await this.studentService.getPageableStudents(pageOptionsDto)
+        return await this.studentService.getPageableStudents(pageOptionsDto)
+    }
+
+    async createorUpdate(createSiblingDto: SiblingDetailDto) {
+        try {
+            return await upsert(SiblingDetails, createSiblingDto, 'id', [
+                'siblingClass',
+            ])
+        } catch (e) {
+            console.log(e)
+        }
     }
 }
