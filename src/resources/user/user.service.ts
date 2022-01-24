@@ -17,8 +17,10 @@ export class UserService {
         private readonly userRepo: Repository<UserEntity>
     ) {}
 
-    findAll() {
-        return `This action returns all user`
+    async findAll(): Promise<UserEntity[]> {
+        return await this.userRepo.find({
+            relations: ['userRole'],
+        })
     }
 
     async findOne(options?: object): Promise<UserDto> {
@@ -28,7 +30,10 @@ export class UserService {
 
     async findByLogin({ username, password }: LoginUserDto): Promise<UserDto> {
         console.log('test', { username, password })
-        const user = await this.userRepo.findOne({ where: { username } })
+        const user = await this.userRepo.findOne({
+            where: { username },
+            relations: ['userRole'],
+        })
         if (!user) {
             throw new HttpException('User not found', HttpStatus.UNAUTHORIZED)
         }

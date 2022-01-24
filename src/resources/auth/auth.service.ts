@@ -36,8 +36,8 @@ export class AuthService {
         return status
     }
 
-    findAll() {
-        return `This action returns all auth`
+    async findAll() {
+        return await this.usersService.findAll()
     }
 
     findOne(id: number) {
@@ -58,6 +58,7 @@ export class AuthService {
 
         return {
             username: user.username,
+            userRole: user.userRole,
             ...token,
         }
     }

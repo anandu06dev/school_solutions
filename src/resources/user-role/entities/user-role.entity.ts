@@ -1,16 +1,21 @@
 import { AbstractEntity } from '@common/entities'
+import { UserEntity } from '@resources/user/entities/user.entity'
+import { Transform } from 'class-transformer'
 import {
     PrimaryGeneratedColumn,
     Column,
     Timestamp,
     UpdateDateColumn,
+    PrimaryColumn,
+    JoinColumn,
+    ManyToOne,
 } from 'typeorm'
 import { Entity } from 'typeorm/decorator/entity/Entity'
 
-@Entity('student_details', { schema: 'app_schl_dev' })
+@Entity('user_role', { schema: 'app_schl_dev' })
 export class UserRole extends AbstractEntity {
     @PrimaryGeneratedColumn('uuid')
-    @Column('varchar', {
+    @PrimaryColumn('varchar', {
         name: 'ROLE_ID',
         comment: 'Role Id',
     })
@@ -21,14 +26,23 @@ export class UserRole extends AbstractEntity {
         comment: 'User Id',
     })
     userId: string
+    @Column('varchar', {
+        name: 'ROLE_NM',
+        comment: 'Role Name',
+    })
+    roleName: string
 
-    @Column('json', {
+    @Column('longtext', {
         name: 'ROLE_ACESS',
         nullable: false,
         comment: 'Role Access',
     })
-    roleAccess: JSON
+    roleAccess: string
 
     @UpdateDateColumn({ type: 'timestamp', name: 'LAST_UPDT_BY' })
     createdTimeStamp: Timestamp
+
+    @ManyToOne(() => UserEntity, (user) => user.userRole)
+    @JoinColumn({ name: 'USER_ID', referencedColumnName: 'id' })
+    userEntity: UserEntity
 }

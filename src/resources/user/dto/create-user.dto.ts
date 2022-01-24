@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
+import { UserRole } from '@resources/user-role/entities/user-role.entity'
 import { IsNotEmpty, IsEmail, IsOptional } from 'class-validator'
 import { UserEntity } from '../entities/user.entity'
 
@@ -51,6 +52,14 @@ export class UserDto {
     @IsNotEmpty()
     @IsEmail()
     email: string
+
+    @ApiProperty({
+        example: '{test:test}',
+        type: 'longtext',
+        description: 'Describes about Permission',
+    })
+    @IsNotEmpty()
+    userRole: UserRole
 }
 
 export class LoginUserDto {
@@ -59,7 +68,7 @@ export class LoginUserDto {
 }
 
 export const toUserDto = (data: UserEntity): UserDto => {
-    const { id, username, email } = data
-    const userDto: UserDto = { id, username, email }
+    const { id, username, email, userRole } = data
+    const userDto: UserDto = { id, username, email, userRole }
     return userDto
 }

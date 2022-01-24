@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from 'typeorm'
+import { UserRole } from '@resources/user-role/entities/user-role.entity'
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    BeforeInsert,
+    OneToOne,
+} from 'typeorm'
 
 @Entity('user_details')
 export class UserEntity {
@@ -30,4 +37,7 @@ export class UserEntity {
         nullable: false,
     })
     email: string
+
+    @OneToOne((type) => UserRole, (userRole) => userRole.userEntity)
+    userRole: UserRole
 }
