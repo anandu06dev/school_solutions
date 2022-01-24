@@ -1,11 +1,4 @@
-import { Exclude } from 'class-transformer'
-import {
-    BeforeInsert,
-    Column,
-    CreateDateColumn,
-    Timestamp,
-    UpdateDateColumn,
-} from 'typeorm'
+import { CreateDateColumn, Timestamp } from 'typeorm'
 
 export abstract class AbstractEntity {
     // @PrimaryGeneratedColumn()

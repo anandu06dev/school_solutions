@@ -154,13 +154,4 @@ export class StudentDetailDto {
     })
     @IsOptional()
     studentIsActive?: boolean
-
-    // // eslint-disable-next-line @typescript-eslint/no-empty-function
-    // constructor() {}
-    // StudentDetailDto() {}
-    config() {
-        return {
-            ...STUDENT_DTO,
-        }
-    }
 }

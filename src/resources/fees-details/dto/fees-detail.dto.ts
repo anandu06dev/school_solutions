@@ -3,7 +3,7 @@ import { IsNotEmpty } from 'class-validator'
 
 export class FeesDetailDto {
     @IsNotEmpty()
-    admissionNo: number
+    admissionNo?: number
 
     @ApiProperty({
         example: '23-12-2019',

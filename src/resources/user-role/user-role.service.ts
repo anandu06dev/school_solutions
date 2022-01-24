@@ -1,6 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { LookForId } from '@resources/resources-util/resource-query-util'
+import { GET_ALL_DTO } from '@resources/resources-util/resource-dto-all'
+import {
+    initRolesRules,
+    LookForId,
+} from '@resources/resources-util/resource-query-util'
+import { StudentDetailDto } from '@resources/student-details/dto/student-detail.dto'
+import { classToClass } from 'class-transformer'
 import { Repository } from 'typeorm'
 import { CreateorUpdateUserRoleDto } from './dto/create-user-role.dto'
 import { UpdateUserRoleDto } from './dto/update-user-role.dto'

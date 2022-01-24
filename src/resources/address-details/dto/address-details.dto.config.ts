@@ -12,7 +12,6 @@ export class AddressDetailDtoConfig extends AddressDetailDto {
             printAddressCd: super.printAddressCd,
             printAddressDist: super.printAddressDist,
             printAddressPstlCd: super.printAddressPstlCd,
-            admissionNo: super.admissionNo,
         }
     }
 }
