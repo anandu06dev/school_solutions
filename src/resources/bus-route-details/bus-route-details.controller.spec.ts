@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { BusRouteDetailsController } from './bus-route-details.controller'
+import { BusRouteDetailsController } from './bus-route-details.v1.controller'
 import { BusRouteDetailsService } from './bus-route-details.service'
 
 describe('BusRouteDetailsController', () => {
