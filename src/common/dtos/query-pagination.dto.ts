@@ -87,7 +87,7 @@ export class BaseQueryPageOptionsDto {
     @Type(() => String)
     @IsOptional()
     @IsNotEmpty()
-    getOtherDetails: string
+    show: string
 
     @ApiPropertyOptional({
         minimum: 1,

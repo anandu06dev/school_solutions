@@ -37,7 +37,7 @@ export async function getPageableStudentsRepo(
                 pageOptionsDto.aid
                     ? getStudentAddmissionCondition(pageOptionsDto.aid)
                     : {},
-                pageOptionsDto.getOtherDetails === 'true'
+                pageOptionsDto.show === 'true'
                     ? getSecondaryJoinAndIdCondition(
                           pageOptionsDto.uniqueId,
                           pageOptionsDto.join
@@ -45,7 +45,7 @@ export async function getPageableStudentsRepo(
                     : {},
             ],
             queryJoin:
-                pageOptionsDto.getOtherDetails === 'true'
+                pageOptionsDto.show === 'true'
                     ? getQueryJoin(pageOptionsDto.join)
                     : [],
         })

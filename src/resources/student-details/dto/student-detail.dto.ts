@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { STUDENT_DTO } from '@resources/resources-util/resource-dto-all'
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, IsObject, IsOptional } from 'class-validator'
+import { IsNotEmpty, IsOptional } from 'class-validator'
 import { Timestamp } from 'typeorm'
 
 export class StudentDetailDto {
@@ -155,7 +155,10 @@ export class StudentDetailDto {
     @IsOptional()
     studentIsActive?: boolean
 
-    public config() {
+    // // eslint-disable-next-line @typescript-eslint/no-empty-function
+    // constructor() {}
+    // StudentDetailDto() {}
+    config() {
         return {
             ...STUDENT_DTO,
         }

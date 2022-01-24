@@ -11,7 +11,7 @@ import upsert, {
     initRolesRules,
     LookForAdmissionId,
 } from '@resources/resources-util/resource-query-util'
-import { classToClass, classToPlain } from 'class-transformer'
+import { classToClass } from 'class-transformer'
 import { getCustomRepository, Repository } from 'typeorm'
 import { StudentDetailRepository } from './customRepository/student-cstm-repository'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
