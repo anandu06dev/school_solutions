@@ -15,6 +15,7 @@ import { UpdateParentDetailDto } from './dto/update-parent-detail.dto'
 import { ParentDetailsService } from './parent-details.v1.service'
 
 @ApiTags('parent-details')
+// @UseGuards(AuthGuard())
 @Controller('/v1/parent-details')
 export class ParentDetailsController {
     constructor(private readonly parentDetailsService: ParentDetailsService) {}

@@ -14,8 +14,9 @@ import { BusRouteDetailsService } from './bus-route-details.v1.service'
 import { BusRouteDetailDto } from './dto/bus-route-detail.dto'
 import { UpdateBusRouteDetailDto } from './dto/update-bus-route-detail.dto'
 
-@ApiTags('bus-route-details')
-@Controller('bus-route-details')
+@ApiTags('/v1/bus-route-details')
+// @UseGuards(AuthGuard())
+@Controller('/v1/bus-route-details')
 export class BusRouteDetailsController {
     constructor(
         private readonly busRouteDetailsService: BusRouteDetailsService

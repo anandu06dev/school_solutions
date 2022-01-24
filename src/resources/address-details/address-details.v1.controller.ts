@@ -14,8 +14,9 @@ import { AddressDetailsService } from './address-details.v1.service'
 import { AddressDetailDto } from './dto/address-detail.dto'
 import { UpdateAddressDetailDto } from './dto/update-address-detail.dto'
 
-@ApiTags('address-details')
-@Controller('address-details')
+@ApiTags('/v1/address-details')
+// @UseGuards(AuthGuard())
+@Controller('/v1/address-details')
 export class AddressDetailsController {
     constructor(
         private readonly addressDetailsService: AddressDetailsService

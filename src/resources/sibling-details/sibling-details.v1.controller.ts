@@ -14,7 +14,7 @@ import { SiblingDetailDto } from './dto/sibling-detail.dto'
 import { UpdateSiblingDetailDto } from './dto/update-sibling-detail.dto'
 import { SiblingDetailsService } from './sibling-details.v1.service'
 
-@ApiTags('sibling-details')
+@ApiTags('/v1/sibling-details')
 @Controller('/v1/sibling-details')
 export class SiblingDetailsController {
     constructor(

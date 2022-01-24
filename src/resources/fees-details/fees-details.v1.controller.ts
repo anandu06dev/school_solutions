@@ -14,7 +14,8 @@ import { FeesDetailDto } from './dto/fees-detail.dto'
 import { UpdateFeesDetailDto } from './dto/update-fees-detail.dto'
 import { FeesDetailsService } from './fees-details.v1.service'
 
-@ApiTags('fees-details')
+@ApiTags('/v1/fees-details')
+// @UseGuards(AuthGuard())
 @Controller('/v1/fees-details')
 export class FeesDetailsController {
     constructor(private readonly feesDetailsService: FeesDetailsService) {}

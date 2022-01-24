@@ -15,7 +15,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
 import { StudentQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
-@ApiTags('student-details')
+@ApiTags('/v1/student-details')
 @ApiBearerAuth()
 // @UseGuards(AuthGuard())
 @Controller('/v1/student-details')
