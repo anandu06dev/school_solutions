@@ -4,10 +4,18 @@ import { FeesDetailDtoconfig } from '@resources/fees-details/dto/fees-detail.dto
 import { ParentDetailDtoConfig } from '@resources/parent-details/dto/parent-detail.dto.config'
 import { SiblingDetailDtoConfig } from '@resources/sibling-details/dto/sibling-detail.dto.config'
 import { StudentDetailDtoConfig } from '@resources/student-details/dto/student-detail.dto.config'
-import { classToClass } from 'class-transformer'
+
+export const DTO_PROVIDERS = [
+    StudentDetailDtoConfig,
+    SiblingDetailDtoConfig,
+    FeesDetailDtoconfig,
+    BusRouteDetailDtoConfig,
+    ParentDetailDtoConfig,
+    AddressDetailDtoConfig,
+]
 
 export const GET_ALL_CONFIG_DTOS = {
-    studentDetails: { ...classToClass(new StudentDetailDtoConfig()) },
+    studentDetails: { ...new StudentDetailDtoConfig() },
     siblingDetails: { ...new SiblingDetailDtoConfig() },
     feesDetails: { ...new FeesDetailDtoconfig() },
     busRouteDetails: { ...new BusRouteDetailDtoConfig() },

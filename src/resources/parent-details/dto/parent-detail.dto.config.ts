@@ -4,12 +4,12 @@ export class ParentDetailDtoConfig extends ParentDetailDto {
     constructor() {
         super()
         return {
-            parentCode: super.parentCode,
-            parentEducation: super.parentEducation,
-            parentOccupation: super.parentOccupation,
-            parentAadharNo: super.parentAadharNo,
-            parentPhoneNo: super.parentPhoneNo,
-            parentEmailId: super.parentEmailId,
+            parentCode: null,
+            parentEducation: null,
+            parentOccupation: null,
+            parentAadharNo: null,
+            parentPhoneNo: null,
+            parentEmailId: null,
         }
     }
 }

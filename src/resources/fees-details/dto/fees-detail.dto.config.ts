@@ -4,12 +4,12 @@ export class FeesDetailDtoconfig extends FeesDetailDto {
     constructor() {
         super()
         return {
-            feesDate: super.feesDate,
-            feesBillNo: super.feesBillNo,
-            feesAmount: super.feesAmount,
-            feesBalance: super.feesBalance,
-            feesDiscount: super.feesDiscount,
-            feesNotes: super.feesNotes,
+            feesDate: null,
+            feesBillNo: null,
+            feesAmount: null,
+            feesBalance: null,
+            feesDiscount: null,
+            feesNotes: null,
         }
     }
 }
