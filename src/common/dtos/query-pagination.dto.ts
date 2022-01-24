@@ -82,7 +82,8 @@ export class BaseQueryPageOptionsDto {
 
     @ApiPropertyOptional({
         default: false,
-        description: 'Describes about multiple relations/join',
+        description:
+            'Describes about multiple relations/join , This is directly linked to the join key',
     })
     @Type(() => String)
     @IsOptional()
@@ -112,7 +113,7 @@ export class StudentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
         default: [JoinProjection.SIBLINGS, JoinProjection.PARENTS],
         isArray: true,
         required: false,
-        description: 'Describes about JoinProjection',
+        description: 'Describes about JoinProjection , linked with the show',
     })
     @IsOptional()
     readonly join: string[] = [JoinProjection.SIBLINGS, JoinProjection.PARENTS]
@@ -146,9 +147,78 @@ export class SiblingQueryPageOptionsDto extends BaseQueryPageOptionsDto {
         default: JoinProjection.SIBLINGS,
         required: true,
         isArray: false,
-        description: 'Describes about Join Projection',
+        description: 'Describes about JoinProjection , linked with the show',
     })
     @Type(() => String)
     @IsOptional()
     readonly join: string[] = [JoinProjection.SIBLINGS]
+}
+
+export class ParentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
+    @ApiProperty({
+        enum: [JoinProjection.STUDENT_DETAILS],
+        default: JoinProjection.STUDENT_DETAILS,
+        isArray: false,
+        required: true,
+        description: 'Describes about Join Projection',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly primaryJoin: string
+    @ApiPropertyOptional({
+        enum: [JoinProjection.PARENTS],
+        default: JoinProjection.PARENTS,
+        required: true,
+        isArray: false,
+        description: 'Describes about JoinProjection , linked with the show',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly join: string[] = [JoinProjection.PARENTS]
+}
+
+export class FeesDetailQueryPageOptionsDto extends BaseQueryPageOptionsDto {
+    @ApiProperty({
+        enum: [JoinProjection.STUDENT_DETAILS],
+        default: JoinProjection.STUDENT_DETAILS,
+        isArray: false,
+        required: true,
+        description: 'Describes about Join Projection',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly primaryJoin: string
+    @ApiPropertyOptional({
+        enum: [JoinProjection.FEES],
+        default: JoinProjection.FEES,
+        required: true,
+        isArray: false,
+        description: 'Describes about JoinProjection , linked with the show',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly join: string[] = [JoinProjection.FEES]
+}
+
+export class BusRouteQueryPageOptionsDto extends BaseQueryPageOptionsDto {
+    @ApiProperty({
+        enum: [JoinProjection.STUDENT_DETAILS],
+        default: JoinProjection.STUDENT_DETAILS,
+        isArray: false,
+        required: true,
+        description: 'Describes about Join Projection',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly primaryJoin: string
+    @ApiPropertyOptional({
+        enum: [JoinProjection.BUS_ROUTE_DETAILS],
+        default: JoinProjection.BUS_ROUTE_DETAILS,
+        required: true,
+        isArray: false,
+        description: 'Describes about JoinProjection , linked with the show',
+    })
+    @Type(() => String)
+    @IsOptional()
+    readonly join: string[] = [JoinProjection.BUS_ROUTE_DETAILS]
 }
