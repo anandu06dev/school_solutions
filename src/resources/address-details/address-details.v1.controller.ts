@@ -10,13 +10,14 @@ import {
     Query,
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
+import { SCHOOL_SOLS } from '@utils/apiEnums'
 import { AddressDetailsService } from './address-details.v1.service'
 import { AddressDetailDto } from './dto/address-detail.dto'
 import { UpdateAddressDetailDto } from './dto/update-address-detail.dto'
 
-@ApiTags('/v1/address-details')
+@ApiTags('/v1/' + SCHOOL_SOLS.ADDRESSDETAILS)
 // @UseGuards(AuthGuard())
-@Controller('/v1/address-details')
+@Controller('/v1/' + SCHOOL_SOLS.ADDRESSDETAILS)
 export class AddressDetailsController {
     constructor(
         private readonly addressDetailsService: AddressDetailsService
@@ -27,7 +28,7 @@ export class AddressDetailsController {
         return this.addressDetailsService.createorUpdate(createAddressDetailDto)
     }
 
-    @Get('/addressdetails')
+    @Get(`/${SCHOOL_SOLS.ADDRESSDETAILS}`)
     getPageableGetStudentDetails(
         @Query('pagination') pagination?: AddressQueryPageOptionsDto
     ) {

@@ -10,12 +10,13 @@ import {
     Query,
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
+import { SCHOOL_SOLS } from '@utils/apiEnums'
 import { AddressDetailsService } from './address-details.service'
 import { AddressDetailDto } from './dto/address-detail.dto'
 import { UpdateAddressDetailDto } from './dto/update-address-detail.dto'
 
-@ApiTags('address-details')
-@Controller('address-details')
+@ApiTags(SCHOOL_SOLS.ADDRESSDETAILS)
+@Controller(SCHOOL_SOLS.ADDRESSDETAILS)
 export class AddressDetailsController {
     constructor(
         private readonly addressDetailsService: AddressDetailsService
