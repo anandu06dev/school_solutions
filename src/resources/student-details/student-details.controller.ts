@@ -16,6 +16,7 @@ import { Projection } from '@resources/resource-model/resource.model'
 import { UpdateStudentDetailDto } from './dto/update-student-detail.dto'
 import { DeleteStudentDetailDto } from './dto/delete-student-detail.dto'
 import { StudentQueryPageOptionsDto } from '@common/dtos/query-pagination.dto'
+
 @ApiTags('student-details')
 @ApiBearerAuth()
 // @UseGuards(AuthGuard())

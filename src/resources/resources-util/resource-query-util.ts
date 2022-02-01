@@ -148,3 +148,10 @@ export function initRolesRules(allDto, util = false) {
         }
     return temp
 }
+
+export function generateRandomNumber(n) {
+    return (
+        Math.floor(Math.random() * (9 * Math.pow(10, n - 1))) +
+        Math.pow(10, n - 1)
+    )
+}
