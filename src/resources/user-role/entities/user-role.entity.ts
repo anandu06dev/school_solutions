@@ -42,6 +42,13 @@ export class UserRole extends AbstractEntity {
     @UpdateDateColumn({ type: 'timestamp', name: 'LAST_UPDT_BY' })
     updatedBy: Timestamp
 
+    @Column('varchar', {
+        name: 'LEFT_MENU_ACESS',
+        nullable: false,
+        comment: 'Left Menu Access',
+    })
+    leftMenuAcess: string
+
     @ManyToOne(() => UserEntity, (user) => user.userRole)
     @JoinColumn({ name: 'USER_ID', referencedColumnName: 'id' })
     userEntity: UserEntity

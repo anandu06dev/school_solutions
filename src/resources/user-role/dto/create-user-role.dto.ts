@@ -1,6 +1,7 @@
+import { JoinProjection } from '@common/constants'
 import { ApiProperty } from '@nestjs/swagger'
 import { Transform } from 'class-transformer'
-import { IsNotEmpty } from 'class-validator'
+import { IsNotEmpty, IsOptional } from 'class-validator'
 
 export class CreateorUpdateUserRoleDto {
     @ApiProperty({
@@ -35,4 +36,23 @@ export class CreateorUpdateUserRoleDto {
     })
     @IsNotEmpty()
     roleName: string
+
+    @ApiProperty({
+        enum: [
+            JoinProjection.SIBLINGS,
+            JoinProjection.PARENTS,
+            JoinProjection.FEES,
+            JoinProjection.BUS_ROUTE_DETAILS,
+            JoinProjection.ADDRESSES,
+        ],
+        default: [JoinProjection.SIBLINGS].toString(),
+        isArray: true,
+        required: false,
+        description: 'Describes about Left Menu Access',
+    })
+    @IsOptional()
+    @Transform((value) => {
+        return value.value.toString()
+    })
+    leftMenuAcess: string = [JoinProjection.SIBLINGS].toString()
 }
