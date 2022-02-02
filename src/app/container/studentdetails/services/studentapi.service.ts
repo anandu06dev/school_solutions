@@ -9,9 +9,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class StudentapiService {
-  private baseURL: string = environment.apiUrl;
+  private baseURL: string = environment.versionedApiUrl;
 
-  private targetResource: string = 'student-details';
+  private targetResource: string = 'studentDetails';
   private targetResource2: string = 'studentdetails';
 
   constructor(private http: HttpClient) {}

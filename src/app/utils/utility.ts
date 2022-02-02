@@ -197,6 +197,14 @@ export const RootMenu: IToolBarMenu[] = [
     url: `/${RouterString.ADDRESS}`,
   },
   {
+    label: 'Settings',
+    icon: 'settings',
+    showOnMobile: false,
+    showOnTablet: false,
+    showOnDesktop: false,
+    url: `/${RouterString.SETTINGS}`,
+  },
+  {
     label: 'Logout',
     icon: 'logout',
     showOnMobile: false,

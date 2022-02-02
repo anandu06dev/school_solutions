@@ -24,7 +24,7 @@
     <app-root-layout *ngIf="!loadAuthModules">
 
 
-        <div menu fxLayout="column" fxLayoutAlign="space-evenly center">
+        <div menu fxLayout="column">
             <ng-container *ngTemplateOutlet="sidenavcontent"></ng-container>
         </div>
 
@@ -59,31 +59,43 @@
 
 <!-- Sidenavbar content -->
 <ng-template #sidenavcontent>
+    <div class="d-flex align-items-center flex-column">
 
-    <img class="avatar mat-elevation-z8" class="rounded-circle text-center" width="100" height="100"
-        src="https://www.jea.com/cdn/images/avatar/avatar-alt.svg" />
 
-    <h4 class="name">{{username}}</h4>
-    <p class="designation">{{role}}</p>
+        <img class="avatar mat-elevation-z8" class="rounded-circle text-center" width="100" height="100"
+            src="https://www.jea.com/cdn/images/avatar/avatar-alt.svg" />
 
-    <mat-divider></mat-divider>
+        <h4 class="name">{{username}}</h4>
+        <p class="designation">{{role}}</p>
+    </div>
+    <hr>
+
 
     <ng-container *ngFor="let item of menuItems">
 
+        <a class="menu-button text-white text-decoration-none" mat-ripple
+            [routerLink]="item?.url" routerLinkActive="active" (click)="loadRouteToStorage(item)">
+            <div class="d-flex align-items-center p-1" role="button" mat-button>
+                <div>
+                    <mat-icon class="mt-1">{{item.icon}}</mat-icon>
+                </div>
+                <div><span class="ms-2"> {{item.label}}</span></div>
 
-        <a mat-button class="menu-button w-100 d-flex justify-content-between" [routerLink]="item?.url"
+            </div>
+
+
+        </a>
+        <!-- <a mat-button class="menu-button w-100 d-flex justify-content-between" [routerLink]="item?.url"
             routerLinkActive="active" (click)="loadRouteToStorage(item)">
             <mat-icon>{{item.icon}}</mat-icon>
             <span class="ml-2"> {{item.label}}</span>
-        </a>
+        </a> -->
 
 
     </ng-container>
 
 
 
-
-    <mat-divider [inset]="true"></mat-divider>
 
 
 </ng-template>
@@ -120,4 +132,3 @@
 
 
 </ng-template>
-

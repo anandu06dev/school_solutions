@@ -1,0 +1,12 @@
+<ng-container *ngIf="_access.length">
+    <div class="d-flex justify-content-between">
+        <ng-container *ngFor="let accessRules of _access">
+            <div>
+              
+                <mat-checkbox [disabled]="readonly"  (change)="changeAccessRules(accessRules[0],$event)" [checked]="accessRules[1]" id="random_{{random}}_{{accessRules[0]}}">
+                    {{accessRules[0]}}
+                </mat-checkbox>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>

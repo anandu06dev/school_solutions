@@ -1,0 +1,39 @@
+<div class="card border-0 shadow-sm" style="overflow-x: auto;min-width:22rem">
+    <div class="card-text text-center tex-purple">Define Roles</div>
+    <div class="card-body" style="position: sticky;top:0">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <label>Role Name</label>
+                <input type="text" class="form-control" [(ngModel)]="definedRoleName">
+            </div>
+        </div>
+    </div>
+    <div class="card-body" style="">
+        <ng-container *ngFor="let table of mainRoleTableNames">
+            <mat-expansion-panel *ngIf="rolesConfig[table]" class="border-light">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{table}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Define rules for {{table}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <ng-container *ngFor="let item of rolesConfig[table] | keyvalue">
+                    <div class="shadow p-3 my-3">
+                        <p class="badge bg-secondary fs-6 fst-italic">{{item?.key}}</p>
+                        <app-access-checkbox [access]="item?.value"
+                            (accessRolesEmitter)="emitRoles($event,item.key,table)">
+                        </app-access-checkbox>
+                    </div>
+                </ng-container>
+            </mat-expansion-panel>
+
+        </ng-container>
+    </div>
+    <div class="card-body text-end">
+        <button class="btn btn-primary mx-1" type="button" (click)="submit()">Submit</button>
+        <button class="btn btn-warning mx-1" type="button" (click)="cancel()">Cancel</button>
+
+    </div>
+</div>

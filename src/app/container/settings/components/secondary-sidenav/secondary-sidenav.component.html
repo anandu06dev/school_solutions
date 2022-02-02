@@ -1,0 +1,39 @@
+
+<div class="grid-container">
+    <div class="d-flex flex-column shadow-sm sec-nav" [style.width.rem]="sidenavtoggle ? 8:2">
+  
+        <div role="button" class="d-flex align-items-center p-1 btn btn-outline-purple w-100 border-0"
+            style="font-size: 12px;" (click)="toggle()">
+            <div class="m-0 p-0">
+                <mat-icon>{{sidenavtoggle ? 'chevron_left' :'chevron_right'}}</mat-icon>
+            </div>
+            <div class="ms-2" *ngIf="sidenavtoggle">Hide settings</div>
+        </div>
+        <ng-container *ngFor="let item of sidenav">
+    
+            <div role="button"  class="d-flex align-items-center p-1 btn btn-outline-purple w-100 border-0" [class.active]="item.url === clickedNav.url"
+                style="font-size: 12px;"  [matTooltip]="item.label +' settings'" (click)="navigateTo(item)">
+             
+                <div class="m-0 p-0">
+                    <mat-icon>{{item?.icon}}</mat-icon>
+                </div>
+                <div class="ms-2" *ngIf="sidenavtoggle">{{item?.label}}</div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="card border-0">
+        <div class="card-text shadow-sm">
+            <div class="d-flex" style="font-size:14px">
+                <div>
+                    <button mat-button class="p-1 btn-outline-purple" (click)="goBack()">
+                        <mat-icon style="font-size: 0.8rem;margin-top: 0.5rem;">arrow_back</mat-icon> Go Back
+                    </button>
+                </div>
+               
+            </div>
+        </div>
+        <div class="card-body" style="overflow-y: auto;height: calc(100vh - 12rem);">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

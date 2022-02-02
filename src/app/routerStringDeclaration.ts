@@ -7,6 +7,8 @@ export const enum RouterString{
    AUTH =  'auth',
    BUSROUTE = 'busRoute',
    ADDRESS = 'address',
-   LOGOUT = 'logout'
+   LOGOUT = 'logout',
+   SETTINGS = 'settings'
+
 
 }

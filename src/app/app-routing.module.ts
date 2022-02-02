@@ -17,6 +17,16 @@ const routes: Routes = [
     runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
     canActivate: [IsAuthenticatedGuard],
   },
+  {
+    path: RouterString.SETTINGS,
+    loadChildren: () =>
+      import('./container/settings/settings.module').then(
+        (m) => m.SettingsModule
+      ),
+    data: { animationState: 'fadeAnimation' },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+    canActivate: [IsAuthenticatedGuard],
+  },
   // {
   //   path: RouterString.AUTH,
   //   loadChildren: () =>
