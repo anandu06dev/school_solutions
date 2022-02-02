@@ -9,9 +9,10 @@ export const CONDITION_STUDENT_IS_ACTIVE = [
 ]
 
 export function getRecordStatus(status: string): IWhere {
+    console.log('status', status)
     return {
         condition: 'student_details.studentIsActive =:studentIsActive',
-        params: { studentIsActive: status },
+        params: { studentIsActive: status ? status : 1 },
     }
 }
 // {
@@ -52,7 +53,6 @@ export function getAdmissionID(admissionNo: string): string[] | string {
 }
 
 export function getQueryJoin(join: string | string[]) {
-    console.log(Array.isArray(join) ? join : [join])
     if (join) return Array.isArray(join) ? join : [join]
     else return []
 }

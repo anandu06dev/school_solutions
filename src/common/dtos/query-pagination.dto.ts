@@ -122,17 +122,17 @@ export class StudentQueryPageOptionsDto extends BaseQueryPageOptionsDto {
     @IsOptional()
     readonly join: string[] = [JoinProjection.SIBLINGS, JoinProjection.PARENTS]
 
-    @ApiProperty({
+    @ApiPropertyOptional({
         enum: [JoinProjection.STUDENT_DETAILS],
         default: JoinProjection.STUDENT_DETAILS,
         isArray: false,
-        readOnly: true,
         required: true,
         description: 'Describes about Join Projection',
     })
     @Type(() => String)
+    @IsNotEmpty()
     @IsOptional()
-    readonly primaryJoin: string
+    readonly primaryJoin: string = JoinProjection.STUDENT_DETAILS
 }
 
 export class SiblingQueryPageOptionsDto extends BaseQueryPageOptionsDto {
