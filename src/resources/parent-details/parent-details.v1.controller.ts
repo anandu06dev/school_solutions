@@ -25,7 +25,7 @@ export class ParentDetailsController {
         return this.parentDetailsService.createorUpdate(createParentDetailDto)
     }
 
-    @Get('/parentdetails')
+    @Get('/')
     getPageableGetStudentDetails(
         @Query() pagination?: ParentQueryPageOptionsDto
     ) {

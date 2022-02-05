@@ -25,7 +25,7 @@ export class FeesDetailsController {
         return this.feesDetailsService.createorUpdate(createFeesDetailDto)
     }
 
-    @Get('/feedetails')
+    @Get('/')
     getPageableFeeDetails(
         @Query('pagination') pagination?: FeesDetailQueryPageOptionsDto
     ) {

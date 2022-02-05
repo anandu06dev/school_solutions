@@ -29,7 +29,7 @@ export class BusRouteDetailsController {
         )
     }
 
-    @Get('/studentdetails')
+    @Get('/')
     getPageableBusrouteDetails(
         @Query('pagination') pagination?: BusRouteQueryPageOptionsDto
     ) {

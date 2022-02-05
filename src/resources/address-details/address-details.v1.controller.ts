@@ -28,7 +28,7 @@ export class AddressDetailsController {
         return this.addressDetailsService.createorUpdate(createAddressDetailDto)
     }
 
-    @Get(`/${SCHOOL_SOLS.ADDRESSDETAILS}`)
+    @Get(`/`)
     getPageableGetStudentDetails(
         @Query('pagination') pagination?: AddressQueryPageOptionsDto
     ) {

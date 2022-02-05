@@ -26,7 +26,7 @@ export class SiblingDetailsController {
         return this.siblingDetailsService.createorUpdate(siblingDetailDto)
     }
 
-    @Get('/siblingdetails')
+    @Get('/')
     getPageableGetStudentDetails(
         @Query() pageOptions?: SiblingQueryPageOptionsDto
     ) {
