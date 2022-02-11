@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SiblingapiService {
-  private rootUrl = environment.apiUrl
+  private rootUrl = environment.versionedApiUrl
   private targetResource: string = 'sibling-details';
 
   constructor(private http:HttpClient) { }

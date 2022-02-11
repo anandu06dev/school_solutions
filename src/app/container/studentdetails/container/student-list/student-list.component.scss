@@ -1,41 +1,54 @@
 :host ::ng-deep [data-letters]:before {
-    content: attr(data-letters);
-    display: inline-block;
-    font-size: 1.25em;
-    width: 2.5em;
-    height: 2.5em;
-    line-height: 2.5em;
-    text-transform: capitalize;
-    text-align: center;
-    border-radius: 50%;
-    background: #9c27b0;
-    vertical-align: middle;
-    // margin-right: 1em;
-    color: white;
+  content: attr(data-letters);
+  display: inline-block;
+  font-size: 1.25em;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-transform: capitalize;
+  text-align: center;
+  border-radius: 50%;
+  background: #9c27b0;
+  vertical-align: middle;
+  // margin-right: 1em;
+  color: white;
 }
 
-
-#mobileFriendlyLists {
-    height: calc(100vh - 11rem);
-    overflow-y: auto;
-}
+// #mobileFriendlyLists {
+//     // height: calc(100vh - 11rem);
+//     overflow-y: auto;
+// }
 
 :host ::ng-deep mat-list-option {
-    min-height: 6rem !important;
-    height: 7rem !important;
-    max-height: 8rem !important;
-    justify-content: center;
+  min-height: 6rem !important;
+  height: 7rem !important;
+  max-height: 8rem !important;
+  justify-content: center;
 }
 
 .bg-light-color {
-    background-color: #eeeefb;
+  background-color: #eeeefb;
 }
-mat-list-option[aria-selected='true'] {
-    background: rgb(156 39 176 / 20%)
+mat-list-option[aria-selected="true"] {
+  background: rgb(156 39 176 / 20%);
 }
 @media only screen and (max-width: 600px) {
-    #mobileFriendlyLists {
-        height: calc(100vh - 9rem);
-        overflow-y: auto;
-    }
+  // #mobileFriendlyLists {
+  //     // height: calc(100vh - 9rem);
+  //     overflow-y: auto;
+  // }
+  .example-item-detail{
+    // height: 8rem
+}
+}
+
+.example-viewport {
+  height: calc(100vh - 12rem);
+}
+.example-item-detail{
+    // height: 6rem;
+}
+
+.example-alternate {
+  background: rgba(127, 127, 127, 0.3);
 }

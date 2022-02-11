@@ -22,6 +22,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { AgGridModule } from 'ag-grid-angular';
 import { CachingInterceptorService } from '@core/interceptor/cache-http-interceptor.interceptor';
 import { AccessDeniedComponent } from './notAccess';
+import { StoreModule } from './store/store.module';
 
 @NgModule({
   declarations: [AppComponent, NotfoundComponent,AccessDeniedComponent],
@@ -32,6 +33,7 @@ import { AccessDeniedComponent } from './notAccess';
     CoreModule,
     WidgetModule,
     SharedModule,
+    StoreModule.forRoot(),
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

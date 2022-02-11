@@ -14,7 +14,7 @@
         </mat-form-field>
       </div>
       <div class="col-12 p-0 m-0 col-sm-6">
-        <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons (page)="onPaginateChange($event)"></mat-paginator>
       </div>
     </div>
   </div>

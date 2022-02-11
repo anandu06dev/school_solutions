@@ -1,12 +1,12 @@
 <div class="card" id="mobileFriendlyLists">
     <div class="card-body">
         <div class="row">
-            <ng-container *ngIf="studentDetails.length===0">
+            <ng-container *ngIf="(loadStudentDetails$ | async)?.length===0">
                 <div class="card text-center">
                     No data to show
                 </div>
             </ng-container>
-            <ng-container *ngFor="let student of studentDetails;odd as isOdd; even as isEven;">
+            <ng-container *ngFor="let student of (loadStudentDetails$ | async);odd as isOdd; even as isEven;">
                 <div [attr.value]="student" class="col-12 col-sm-6 col-lg-4 rounded m-0 p-0">
                     <div class="card m-0 p-0 border-0 m-2">
                         <app-list [data]="student" [listConf]="listconfig" (click)="openBottomSheet(student)">
@@ -14,9 +14,25 @@
                     </div>
 
                 </div>
+               
             </ng-container>
+            <div class="col-12 text-center" *ngIf="(pagination$ | async)?.hasNextPage">
+                <button type="button" class="btn" (click)="loadNextSetOfRecords()">LoadMore</button>
+            </div>
+            <!-- <cdk-virtual-scroll-viewport [itemSize]="itemSize" class="example-viewport">
+                <div class="example-item-detail"
+                    *cdkVirtualFor="let student of (loadStudentDetails$ | async);odd as isOdd; even as isEven;templateCacheSize: 0">
+                    <div class="col-sm-6 col-lg-4 rounded my-2 p-1">
+
+                        <app-list [data]="student" [listConf]="listconfig" (click)="openBottomSheet(student)">
+                        </app-list>
+                    </div>
+                </div>
+                <div class="col-12 text-center" *ngIf="(pagination$ | async)?.hasNextPage">
+                    <button type="button" class="btn" (click)="loadNextSetOfRecords()">LoadMore</button>
+                </div>
+            </cdk-virtual-scroll-viewport> -->
+
         </div>
     </div>
 </div>
-
-

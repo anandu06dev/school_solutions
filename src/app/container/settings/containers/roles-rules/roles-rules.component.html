@@ -10,19 +10,21 @@
     </div>
     <div class="card-body" style="">
         <ng-container *ngFor="let table of mainRoleTableNames">
-            <mat-expansion-panel *ngIf="rolesConfig[table]" class="border-light">
+            <mat-expansion-panel *ngIf="rolesConfig[table]" class="clay">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         {{table}}
                     </mat-panel-title>
                     <mat-panel-description>
                         Define rules for {{table}}
+                        
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <ng-container *ngFor="let item of rolesConfig[table] | keyvalue">
-                    <div class="shadow p-3 my-3">
+                    <div class="shadow p-4 my-3 clay" style="border-radius: 2rem;">
                         <p class="badge bg-secondary fs-6 fst-italic">{{item?.key}}</p>
-                        <app-access-checkbox [access]="item?.value"
+                        
+                        <app-access-checkbox [access]="item?.value" 
                             (accessRolesEmitter)="emitRoles($event,item.key,table)">
                         </app-access-checkbox>
                     </div>

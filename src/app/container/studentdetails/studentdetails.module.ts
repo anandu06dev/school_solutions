@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { StudentGridComponent } from './container/student-grid/student-grid.component';
 import { MatCustomTableComponent } from '@widgets/mat-custom-table/mat-custom-table.component';
 import { MatCustomTableModule } from '@widgets/mat-custom-table/mat-custom-table.module';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MatCustomTableModule } from '@widgets/mat-custom-table/mat-custom-table
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ScrollingModule
   ],
   providers: [MatDatepickerModule, MatNativeDateModule],
 })

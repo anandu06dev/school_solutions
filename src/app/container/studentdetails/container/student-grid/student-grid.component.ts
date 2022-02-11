@@ -4,85 +4,46 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListConfig } from '@utils/interfaces/listConfig';
+import { Page } from '@utils/interfaces/page.meta';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import { Observable } from 'rxjs';
 import { RouterString } from 'src/app/routerStringDeclaration';
+import { IStudentDetailsCoreLogicFacade, StudentDetailsCoreLogicFacade } from '../../class/studentDetails.core.logic';
 import {
   BottomsheetsComponent,
   IShowTableOnBottomSheet,
 } from '../../components/bottomsheets/bottomsheets.component';
+import { StudentDetailsFacade } from '../../services/students.facade';
+import { studentList } from '../../util/student.util';
 
 @Component({
   selector: 'app-student-grid',
   templateUrl: '/student-grid.component.html',
   styleUrls: ['./student-grid.component.scss'],
 })
-export class StudentGridComponent implements OnInit {
+export class StudentGridComponent extends StudentDetailsCoreLogicFacade implements IStudentDetailsCoreLogicFacade {
+  public pagination$: Observable<Page>;
+  public loadStudentDetails$: Observable<any>;
   dataSource = new MatTableDataSource<IStudentDetails>([]);
   studentDetails: any;
   _studentLists: any = [];
-  listconfig:ListConfig = {
-    avatarInfo:{
-      key:'studentFirstName',
-      show:true
-    },
-    mainInfo:{
-      key:'studentFirstName',
-      secKey:'studentLastName',
-    },
-    sub1Info:{
-      key:'admissionNo',
-      label:'#',
-      show:true,
-    },
-    sub2Info:{
-      key:'studentBloodGroup',
-      label:'Blood Group',
-      show:true
-    },
-    chip1Info:{
-      key:'studentClass',
-      label:'class',
-      show:true
-    },
-    chip2Info:{
-      key:'studentGender',
-      label:'class',
-      show:true,
-      trim:1
-    }
-  }
+  listconfig:ListConfig = studentList;
+ itemSize=20;
   constructor(
-    private actRoute: ActivatedRoute,
-    private router:Router,
-    private bottomSheet: MatBottomSheet
-  ) {}
-
-  ngOnInit(): void {
-    this.studentDetails = this.actRoute.snapshot?.data?.['students'] || [];
- 
+    public facade: StudentDetailsFacade,
+    public bottomSheet: MatBottomSheet,
+    public router: Router
+  ) {
+    super();
+    this.pagination$ = this.paginationData(this.facade);
+    this.loadStudentDetails$ = this.loadStudentDetails(this.facade);
   }
 
- 
-  openBottomSheet(student: any) {
-    let forBottomSheet: IShowTableOnBottomSheet;
-
-    let sheetRef = this.bottomSheet.open(BottomsheetsComponent, {
-      data: {
-        viewType: 'list',
-        renderData: { ...student },
-        data: { ...student },
-        label: 'Student lists',
-      },
-    });
-    sheetRef.afterDismissed().subscribe((data) => {
-      if (data) {
-        this.router.navigateByUrl(`${RouterString.STUDENTS}/form/edit/${data?.admissionNo}`)
-      }
-    });
+  public openBottomSheet(student: any) {
+    return this.abstractingOpenBottomSheet(student, this.bottomSheet, this.router)
   }
 
-
-
- 
+  public loadNextSetOfRecords() {
+    return this.abstractingLoadNextSetOfRecords(this.facade)
+  }
 }

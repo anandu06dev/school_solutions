@@ -18,6 +18,8 @@ import { IToolBarMenu } from './interfaces/toolbarmenu.interface';
 import { studentDetail } from '../container/studentdetails/models/studentDetail.model';
 import { TableColumn, TableConfig } from './interfaces/tableColumn';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { Page } from './interfaces/page.meta';
+import { HttpParams } from '@angular/common/http';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -279,7 +281,6 @@ export function generateTableColumnHeader(detail: string[]): TableColumn[] {
       temp.width = 10;
     }
     temp.header = convertCamelCaseToNormalText(item);
-    console.log(temp);
     return temp;
   });
 }
@@ -305,3 +306,11 @@ export const listConfigKeys = [
   'chip1Info',
   'chip2Info',
 ];
+
+
+export const buildParams = (params:any)=>{
+    return Object.keys(params).reduce((mem,p)=>{
+      mem = mem.set(p,params[p]);
+      return mem;
+    },new HttpParams())
+}

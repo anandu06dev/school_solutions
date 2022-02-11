@@ -19,15 +19,7 @@ export class SiblingResolver implements Resolve<boolean> {
   ): Observable<any> {
     // console.log('Called Get Siblings in resolver...', route);
     return this.api.getAllSiblings().pipe(
-      tap((d) => console.log(d)),
-      map((itm: any) => {
-        return itm.map((i:any)=>{
-          i.siblingRelation = +i.siblingRelation === 1 ? 'Brother' : 'Sister';
-          i.studentFirstName = i.studentDetails.studentFirstName;
-          return i;
-
-        })
-      }),
+      map((d:any)=>d?.data?d.data :[]),
       catchError((e) => {
         throw e;
       })

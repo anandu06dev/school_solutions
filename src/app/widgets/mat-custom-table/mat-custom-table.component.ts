@@ -47,10 +47,14 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
     let reduced = value
       .map((i) => (i?.width ? i.width : 150)) //default width is 150px
       .reduce((acc: number, curr: number) => {console.log(curr);return acc + curr}, 0);
-      console.log(reduced)
     this.updateWidth(reduced); // this pixels is connected to mat column default pixels
   }
-  @Input() dataset: Array<any> = [];
+  dataSet:Array<any>=[];
+  @Input() set dataset(value: Array<any>){
+    this.dataSet = value && value.length ? value: []
+    this.dataSource = new MatTableDataSource<any>(this.dataSet);
+    this.dataSource.paginator = this.paginator
+  };
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
@@ -59,6 +63,8 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
   dynamicWidth: number = 0;
   clickedRows = new Set<any>();
   @Output() emitSelectedRow = new EventEmitter();
+  @Output() pageEvent = new EventEmitter();
+
 
   constructor() {}
 
@@ -68,7 +74,7 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
       this.columns.map((x) => x.columnDef)
     ); // pre-fix static
 
-    this.dataSource = new MatTableDataSource<any>(this.dataset);
+    this.dataSource = new MatTableDataSource<any>(this.dataSet);
 
     // set pagination
     this.dataSource.paginator = this.paginator;
@@ -92,6 +98,7 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+
     // console.log(this.container)
     // this.dynamicWidth = this.container.nativeElement.offsetWidth;
   }
@@ -158,5 +165,9 @@ export class MatCustomTableComponent implements OnInit, AfterViewInit {
   }
   updateWidth(len: number) {
     this.dynamicWidth = len;
+  }
+
+  onPaginateChange(e:any){
+   this.pageEvent.emit(e)
   }
 }

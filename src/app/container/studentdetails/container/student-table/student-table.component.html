@@ -138,10 +138,7 @@
 
 <!-- <app-table></app-table> -->
 <div class="card d-none d-sm-none d-md-flex">
-<app-mat-custom-table
- (emitSelectedRow)="onTableAction($event)"
-  [dataset]="data" 
-  [tableConfig]="tableConf"
-  [colDef]="columns">
-</app-mat-custom-table>
+    <app-mat-custom-table (emitSelectedRow)="onTableAction($event)" (pageEvent)="changeInPaginatedData($event)"
+        [dataset]="(loadStudentDetails$ | async)" [tableConfig]="tableConf" [colDef]="columns">
+    </app-mat-custom-table>
 </div>

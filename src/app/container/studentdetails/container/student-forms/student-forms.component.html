@@ -6,10 +6,10 @@
                 <ng-template matStepContent>
                     <form class="row my-2" [formGroup]="studentPrimaryDetails">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
-                            
+
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>First Name</mat-label>
-                                <input type="text" matInput formControlName="studentFirstName"
+                                <input type="text" matInput class="form-control" formControlName="studentFirstName"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's first name</mat-hint>
                                 <mat-error *ngIf="fstudentPrimaryDetails.get('studentFirstName')?.hasError('required')">
@@ -20,7 +20,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Last Name</mat-label>
-                                <input type="text" matInput formControlName="studentLastName"
+                                <input type="text" matInput class="form-control" formControlName="studentLastName"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's last name</mat-hint>
                                 <mat-error *ngIf="fstudentPrimaryDetails.get('studentLastName')?.hasError('required')">
@@ -61,7 +61,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Father Name</mat-label>
-                                <input type="text" matInput formControlName="studentFatherName"
+                                <input type="text" matInput class="form-control" formControlName="studentFatherName"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's father name</mat-hint>
                                 <mat-error
@@ -73,7 +73,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Mother Name</mat-label>
-                                <input type="text" matInput formControlName="studentMotherName"
+                                <input type="text" matInput class="form-control" formControlName="studentMotherName"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's mother name</mat-hint>
                                 <mat-error
@@ -86,7 +86,7 @@
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Admission Date</mat-label>
 
-                                <input matInput [matDatepicker]="admissionDate" formControlName="admissionDate">
+                                <input matInput class="form-control" [matDatepicker]="admissionDate" formControlName="admissionDate">
                                 <mat-datepicker-toggle matSuffix [for]="admissionDate"></mat-datepicker-toggle>
                                 <mat-datepicker #admissionDate></mat-datepicker>
                                 <mat-hint>Enter student's admission date</mat-hint>
@@ -100,7 +100,7 @@
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Date of Birth</mat-label>
 
-                                <input matInput [matDatepicker]="studentDOB" formControlName="studentDOB">
+                                <input matInput class="form-control" [matDatepicker]="studentDOB" formControlName="studentDOB">
                                 <mat-datepicker-toggle matSuffix [for]="studentDOB"></mat-datepicker-toggle>
                                 <mat-datepicker #studentDOB></mat-datepicker>
                                 <mat-hint>Enter student's DOB</mat-hint>
@@ -125,7 +125,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Caste</mat-label>
-                                <input type="text" matInput formControlName="studentCaste"
+                                <input type="text" matInput class="form-control" formControlName="studentCaste"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's caste</mat-hint>
                                 <mat-error *ngIf="fstudentReligionDetails.get('studentCaste')?.hasError('required')">
@@ -136,7 +136,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Sub Caste</mat-label>
-                                <input type="text" matInput formControlName="studentSubCaste"
+                                <input type="text" matInput class="form-control" formControlName="studentSubCaste"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's sub caste</mat-hint>
                                 <mat-error *ngIf="fstudentReligionDetails.get('studentSubCaste')?.hasError('required')">
@@ -163,7 +163,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student Religion</mat-label>
-                                <input type="text" matInput formControlName="studentReligion"
+                                <input type="text" matInput class="form-control" formControlName="studentReligion"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's religion</mat-hint>
                                 <mat-error *ngIf="fstudentReligionDetails.get('studentReligion')?.hasError('required')">
@@ -192,7 +192,7 @@
 
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student Aadhar Number</mat-label>
-                                <input type="text" mask="0000-0000-0000" placeholder="XXXX-XXXX-XXXX" matInput
+                                <input type="text" mask="0000-0000-0000" placeholder="XXXX-XXXX-XXXX" matInput class="form-control"
                                     formControlName="studentAadharNumber" [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's Aadhar Number</mat-hint>
                                 <mat-error *ngIf="fstudentIdDetails.get('studentAadharNumber')?.hasError('required')">
@@ -203,7 +203,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student Nationality</mat-label>
-                                <input type="text" placeholder="Indian" matInput formControlName="studentNationality"
+                                <input type="text" placeholder="Indian" matInput class="form-control" formControlName="studentNationality"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's nationality</mat-hint>
                                 <mat-error *ngIf="fstudentIdDetails.get('studentNationality')?.hasError('required')">
@@ -214,7 +214,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student Mother Toungue</mat-label>
-                                <input type="text" placeholder="Tamil" matInput formControlName="studentMotherToungue"
+                                <input type="text" placeholder="Tamil" matInput class="form-control" formControlName="studentMotherToungue"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's Mother Toungue</mat-hint>
                                 <mat-error *ngIf="fstudentIdDetails.get('studentMotherToungue')?.hasError('required')">
@@ -225,7 +225,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student Langauge Known</mat-label>
-                                <input type="text" placeholder="Indian" matInput formControlName="studentLangaugeKnown"
+                                <input type="text" placeholder="Indian" matInput class="form-control" formControlName="studentLangaugeKnown"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's Langauge Known</mat-hint>
                                 <mat-error *ngIf="fstudentIdDetails.get('studentLangaugeKnown')?.hasError('required')">
@@ -270,7 +270,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student EMI Number</mat-label>
-                                <input type="text" matInput formControlName="studentEMINo"
+                                <input type="text" matInput class="form-control" formControlName="studentEMINo"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's EMI Number</mat-hint>
                                 <mat-error
@@ -282,7 +282,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student Previous School</mat-label>
-                                <input type="text" matInput formControlName="studentPreviousSchool"
+                                <input type="text" matInput class="form-control" formControlName="studentPreviousSchool"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's EMI Number</mat-hint>
                                 <mat-error
@@ -294,7 +294,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                             <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>Student Discount</mat-label>
-                                <input type="text" mask="00" matInput placeholder="XX" formControlName="studentDiscount"
+                                <input type="text" mask="00" matInput class="form-control" placeholder="XX" formControlName="studentDiscount"
                                     [errorStateMatcher]="matcher">
                                 <mat-hint>Enter student's discount</mat-hint>
                                 <mat-error

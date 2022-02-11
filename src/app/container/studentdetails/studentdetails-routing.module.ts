@@ -22,30 +22,30 @@ const routes: Routes = [
       {
         path: 'form/:action/:admissionNo',
         component: StudentFormsComponent,
-        resolve: {
-          student: StudentFormBasedResolver,
-        },
+        // resolve: {
+        //   student: StudentFormBasedResolver,
+        // },
       },
       {
         path: 'table',
         component: StudentTableComponent,
-        resolve: {
-          students: StudentdetailsResolver,
-        },
+        // resolve: {
+        //   students: StudentdetailsResolver,
+        // },
       },
       {
         path: 'list',
         component: StudentListComponent,
         resolve: {
-          students: StudentdetailsResolver,
+          // students: StudentdetailsResolver,
         },
       },
       {
         path: 'grid',
         component: StudentGridComponent,
-        resolve: {
-          students: StudentdetailsResolver,
-        },
+        // resolve: {
+        //   students: StudentdetailsResolver,
+        // },
       },
       { path: '', redirectTo: 'list', pathMatch: 'full', },
 

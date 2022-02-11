@@ -4,23 +4,39 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
-import { catchError, delay, Observable, of } from 'rxjs';
+import { initPage } from '@utils/interfaces/page.meta';
+import {
+  catchError,
+  concat,
+  concatMap,
+  delay,
+  map,
+  Observable,
+  of,
+  tap,
+} from 'rxjs';
 import { StudentapiService } from './studentapi.service';
+import { StudentDetailsFacade } from './students.facade';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentdetailsResolver implements Resolve<boolean> {
-  constructor(private api: StudentapiService) {}
+  constructor(private facade: StudentDetailsFacade) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> {
-    return this.api.getStudentDetails().pipe(
-      catchError((e) => {
-        throw e;
-      })
-    );
+    // return this.facade.getStudentListFacade(initPage).pipe(
+    //   map((d: any) => (d?.data ? d.data : [])),
+    //   concatMap((data: any) => {
+    //     initPage.page = 2;
+    //     return this.facade
+    //       .getStudentListFacade(initPage)
+    //       .pipe(map((d: any) => (d?.data ? d.data : [])));
+    //   })
+    // );
+    return  this.facade.getStudentListFacade(initPage)
   }
 }
 

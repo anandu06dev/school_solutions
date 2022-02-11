@@ -1,8 +1,23 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { StudentDetails } from '@utils/interfaces/genericApiResponse.model';
+import { initPage, Page } from '@utils/interfaces/page.meta';
 import { IStudentDetails } from '@utils/interfaces/studentData';
-import { handleError } from '@utils/utility';
-import { catchError, of } from 'rxjs';
+import { buildParams, handleError } from '@utils/utility';
+import {
+  BehaviorSubject,
+  catchError,
+  concatMap,
+  EMPTY,
+  expand,
+  finalize,
+  map,
+  mergeMap,
+  of,
+  reduce,
+  tap,
+} from 'rxjs';
+import { EntityStore } from 'src/app/store/store.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,22 +26,39 @@ import { environment } from 'src/environments/environment';
 export class StudentapiService {
   private baseURL: string = environment.versionedApiUrl;
 
-  private targetResource: string = 'studentDetails';
+  private targetResource: string = 'student-details';
   private targetResource2: string = 'studentdetails';
 
   constructor(private http: HttpClient) {}
 
-  getStudentDetails= () =>
-    this.http
-      .get(`${this.baseURL}/${this.targetResource}`)
-      .pipe(catchError((e) => handleError(e)));
+  getListOfStudentDetails(pageMetaData: Page = initPage): any {
+    const params = buildParams(pageMetaData);
+   
+    return this.http.get(`${this.baseURL}/${this.targetResource}`, { params }).pipe(tap(d=>console.log(d)))
+  }
+
+  getStudentDetails = () =>
+    this.http.get(`${this.baseURL}/${this.targetResource}`).pipe(
+      map(
+        (d: any) =>
+          d.length &&
+          d.map((i: IStudentDetails) => {
+            i.id = i.admissionNo;
+            return i;
+          })
+      ),
+      catchError((e) => handleError(e))
+    );
   getStudentDetails2 = () =>
     this.http
-      .post(`${this.baseURL}/${this.targetResource}/pageable/${this.targetResource2}`, {
-        order: 'ASC',
-        page: 1,
-        take: 10,
-      })
+      .post(
+        `${this.baseURL}/${this.targetResource}/pageable/${this.targetResource2}`,
+        {
+          order: 'ASC',
+          page: 1,
+          take: 10,
+        }
+      )
       .pipe(catchError((e) => handleError(e)));
   createStudentDetails = (stud: IStudentDetails) =>
     this.http

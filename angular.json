@@ -39,7 +39,8 @@
             "styles": [
             
               
-              {"input": "src/assets/css/bootstrap.css","inject": true},
+              {"input": "src/assets/css/school-sols.theme.css","inject": true},
+
               {"input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css","inject": true},
               {"input": "src/styles.scss","inject": true}
 
