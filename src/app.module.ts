@@ -50,14 +50,13 @@ const MODULES = [
     ],
     exports: [StudentDetailsModule],
 })
-export class AppModule {
-//implements NestModule {
+export class AppModule implements NestModule {
     // configure(consumer: MiddlewareConsumer) {
     //     consumer.apply(LoggerMiddleware).forRoutes('student-details')
     // }
-    // configure(consumer: MiddlewareConsumer) {
-    //     consumer
-    //         .apply(DatabaseMiddleware)
-    //         .forRoutes({ path: '*', method: RequestMethod.ALL })
-    // }
+    configure(consumer: MiddlewareConsumer) {
+        consumer
+            .apply(DatabaseMiddleware)
+            .forRoutes({ path: '*', method: RequestMethod.ALL })
+    }
 }

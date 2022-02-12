@@ -22,7 +22,7 @@ function objectKeys<T extends object>(obj: T) {
 export async function upsertOptions<E extends {}>(
     entityManager: EntityManager,
     Entity: Type<E>,
-    data: E | E[] , // allow both single entity or multiple entities
+    data: E | E[], // allow both single entity or multiple entities
     options: UpsertOptions<E> = {}
 ): Promise<E> {
     const row = Array.isArray(data) ? data[0] : data // get a single entity
