@@ -1,4 +1,4 @@
-import { CreateDateColumn, Timestamp } from 'typeorm'
+import { CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 export abstract class AbstractEntity {
     // @PrimaryGeneratedColumn()
@@ -11,8 +11,9 @@ export abstract class AbstractEntity {
     // createdTimeStamp: Date
 
     @CreateDateColumn({ type: 'timestamp', name: 'CRET_TS' })
-    createdTimeStamp: Timestamp
-
+    createdTimeStamp: any
+    @UpdateDateColumn({ type: 'timestamp', name: 'LAST_UPDT_TS' })
+    updatedTimeStamp: any
     //   @UpdateDateColumn({
     //     type: 'timestamp',
     //     name: 'LAST_UPDT_TS',

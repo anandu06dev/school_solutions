@@ -90,7 +90,35 @@ export default function upsert(
             }
         }
     }
-    return repo.upsert([temp], [primaryKey])
+    return repo
+        .findByIds(temp.admissionNo ? [temp.admissionNo] : [temp.id])
+        .then(async (d) => {
+            temp = await appendTimeLogic(temp, d)
+            return repo.upsert([temp], [primaryKey])
+        })
+        .catch((e) => {
+            console.error('err', e)
+        })
+}
+
+function appendTimeLogic(
+    data: { [key: string]: any } = {},
+    d: any[] = []
+): {
+    [key: string]: any
+} {
+    const temp: { [key: string]: any } = { ...data }
+
+    if (d.length === 0) temp['createdTimeStamp'] = new Date()
+    else temp['updatedTimeStamp'] = new Date()
+    return temp
+}
+
+function appentCreatedByAndUpdatedByLogic(data: { [key: string]: any } = {}): {
+    [key: string]: any
+} {
+    const temp: { [key: string]: any } = { ...data }
+    return temp
 }
 
 export function getAllowedKeys(obj, mainKey, accessKey) {
