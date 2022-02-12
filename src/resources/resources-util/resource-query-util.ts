@@ -37,8 +37,17 @@ export async function getConditionlessQb(
     ) {
         for (let i = 0; i < param.queryJoin.length; i++) {
             const queryJoin = param.queryJoin[i]
-            console.dir(queryJoin, param.primaryJoin + '.' + queryJoin)
-            qb.leftJoinAndSelect(param.primaryJoin + '.' + queryJoin, queryJoin)
+            if (param.primaryJoin.includes('student_details')) {
+                qb.leftJoinAndSelect(
+                    param.primaryJoin + '.' + queryJoin,
+                    queryJoin
+                )
+            } else {
+                qb.innerJoinAndSelect(
+                    param.primaryJoin + '.' + queryJoin,
+                    queryJoin
+                )
+            }
         }
     }
     return await qb
