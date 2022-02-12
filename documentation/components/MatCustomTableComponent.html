@@ -1,0 +1,2248 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  MatCustomTableComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/widgets/mat-custom-table/mat-custom-table.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../miscellaneous/functions.html#CustomPaginator" target="_self" >{ provide: MatPaginatorIntl, useValue: CustomPaginator() }</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-mat-custom-table</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./mat-custom-table.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./mat-custom-table.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clickedRows" >clickedRows</a>
+                            </li>
+                            <li>
+                                <a href="#columns" >columns</a>
+                            </li>
+                            <li>
+                                <a href="#container" >container</a>
+                            </li>
+                            <li>
+                                <a href="#dataSet" >dataSet</a>
+                            </li>
+                            <li>
+                                <a href="#dataSource" >dataSource</a>
+                            </li>
+                            <li>
+                                <a href="#displayedColumns" >displayedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#dynamicWidth" >dynamicWidth</a>
+                            </li>
+                            <li>
+                                <a href="#paginator" >paginator</a>
+                            </li>
+                            <li>
+                                <a href="#selection" >selection</a>
+                            </li>
+                            <li>
+                                <a href="#sort" >sort</a>
+                            </li>
+                            <li>
+                                <a href="#tableConf" >tableConf</a>
+                            </li>
+                            <li>
+                                <a href="#value" >value</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appendActionBox" >appendActionBox</a>
+                            </li>
+                            <li>
+                                <a href="#appendavatar" >appendavatar</a>
+                            </li>
+                            <li>
+                                <a href="#appendCheckBox" >appendCheckBox</a>
+                            </li>
+                            <li>
+                                <a href="#applyFilter" >applyFilter</a>
+                            </li>
+                            <li>
+                                <a href="#isAllSelected" >isAllSelected</a>
+                            </li>
+                            <li>
+                                <a href="#isSticky" >isSticky</a>
+                            </li>
+                            <li>
+                                <a href="#masterToggle" >masterToggle</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onPaginateChange" >onPaginateChange</a>
+                            </li>
+                            <li>
+                                <a href="#onTableAction" >onTableAction</a>
+                            </li>
+                            <li>
+                                <a href="#selectedRowbck" >selectedRowbck</a>
+                            </li>
+                            <li>
+                                <a href="#selectedRows" >selectedRows</a>
+                            </li>
+                            <li>
+                                <a href="#updateWidth" >updateWidth</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#colDef" >colDef</a>
+                            </li>
+                            <li>
+                                <a href="#dataset" >dataset</a>
+                            </li>
+                            <li>
+                                <a href="#tableConfig" >tableConfig</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#action" >action</a>
+                            </li>
+                            <li>
+                                <a href="#emitSelectedRow" >emitSelectedRow</a>
+                            </li>
+                            <li>
+                                <a href="#pageEvent" >pageEvent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#tableConfig" >tableConfig</a>
+                                </li>
+                                <li>
+                                    <a href="#colDef" >colDef</a>
+                                </li>
+                                <li>
+                                    <a href="#dataset" >dataset</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="colDef"></a>
+                        <b>colDef</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataset"></a>
+                        <b>dataset</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:53</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tableConfig"></a>
+                        <b>tableConfig</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="action"></a>
+                        <b>action</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;TableButtonAction&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:29</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="emitSelectedRow"></a>
+                        <b>emitSelectedRow</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:65</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageEvent"></a>
+                        <b>pageEvent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:66</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appendActionBox"></a>
+                    <span class="name">
+                        <span ><b>appendActionBox</b></span>
+                        <a href="#appendActionBox"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>appendActionBox()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:122</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appendavatar"></a>
+                    <span class="name">
+                        <span ><b>appendavatar</b></span>
+                        <a href="#appendavatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>appendavatar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:116</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appendCheckBox"></a>
+                    <span class="name">
+                        <span ><b>appendCheckBox</b></span>
+                        <a href="#appendCheckBox"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>appendCheckBox()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyFilter"></a>
+                    <span class="name">
+                        <span ><b>applyFilter</b></span>
+                        <a href="#applyFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyFilter(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAllSelected"></a>
+                    <span class="name">
+                        <span ><b>isAllSelected</b></span>
+                        <a href="#isAllSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isAllSelected()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the number of selected elements matches the total number of rows.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSticky"></a>
+                    <span class="name">
+                        <span ><b>isSticky</b></span>
+                        <a href="#isSticky"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isSticky(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="masterToggle"></a>
+                    <span class="name">
+                        <span ><b>masterToggle</b></span>
+                        <a href="#masterToggle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>masterToggle()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Selects all rows if they are not all selected; otherwise clear selection.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:99</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPaginateChange"></a>
+                    <span class="name">
+                        <span ><b>onPaginateChange</b></span>
+                        <a href="#onPaginateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPaginateChange(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTableAction"></a>
+                    <span class="name">
+                        <span ><b>onTableAction</b></span>
+                        <a href="#onTableAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTableAction(e: <a href="../interfaces/TableButtonAction.html" target="_self">TableButtonAction</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:83</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../interfaces/TableButtonAction.html" target="_self" >TableButtonAction</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedRowbck"></a>
+                    <span class="name">
+                        <span ><b>selectedRowbck</b></span>
+                        <a href="#selectedRowbck"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectedRowbck(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>row</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedRows"></a>
+                    <span class="name">
+                        <span ><b>selectedRows</b></span>
+                        <a href="#selectedRows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectedRows(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:132</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>row</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateWidth"></a>
+                    <span class="name">
+                        <span ><b>updateWidth</b></span>
+                        <a href="#updateWidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateWidth(len: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="166"
+                            class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:166</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>len</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickedRows"></a>
+                    <span class="name">
+                        <span ><b>clickedRows</b></span>
+                        <a href="#clickedRows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Set&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="columns"></a>
+                    <span class="name">
+                        <span ><b>columns</b></span>
+                        <a href="#columns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableColumn.html" target="_self" >Array&lt;TableColumn&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="container"></a>
+                    <span class="name">
+                        <span ><b>container</b></span>
+                        <a href="#container"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;tableContainer&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSet"></a>
+                    <span class="name">
+                        <span ><b>dataSet</b></span>
+                        <a href="#dataSet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSource"></a>
+                    <span class="name">
+                        <span ><b>dataSource</b></span>
+                        <a href="#dataSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatTableDataSource&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayedColumns"></a>
+                    <span class="name">
+                        <span ><b>displayedColumns</b></span>
+                        <a href="#displayedColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dynamicWidth"></a>
+                    <span class="name">
+                        <span ><b>dynamicWidth</b></span>
+                        <a href="#dynamicWidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginator"></a>
+                    <span class="name">
+                        <span ><b>paginator</b></span>
+                        <a href="#paginator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatPaginator</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatPaginator, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selection"></a>
+                    <span class="name">
+                        <span ><b>selection</b></span>
+                        <a href="#selection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new SelectionModel&lt;any&gt;(true, [])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sort"></a>
+                    <span class="name">
+                        <span ><b>sort</b></span>
+                        <a href="#sort"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatSort</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatSort, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tableConf"></a>
+                    <span class="name">
+                        <span ><b>tableConf</b></span>
+                        <a href="#tableConf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="value"></a>
+                    <span class="name">
+                        <span ><b>value</b></span>
+                        <a href="#value"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tableConfig"></a>
+                        <span class="name"><b>tableConfig</b><a href="#tableConfig"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>tableConfig(value: <a href="../interfaces/TableConfig.html" target="_self">TableConfig</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:35</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="colDef"></a>
+                        <span class="name"><b>colDef</b><a href="#colDef"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>colDef(value: <a href="../interfaces/TableColumn.html" target="_self">Array&lt;TableColumn&gt;</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:45</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../interfaces/TableColumn.html" target="_self" >Array&lt;TableColumn&gt;</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataset"></a>
+                        <span class="name"><b>dataset</b><a href="#dataset"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>dataset(value: Array<any>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/widgets/mat-custom-table/mat-custom-table.component.ts:53</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>Array&lt;any&gt;</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SelectionModel } from &#x27;@angular/cdk/collections&#x27;;
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { MatPaginator, MatPaginatorIntl } from &#x27;@angular/material/paginator&#x27;;
+import { MatSort } from &#x27;@angular/material/sort&#x27;;
+import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
+
+import { TableButtonAction } from &#x27;@utils/interfaces/tableButtonAction&#x27;;
+import { TableColumn, TableConfig } from &#x27;@utils/interfaces/tableColumn&#x27;;
+import { CustomPaginator } from &#x27;@utils/utility&#x27;;
+
+@Component({
+  selector: &#x27;app-mat-custom-table&#x27;,
+  templateUrl: &#x27;./mat-custom-table.component.html&#x27;,
+  styleUrls: [&#x27;./mat-custom-table.component.scss&#x27;],
+  providers: [{ provide: MatPaginatorIntl, useValue: CustomPaginator() }],
+})
+export class MatCustomTableComponent implements OnInit, AfterViewInit {
+  @ViewChild(&#x27;tableContainer&#x27;) container!: ElementRef;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @Output() action: EventEmitter&lt;TableButtonAction&gt; &#x3D;
+    new EventEmitter&lt;TableButtonAction&gt;();
+  columns: Array&lt;TableColumn&gt; &#x3D; [];
+  tableConf: TableConfig &#x3D; {};
+
+  // @Input() columns!: Array&lt;TableColumn&gt;;
+  @Input() set tableConfig(value: TableConfig) {
+    if (value.avatarKey &amp;&amp; value.showAvatar) {
+      this.appendavatar();
+    }
+    value.multiSelect &#x3D; true;
+    if (value.multiSelect) {
+      // this.appendCheckBox();
+    }
+    this.tableConf &#x3D; { ...value };
+  }
+  @Input() set colDef(value: Array&lt;TableColumn&gt;) {
+    this.columns &#x3D; [...value];
+    let reduced &#x3D; value
+      .map((i) &#x3D;&gt; (i?.width ? i.width : 150)) //default width is 150px
+      .reduce((acc: number, curr: number) &#x3D;&gt; {console.log(curr);return acc + curr}, 0);
+    this.updateWidth(reduced); // this pixels is connected to mat column default pixels
+  }
+  dataSet:Array&lt;any&gt;&#x3D;[];
+  @Input() set dataset(value: Array&lt;any&gt;){
+    this.dataSet &#x3D; value &amp;&amp; value.length ? value: []
+    this.dataSource &#x3D; new MatTableDataSource&lt;any&gt;(this.dataSet);
+    this.dataSource.paginator &#x3D; this.paginator
+  };
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  dataSource!: MatTableDataSource&lt;any&gt;;
+  selection &#x3D; new SelectionModel&lt;any&gt;(true, []);
+  displayedColumns: string[] &#x3D; [];
+  value!: string;
+  dynamicWidth: number &#x3D; 0;
+  clickedRows &#x3D; new Set&lt;any&gt;();
+  @Output() emitSelectedRow &#x3D; new EventEmitter();
+  @Output() pageEvent &#x3D; new EventEmitter();
+
+
+  constructor() {}
+
+  ngOnInit() {
+    // set table columns
+    this.displayedColumns &#x3D; this.displayedColumns.concat(
+      this.columns.map((x) &#x3D;&gt; x.columnDef)
+    ); // pre-fix static
+
+    this.dataSource &#x3D; new MatTableDataSource&lt;any&gt;(this.dataSet);
+
+    // set pagination
+    this.dataSource.paginator &#x3D; this.paginator;
+  }
+
+  onTableAction(e: TableButtonAction): void {
+    this.action.emit(e);
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected &#x3D; this.selection.selected.length;
+    const numRows &#x3D; this.dataSource.data.length;
+    return numSelected &#x3D;&#x3D;&#x3D; numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) &#x3D;&gt; this.selection.select(row));
+  }
+  ngAfterViewInit() {
+    this.dataSource.sort &#x3D; this.sort;
+
+    // console.log(this.container)
+    // this.dynamicWidth &#x3D; this.container.nativeElement.offsetWidth;
+  }
+  applyFilter(event: Event) {
+    const filterValue &#x3D; (event.target as HTMLInputElement).value;
+    this.dataSource.filter &#x3D; filterValue.trim().toLowerCase();
+  }
+
+  appendCheckBox() {
+    // set checkbox column
+
+    this.displayedColumns.push(&#x27;select&#x27;);
+  }
+
+  appendavatar() {
+    // set checkbox column
+
+    this.displayedColumns.push(&#x27;avatar&#x27;);
+  }
+
+  appendActionBox() {
+    // add action column
+    this.displayedColumns.push(&#x27;action&#x27;);
+  }
+
+  isSticky(key: string) {
+    if (this.tableConf.stickyColumn &#x3D;&#x3D;&#x3D; key) return true;
+    return false;
+  }
+
+  selectedRows(row: any) {
+    let selectedRows;
+
+    if (this.tableConf.multiSelect) {
+      if (this.clickedRows.has(row)) {
+        this.clickedRows.delete(row);
+      } else {
+        this.clickedRows.add(row);
+      }
+    } else {
+      this.clickedRows.clear();
+      this.clickedRows.add(row);
+    }
+    selectedRows &#x3D; Array.from(this.clickedRows);
+    this.emitSelectedRow.emit({ selectedRows });
+  }
+
+  selectedRowbck(row: any) {
+    this.clickedRows.clear();
+    this.clickedRows.add(row);
+    let selectedRows;
+
+    if (this.tableConf.multiSelect) {
+      if (this.clickedRows.has(row)) {
+        this.clickedRows.delete(row);
+      } else {
+        this.clickedRows.add(row);
+      }
+    }
+    selectedRows &#x3D; Array.from(this.clickedRows);
+    // selectedRows &#x3D; selectedRows[selectedRows.length-1]
+
+    this.emitSelectedRow.emit({ selectedRows });
+  }
+  updateWidth(len: number) {
+    this.dynamicWidth &#x3D; len;
+  }
+
+  onPaginateChange(e:any){
+   this.pageEvent.emit(e)
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- table pagination --&gt;
+
+&lt;div class&#x3D;&quot;card border-0&quot;&gt;
+  &lt;div class&#x3D;&quot;card-header bg-transparent&quot;&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-12 col-sm-6&quot;&gt;
+        &lt;mat-form-field class&#x3D;&quot;w-100&quot; appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-icon matPrefix&gt;search&lt;/mat-icon&gt;
+          &lt;mat-label&gt;Search&lt;/mat-label&gt;
+          &lt;input matInput type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;value&quot; (keyup)&#x3D;&quot;applyFilter($event)&quot;&gt;
+          &lt;button *ngIf&#x3D;&quot;value&quot; matSuffix mat-icon-button aria-label&#x3D;&quot;Clear&quot; (click)&#x3D;&quot;value&#x3D;&#x27;&#x27;&quot;&gt;
+            &lt;mat-icon&gt;close&lt;/mat-icon&gt;
+          &lt;/button&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-12 p-0 m-0 col-sm-6&quot;&gt;
+        &lt;mat-paginator [pageSizeOptions]&#x3D;&quot;[10, 20]&quot; showFirstLastButtons (page)&#x3D;&quot;onPaginateChange($event)&quot;&gt;&lt;/mat-paginator&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card-text border-0 bg-light&quot;&gt;
+    &lt;!-- &lt;div class&#x3D;&quot;table-actionbar&quot;&gt; --&gt;
+    &lt;!-- &lt;div class&#x3D;&quot;search-box&quot;&gt;
+        &lt;mat-form-field class&#x3D;&quot;example-form-field&quot; appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-icon matPrefix&gt;search&lt;/mat-icon&gt;
+          &lt;mat-label&gt;Search&lt;/mat-label&gt;
+          &lt;input matInput type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;value&quot; (keyup)&#x3D;&quot;applyFilter($event)&quot;&gt;
+          &lt;button *ngIf&#x3D;&quot;value&quot; matSuffix mat-icon-button aria-label&#x3D;&quot;Clear&quot; (click)&#x3D;&quot;value&#x3D;&#x27;&#x27;&quot;&gt;
+            &lt;mat-icon&gt;close&lt;/mat-icon&gt;
+          &lt;/button&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt; --&gt;
+    &lt;!-- &lt;div class&#x3D;&quot;action-box&quot;&gt; --&gt;
+    &lt;!-- &lt;button color&#x3D;&quot;warn&quot; mat-mini-fab aria-label&#x3D;&quot;Example icon button with a home icon&quot;&gt;
+          &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+        &lt;/button&gt; --&gt;
+    &lt;!-- &lt;button color&#x3D;&quot;primary&quot; mat-mini-fab aria-label&#x3D;&quot;Example icon button with a home icon&quot;&gt;
+          &lt;mat-icon&gt;refresh&lt;/mat-icon&gt;
+        &lt;/button&gt; --&gt;
+    &lt;!-- &lt;/div&gt; --&gt;
+
+    &lt;!-- &lt;/div&gt; --&gt;
+
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card-body p-0 m-0&quot; id&#x3D;&quot;table-card&quot; style&#x3D;&quot;&quot;&gt;
+    &lt;mat-table #table [dataSource]&#x3D;&quot;dataSource&quot; class&#x3D;&quot;&quot; matSort #tableContainer [ngStyle]&#x3D;&quot;{width:dynamicWidth+&#x27;px&#x27;}&quot; &gt;
+      &lt;!-- checkbox header --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;select&quot;&gt;
+        &lt;mat-header-cell *matHeaderCellDef&gt;
+          &lt;mat-checkbox color&#x3D;&quot;primary&quot; (change)&#x3D;&quot;$event ? masterToggle() : null&quot;
+            [checked]&#x3D;&quot;selection.hasValue() &amp;&amp; isAllSelected()&quot;
+            [indeterminate]&#x3D;&quot;selection.hasValue() &amp;&amp; !isAllSelected()&quot;&gt;
+          &lt;/mat-checkbox&gt;
+        &lt;/mat-header-cell&gt;
+        &lt;mat-cell *cdkCellDef&#x3D;&quot;let row&quot;  style&#x3D;&quot;width: 20px;&quot;&gt;
+          &lt;mat-checkbox color&#x3D;&quot;primary&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;
+            (change)&#x3D;&quot;$event ? selection.toggle(row) : null&quot; [checked]&#x3D;&quot;selection.isSelected(row)&quot;&gt;
+          &lt;/mat-checkbox&gt;
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+      &lt;!-- avatar Image header --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;avatar&quot; *ngIf&#x3D;&quot;tableConf.avatarKey &amp;&amp; tableConf.showAvatar&quot;&gt;
+        &lt;mat-header-cell *matHeaderCellDef&gt;Avatar&lt;/mat-header-cell&gt;
+        &lt;mat-cell *cdkCellDef&#x3D;&quot;let row&quot; style&#x3D;&quot;width: 20px;&quot;&gt;
+          &lt;p matListAvatar class&#x3D;&quot;mx-2 me-4&quot;
+          [attr.data-letters]&#x3D;&quot;row[tableConf.avatarKey] | slice:0:1&quot;&gt;&lt;/p&gt;
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+      &lt;!-- table dynamic columns --&gt;
+      &lt;ng-container *ngFor&#x3D;&quot;let column of columns&quot; [matColumnDef]&#x3D;&quot;column.columnDef&quot; [sticky]&#x3D;&quot;isSticky(column.columnDef)&quot;&gt;
+      
+        &lt;mat-header-cell *cdkHeaderCellDef mat-sort-header class&#x3D;&quot;&quot; [style.width.px]&#x3D;&quot;column.width&quot;&gt;{{ column.header }}&lt;/mat-header-cell&gt;
+        &lt;mat-cell *cdkCellDef&#x3D;&quot;let row&quot; [style.width.px]&#x3D;&quot;column.width&quot;  class&#x3D;&quot;text-capitalizes&quot; matRipple&gt;
+          {{ row[column.columnDef] }}
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- table action column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;action&quot;&gt;
+        &lt;mat-header-cell *matHeaderCellDef&gt;Action&lt;/mat-header-cell&gt;
+        &lt;mat-cell *matCellDef&#x3D;&quot;let element&quot; action-buttons [value]&#x3D;&quot;element&quot; (buttonAction)&#x3D;&quot;onTableAction($event)&quot;&gt;
+          {{ element.weight }}
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+      &lt;mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/mat-header-row&gt;
+      &lt;mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot; class&#x3D;&quot;my-2 mx-1 shadow-sm cursor-pointer&quot;
+        [class.selectedRow]&#x3D;&quot;clickedRows.has(row)&quot; (click)&#x3D;&quot;selectedRows(row)&quot;
+        &gt;&lt;/mat-row&gt;
+      &lt;/mat-table&gt;
+      
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./mat-custom-table.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">#table {
+  width: 100%;
+  table-layout: fixed !important;
+  background: rgb(255, 255, 255);
+
+
+}
+
+.table-actionbar {
+  padding         : 2px;
+  display         : flex;
+  background-color: rgb(241, 241, 241);
+}
+
+.table-actionbar .search-box {
+  flex: 1;
+}
+
+.search-box mat-form-field {
+  width: 100%;
+
+}
+
+
+
+.table-actionbar .action-box {
+  flex       : 0 0 50%;
+  text-align : right;
+  padding-top: 2px;
+
+
+}
+
+.table-actionbar .action-box button {
+  margin-right: 10px;
+
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+::ng-deep .mat-form-field-flex&gt;.mat-form-field-infix {
+  padding: 0.4em 0px !important;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+  top: -1.5em;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(.75);
+  width    : 133.33333%;
+}
+
+::ng-deep .action-box button .material-icons {
+  font-size: 18px;
+}
+
+::ng-deep .action-box .mat-mini-fab {
+  height: 34px;
+  width : 34px;
+}
+
+.card {
+  height: calc(100vh - 12rem);
+}
+
+/* top: -16px !important; */
+.mat-header-row {
+  position: sticky;
+  top:0 !important;
+  z-index: 200;
+  font-weight: 500;
+  border-bottom: unset;
+} 
+
+.freezeColumn {
+  position: sticky;
+  left: -1rem;
+  z-index: 100;
+  // background-color: white;
+  /* padding-left: 5px; */
+  z-index: 100;
+  line-height: 2;
+}
+
+/*  */
+:host ::ng-deep mat-header-cell, mat-cell{
+  // flex: 0 0 200px;
+  // border:0!important;
+  // width: auto;
+  // justify-content: space-around;
+  // box-shadow: 2px;
+  // box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+:host ::ng-deep mat-header-cell{
+  background: whitesmoke;
+}
+:host ::ng-deep mat-row{
+  width: unset;
+  border: 0;
+
+}
+
+
+
+.mat-paginator-container{
+  justify-content:flex-start
+}
+.selectedRow{
+  outline:1px solid #673ab7
+}
+
+#table-card{
+  overflow: hidden;
+}
+#table-card:hover{
+  overflow: auto;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- table pagination --><div class="card border-0">  <div class="card-header bg-transparent">    <div class="row align-items-center">      <div class="col-12 col-sm-6">        <mat-form-field class="w-100" appearance="outline">          <mat-icon matPrefix>search</mat-icon>          <mat-label>Search</mat-label>          <input matInput type="text" [(ngModel)]="value" (keyup)="applyFilter($event)">          <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=\'\'">            <mat-icon>close</mat-icon>          </button>        </mat-form-field>      </div>      <div class="col-12 p-0 m-0 col-sm-6">        <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons (page)="onPaginateChange($event)"></mat-paginator>      </div>    </div>  </div>  <div class="card-text border-0 bg-light">    <!-- <div class="table-actionbar"> -->    <!-- <div class="search-box">        <mat-form-field class="example-form-field" appearance="outline">          <mat-icon matPrefix>search</mat-icon>          <mat-label>Search</mat-label>          <input matInput type="text" [(ngModel)]="value" (keyup)="applyFilter($event)">          <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=\'\'">            <mat-icon>close</mat-icon>          </button>        </mat-form-field>      </div> -->    <!-- <div class="action-box"> -->    <!-- <button color="warn" mat-mini-fab aria-label="Example icon button with a home icon">          <mat-icon>delete</mat-icon>        </button> -->    <!-- <button color="primary" mat-mini-fab aria-label="Example icon button with a home icon">          <mat-icon>refresh</mat-icon>        </button> -->    <!-- </div> -->    <!-- </div> -->  </div>  <div class="card-body p-0 m-0" id="table-card" style="">    <mat-table #table [dataSource]="dataSource" class="" matSort #tableContainer [ngStyle]="{width:dynamicWidth+\'px\'}" >      <!-- checkbox header -->      <ng-container matColumnDef="select">        <mat-header-cell *matHeaderCellDef>          <mat-checkbox color="primary" (change)="$event ? masterToggle() : null"            [checked]="selection.hasValue() && isAllSelected()"            [indeterminate]="selection.hasValue() && !isAllSelected()">          </mat-checkbox>        </mat-header-cell>        <mat-cell *cdkCellDef="let row"  style="width: 20px;">          <mat-checkbox color="primary" (click)="$event.stopPropagation()"            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">          </mat-checkbox>        </mat-cell>      </ng-container>      <!-- avatar Image header -->      <ng-container matColumnDef="avatar" *ngIf="tableConf.avatarKey && tableConf.showAvatar">        <mat-header-cell *matHeaderCellDef>Avatar</mat-header-cell>        <mat-cell *cdkCellDef="let row" style="width: 20px;">          <p matListAvatar class="mx-2 me-4"          [attr.data-letters]="row[tableConf.avatarKey] | slice:0:1"></p>        </mat-cell>      </ng-container>      <!-- table dynamic columns -->      <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef" [sticky]="isSticky(column.columnDef)">              <mat-header-cell *cdkHeaderCellDef mat-sort-header class="" [style.width.px]="column.width">{{ column.header }}</mat-header-cell>        <mat-cell *cdkCellDef="let row" [style.width.px]="column.width"  class="text-capitalizes" matRipple>          {{ row[column.columnDef] }}        </mat-cell>      </ng-container>      <!-- table action column -->      <ng-container matColumnDef="action">        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>        <mat-cell *matCellDef="let element" action-buttons [value]="element" (buttonAction)="onTableAction($event)">          {{ element.weight }}        </mat-cell>      </ng-container>      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>      <mat-row *matRowDef="let row; columns: displayedColumns;" class="my-2 mx-1 shadow-sm cursor-pointer"        [class.selectedRow]="clickedRows.has(row)" (click)="selectedRows(row)"        ></mat-row>      </mat-table>        </div></div></div>'
+    var COMPONENTS = [{'name': 'AccessCheckboxComponent', 'selector': 'app-access-checkbox'},{'name': 'AccessDeniedComponent', 'selector': 'app-access-denied'},{'name': 'ActionButtonsComponent', 'selector': '[action-buttons]'},{'name': 'AddressComponent', 'selector': 'app-address'},{'name': 'AddressFormsComponent', 'selector': 'app-address-forms'},{'name': 'AddresslistComponent', 'selector': 'app-addresslist'},{'name': 'AddresstableComponent', 'selector': 'app-addresstable'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppMatTabComponent', 'selector': 'app-tab'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BusRouteComponent', 'selector': 'app-bus-route'},{'name': 'BusRouteformsComponent', 'selector': 'app-bus-routeforms'},{'name': 'BusRoutelistComponent', 'selector': 'app-bus-routelist'},{'name': 'BusRoutetableComponent', 'selector': 'app-bus-routetable'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FeesComponent', 'selector': 'app-fees'},{'name': 'FeesformComponent', 'selector': 'app-feesform'},{'name': 'FeeslistComponent', 'selector': 'app-feeslist'},{'name': 'FeestableComponent', 'selector': 'app-feestable'},{'name': 'ListComponent', 'selector': 'app-list'},{'name': 'LoadingComponent', 'selector': 'app-loading-comp'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginformComponent', 'selector': 'app-loginform'},{'name': 'MatCustomTableComponent', 'selector': 'app-mat-custom-table'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'ParentsComponent', 'selector': 'app-parents'},{'name': 'ParentsFormsComponent', 'selector': 'app-parents-forms'},{'name': 'ParentsListComponent', 'selector': 'app-parents-list'},{'name': 'ParentsTableComponent', 'selector': 'app-parents-table'},{'name': 'QuickNavigationMenuComponent', 'selector': 'app-quick-navigation-menu'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RolesAssignComponent', 'selector': 'app-roles-assign'},{'name': 'RolesRulesComponent', 'selector': 'app-roles-rules'},{'name': 'RootLayoutComponent', 'selector': 'app-root-layout'},{'name': 'SecondarySidenavComponent', 'selector': 'app-secondary-sidenav'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SibilingsComponent', 'selector': 'app-sibilings'},{'name': 'SibilingsformsComponent', 'selector': 'app-sibilingsforms'},{'name': 'SibilingsListComponent', 'selector': 'app-sibilings-list'},{'name': 'SibilingstableComponent', 'selector': 'app-sibilingstable'},{'name': 'StudentdetailsComponent', 'selector': 'app-studentdetails'},{'name': 'StudentFormsComponent', 'selector': 'app-student-forms'},{'name': 'StudentGridComponent', 'selector': 'app-student-grid'},{'name': 'StudentListComponent', 'selector': 'app-student-list'},{'name': 'StudentSearchComponent', 'selector': 'app-student-search'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'}];
+    var DIRECTIVES = [{'name': 'AppLoadingDirective', 'selector': '[appLoading]'},{'name': 'DebounceDirective', 'selector': '[appDebounceClick]'},{'name': 'RoleDirective', 'selector': '[appUserRole]'},{'name': 'TableActionDirective', 'selector': '[appTableAction]'}];
+    var ACTUAL_COMPONENT = {'name': 'MatCustomTableComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MatCustomTableComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

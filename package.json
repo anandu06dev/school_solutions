@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/client"
+    "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/client",
+    "doc:client": "npx @compodoc/compodoc -p tsconfig.json -s"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +41,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.16",
     "@angular-devkit/build-angular": "~13.0.0",
     "@angular-eslint/builder": "13.0.0",
     "@angular-eslint/eslint-plugin": "13.0.0",

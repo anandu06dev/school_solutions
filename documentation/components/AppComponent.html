@@ -1,0 +1,1413 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AppComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/app.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-root</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./app.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./app.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#destroyed" >destroyed</a>
+                            </li>
+                            <li>
+                                <a href="#displayNameMap" >displayNameMap</a>
+                            </li>
+                            <li>
+                                <a href="#loadAuthModules" >loadAuthModules</a>
+                            </li>
+                            <li>
+                                <a href="#loadLayout$" >loadLayout$</a>
+                            </li>
+                            <li>
+                                <a href="#menuItems" >menuItems</a>
+                            </li>
+                            <li>
+                                <a href="#role" >role</a>
+                            </li>
+                            <li>
+                                <a href="#selectedMenu" >selectedMenu</a>
+                            </li>
+                            <li>
+                                <a href="#showText" >showText</a>
+                            </li>
+                            <li>
+                                <a href="#title" >title</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSidebar" >toggleSidebar</a>
+                            </li>
+                            <li>
+                                <a href="#username" >username</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#loadRouteToStorage" >loadRouteToStorage</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#prepareRoute" >prepareRoute</a>
+                            </li>
+                            <li>
+                                <a href="#routeUiEnd" >routeUiEnd</a>
+                            </li>
+                            <li>
+                                <a href="#routeUiInit" >routeUiInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(breakpointObserver: BreakpointObserver, breakPointService: <a href="../injectables/BreakPointService.html" target="_self">BreakPointService</a>, storageService: <a href="../injectables/LocalstorageService.html" target="_self">LocalstorageService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/app.component.ts:57</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>breakpointObserver</td>
+                                                  
+                                                        <td>
+                                                                    <code>BreakpointObserver</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>breakPointService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BreakPointService.html" target="_self" >BreakPointService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LocalstorageService.html" target="_self" >LocalstorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadRouteToStorage"></a>
+                    <span class="name">
+                        <span ><b>loadRouteToStorage</b></span>
+                        <a href="#loadRouteToStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadRouteToStorage(menu: <a href="../interfaces/IToolBarMenu.html" target="_self">IToolBarMenu</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/app/app.component.ts:115</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menu</td>
+                                    <td>
+                                                <code><a href="../interfaces/IToolBarMenu.html" target="_self" >IToolBarMenu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/app.component.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/app.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prepareRoute"></a>
+                    <span class="name">
+                        <span ><b>prepareRoute</b></span>
+                        <a href="#prepareRoute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>prepareRoute(outlet: <a href="https://angular.io/api/router/RouterOutlet" target="_blank">RouterOutlet</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="126"
+                            class="link-to-prism">src/app/app.component.ts:126</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>outlet</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/RouterOutlet" target="_blank" >RouterOutlet</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routeUiEnd"></a>
+                    <span class="name">
+                        <span ><b>routeUiEnd</b></span>
+                        <a href="#routeUiEnd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>routeUiEnd(auth: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, url: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/app/app.component.ts:139</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>auth</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routeUiInit"></a>
+                    <span class="name">
+                        <span ><b>routeUiInit</b></span>
+                        <a href="#routeUiInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>routeUiInit(auth: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, url: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/app.component.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>auth</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyed"></a>
+                    <span class="name">
+                        <span ><b>destroyed</b></span>
+                        <a href="#destroyed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/app.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayNameMap"></a>
+                    <span class="name">
+                        <span ><b>displayNameMap</b></span>
+                        <a href="#displayNameMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>currentViewMapTable</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/app.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadAuthModules"></a>
+                    <span class="name">
+                        <span ><b>loadAuthModules</b></span>
+                        <a href="#loadAuthModules"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/app.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadLayout$"></a>
+                    <span class="name">
+                        <span ><b>loadLayout$</b></span>
+                        <a href="#loadLayout$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>of(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/app.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="menuItems"></a>
+                    <span class="name">
+                        <span ><b>menuItems</b></span>
+                        <a href="#menuItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IToolBarMenu.html" target="_self" >IToolBarMenu[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[...RootMenu]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/app.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="role"></a>
+                    <span class="name">
+                        <span ><b>role</b></span>
+                        <a href="#role"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Admin&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/app.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedMenu"></a>
+                    <span class="name">
+                        <span ><b>selectedMenu</b></span>
+                        <a href="#selectedMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IToolBarMenu.html" target="_self" >IToolBarMenu</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/app.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showText"></a>
+                    <span class="name">
+                        <span ><b>showText</b></span>
+                        <a href="#showText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/app.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="title"></a>
+                    <span class="name">
+                        <span ><b>title</b></span>
+                        <a href="#title"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;client&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/app.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSidebar"></a>
+                    <span class="name">
+                        <span ><b>toggleSidebar</b></span>
+                        <a href="#toggleSidebar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/app.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="username"></a>
+                    <span class="name">
+                        <span ><b>username</b></span>
+                        <a href="#username"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Srini&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/app.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Breakpoints, BreakpointObserver } from &#x27;@angular/cdk/layout&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import {
+  ActivationEnd,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterEvent,
+  RouterOutlet,
+} from &#x27;@angular/router&#x27;;
+import { BreakPointService } from &#x27;@shared/services/breakpoint.service&#x27;;
+import { LocalstorageService } from &#x27;@shared/services/localstorage.service&#x27;;
+import { fadeAnimation } from &#x27;@utils/animations&#x27;;
+import { fader } from &#x27;@utils/animations/fader&#x27;;
+import { IToolBarMenu } from &#x27;@utils/interfaces/toolbarmenu.interface&#x27;;
+import { currentViewMapTable, RootMenu, screenObserve } from &#x27;@utils/utility&#x27;;
+import { MenuItemDef } from &#x27;ag-grid-community&#x27;;
+import {
+  debounceTime,
+  delay,
+  EMPTY,
+  filter,
+  map,
+  Observable,
+  of,
+  startWith,
+  Subject,
+  takeUntil,
+  tap,
+} from &#x27;rxjs&#x27;;
+
+@Component({
+  selector: &#x27;app-root&#x27;,
+  templateUrl: &#x27;./app.component.html&#x27;,
+  styleUrls: [&#x27;./app.component.scss&#x27;],
+  animations: [fader],
+})
+export class AppComponent {
+  username &#x3D; &#x27;Srini&#x27;;
+  role &#x3D; &#x27;Admin&#x27;;
+  showText: boolean &#x3D; true;
+  toggleSidebar: boolean &#x3D; false;
+
+  loadLayout$: Observable&lt;boolean&gt; &#x3D; of(false);
+
+  menuItems: IToolBarMenu[] &#x3D; [...RootMenu];
+  destroyed &#x3D; new Subject&lt;void&gt;();
+
+  // Create a map to display breakpoint names for demonstration purposes.
+  displayNameMap &#x3D; currentViewMapTable;
+
+  title &#x3D; &#x27;client&#x27;;
+  selectedMenu!: IToolBarMenu;
+
+  loadAuthModules: boolean &#x3D; true;
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private breakPointService: BreakPointService,
+    private storageService: LocalstorageService,
+    private router: Router
+  ) {
+    this.loadLayout$ &#x3D; of(true);
+    let auth &#x3D; [&#x27;/auth/login&#x27;, &#x27;/auth/register&#x27;, &#x27;/noAccess&#x27;];
+
+    router.events
+      .pipe(
+        takeUntil(this.destroyed),
+        tap((route) &#x3D;&gt; this.routeUiInit(auth, route)),
+        delay(10), // just for fancy animation
+        filter(
+          (e) &#x3D;&gt;
+            e instanceof NavigationStart ||
+            e instanceof NavigationEnd ||
+            e instanceof NavigationCancel ||
+            e instanceof NavigationError
+        )
+        // debounceTime(500)
+      )
+      .subscribe((e) &#x3D;&gt; {
+        if (e instanceof NavigationEnd) {
+          this.routeUiEnd(auth, e);
+        }
+        if (e instanceof NavigationCancel || e instanceof NavigationError) {
+          this.router.navigateByUrl(&#x27;/auth/login&#x27;);
+        }
+      });
+
+    breakpointObserver
+      .observe(screenObserve)
+      .pipe(takeUntil(this.destroyed))
+      .subscribe((result) &#x3D;&gt; {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            let currentScreenSize &#x3D; this.displayNameMap.get(query) ?? &#x27;Unknown&#x27;;
+            breakPointService.currentScreen &#x3D; currentScreenSize;
+            this.storageService.setData({
+              currentScreenSize: currentScreenSize,
+            });
+          }
+        }
+      });
+  }
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
+  }
+  ngOnInit(): void {
+    this.loadLayout$ &#x3D; of(false).pipe(delay(2 * 1000)); // jsut for fancy animation
+    this.storageService.setData({ role: &#x27;FULL_ADMIN&#x27; });
+  }
+
+  loadRouteToStorage(menu: IToolBarMenu): void {
+    
+    this.selectedMenu &#x3D; { ...menu };
+    if (this.selectedMenu.url?.toLowerCase().includes(&#x27;logout&#x27;)) {
+      this.router.navigateByUrl(&#x27;/auth/login&#x27;);
+      this.loadAuthModules &#x3D; false;
+    } else {
+     
+    }
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return (
+      outlet &amp;&amp;
+      outlet.activatedRouteData &amp;&amp;
+      outlet.activatedRouteData[&#x27;animationState&#x27;]
+    );
+  }
+
+  routeUiInit(auth: any, url: any) {
+    this.showText &#x3D; true;
+    this.loadAuthModules &#x3D; auth.includes(url.url) ? true : false;
+  }
+
+  routeUiEnd(auth: any, url: any): Observable&lt;any&gt; {
+    let urlNavigation &#x3D; [...RootMenu].find((i: any) &#x3D;&gt; {
+      if (i.url &#x3D;&#x3D;&#x3D; url?.urlAfterRedirects) return i;
+      // this.loadLayout$ &#x3D; of(false)
+    });
+    this.loadRouteToStorage(urlNavigation as IToolBarMenu);
+    this.loadAuthModules &#x3D; auth.includes(url.urlAfterRedirects) ? true : false;
+    this.showText &#x3D; false;
+    return EMPTY;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ng-container *ngIf&#x3D;&quot;(loadLayout$|async);else layout&quot;&gt;
+    &lt;ng-container *ngTemplateOutlet&#x3D;&quot;loader&quot;&gt;&lt;/ng-container&gt;
+
+&lt;/ng-container&gt;
+
+&lt;ng-template #loader&gt;
+    &lt;div style&#x3D;&quot;display: grid;place-items: center;height:100vh&quot;&gt;
+        &lt;app-loading-comp [showText]&#x3D;&quot;showText&quot; [setText]&#x3D;&quot;&#x27;Loading...&#x27;&quot;&gt;&lt;/app-loading-comp&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+
+
+&lt;ng-template #layout&gt;
+    &lt;!-- &lt;div class&#x3D;&quot;loading position-absolute top-50 start-50 translate-middle&quot; *ngIf&#x3D;&quot;showText&quot;&gt;Loading&lt;/div&gt; --&gt;
+
+    &lt;ng-container *ngIf&#x3D;&quot;loadAuthModules&quot;&gt;
+        &lt;!-- &lt;div [@routeAnimations]&#x3D;&quot;prepareRoute(outlet)&quot;&gt;
+            &lt;router-outlet #outlet&#x3D;&quot;outlet&quot;&gt;&lt;/router-outlet&gt;
+        &lt;/div&gt; --&gt;
+        &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/ng-container&gt;
+
+
+    &lt;app-root-layout *ngIf&#x3D;&quot;!loadAuthModules&quot;&gt;
+
+
+        &lt;div menu fxLayout&#x3D;&quot;column&quot;&gt;
+            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;sidenavcontent&quot;&gt;&lt;/ng-container&gt;
+        &lt;/div&gt;
+
+        &lt;div routeSelected class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+
+
+            &lt;mat-icon&gt;{{selectedMenu?.icon}}&lt;/mat-icon&gt;
+
+            &lt;div class&#x3D;&quot;ms-1&quot;&gt; {{selectedMenu?.label}}&lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;div toolbar fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;space-evenly center&quot;&gt;
+            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;dynamicDropDown&quot;&gt;&lt;/ng-container&gt;
+        &lt;/div&gt;
+        &lt;div container&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;showText&quot;&gt;
+                &lt;div class&#x3D;&quot;position-absolute start-50 top-50 translate-middle&quot;&gt;
+                    &lt;div *appLoading&#x3D;&quot;showText&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/ng-container&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!showText&quot;&gt;
+
+                &lt;router-outlet&gt;&lt;/router-outlet&gt;
+            &lt;/ng-container&gt;
+
+        &lt;/div&gt;
+    &lt;/app-root-layout&gt;
+&lt;/ng-template&gt;
+
+
+
+
+&lt;!-- Sidenavbar content --&gt;
+&lt;ng-template #sidenavcontent&gt;
+    &lt;div class&#x3D;&quot;d-flex align-items-center flex-column&quot;&gt;
+
+
+        &lt;img class&#x3D;&quot;avatar mat-elevation-z8&quot; class&#x3D;&quot;rounded-circle text-center&quot; width&#x3D;&quot;100&quot; height&#x3D;&quot;100&quot;
+            src&#x3D;&quot;https://www.jea.com/cdn/images/avatar/avatar-alt.svg&quot; /&gt;
+
+        &lt;h4 class&#x3D;&quot;name&quot;&gt;{{username}}&lt;/h4&gt;
+        &lt;p class&#x3D;&quot;designation&quot;&gt;{{role}}&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+
+
+    &lt;ng-container *ngFor&#x3D;&quot;let item of menuItems&quot;&gt;
+
+        &lt;a class&#x3D;&quot;menu-button text-white text-decoration-none&quot; mat-ripple
+            [routerLink]&#x3D;&quot;item?.url&quot; routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;loadRouteToStorage(item)&quot;&gt;
+            &lt;div class&#x3D;&quot;d-flex align-items-center p-1&quot; role&#x3D;&quot;button&quot; mat-button&gt;
+                &lt;div&gt;
+                    &lt;mat-icon class&#x3D;&quot;mt-1&quot;&gt;{{item.icon}}&lt;/mat-icon&gt;
+                &lt;/div&gt;
+                &lt;div&gt;&lt;span class&#x3D;&quot;ms-2&quot;&gt; {{item.label}}&lt;/span&gt;&lt;/div&gt;
+
+            &lt;/div&gt;
+
+
+        &lt;/a&gt;
+        &lt;!-- &lt;a mat-button class&#x3D;&quot;menu-button w-100 d-flex justify-content-between&quot; [routerLink]&#x3D;&quot;item?.url&quot;
+            routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;loadRouteToStorage(item)&quot;&gt;
+            &lt;mat-icon&gt;{{item.icon}}&lt;/mat-icon&gt;
+            &lt;span class&#x3D;&quot;ml-2&quot;&gt; {{item.label}}&lt;/span&gt;
+        &lt;/a&gt; --&gt;
+
+
+    &lt;/ng-container&gt;
+
+
+
+
+
+&lt;/ng-template&gt;
+
+
+&lt;!-- Titleebar left side content (i.e) 3 dot --&gt;
+
+&lt;ng-template #dynamicDropDown&gt;
+
+    &lt;!-- &lt;button mat-button *ngFor&#x3D;&quot;let item of menuItems&quot; [fxShow]&#x3D;&quot;item.showOnDesktop&quot; [fxShow.xs]&#x3D;&quot;item.showOnMobile&quot;
+        [fxShow.sm]&#x3D;&quot;item.showOnTablet&quot; [routerLink]&#x3D;&quot;item?.url&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+        &lt;mat-icon class&#x3D;&quot;mr&quot;&gt;{{item.icon}}&lt;/mat-icon&gt;
+        {{item.label}}
+    &lt;/button&gt; --&gt;
+
+    &lt;ng-container&gt;
+        &lt;button mat-button [matMenuTriggerFor]&#x3D;&quot;dropMenu&quot; class&#x3D;&quot;d-md-none d-sm-block&quot;&gt;
+            Menu&lt;mat-icon&gt;more_vert&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;mat-menu #dropMenu&#x3D;&quot;matMenu&quot;&gt;
+            &lt;ng-container *ngFor&#x3D;&quot;let item of menuItems&quot;&gt;
+                &lt;div class&#x3D;&quot;&quot; [fxShow]&#x3D;&quot;!item.showOnDesktop&quot; [fxShow.sm]&#x3D;&quot;!item.showOnTablet&quot;
+                    [fxShow.xs]&#x3D;&quot;!item.showOnMobile&quot;&gt;
+                    &lt;button mat-menu-item [routerLink]&#x3D;&quot;item?.url&quot; routerLinkActive&#x3D;&quot;active&quot;
+                        (click)&#x3D;&quot;loadRouteToStorage(item)&quot;&gt;
+                        &lt;mat-icon class&#x3D;&quot;mr&quot;&gt;{{item.icon}}&lt;/mat-icon&gt;
+                        {{item.label}}
+                    &lt;/button&gt;
+                    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+                &lt;/div&gt;
+            &lt;/ng-container&gt;
+        &lt;/mat-menu&gt;
+    &lt;/ng-container&gt;
+
+
+&lt;/ng-template&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./app.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">a.active{
+   background-color: rgba(238,137,255,0.3); 
+   color:#fff
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="(loadLayout$|async);else layout">    <ng-container *ngTemplateOutlet="loader"></ng-container></ng-container><ng-template #loader>    <div style="display: grid;place-items: center;height:100vh">        <app-loading-comp [showText]="showText" [setText]="\'Loading...\'"></app-loading-comp>    </div></ng-template><ng-template #layout>    <!-- <div class="loading position-absolute top-50 start-50 translate-middle" *ngIf="showText">Loading</div> -->    <ng-container *ngIf="loadAuthModules">        <!-- <div [@routeAnimations]="prepareRoute(outlet)">            <router-outlet #outlet="outlet"></router-outlet>        </div> -->        <router-outlet></router-outlet>    </ng-container>    <app-root-layout *ngIf="!loadAuthModules">        <div menu fxLayout="column">            <ng-container *ngTemplateOutlet="sidenavcontent"></ng-container>        </div>        <div routeSelected class="d-flex align-items-center">            <mat-icon>{{selectedMenu?.icon}}</mat-icon>            <div class="ms-1"> {{selectedMenu?.label}}</div>        </div>        <div toolbar fxLayout="row" fxLayoutAlign="space-evenly center">            <ng-container *ngTemplateOutlet="dynamicDropDown"></ng-container>        </div>        <div container>            <ng-container *ngIf="showText">                <div class="position-absolute start-50 top-50 translate-middle">                    <div *appLoading="showText"></div>                </div>            </ng-container>            <ng-container *ngIf="!showText">                <router-outlet></router-outlet>            </ng-container>        </div>    </app-root-layout></ng-template><!-- Sidenavbar content --><ng-template #sidenavcontent>    <div class="d-flex align-items-center flex-column">        <img class="avatar mat-elevation-z8" class="rounded-circle text-center" width="100" height="100"            src="https://www.jea.com/cdn/images/avatar/avatar-alt.svg" />        <h4 class="name">{{username}}</h4>        <p class="designation">{{role}}</p>    </div>    <hr>    <ng-container *ngFor="let item of menuItems">        <a class="menu-button text-white text-decoration-none" mat-ripple            [routerLink]="item?.url" routerLinkActive="active" (click)="loadRouteToStorage(item)">            <div class="d-flex align-items-center p-1" role="button" mat-button>                <div>                    <mat-icon class="mt-1">{{item.icon}}</mat-icon>                </div>                <div><span class="ms-2"> {{item.label}}</span></div>            </div>        </a>        <!-- <a mat-button class="menu-button w-100 d-flex justify-content-between" [routerLink]="item?.url"            routerLinkActive="active" (click)="loadRouteToStorage(item)">            <mat-icon>{{item.icon}}</mat-icon>            <span class="ml-2"> {{item.label}}</span>        </a> -->    </ng-container></ng-template><!-- Titleebar left side content (i.e) 3 dot --><ng-template #dynamicDropDown>    <!-- <button mat-button *ngFor="let item of menuItems" [fxShow]="item.showOnDesktop" [fxShow.xs]="item.showOnMobile"        [fxShow.sm]="item.showOnTablet" [routerLink]="item?.url" routerLinkActive="active">        <mat-icon class="mr">{{item.icon}}</mat-icon>        {{item.label}}    </button> -->    <ng-container>        <button mat-button [matMenuTriggerFor]="dropMenu" class="d-md-none d-sm-block">            Menu<mat-icon>more_vert</mat-icon>        </button>        <mat-menu #dropMenu="matMenu">            <ng-container *ngFor="let item of menuItems">                <div class="" [fxShow]="!item.showOnDesktop" [fxShow.sm]="!item.showOnTablet"                    [fxShow.xs]="!item.showOnMobile">                    <button mat-menu-item [routerLink]="item?.url" routerLinkActive="active"                        (click)="loadRouteToStorage(item)">                        <mat-icon class="mr">{{item.icon}}</mat-icon>                        {{item.label}}                    </button>                    <mat-divider></mat-divider>                </div>            </ng-container>        </mat-menu>    </ng-container></ng-template></div>'
+    var COMPONENTS = [{'name': 'AccessCheckboxComponent', 'selector': 'app-access-checkbox'},{'name': 'AccessDeniedComponent', 'selector': 'app-access-denied'},{'name': 'ActionButtonsComponent', 'selector': '[action-buttons]'},{'name': 'AddressComponent', 'selector': 'app-address'},{'name': 'AddressFormsComponent', 'selector': 'app-address-forms'},{'name': 'AddresslistComponent', 'selector': 'app-addresslist'},{'name': 'AddresstableComponent', 'selector': 'app-addresstable'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppMatTabComponent', 'selector': 'app-tab'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BusRouteComponent', 'selector': 'app-bus-route'},{'name': 'BusRouteformsComponent', 'selector': 'app-bus-routeforms'},{'name': 'BusRoutelistComponent', 'selector': 'app-bus-routelist'},{'name': 'BusRoutetableComponent', 'selector': 'app-bus-routetable'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FeesComponent', 'selector': 'app-fees'},{'name': 'FeesformComponent', 'selector': 'app-feesform'},{'name': 'FeeslistComponent', 'selector': 'app-feeslist'},{'name': 'FeestableComponent', 'selector': 'app-feestable'},{'name': 'ListComponent', 'selector': 'app-list'},{'name': 'LoadingComponent', 'selector': 'app-loading-comp'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginformComponent', 'selector': 'app-loginform'},{'name': 'MatCustomTableComponent', 'selector': 'app-mat-custom-table'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'ParentsComponent', 'selector': 'app-parents'},{'name': 'ParentsFormsComponent', 'selector': 'app-parents-forms'},{'name': 'ParentsListComponent', 'selector': 'app-parents-list'},{'name': 'ParentsTableComponent', 'selector': 'app-parents-table'},{'name': 'QuickNavigationMenuComponent', 'selector': 'app-quick-navigation-menu'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RolesAssignComponent', 'selector': 'app-roles-assign'},{'name': 'RolesRulesComponent', 'selector': 'app-roles-rules'},{'name': 'RootLayoutComponent', 'selector': 'app-root-layout'},{'name': 'SecondarySidenavComponent', 'selector': 'app-secondary-sidenav'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SibilingsComponent', 'selector': 'app-sibilings'},{'name': 'SibilingsformsComponent', 'selector': 'app-sibilingsforms'},{'name': 'SibilingsListComponent', 'selector': 'app-sibilings-list'},{'name': 'SibilingstableComponent', 'selector': 'app-sibilingstable'},{'name': 'StudentdetailsComponent', 'selector': 'app-studentdetails'},{'name': 'StudentFormsComponent', 'selector': 'app-student-forms'},{'name': 'StudentGridComponent', 'selector': 'app-student-grid'},{'name': 'StudentListComponent', 'selector': 'app-student-list'},{'name': 'StudentSearchComponent', 'selector': 'app-student-search'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'}];
+    var DIRECTIVES = [{'name': 'AppLoadingDirective', 'selector': '[appLoading]'},{'name': 'DebounceDirective', 'selector': '[appDebounceClick]'},{'name': 'RoleDirective', 'selector': '[appUserRole]'},{'name': 'TableActionDirective', 'selector': '[appTableAction]'}];
+    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

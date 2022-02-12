@@ -1,0 +1,781 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  RootLayoutComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/widgets/components/layout/layout.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-root-layout</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./layout.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./layout.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#breakpointService" >breakpointService</a>
+                            </li>
+                            <li>
+                                <a href="#currentScreen" >currentScreen</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#sideBarEventListener" >sideBarEventListener</a>
+                            </li>
+                            <li>
+                                <a href="#sidenav" >sidenav</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#smallscreen" >smallscreen</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggle" >toggle</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(observer: BreakpointObserver, destroy$: <a href="../injectables/AutoUnsubscribe.html" target="_self">AutoUnsubscribe</a>, breakpointService: <a href="../injectables/BreakPointService.html" target="_self">BreakPointService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>observer</td>
+                                                  
+                                                        <td>
+                                                                    <code>BreakpointObserver</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>destroy$</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AutoUnsubscribe.html" target="_self" >AutoUnsubscribe</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>breakpointService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BreakPointService.html" target="_self" >BreakPointService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggle"></a>
+                    <span class="name">
+                        <span ><b>toggle</b></span>
+                        <a href="#toggle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggle()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="breakpointService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>breakpointService</b></span>
+                        <a href="#breakpointService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/BreakPointService.html" target="_self" >BreakPointService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentScreen"></a>
+                    <span class="name">
+                        <span ><b>currentScreen</b></span>
+                        <a href="#currentScreen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sideBarEventListener"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>sideBarEventListener</b></span>
+                        <a href="#sideBarEventListener"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BehaviorSubject&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;boolean&gt;(true)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sidenav"></a>
+                    <span class="name">
+                        <span ><b>sidenav</b></span>
+                        <a href="#sidenav"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatSidenav</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatSidenav)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="smallscreen"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>smallscreen</b></span>
+                        <a href="#smallscreen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/widgets/components/layout/layout.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    AfterContentInit,
+    AfterViewInit,
+    Component,
+    ContentChild,
+    HostListener,
+    Input,
+    OnInit,
+    ViewChild,
+} from &#x27;@angular/core&#x27;
+import { BreakpointObserver } from &#x27;@angular/cdk/layout&#x27;
+import { MatSidenav } from &#x27;@angular/material/sidenav&#x27;
+import {
+    debounceTime,
+    delay,
+    distinctUntilChanged,
+    map,
+    takeUntil,
+    tap,
+} from &#x27;rxjs/operators&#x27;
+import { BehaviorSubject, Observable, Subject } from &#x27;rxjs&#x27;
+import { AutoUnsubscribe } from &#x27;@utils/auto-unsubscribe.service&#x27;
+import { MatIcon } from &#x27;@angular/material/icon&#x27;
+import { BreakPointService } from &#x27;@shared/services/breakpoint.service&#x27;
+
+@Component({
+    selector: &#x27;app-root-layout&#x27;,
+    templateUrl: &#x27;./layout.component.html&#x27;,
+    styleUrls: [&#x27;./layout.component.scss&#x27;],
+})
+export class RootLayoutComponent implements AfterViewInit {
+    @ViewChild(MatSidenav)
+    sidenav!: MatSidenav
+    private sideBarEventListener: BehaviorSubject&lt;boolean&gt; &#x3D;
+        new BehaviorSubject&lt;boolean&gt;(true)
+
+    private smallscreen: boolean &#x3D; false
+    currentScreen: Observable&lt;any&gt;
+
+    constructor(
+        private observer: BreakpointObserver,
+        private destroy$: AutoUnsubscribe,
+        public breakpointService: BreakPointService
+    ) {
+        this.currentScreen &#x3D; breakpointService.currentScreen
+    }
+
+
+    ngAfterViewInit() {
+        this.observer
+            .observe([&#x27;(max-width: 767px)&#x27;])
+            .pipe(delay(1), takeUntil(this.destroy$))
+            .subscribe((res) &#x3D;&gt; {
+                if (res.matches) {
+                    this.sidenav.mode &#x3D; &#x27;over&#x27;
+                    this.smallscreen &#x3D; true
+                    this.sidenav.close()
+                } else {
+                    this.sidenav.mode &#x3D; &#x27;side&#x27;
+                    this.smallscreen &#x3D; false
+
+                    this.sidenav.open()
+                    // this.sideBarEventListener.next(true)
+                }
+            })
+
+        this.sideBarEventListener
+            .pipe(
+                takeUntil(this.destroy$),
+                debounceTime(10),
+            )
+            .subscribe((data: boolean) &#x3D;&gt; {
+                if (data) this.sidenav.open()
+                if (!data) this.sidenav.close()
+                if(this.smallscreen)  this.sidenav.close()
+            })
+    }
+
+    toggle() {
+        this.sideBarEventListener.next(!this.sidenav.opened)
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-sidenav-container color&#x3D;&quot;primary&quot;&gt;
+    &lt;mat-sidenav #sidenav&#x3D;&quot;matSidenav&quot; class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+        &lt;ng-content select&#x3D;&quot;[menu]&quot;&gt;&lt;/ng-content&gt;
+    &lt;/mat-sidenav&gt;
+    &lt;mat-sidenav-content&gt;
+
+        &lt;div class&#x3D;&quot;content card mat-elevation-z8&quot;&gt;
+            &lt;mat-toolbar select&#x3D;&quot;[toolbar]&quot; #content&gt;
+
+                &lt;button mat-icon-button (click)&#x3D;&quot;toggle()&quot; class&#x3D;&quot;d-none d-md-block&quot;&gt;
+
+                    
+                    &lt;mat-icon&gt;menu_icon&lt;/mat-icon&gt;
+
+                &lt;/button&gt;
+                &lt;div class&#x3D;&quot;d-block d-sm-block d-md-none d-lg-none&quot;&gt;&lt;ng-content  select&#x3D;&quot;[routeSelected]&quot;&gt;&lt;/ng-content&gt;&lt;/div&gt;
+                &lt;ng-content&gt;&lt;/ng-content&gt;
+
+            &lt;/mat-toolbar&gt;
+            &lt;ng-content select&#x3D;&quot;[container]&quot;&gt;
+
+            &lt;/ng-content&gt;
+        &lt;/div&gt;
+    &lt;/mat-sidenav-content&gt;
+&lt;/mat-sidenav-container&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./layout.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+
+$layout-bg:#673ab7;
+$layout-font-color:#ffffff;
+
+mat-toolbar {
+    background: $layout-bg;
+    color:$layout-font-color;
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 200px;
+    border-right: none;
+    background: $layout-bg;
+    color: $layout-font-color;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.content {
+    height:calc(100% - 2.1rem);
+    border-radius: 10px;
+    margin: 1rem;
+    margin-left: 2rem;
+}
+
+mat-sidenav-container {
+    // height: calc(100vh - 65px);
+    height: calc(100vh - 2.1rem)
+}
+
+mat-toolbar{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+::ng-deep .mat-toolbar-row, .mat-toolbar-single-row{
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+    ::ng-deep .mat-toolbar-row, .mat-toolbar-single-row{
+        // justify-content: flex-end;
+    }
+    .content{
+    margin: 0rem;
+    height: calc(100% - 0rem);
+    }
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-sidenav-container color="primary">    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">        <ng-content select="[menu]"></ng-content>    </mat-sidenav>    <mat-sidenav-content>        <div class="content card mat-elevation-z8">            <mat-toolbar select="[toolbar]" #content>                <button mat-icon-button (click)="toggle()" class="d-none d-md-block">                                        <mat-icon>menu_icon</mat-icon>                </button>                <div class="d-block d-sm-block d-md-none d-lg-none"><ng-content  select="[routeSelected]"></ng-content></div>                <ng-content></ng-content>            </mat-toolbar>            <ng-content select="[container]">            </ng-content>        </div>    </mat-sidenav-content></mat-sidenav-container></div>'
+    var COMPONENTS = [{'name': 'AccessCheckboxComponent', 'selector': 'app-access-checkbox'},{'name': 'AccessDeniedComponent', 'selector': 'app-access-denied'},{'name': 'ActionButtonsComponent', 'selector': '[action-buttons]'},{'name': 'AddressComponent', 'selector': 'app-address'},{'name': 'AddressFormsComponent', 'selector': 'app-address-forms'},{'name': 'AddresslistComponent', 'selector': 'app-addresslist'},{'name': 'AddresstableComponent', 'selector': 'app-addresstable'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppMatTabComponent', 'selector': 'app-tab'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BusRouteComponent', 'selector': 'app-bus-route'},{'name': 'BusRouteformsComponent', 'selector': 'app-bus-routeforms'},{'name': 'BusRoutelistComponent', 'selector': 'app-bus-routelist'},{'name': 'BusRoutetableComponent', 'selector': 'app-bus-routetable'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FeesComponent', 'selector': 'app-fees'},{'name': 'FeesformComponent', 'selector': 'app-feesform'},{'name': 'FeeslistComponent', 'selector': 'app-feeslist'},{'name': 'FeestableComponent', 'selector': 'app-feestable'},{'name': 'ListComponent', 'selector': 'app-list'},{'name': 'LoadingComponent', 'selector': 'app-loading-comp'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginformComponent', 'selector': 'app-loginform'},{'name': 'MatCustomTableComponent', 'selector': 'app-mat-custom-table'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'ParentsComponent', 'selector': 'app-parents'},{'name': 'ParentsFormsComponent', 'selector': 'app-parents-forms'},{'name': 'ParentsListComponent', 'selector': 'app-parents-list'},{'name': 'ParentsTableComponent', 'selector': 'app-parents-table'},{'name': 'QuickNavigationMenuComponent', 'selector': 'app-quick-navigation-menu'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RolesAssignComponent', 'selector': 'app-roles-assign'},{'name': 'RolesRulesComponent', 'selector': 'app-roles-rules'},{'name': 'RootLayoutComponent', 'selector': 'app-root-layout'},{'name': 'SecondarySidenavComponent', 'selector': 'app-secondary-sidenav'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SibilingsComponent', 'selector': 'app-sibilings'},{'name': 'SibilingsformsComponent', 'selector': 'app-sibilingsforms'},{'name': 'SibilingsListComponent', 'selector': 'app-sibilings-list'},{'name': 'SibilingstableComponent', 'selector': 'app-sibilingstable'},{'name': 'StudentdetailsComponent', 'selector': 'app-studentdetails'},{'name': 'StudentFormsComponent', 'selector': 'app-student-forms'},{'name': 'StudentGridComponent', 'selector': 'app-student-grid'},{'name': 'StudentListComponent', 'selector': 'app-student-list'},{'name': 'StudentSearchComponent', 'selector': 'app-student-search'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'}];
+    var DIRECTIVES = [{'name': 'AppLoadingDirective', 'selector': '[appLoading]'},{'name': 'DebounceDirective', 'selector': '[appDebounceClick]'},{'name': 'RoleDirective', 'selector': '[appUserRole]'},{'name': 'TableActionDirective', 'selector': '[appTableAction]'}];
+    var ACTUAL_COMPONENT = {'name': 'RootLayoutComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RootLayoutComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

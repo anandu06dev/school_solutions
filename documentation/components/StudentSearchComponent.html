@@ -1,0 +1,784 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  StudentSearchComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/widgets/components/student-search/student-search.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../injectables/AutoUnsubscribe.html" target="_self" >AutoUnsubscribe</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-student-search</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./student-search.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./student-search.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filteredOptions" >filteredOptions</a>
+                            </li>
+                            <li>
+                                <a href="#myControl" >myControl</a>
+                            </li>
+                            <li>
+                                <a href="#options$" >options$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#studentDetails" >studentDetails</a>
+                            </li>
+                            <li>
+                                <a href="#students" >students</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getFreshStudentData" >getFreshStudentData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectedValueEvent" >selectedValueEvent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(api: <a href="../injectables/StudentapiService.html" target="_self">StudentapiService</a>, destroy$: <a href="../injectables/AutoUnsubscribe.html" target="_self">AutoUnsubscribe</a>, storage: <a href="../injectables/LocalstorageService.html" target="_self">LocalstorageService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>api</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StudentapiService.html" target="_self" >StudentapiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>destroy$</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AutoUnsubscribe.html" target="_self" >AutoUnsubscribe</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storage</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LocalstorageService.html" target="_self" >LocalstorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedValueEvent"></a>
+                        <b>selectedValueEvent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFreshStudentData"></a>
+                    <span class="name">
+                        <span ><b>getFreshStudentData</b></span>
+                        <a href="#getFreshStudentData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFreshStudentData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredOptions"></a>
+                    <span class="name">
+                        <span ><b>filteredOptions</b></span>
+                        <a href="#filteredOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;string[]&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="myControl"></a>
+                    <span class="name">
+                        <span ><b>myControl</b></span>
+                        <a href="#myControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormControl()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options$"></a>
+                    <span class="name">
+                        <span ><b>options$</b></span>
+                        <a href="#options$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.students.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="studentDetails"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>studentDetails</b></span>
+                        <a href="#studentDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="students"></a>
+                    <span class="name">
+                        <span ><b>students</b></span>
+                        <a href="#students"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;IStudentSearchModel[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/widgets/components/student-search/student-search.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { FormControl } from &#x27;@angular/forms&#x27;;
+import { LocalstorageService } from &#x27;@shared/services/localstorage.service&#x27;;
+import { AutoUnsubscribe } from &#x27;@utils/auto-unsubscribe.service&#x27;;
+import { IStudentSearchModel } from &#x27;@utils/interfaces/studentSearch.interface&#x27;;
+import {
+  Observable,
+  startWith,
+  map,
+  BehaviorSubject,
+  take,
+  debounceTime,
+  takeUntil,
+  Subject,
+  filter,
+} from &#x27;rxjs&#x27;;
+import { StudentapiService } from &#x27;src/app/container/studentdetails/services/studentapi.service&#x27;;
+
+@Component({
+  selector: &#x27;app-student-search&#x27;,
+  templateUrl: &#x27;./student-search.component.html&#x27;,
+  styleUrls: [&#x27;./student-search.component.scss&#x27;],
+  providers: [AutoUnsubscribe],
+})
+export class StudentSearchComponent implements OnInit {
+  myControl &#x3D; new FormControl();
+  students &#x3D; new BehaviorSubject&lt;IStudentSearchModel[]&gt;([]);
+  options$ &#x3D; this.students.asObservable();
+  // options: any[] &#x3D; Array(100).fill(0).map((i,ind)&#x3D;&gt;({
+  //     &quot;admissionNo&quot;: ind,
+  //     &quot;studentFirstName&quot;: &quot;Srinivasan&quot; +(ind+1),
+  //     &quot;studentClass&quot;: &quot;UKG&quot;,
+  //     &quot;studentLastName&quot;: &quot;Raghunath&quot;
+  //   }))
+  filteredOptions!: Observable&lt;string[]&gt;;
+  private studentDetails:any &#x3D; {};
+
+  @Output() selectedValueEvent &#x3D; new EventEmitter&lt;number | string&gt;();
+  constructor(
+    private api: StudentapiService,
+    private destroy$: AutoUnsubscribe,
+    private storage: LocalstorageService
+  ) {}
+
+  ngOnInit() {
+    // this.getFreshStudentData();
+    this.students.next([]);
+
+    this.myControl.valueChanges
+      .pipe(debounceTime(100), takeUntil(this.destroy$))
+      .subscribe((d) &#x3D;&gt; {
+        this.selectedValueEvent.emit(this.studentDetails[d]);
+      });
+  }
+
+  getFreshStudentData() {
+    if (this.students.getValue().length &#x3D;&#x3D;&#x3D; 0) {
+      this.api
+        .getStudentDetailsForSearch()
+        .pipe(take(1))
+        .subscribe((d) &#x3D;&gt; {
+          if (Array.isArray(d)) {
+            d.map((i) &#x3D;&gt; {
+              this.studentDetails[i[&#x27;admissionNo&#x27;]] &#x3D; {};
+              this.studentDetails[i[&#x27;admissionNo&#x27;]] &#x3D; i;
+            });
+            this.students.next([...d]);
+          } else {
+            this.students.next([]);
+          }
+        });
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">
+&lt;ng-select class&#x3D;&quot;&quot; [items]&#x3D;&quot;options$ | async&quot; [formControl]&#x3D;&quot;myControl&quot; bindLabel&#x3D;&quot;admissionNo&quot; bindValue&#x3D;&quot;admissionNo&quot; (focus)&#x3D;&quot;getFreshStudentData()&quot;&gt;
+  
+    &lt;ng-template ng-option-tmp let-item&#x3D;&quot;item&quot; let-index&#x3D;&quot;index&quot; let-search&#x3D;&quot;searchTerm&quot;&gt;
+        &lt;div
+            class&#x3D;&quot;d-flex p-2 justify-content-between align-item-center flex-sm-row flex-md-row flex-lg-row&quot; id&#x3D;&quot;index&quot;&gt;
+        
+            &lt;div class&#x3D;&quot;text-center my-auto&quot;&gt;
+                &lt;p matListAvatar class&#x3D;&quot;mx-2 me-4&quot; [attr.data-letters]&#x3D;&quot;item ?.studentFirstName | slice:0:1&quot;&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;text-wrap mx-auto ms-1&quot;&gt;
+                &lt;div&gt;{{item?.studentFirstName}} {{item?.studentLastName}}&lt;/div&gt;
+                &lt;small&gt;
+                    &lt;span class&#x3D;&quot;text-secondary text-start&quot;&gt;&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;fw-bold&quot;&gt;ADM No. &lt;/span&gt;
+                    &lt;span class&#x3D;&quot;fw-bold&quot; [ngOptionHighlight]&#x3D;&quot;search&quot;&gt; {{item.admissionNo}}&lt;/span&gt;
+
+                &lt;/small&gt;
+             
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                &lt;small class&#x3D;&quot;badge text-purple&quot;&gt;{{item.studentClass}}&lt;/small&gt;
+        
+            &lt;/div&gt;
+        
+        &lt;/div&gt;
+ 
+    &lt;/ng-template&gt;
+ 
+&lt;/ng-select&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./student-search.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host ::ng-deep [data-letters]:before {
+  content: attr(data-letters);
+  display: inline-block;
+  font-size: 1.25em;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-transform: capitalize;
+  text-align: center;
+  border-radius: 50%;
+  background: #9c27b0;
+  vertical-align: middle;
+  // margin-right: 1em;
+  color: white;
+}
+
+.text-purple {
+  color: #9c27b0;
+}
+
+:host ::ng-deep {
+  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    line-height: 2;
+  }
+  .ng-select .ng-select-container {
+    align-items: flex-end;
+
+    .ng-value-container {
+      margin-left: 0.5rem;
+    }
+  }
+  .ng-select .ng-select-container .ng-value-container .ng-input &gt; input {
+    padding-left: 0.5rem !important;
+    // padding: 2px;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ng-select class="" [items]="options$ | async" [formControl]="myControl" bindLabel="admissionNo" bindValue="admissionNo" (focus)="getFreshStudentData()">      <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">        <div            class="d-flex p-2 justify-content-between align-item-center flex-sm-row flex-md-row flex-lg-row" id="index">                    <div class="text-center my-auto">                <p matListAvatar class="mx-2 me-4" [attr.data-letters]="item ?.studentFirstName | slice:0:1"></p>            </div>            <div class="text-wrap mx-auto ms-1">                <div>{{item?.studentFirstName}} {{item?.studentLastName}}</div>                <small>                    <span class="text-secondary text-start"></span>                    <span class="fw-bold">ADM No. </span>                    <span class="fw-bold" [ngOptionHighlight]="search"> {{item.admissionNo}}</span>                </small>                         </div>            <div class="text-center">                <small class="badge text-purple">{{item.studentClass}}</small>                    </div>                </div>     </ng-template> </ng-select></div>'
+    var COMPONENTS = [{'name': 'AccessCheckboxComponent', 'selector': 'app-access-checkbox'},{'name': 'AccessDeniedComponent', 'selector': 'app-access-denied'},{'name': 'ActionButtonsComponent', 'selector': '[action-buttons]'},{'name': 'AddressComponent', 'selector': 'app-address'},{'name': 'AddressFormsComponent', 'selector': 'app-address-forms'},{'name': 'AddresslistComponent', 'selector': 'app-addresslist'},{'name': 'AddresstableComponent', 'selector': 'app-addresstable'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppMatTabComponent', 'selector': 'app-tab'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BottomsheetsComponent', 'selector': 'app-student-bottom-sheet'},{'name': 'BusRouteComponent', 'selector': 'app-bus-route'},{'name': 'BusRouteformsComponent', 'selector': 'app-bus-routeforms'},{'name': 'BusRoutelistComponent', 'selector': 'app-bus-routelist'},{'name': 'BusRoutetableComponent', 'selector': 'app-bus-routetable'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FeesComponent', 'selector': 'app-fees'},{'name': 'FeesformComponent', 'selector': 'app-feesform'},{'name': 'FeeslistComponent', 'selector': 'app-feeslist'},{'name': 'FeestableComponent', 'selector': 'app-feestable'},{'name': 'ListComponent', 'selector': 'app-list'},{'name': 'LoadingComponent', 'selector': 'app-loading-comp'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginformComponent', 'selector': 'app-loginform'},{'name': 'MatCustomTableComponent', 'selector': 'app-mat-custom-table'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'ParentsComponent', 'selector': 'app-parents'},{'name': 'ParentsFormsComponent', 'selector': 'app-parents-forms'},{'name': 'ParentsListComponent', 'selector': 'app-parents-list'},{'name': 'ParentsTableComponent', 'selector': 'app-parents-table'},{'name': 'QuickNavigationMenuComponent', 'selector': 'app-quick-navigation-menu'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RolesAssignComponent', 'selector': 'app-roles-assign'},{'name': 'RolesRulesComponent', 'selector': 'app-roles-rules'},{'name': 'RootLayoutComponent', 'selector': 'app-root-layout'},{'name': 'SecondarySidenavComponent', 'selector': 'app-secondary-sidenav'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SibilingsComponent', 'selector': 'app-sibilings'},{'name': 'SibilingsformsComponent', 'selector': 'app-sibilingsforms'},{'name': 'SibilingsListComponent', 'selector': 'app-sibilings-list'},{'name': 'SibilingstableComponent', 'selector': 'app-sibilingstable'},{'name': 'StudentdetailsComponent', 'selector': 'app-studentdetails'},{'name': 'StudentFormsComponent', 'selector': 'app-student-forms'},{'name': 'StudentGridComponent', 'selector': 'app-student-grid'},{'name': 'StudentListComponent', 'selector': 'app-student-list'},{'name': 'StudentSearchComponent', 'selector': 'app-student-search'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'},{'name': 'StudentTableComponent', 'selector': 'app-student-table'}];
+    var DIRECTIVES = [{'name': 'AppLoadingDirective', 'selector': '[appLoading]'},{'name': 'DebounceDirective', 'selector': '[appDebounceClick]'},{'name': 'RoleDirective', 'selector': '[appUserRole]'},{'name': 'TableActionDirective', 'selector': '[appTableAction]'}];
+    var ACTUAL_COMPONENT = {'name': 'StudentSearchComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'StudentSearchComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
