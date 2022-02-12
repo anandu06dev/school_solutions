@@ -56,7 +56,7 @@ export class PostalRefController {
     @Get('/getPostalNameByPinCode/:pincode')
     getPostalNameByPinCode(@Param('pincode') pincode: string) {
         console.log('pincode', pincode)
-        return this.postalRefService.getPostalNameByDistrict(pincode)
+        return this.postalRefService.getPostalNameByPinCode(pincode)
     }
 
     @Get('/pageable/postalRef')

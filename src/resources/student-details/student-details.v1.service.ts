@@ -12,6 +12,7 @@ import { StudentDetails } from './entities/student-detail.entity'
 import * as fs from 'fs'
 import * as PdfPrinter from 'pdfmake'
 import { generateRandomNumber } from '@resources/resources-util/resource-query-util'
+import { studentdetailBill } from './pdf-prototype/bill-format-1'
 @Injectable()
 export class StudentDetailsService {
     genpdf(response: Response<any, Record<string, any>>) {
@@ -80,7 +81,10 @@ export class StudentDetailsService {
             const options = {}
 
             const chunks = []
-            const pdfDoc = printer.createPdfKitDocument(docDefinition, options)
+            const pdfDoc = printer.createPdfKitDocument(
+                studentdetailBill,
+                options
+            )
             pdfDoc.on('data', (chunk) => chunks.push(chunk))
             pdfDoc.on('end', () => {
                 const result = Buffer.concat(chunks)
