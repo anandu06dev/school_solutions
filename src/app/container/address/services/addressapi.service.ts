@@ -11,6 +11,8 @@ export class AddressApiService {
   private postalResource: string = 'postal-ref';
   private addressResource: string = 'address-details';
 
+  private postalApiUrl:string = "/api/postalpincode";
+  // 'api.postalpincode.in/pincode'
 
   constructor(private http:HttpClient) { 
     
@@ -23,5 +25,9 @@ export class AddressApiService {
   fetchDistrictNames(){
     this.http.get(`${this.rootUrl}/${this.postalResource}/getAllState`)
 
+  }
+
+  fetchDetailsBasedPostalPinCode(pincode:string){
+    return this.http.get(`${this.postalApiUrl}/pincode/${pincode}`)
   }
 }

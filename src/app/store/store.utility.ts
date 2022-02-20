@@ -1,7 +1,7 @@
-import { Action } from "@utils/interfaces/action.interface";
-import { Page, initPage } from "@utils/interfaces/page.meta";
-import { BehaviorSubject } from "rxjs";
-
+import { Action } from '@utils/interfaces/action.interface';
+import { Page, initPage } from '@utils/interfaces/page.meta';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 export namespace StoreUtility {
   export function deleteEntities(uniqueEntityId: any, temp: any) {
     let dynamicEntityId = Object.keys(temp)[0];
@@ -33,12 +33,14 @@ export namespace StoreUtility {
       temp['paginationData'] = { ...temp['paginationData'], ...pageData };
     }
 
-    return {temp,action}
+    return { temp, action };
   }
 
-  export function arrayOfObjToEntity( data: { [key: string]: any }[] | null = [],
+  export function arrayOfObjToEntity(
+    data: { [key: string]: any }[] | null = [],
     entityId: string,
-    paginationData?: Page):{ [entityId: string]: any } {
+    paginationData?: Page
+  ): { [entityId: string]: any } {
     let temp: { [key: string]: [] | { [key: string | number]: any } } = {
       [entityId]: [],
       entities: {},
@@ -64,14 +66,29 @@ export namespace StoreUtility {
     else temp['props'] = null;
     return temp as Action;
   };
-
-
-
 }
 
-export class Datasource{
+export class Datasource {
   public dataSource = new BehaviorSubject({});
   public STORE = '__ENTITY_STORE__';
+  public action$ = new BehaviorSubject<Action>({type:'@@INIT@@',props:null});
+  dispatch(action: Action) {
+    let temp = this.action$.getValue();
+    this.action$.next({ ...temp,...action });
+  }
+
+  on(action: Action): Observable<any> {
+    return this.action$.pipe(
+      filter((actionStream:any)=>{
+        if(actionStream.type === action.type) return actionStream;
+      }),
+      map((e: Action) => e)
+    );
+
+    function newFunction() {
+      return filter((e: Action) => e.type === action.type);
+    }
+  }
 }
 
 class ReduxExtension {

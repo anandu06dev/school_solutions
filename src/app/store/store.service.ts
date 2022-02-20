@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { Action } from '@utils/interfaces/action.interface';
 import { initPage, Page } from '@utils/interfaces/page.meta';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, map, pluck, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Datasource, reduxExtension, StoreUtility } from './store.utility';
 
-
-
-
 @Injectable({ providedIn: 'root' })
 export class EntityStore extends Datasource {
+  // private storeConfig: StoreConfig;
   constructor() {
-    super()
+    super();
+   
   }
 
   public convertArrayOfObjectToEntity(
@@ -20,7 +19,7 @@ export class EntityStore extends Datasource {
     entityId: string,
     paginationData?: Page
   ): { [entityId: string]: any } {
-    return StoreUtility.arrayOfObjToEntity(data,entityId,paginationData)
+    return StoreUtility.arrayOfObjToEntity(data, entityId, paginationData);
   }
 
   public convertentitiesToObject(data: { [key: string]: any; entities: {} }) {
@@ -44,16 +43,16 @@ export class EntityStore extends Datasource {
       action: { type: '@@Actions', props: null },
     }
   ) {
-   
-    let updatedData = StoreUtility.addNewEntity(data,this.dataSource.getValue());
-    let {temp,action} = updatedData;
-    if(action){
-      this.logActions(action)
+    let updatedData = StoreUtility.addNewEntity(
+      data,
+      this.dataSource.getValue()
+    );
+    let { temp, action } = updatedData;
+    if (action) {
+      this.logActions(action);
     }
-    this.dataSource.next(temp)
-
+    this.dataSource.next(temp);
   }
-
 
   /**
    * entity for updation needed entity id, and needed key for nextLevel updation
@@ -90,7 +89,6 @@ export class EntityStore extends Datasource {
    *
    */
 
- 
   public logActions(action: Action) {
     if (!environment.production)
       reduxExtension.logActions(action, this.STORE, this.dataSource.getValue());
@@ -118,6 +116,13 @@ export class EntityStore extends Datasource {
   }
 }
 
-
-
-
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class StoreConfig {
+//   public lazyLoadStore: string[] = [];
+ 
+//   add(params:any){
+//     this.lazyLoadStore = params?.lazyLoadStore
+//   }
+// }

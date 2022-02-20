@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocalstorageService } from '@shared/services/localstorage.service';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
+import { ListConfig } from '@utils/interfaces/listConfig';
+import { initPage, Page } from '@utils/interfaces/page.meta';
 import { IStudentSearchModel } from '@utils/interfaces/studentSearch.interface';
 import {
   Observable,
@@ -13,8 +15,23 @@ import {
   takeUntil,
   Subject,
   filter,
+  concatMap,
+  retry,
+  of,
+  tap,
+  EMPTY,
+  takeWhile,
+  expand,
+  range,
+  shareReplay,
 } from 'rxjs';
+import {
+  StudentDetailsCoreLogicFacade,
+  IStudentDetailsCoreLogicFacade,
+} from 'src/app/container/studentdetails/class/studentDetails.core.logic';
 import { StudentapiService } from 'src/app/container/studentdetails/services/studentapi.service';
+import { StudentDetailsFacade } from 'src/app/container/studentdetails/services/students.facade';
+import { studentList, studentListSearch } from 'src/app/container/studentdetails/util/student.util';
 
 @Component({
   selector: 'app-student-search',
@@ -22,30 +39,34 @@ import { StudentapiService } from 'src/app/container/studentdetails/services/stu
   styleUrls: ['./student-search.component.scss'],
   providers: [AutoUnsubscribe],
 })
-export class StudentSearchComponent implements OnInit {
+export class StudentSearchComponent
+  extends StudentDetailsCoreLogicFacade
+  implements IStudentDetailsCoreLogicFacade
+{
+  public pagination$: Observable<Page>;
+  public loadStudentDetails$: Observable<any>;
+  listconfig: ListConfig = studentListSearch;
+
   myControl = new FormControl();
   students = new BehaviorSubject<IStudentSearchModel[]>([]);
   options$ = this.students.asObservable();
-  // options: any[] = Array(100).fill(0).map((i,ind)=>({
-  //     "admissionNo": ind,
-  //     "studentFirstName": "Srinivasan" +(ind+1),
-  //     "studentClass": "UKG",
-  //     "studentLastName": "Raghunath"
-  //   }))
+ 
   filteredOptions!: Observable<string[]>;
-  private studentDetails:any = {};
+  private studentDetails: any = {};
 
   @Output() selectedValueEvent = new EventEmitter<number | string>();
   constructor(
     private api: StudentapiService,
     private destroy$: AutoUnsubscribe,
-    private storage: LocalstorageService
-  ) {}
+    private storage: LocalstorageService,
+    private facade: StudentDetailsFacade
+  ) {
+    super();
+    this.pagination$ = this.paginationData(this.facade);
+    this.loadStudentDetails$ = this.loadStudentDetails(this.facade);
+  }
 
   ngOnInit() {
-    // this.getFreshStudentData();
-    this.students.next([]);
-
     this.myControl.valueChanges
       .pipe(debounceTime(100), takeUntil(this.destroy$))
       .subscribe((d) => {
@@ -53,22 +74,8 @@ export class StudentSearchComponent implements OnInit {
       });
   }
 
-  getFreshStudentData() {
-    if (this.students.getValue().length === 0) {
-      this.api
-        .getStudentDetailsForSearch()
-        .pipe(take(1))
-        .subscribe((d) => {
-          if (Array.isArray(d)) {
-            d.map((i) => {
-              this.studentDetails[i['admissionNo']] = {};
-              this.studentDetails[i['admissionNo']] = i;
-            });
-            this.students.next([...d]);
-          } else {
-            this.students.next([]);
-          }
-        });
-    }
+  
+  public loadNextSetOfRecords() {
+    return this.abstractingLoadNextSetOfRecords(this.facade);
   }
 }

@@ -30,9 +30,14 @@ export class CachingInterceptorService implements HttpInterceptor {
       return next
         .handle(req)
         .pipe(tap((res: any) => {
-          if(req.method === 'GET' && res.status === 200){
-            this.cache.set(req.urlWithParams, res.body);
+          let excludeUrl = ['/api/postalpincode']
+          if(excludeUrl.some((i:any)=>i.url === req.url)){
+            if(req.method === 'GET' && res.status === 200){
+              this.cache.set(req.urlWithParams, res.body);
+            }
+
           }
+          
         }));
     }
   }

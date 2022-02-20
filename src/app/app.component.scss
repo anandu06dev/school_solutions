@@ -2,3 +2,6 @@ a.active{
    background-color: rgba(238,137,255,0.3); 
    color:#fff
 }
+:host ::ng-deep .mat-menu-content{
+   max-height: 15rem !important;
+}

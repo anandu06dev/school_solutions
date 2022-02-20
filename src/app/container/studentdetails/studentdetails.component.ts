@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakPointService } from '@shared/services/breakpoint.service';
 import { LocalstorageService } from '@shared/services/localstorage.service';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
-import { initPage } from '@utils/interfaces/page.meta';
+import { initPage, Page } from '@utils/interfaces/page.meta';
 import { concatMap, map, pluck, take, takeUntil, tap } from 'rxjs';
 import { RouterString } from 'src/app/routerStringDeclaration';
 import { EntityStore } from 'src/app/store/store.service';
@@ -24,7 +24,10 @@ export class StudentdetailsComponent {
   }
 
   ngOnInit() {
-    this.facade.getStudentListFacade(initPage).pipe(take(1)).subscribe();
+   const initPaged:Page = {...initPage};
+    initPaged.page = 1;
+    initPaged.take = 100000;
+    this.facade.getStudentListFacade(initPaged).pipe(take(1)).subscribe();
   }
 
 

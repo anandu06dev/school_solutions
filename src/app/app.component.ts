@@ -1,5 +1,5 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import {
   ActivationEnd,
   NavigationCancel,
@@ -30,6 +30,7 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
+import { StudentDetailsFacade } from './container/studentdetails/services/students.facade';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ import {
   styleUrls: ['./app.component.scss'],
   animations: [fader],
 })
-export class AppComponent {
+export class AppComponent implements OnInit,OnDestroy,AfterViewInit {
   username = 'Srini';
   role = 'Admin';
   showText: boolean = true;
@@ -60,7 +61,8 @@ export class AppComponent {
     private breakpointObserver: BreakpointObserver,
     private breakPointService: BreakPointService,
     private storageService: LocalstorageService,
-    private router: Router
+    private router: Router,
+    private facade:StudentDetailsFacade,
   ) {
     this.loadLayout$ = of(true);
     let auth = ['/auth/login', '/auth/register', '/noAccess'];
@@ -145,5 +147,8 @@ export class AppComponent {
     this.loadAuthModules = auth.includes(url.urlAfterRedirects) ? true : false;
     this.showText = false;
     return EMPTY;
+  }
+  ngAfterViewInit(){
+    this.facade.getStudentListFacade({page:1,take:100000}).pipe(takeUntil(this.destroyed)).subscribe()
   }
 }

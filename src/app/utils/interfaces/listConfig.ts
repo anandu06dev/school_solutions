@@ -3,6 +3,7 @@ export interface ListConfig{
     mainInfo:labelKeyconf
     sub1Info?:labelKeyconf
     sub2Info?:labelKeyconf
+    sub3Info?:labelKeyconf
     chip1Info?:labelKeyconf
     chip2Info?:labelKeyconf
 }

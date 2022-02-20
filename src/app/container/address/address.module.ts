@@ -10,6 +10,7 @@ import { AddressFormsComponent } from './container/address-forms/address-forms.c
 import { WidgetModule } from '@widgets/widget/widget.module';
 import { SharedModule } from '@shared/shared.module';
 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { SharedModule } from '@shared/shared.module';
   ],
   imports: [
     CommonModule,
-    AddressRoutingModule,WidgetModule,
+    AddressRoutingModule,WidgetModule,MatAutocompleteModule,
     SharedModule
   ]
 })

@@ -35,3 +35,31 @@ export const studentList = {
   },
 };
 
+export const studentListSearch = {
+  avatarInfo: {
+    key: 'studentFirstName',
+    show: true,
+  },
+  mainInfo: {
+    key: 'studentFirstName',
+    secKey: 'studentLastName',
+  },
+  sub1Info: {
+    key: 'admissionNo',
+    label: '#',
+    show: true,
+  },
+  chip1Info: {
+    key: 'studentClass',
+    label: 'class',
+    show: true,
+  },
+  chip2Info: {
+    key: 'studentGender',
+    label: 'class',
+    show: true,
+    trim: 1,
+  },
+};
+
+

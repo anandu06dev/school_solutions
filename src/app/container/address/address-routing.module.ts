@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'table/:students', component: AddresstableComponent },
       { path: 'list', component: AddresslistComponent },
       { path: 'list/:students', component: AddresslistComponent },
+      { path: '', redirectTo: 'list', pathMatch: 'full' },
     ],
   },
 ];

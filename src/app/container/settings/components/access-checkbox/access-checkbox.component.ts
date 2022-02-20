@@ -29,9 +29,7 @@ export class AccessCheckboxComponent implements OnInit {
 
   ngOnInit(): void {
     () => {};
-    setTimeout(() => {
-      this.readonly = true
-    }, 5000);
+   
   }
  
 

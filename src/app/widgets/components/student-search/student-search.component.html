@@ -1,30 +1,10 @@
 
-<ng-select class="" [items]="options$ | async" [formControl]="myControl" bindLabel="admissionNo" bindValue="admissionNo" (focus)="getFreshStudentData()">
+<ng-select class="" [items]="loadStudentDetails$ | async" [formControl]="myControl" bindLabel="admissionNo" bindValue="admissionNo">
   
     <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
-        <div
-            class="d-flex p-2 justify-content-between align-item-center flex-sm-row flex-md-row flex-lg-row" id="index">
-        
-            <div class="text-center my-auto">
-                <p matListAvatar class="mx-2 me-4" [attr.data-letters]="item ?.studentFirstName | slice:0:1"></p>
-            </div>
-            <div class="text-wrap mx-auto ms-1">
-                <div>{{item?.studentFirstName}} {{item?.studentLastName}}</div>
-                <small>
-                    <span class="text-secondary text-start"></span>
-                    <span class="fw-bold">ADM No. </span>
-                    <span class="fw-bold" [ngOptionHighlight]="search"> {{item.admissionNo}}</span>
-
-                </small>
-             
-            </div>
-            <div class="text-center">
-                <small class="badge text-purple">{{item.studentClass}}</small>
-        
-            </div>
-        
+        <div class="my-2">
+            <app-list [data]="item" [listConf]="listconfig" [ngOptionHighlight]="search"></app-list>
         </div>
- 
     </ng-template>
  
 </ng-select>

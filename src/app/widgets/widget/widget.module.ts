@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RootLayoutComponent } from '@widgets/components/layout/layout.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,6 +22,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from '@widgets/components/list/list.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 const DECLARATIONS = [
   RootLayoutComponent,
@@ -45,6 +46,7 @@ const MODS = [
   NgOptionHighlightModule, 
   MatTableModule,
   MatPaginatorModule,
+  NgxSpinnerModule,
   MatSortModule,
 ];
 
@@ -52,5 +54,6 @@ const MODS = [
   declarations: [...DECLARATIONS],
   imports: [CommonModule, ...MODS],
   exports: [...DECLARATIONS, ...MODS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class WidgetModule {}

@@ -7,7 +7,7 @@
                 </div>
             </ng-container>
             <ng-container *ngFor="let student of (loadStudentDetails$ | async);odd as isOdd; even as isEven;">
-                <div [attr.value]="student" class="col-12 col-sm-6 col-lg-4 rounded m-0 p-0">
+                <div [attr.value]="student" class="col-sm-6 col-lg-4 rounded m-0 p-0">
                     <div class="card m-0 p-0 border-0 m-2">
                         <app-list [data]="student" [listConf]="listconfig" (click)="openBottomSheet(student)">
                         </app-list>

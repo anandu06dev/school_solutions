@@ -1,88 +1,144 @@
-<div class="card border-0">
-    <div class="card-header text-secondary">Enter Student Address</div>
-    <div class="card-body pb-0 mb-0">
-        <label class="position-relative" style="top:0.5rem">Search By Admission Number</label>
-        <app-student-search></app-student-search>
-    </div>
-    <div class="card-body pt-0">
-        <div class="alert alert-info"><strong>Note : </strong>We help you in populate address if you directly type
-            pincode</div>
-        <div class="row" [formGroup]="addressFormDetails">
-            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
-                <mat-form-field class="w-100" appearance="fill">
-                    <mat-label>Address 1</mat-label>
-                    <input type="text" matInput formControlName="addr1" [errorStateMatcher]="matcher">
-                    <mat-hint>Enter address Details</mat-hint>
-                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
-                        Please enter address details
-                    </mat-error> -->
-                </mat-form-field>
-            </div>
-            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
-                <mat-form-field class="w-100" appearance="fill">
-                    <mat-label>Address 2</mat-label>
-                    <input type="text" matInput formControlName="addr2" [errorStateMatcher]="matcher">
-                    <mat-hint>Enter address Details</mat-hint>
-                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
-                        Please enter address details
-                    </mat-error> -->
-                </mat-form-field>
-            </div>
-            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
-                <mat-form-field class="w-100" appearance="fill">
-                    <mat-label>Address 3</mat-label>
-                    <input type="text" matInput formControlName="addr3" [errorStateMatcher]="matcher">
-                    <mat-hint>Enter address Details</mat-hint>
-                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
-                        Please enter address details
-                    </mat-error> -->
-                </mat-form-field>
-            </div>
-            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
-                <mat-form-field class="w-100" appearance="fill">
-                    <mat-label>Address 4</mat-label>
-                    <input type="text" matInput formControlName="addr4" [errorStateMatcher]="matcher">
-                    <mat-hint>Enter address Details</mat-hint>
-                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
-                        Please enter address details
-                    </mat-error> -->
-                </mat-form-field>
-            </div>
-            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
-                <mat-form-field class="w-100" appearance="fill">
-                    <mat-label>Address 5</mat-label>
-                    <input type="text" matInput formControlName="addr5" [errorStateMatcher]="matcher">
-                    <mat-hint>Enter address Details</mat-hint>
-                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
-                        Please enter address details
-                    </mat-error> -->
-                </mat-form-field>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <mat-form-field class="w-100" appearance="fill">
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="over" [opened]="opened" [disableClose]="true" [position]="'end'" style="max-width: 20rem;">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="fs-6 ps-2">Show List Of Address</div>
+            <div class="pe-2"><button type="button" mat-button (click)="opened = false">Cancel</button></div>
+        </div>
+        <hr>
+        <ng-container [ngTemplateOutlet]="showListOfAddress">
+        </ng-container>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <ng-container [ngTemplateOutlet]="showAddressForm">
+        </ng-container>
+    </mat-sidenav-content>
 
-                <mat-label>DistrictName</mat-label>
+</mat-sidenav-container>
+<ng-template #showAddressForm>
 
-                <mat-select formControlName="districtName" [errorStateMatcher]="matcher">
-                    <mat-option value="">--</mat-option>
+    <div class="card border-0">
+        <div class="card-header text-secondary">Enter Student Address</div>
+        <div class="card-body pb-0 mb-0">
+            <label class="position-relative" style="top:0.5rem">Search By Admission Number</label>
+            <app-student-search (selectedValueEvent)="selectedValue($event)"></app-student-search>
+        </div>
+        <div class="card-body pt-0">
+            <div class="alert alert-info"><strong>Note : </strong>We help you in populate address fields to the max if
+                you directly type
+                pincode</div>
+            <div class="row" [formGroup]="addressFormDetails">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
 
-                    <mat-option value="permanent">Permanent</mat-option>
-                    <mat-option value="residential">Residential</mat-option>
-                    <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
-                        Please enter address details
-                    </mat-error> -->
-                </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Address Type</mat-label>
 
-                <mat-label>PostalCode</mat-label>
-                <input type="text" matInput placeholder="XXX XXX" mask="XXX XXX" formControlName="postalcode" [errorStateMatcher]="matcher">
+                        <mat-select formControlName="printAddressCd" [errorStateMatcher]="matcher">
+                            <mat-option value="">--</mat-option>
 
-              
-                </mat-form-field>
+                            <mat-option value="1">Permanent</mat-option>
+                            <mat-option value="2">Residential</mat-option>
+                            <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                            Please enter address details
+                        </mat-error> -->
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Building Name / Door No. / Floor details</mat-label>
+                        <input type="text" matInput formControlName="printAddressAdd1" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter address Details</mat-hint>
+                        <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                              Please enter address details
+                          </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Street Address Info</mat-label>
+                        <input type="text" matInput formControlName="printAddressAdd2" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter address Details</mat-hint>
+                        <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                              Please enter address details
+                          </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>LandMark (optional)</mat-label>
+                        <input type="text" matInput formControlName="printAddressAdd3" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter address Details</mat-hint>
+                        <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                              Please enter address details
+                          </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Area Name & City Name</mat-label>
+                        <input type="text" matInput formControlName="printAddressAdd4" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter address Details</mat-hint>
+                        <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                              Please enter address details
+                          </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>District Name</mat-label>
+                        <input type="text" matInput formControlName="printAddressDist" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter address Details</mat-hint>
+                        <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                            Please enter address details
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-6  col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>State Name</mat-label>
+                        <input type="text" matInput formControlName="printAddressAdd5" [errorStateMatcher]="matcher">
+                        <mat-hint>Enter address Details</mat-hint>
+                        <!-- <mat-error *ngIf="addressForm.get('addr1')?.hasError('required')">
+                              Please enter address details
+                          </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>PostalCode</mat-label>
+                        <input type="text" matInput placeholder="XXX XXX" mask="XXX XXX"
+                            formControlName="printAddressPstlCd" [errorStateMatcher]="matcher">
+                        <mat-hint *ngIf="showErrorOnaddress" class="text-danger">No such postal code available
+                        </mat-hint>
+                        <!-- <mat-hint style="height: 1rem;">
+                            <ngx-spinner bdColor="rgba(0, 0, 0, 0)" size="default" color="#000" type="ball-pulse"
+                                [fullScreen]="false"></ngx-spinner>
+                        </mat-hint> -->
+                    </mat-form-field>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>
+
+<ng-template #showListOfAddress>
+
+    <div class="card border-0 bg-transparent">
+      
+        <ng-container *ngFor="let item of (options$|async)">
+
+            <div class="card-body">
+                <app-list [data]="item" [listConf]="listconfig" (click)="populateResponses(item);">
+                </app-list>
+            </div>
+
+            <!-- <div class="card my-2 mx-1" (click)="populateResponses(item);">
+            
+               
+        </div> -->
+        </ng-container>
+    </div>
+</ng-template>

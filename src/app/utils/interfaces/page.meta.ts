@@ -11,5 +11,5 @@ export interface Page {
 
 export const initPage:Page = {
 page:1,
-take:50,
+take:10,
 }
