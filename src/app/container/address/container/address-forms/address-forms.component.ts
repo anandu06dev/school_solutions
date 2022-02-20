@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
+import { ListConfig } from '@utils/interfaces/listConfig.interface';
 import { MyErrorStateMatcher } from '@utils/utility';
 import {
   BehaviorSubject,
@@ -26,7 +27,7 @@ export class AddressFormsComponent implements OnInit {
   opened: boolean = false;
   options: BehaviorSubject<any> = new BehaviorSubject([]);
   readonly options$ = this.options.asObservable().pipe(tap((d) => console.log));
-  listconfig = showAddressLists
+  listconfig:ListConfig= showAddressLists
   showErrorOnaddress:boolean = false;
   // get addressForm() {
   //   return this.addressFormDetails;

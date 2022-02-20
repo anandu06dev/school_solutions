@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
-import { ListConfig } from '@utils/interfaces/listConfig';
+import { ListConfig } from '@utils/interfaces/listConfig.interface';
 import { Page } from '@utils/interfaces/page.meta';
 import { Observable, Subscription, switchMap, take } from 'rxjs';
 import { RouterString } from 'src/app/routerStringDeclaration';

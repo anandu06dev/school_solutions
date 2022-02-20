@@ -1,3 +1,5 @@
+
+<!-- intentionally assumed admission no would come in subinfo1 and assigned ngoptionhighlight if dynamic needed need to alter code patern -->
 <div class="d-flex shadow-sm p-2" id="card" style="border-radius:1rem ;">
     <!-- <p matListAvatar class="mx-2 me-4" [attr.data-letters]="student?.studentFirstName | slice:0:1"></p> -->
     <ng-container [ngTemplateOutlet]="showAvatar" [ngTemplateOutletContext]="{ cardData: cardData }"></ng-container>
@@ -48,7 +50,7 @@
         <div *ngIf="cardData?.sub1Info?.show">
             <small matLine class="text-secondary">
                 <span *ngIf="cardData?.sub1Info.label">{{ cardData?.sub1Info.label }}</span>
-                <span *ngIf="cardData?.sub1Info.key">{{ data[cardData.sub1Info.key] }}</span>
+                <span *ngIf="cardData?.sub1Info.key" [ngOptionHighlight]="searchvalue">{{ data[cardData.sub1Info.key] }}</span>
             </small>
         </div>
     </ng-container>

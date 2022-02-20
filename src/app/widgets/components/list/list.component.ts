@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ListConfig } from '@utils/interfaces/listConfig';
+import { ListConfig } from '@utils/interfaces/listConfig.interface';
 import { listConfigKeys, listInitSubData } from '@utils/utility';
 
 @Component({
@@ -10,11 +10,17 @@ import { listConfigKeys, listInitSubData } from '@utils/utility';
 export class ListComponent implements OnInit {
   cardData!: ListConfig;
   cardDataKey = [...listConfigKeys];
+  searchvalue: any;
 
   @Input() set listConf(value: any) {
      this.cardData = this.quickCardDataInitUpdateHelper(value);
   }
   @Input() data: any;
+
+  @Input() set searchTermValue(value:any){
+    console.log(value)
+    this.searchvalue = value
+  }
 
   selecedData = new Set();
 

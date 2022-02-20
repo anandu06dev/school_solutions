@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocalstorageService } from '@shared/services/localstorage.service';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
-import { ListConfig } from '@utils/interfaces/listConfig';
+import { ListConfig } from '@utils/interfaces/listConfig.interface';
 import { initPage, Page } from '@utils/interfaces/page.meta';
 import { IStudentSearchModel } from '@utils/interfaces/studentSearch.interface';
 import {
@@ -48,17 +48,12 @@ export class StudentSearchComponent
   listconfig: ListConfig = studentListSearch;
 
   myControl = new FormControl();
-  students = new BehaviorSubject<IStudentSearchModel[]>([]);
-  options$ = this.students.asObservable();
- 
-  filteredOptions!: Observable<string[]>;
+
   private studentDetails: any = {};
 
   @Output() selectedValueEvent = new EventEmitter<number | string>();
   constructor(
-    private api: StudentapiService,
     private destroy$: AutoUnsubscribe,
-    private storage: LocalstorageService,
     private facade: StudentDetailsFacade
   ) {
     super();

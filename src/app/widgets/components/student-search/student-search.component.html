@@ -1,9 +1,9 @@
 
-<ng-select class="" [items]="loadStudentDetails$ | async" [formControl]="myControl" bindLabel="admissionNo" bindValue="admissionNo">
+<ng-select class="" [items]="loadStudentDetails$ | async" [formControl]="myControl"  [virtualScroll]="true" bindLabel="admissionNo" bindValue="admissionNo">
   
     <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
         <div class="my-2">
-            <app-list [data]="item" [listConf]="listconfig" [ngOptionHighlight]="search"></app-list>
+            <app-list [data]="item" [listConf]="listconfig" [searchTermValue]="search"></app-list>
         </div>
     </ng-template>
  

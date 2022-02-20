@@ -3,7 +3,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ListConfig } from '@utils/interfaces/listConfig';
+import { ListConfig } from '@utils/interfaces/listConfig.interface';
 import { Page } from '@utils/interfaces/page.meta';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import { Observable } from 'rxjs';

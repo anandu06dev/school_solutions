@@ -1,4 +1,4 @@
-import { ListConfig } from '@utils/interfaces/listConfig';
+import { ListConfig } from '@utils/interfaces/listConfig.interface';
 
 export const showAddressLists: ListConfig = {
   avatarInfo: {
