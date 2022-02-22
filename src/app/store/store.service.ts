@@ -91,7 +91,7 @@ export class EntityStore extends Datasource {
 
   public logActions(action: Action) {
     if (!environment.production)
-      reduxExtension.logActions(action, this.STORE, this.dataSource.getValue());
+      reduxExtension.logActions(action,this.STORE, this.dataSource.getValue());
   }
 
   public selectAll() {
@@ -116,13 +116,9 @@ export class EntityStore extends Datasource {
   }
 }
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class StoreConfig {
-//   public lazyLoadStore: string[] = [];
- 
-//   add(params:any){
-//     this.lazyLoadStore = params?.lazyLoadStore
-//   }
-// }
+@Injectable({
+  providedIn: 'root',
+})
+export class StoreConfig{
+    name: string = "ENTITY_STORE";
+}

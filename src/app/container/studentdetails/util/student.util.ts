@@ -46,7 +46,7 @@ export const studentListSearch = {
   },
   sub1Info: {
     key: 'admissionNo',
-    label: '#',
+    label: 'Admission No. : ',
     show: true,
   },
   chip1Info: {

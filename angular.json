@@ -41,13 +41,19 @@
               
               {"input": "src/assets/css/bootstrap.css","inject": true},
               {"input": "src/assets/css/school-sols.theme.css","inject": true},
-              {"input": "node_modules/ngx-spinner/animations/ball-scale-multiple.css","inject": true},               
-              {"input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css","inject": true},
+              {"input": "node_modules/ngx-spinner/animations/ball-scale-multiple.css","inject": false},               
+              {"input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css","inject": false},
               {"input": "src/styles.scss","inject": true}
 
 
             ],
-            "scripts": [],
+            "scripts": [
+              {"input": "src/assets/js/excelplugin/exceljsdist.js","inject": false},
+              {"input": "src/assets/js/excelplugin/filesaver.js","inject": false},
+              {"input": "src/assets/js/pdfPlugin/jsPDF.js","inject": false},
+              {"input": "src/assets/js/pdfPlugin/jsPDF_autoTable.js","inject": false}      
+             
+            ],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },

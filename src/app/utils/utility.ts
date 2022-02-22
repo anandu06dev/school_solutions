@@ -83,7 +83,7 @@ export const initTabMenuData = [
     hideOnSmallDevice: true,
   },
   { label: 'list', url: '/list', icon: 'list_view', hideOnSmallDevice: false },
-  { label: 'grid', url: '/grid', icon: 'grid_view', hideOnSmallDevice: false },
+  // { label: 'grid', url: '/grid', icon: 'grid_view', hideOnSmallDevice: false },
 
   {
     label: 'form',

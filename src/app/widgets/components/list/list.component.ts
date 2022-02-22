@@ -10,7 +10,7 @@ import { listConfigKeys, listInitSubData } from '@utils/utility';
 export class ListComponent implements OnInit {
   cardData!: ListConfig;
   cardDataKey = [...listConfigKeys];
-  searchvalue: any;
+  searchvalue: any='';
 
   @Input() set listConf(value: any) {
      this.cardData = this.quickCardDataInitUpdateHelper(value);
@@ -18,7 +18,6 @@ export class ListComponent implements OnInit {
   @Input() data: any;
 
   @Input() set searchTermValue(value:any){
-    console.log(value)
     this.searchvalue = value
   }
 

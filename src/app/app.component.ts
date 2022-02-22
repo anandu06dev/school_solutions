@@ -149,6 +149,6 @@ export class AppComponent implements OnInit,OnDestroy,AfterViewInit {
     return EMPTY;
   }
   ngAfterViewInit(){
-    this.facade.getStudentListFacade({page:1,take:100000}).pipe(takeUntil(this.destroyed)).subscribe()
+    if(this.loadAuthModules === false) this.facade.getStudentListFacade({page:1,take:100000}).pipe(takeUntil(this.destroyed)).subscribe()
   }
 }

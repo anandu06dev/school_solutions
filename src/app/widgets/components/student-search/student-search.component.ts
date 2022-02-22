@@ -4,6 +4,7 @@ import { LocalstorageService } from '@shared/services/localstorage.service';
 import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { ListConfig } from '@utils/interfaces/listConfig.interface';
 import { initPage, Page } from '@utils/interfaces/page.meta';
+import { IStudentDetails } from '@utils/interfaces/studentData';
 import { IStudentSearchModel } from '@utils/interfaces/studentSearch.interface';
 import {
   Observable,
@@ -31,7 +32,10 @@ import {
 } from 'src/app/container/studentdetails/class/studentDetails.core.logic';
 import { StudentapiService } from 'src/app/container/studentdetails/services/studentapi.service';
 import { StudentDetailsFacade } from 'src/app/container/studentdetails/services/students.facade';
-import { studentList, studentListSearch } from 'src/app/container/studentdetails/util/student.util';
+import {
+  studentList,
+  studentListSearch,
+} from 'src/app/container/studentdetails/util/student.util';
 
 @Component({
   selector: 'app-student-search',
@@ -58,7 +62,16 @@ export class StudentSearchComponent
   ) {
     super();
     this.pagination$ = this.paginationData(this.facade);
-    this.loadStudentDetails$ = this.loadStudentDetails(this.facade);
+    this.loadStudentDetails$ = this.loadStudentDetails(this.facade).pipe(
+      tap((d) => {
+        console.log(d);
+        if (d && d.length) {
+          d.forEach((itm: any) => {
+            this.studentDetails[itm?.admissionNo] = itm
+          });
+        }
+      })
+    );
   }
 
   ngOnInit() {
@@ -69,7 +82,6 @@ export class StudentSearchComponent
       });
   }
 
-  
   public loadNextSetOfRecords() {
     return this.abstractingLoadNextSetOfRecords(this.facade);
   }

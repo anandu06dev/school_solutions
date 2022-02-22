@@ -85,9 +85,6 @@ export class Datasource {
       map((e: Action) => e)
     );
 
-    function newFunction() {
-      return filter((e: Action) => e.type === action.type);
-    }
   }
 }
 

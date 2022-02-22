@@ -66,6 +66,9 @@ export class AddressFormsComponent implements OnInit {
         }
       });
   }
+  submitAddress(){
+    console.log(this.addressFormDetails,this.addressFormDetails.valid)
+  }
   populateResponses(data: any) {
     let areaName = data.Name.split(' ')
       .map(
@@ -83,6 +86,7 @@ export class AddressFormsComponent implements OnInit {
 
   }
   selectedValue(event: any) {
+    console.log(event)
     this.updateAddmissinNo(event);
   }
   updateAddmissinNo(value: any) {

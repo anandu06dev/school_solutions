@@ -4,12 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/client",
-    "doc:client": "npx @compodoc/compodoc -p tsconfig.json -s"
+    "doc:client": "npx @compodoc/compodoc -p tsconfig.json -s",
+    "pwa:check":"cd dist && cd client && http-server -p 4200"
   },
   "private": true,
   "dependencies": {
