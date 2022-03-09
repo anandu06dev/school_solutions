@@ -12,7 +12,8 @@ import {
   StudentDetailsCoreLogicFacade,
 } from '../../class/studentDetails.core.logic';
 import { studentDetail } from '../../models/studentDetail.model';
-import { StudentDetailsFacade } from '../../services/students.facade';
+import { StudentFacadeService } from '../../services/students.facade.service';
+import { StudentDetailsFacade } from '../../services/students.facade_bck';
 
 @Component({
   selector: 'app-student-table',
@@ -36,7 +37,7 @@ export class StudentTableComponent
   data: any[] = [];
 
   constructor(
-    public facade: StudentDetailsFacade,
+    public facade: StudentFacadeService,
     public bottomSheet: MatBottomSheet,
     public router: Router
   ) {

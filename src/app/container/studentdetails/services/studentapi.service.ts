@@ -17,7 +17,7 @@ import {
   reduce,
   tap,
 } from 'rxjs';
-import { EntityStore } from 'src/app/store/store.service';
+
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -33,8 +33,10 @@ export class StudentapiService {
 
   getListOfStudentDetails(pageMetaData: Page = initPage): any {
     const params = buildParams(pageMetaData);
-   
-    return this.http.get(`${this.baseURL}/${this.targetResource}`, { params }).pipe(tap(d=>console.log(d)))
+
+    return this.http
+      .get(`${this.baseURL}/${this.targetResource}`, { params })
+      .pipe(tap((d) => console.log(d)));
   }
 
   getStudentDetails = () =>

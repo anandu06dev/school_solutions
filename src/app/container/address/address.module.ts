@@ -11,7 +11,6 @@ import { WidgetModule } from '@widgets/widget/widget.module';
 import { SharedModule } from '@shared/shared.module';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { StoreModule } from 'src/app/store/store.module';
 
 @NgModule({
   declarations: [

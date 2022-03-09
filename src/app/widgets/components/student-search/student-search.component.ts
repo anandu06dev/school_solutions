@@ -31,7 +31,8 @@ import {
   IStudentDetailsCoreLogicFacade,
 } from 'src/app/container/studentdetails/class/studentDetails.core.logic';
 import { StudentapiService } from 'src/app/container/studentdetails/services/studentapi.service';
-import { StudentDetailsFacade } from 'src/app/container/studentdetails/services/students.facade';
+import { StudentFacadeService } from 'src/app/container/studentdetails/services/students.facade.service';
+// import { StudentDetailsFacade } from 'src/app/container/studentdetails/services/students.facade_bck';
 import {
   studentList,
   studentListSearch,
@@ -58,7 +59,7 @@ export class StudentSearchComponent
   @Output() selectedValueEvent = new EventEmitter<number | string>();
   constructor(
     private destroy$: AutoUnsubscribe,
-    private facade: StudentDetailsFacade
+    private facade: StudentFacadeService
   ) {
     super();
     this.pagination$ = this.paginationData(this.facade);

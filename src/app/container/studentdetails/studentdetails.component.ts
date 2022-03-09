@@ -5,8 +5,8 @@ import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { initPage, Page } from '@utils/interfaces/page.meta';
 import { concatMap, map, pluck, take, takeUntil, tap } from 'rxjs';
 import { RouterString } from 'src/app/routerStringDeclaration';
-import { EntityStore } from 'src/app/store/store.service';
-import { StudentDetailsFacade } from './services/students.facade';
+import { StudentFacadeService } from './services/students.facade.service';
+import { StudentDetailsFacade } from './services/students.facade_bck';
 
 @Component({
   selector: 'app-studentdetails',
@@ -14,11 +14,11 @@ import { StudentDetailsFacade } from './services/students.facade';
   styleUrls: ['./studentdetails.component.scss'],
   
 })
-export class StudentdetailsComponent {
+export class StudentdetailsComponent implements OnInit {
   currentfeatureModule: string = RouterString.STUDENTS;
 
   constructor(
-    private facade: StudentDetailsFacade,
+    private facade: StudentFacadeService,
   ) {
     
   }
@@ -27,6 +27,7 @@ export class StudentdetailsComponent {
    const initPaged:Page = {...initPage};
     initPaged.page = 1;
     initPaged.take = 100000;
+
     this.facade.getStudentListFacade(initPaged).pipe(take(1)).subscribe();
   }
 

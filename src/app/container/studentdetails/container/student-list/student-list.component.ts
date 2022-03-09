@@ -9,7 +9,8 @@ import { RouterString } from 'src/app/routerStringDeclaration';
 import {
   IStudentDetailsCoreLogicFacade, StudentDetailsCoreLogicFacade,
 } from '../../class/studentDetails.core.logic';
-import { StudentDetailsFacade } from '../../services/students.facade';
+import { StudentFacadeService } from '../../services/students.facade.service';
+import { StudentDetailsFacade } from '../../services/students.facade_bck';
 import { studentList } from '../../util/student.util';
 
 @Component({
@@ -27,7 +28,7 @@ export class StudentListComponent  extends StudentDetailsCoreLogicFacade impleme
   itemSize: number = 10;
 
   constructor(
-    public facade: StudentDetailsFacade,
+    public facade: StudentFacadeService,
     public bottomSheet: MatBottomSheet,
     public router: Router
   ) {

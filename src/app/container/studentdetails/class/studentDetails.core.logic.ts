@@ -8,17 +8,24 @@ import {
   BottomsheetsComponent,
   IShowTableOnBottomSheet,
 } from '../components/bottomsheets/bottomsheets.component';
-import { StudentDetailsFacade } from '../services/students.facade';
+import { StudentFacadeService } from '../services/students.facade.service';
+import { StudentDetailsFacade } from '../services/students.facade_bck';
 
 export interface IStudentDetailsCoreLogicFacade {
   abstractingOpenBottomSheet(student: any, bottomSheet: MatBottomSheet, router: Router): void;
-  paginationData(facade: StudentDetailsFacade): Observable<any>;
-  loadStudentDetails(facade: StudentDetailsFacade): Observable<any>;
-  abstractingLoadNextSetOfRecords(facade: StudentDetailsFacade): Subscription;
+  // paginationData(facade: StudentFacadeService): Observable<any>;
+  // loadStudentDetails(facade: StudentFacadeService): Observable<any>;
+  abstractingLoadNextSetOfRecords(facade: StudentFacadeService): Subscription;
 }
 
 export abstract class StudentDetailsCoreLogicFacade
   implements IStudentDetailsCoreLogicFacade {
+  paginationData(facade: StudentFacadeService): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
+  loadStudentDetails(facade: StudentFacadeService): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
   public abstract pagination$: Observable<Page>;
   public abstract loadStudentDetails$: Observable<any>;
   public abstractingOpenBottomSheet(
@@ -46,14 +53,14 @@ export abstract class StudentDetailsCoreLogicFacade
       });
   }
 
-  public paginationData = (facade: StudentDetailsFacade): Observable<any> =>
-    facade.getPaginationData();
+  // public paginationData = (facade: StudentDetailsFacade): Observable<any> =>
+  //   facade.getPaginationData();
 
-  public loadStudentDetails = (facade: StudentDetailsFacade) =>
-    facade.loadStudentDetails();
+  // public loadStudentDetails = (facade: StudentDetailsFacade) =>
+  //   facade.loadStudentDetails();
 
   public abstractingLoadNextSetOfRecords = (
-    facade: StudentDetailsFacade
+    facade: StudentFacadeService
   ): Subscription =>
     this.loadNextRec()
       .pipe(

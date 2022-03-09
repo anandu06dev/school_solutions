@@ -1,36 +1,29 @@
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  ActivationEnd,
   NavigationCancel,
   NavigationEnd,
   NavigationError,
   NavigationStart,
   Router,
-  RouterEvent,
   RouterOutlet,
 } from '@angular/router';
 import { BreakPointService } from '@shared/services/breakpoint.service';
 import { LocalstorageService } from '@shared/services/localstorage.service';
-import { fadeAnimation } from '@utils/animations';
 import { fader } from '@utils/animations/fader';
 import { IToolBarMenu } from '@utils/interfaces/toolbarmenu.interface';
 import { currentViewMapTable, RootMenu, screenObserve } from '@utils/utility';
-import { MenuItemDef } from 'ag-grid-community';
 import {
-  debounceTime,
   delay,
   EMPTY,
   filter,
-  map,
   Observable,
   of,
-  startWith,
   Subject,
   takeUntil,
   tap,
 } from 'rxjs';
-import { StudentDetailsFacade } from './container/studentdetails/services/students.facade';
+import { StudentFacadeService } from './container/studentdetails/services/students.facade.service';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +31,7 @@ import { StudentDetailsFacade } from './container/studentdetails/services/studen
   styleUrls: ['./app.component.scss'],
   animations: [fader],
 })
-export class AppComponent implements OnInit,OnDestroy,AfterViewInit {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   username = 'Srini';
   role = 'Admin';
   showText: boolean = true;
@@ -62,7 +55,7 @@ export class AppComponent implements OnInit,OnDestroy,AfterViewInit {
     private breakPointService: BreakPointService,
     private storageService: LocalstorageService,
     private router: Router,
-    private facade:StudentDetailsFacade,
+    private facade: StudentFacadeService
   ) {
     this.loadLayout$ = of(true);
     let auth = ['/auth/login', '/auth/register', '/noAccess'];
@@ -115,13 +108,11 @@ export class AppComponent implements OnInit,OnDestroy,AfterViewInit {
   }
 
   loadRouteToStorage(menu: IToolBarMenu): void {
-    
     this.selectedMenu = { ...menu };
     if (this.selectedMenu.url?.toLowerCase().includes('logout')) {
       this.router.navigateByUrl('/auth/login');
       this.loadAuthModules = false;
     } else {
-     
     }
   }
 
@@ -148,7 +139,11 @@ export class AppComponent implements OnInit,OnDestroy,AfterViewInit {
     this.showText = false;
     return EMPTY;
   }
-  ngAfterViewInit(){
-    if(this.loadAuthModules === false) this.facade.getStudentListFacade({page:1,take:100000}).pipe(takeUntil(this.destroyed)).subscribe()
+  ngAfterViewInit() {
+    if (this.loadAuthModules === false)
+      this.facade
+        .getStudentListFacade({ page: 1, take: 1*100000 })
+        .pipe(takeUntil(this.destroyed))
+        .subscribe();
   }
 }

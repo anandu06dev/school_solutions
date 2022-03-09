@@ -1,5 +1,4 @@
 import { error } from '@angular/compiler/src/util';
-import * as StackTrace from 'stacktrace-js';
 import { Action, reduxExtension } from './redux.extension';
 
 export function updateStore(data: {
@@ -83,8 +82,8 @@ export function updateStore(data: {
     }
   } catch (e:any) {
     // var trace = printStackTrace({e: e});
-   if(!e.toString().includes('cloned'))
-    console.error(e.stackTrace ?? e.stack);
+  //  if(!e.toString().includes('cloned'))
+  //   console.error(e.stackTrace ?? e.stack);
     }
 }
 

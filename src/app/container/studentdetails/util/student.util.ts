@@ -1,7 +1,7 @@
-import { Page } from "@utils/interfaces/page.meta";
-import { IStudentDetails } from "@utils/interfaces/studentData";
-import { Observable } from "rxjs";
-import { StudentDetailsFacade } from "../services/students.facade";
+// import { Page } from "@utils/interfaces/page.meta";
+// import { IStudentDetails } from "@utils/interfaces/studentData";
+// import { Observable } from "rxjs";
+// import { StudentDetailsFacade } from "../services/students.facade_bck";
 
 export const studentList = {
   avatarInfo: {

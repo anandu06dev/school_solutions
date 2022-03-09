@@ -13,7 +13,8 @@ import {
   BottomsheetsComponent,
   IShowTableOnBottomSheet,
 } from '../../components/bottomsheets/bottomsheets.component';
-import { StudentDetailsFacade } from '../../services/students.facade';
+import { StudentFacadeService } from '../../services/students.facade.service';
+import { StudentDetailsFacade } from '../../services/students.facade_bck';
 import { studentList } from '../../util/student.util';
 
 @Component({
@@ -30,7 +31,7 @@ export class StudentGridComponent extends StudentDetailsCoreLogicFacade implemen
   listconfig:ListConfig = studentList;
  itemSize=20;
   constructor(
-    public facade: StudentDetailsFacade,
+    public facade: StudentFacadeService,
     public bottomSheet: MatBottomSheet,
     public router: Router
   ) {

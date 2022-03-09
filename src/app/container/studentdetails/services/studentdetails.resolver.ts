@@ -16,13 +16,14 @@ import {
   tap,
 } from 'rxjs';
 import { StudentapiService } from './studentapi.service';
-import { StudentDetailsFacade } from './students.facade';
+import { StudentFacadeService } from './students.facade.service';
+import { StudentDetailsFacade } from './students.facade_bck';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentdetailsResolver implements Resolve<boolean> {
-  constructor(private facade: StudentDetailsFacade) {}
+  constructor(private facade: StudentFacadeService) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
