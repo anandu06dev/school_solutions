@@ -63,16 +63,7 @@ export class StudentSearchComponent
   ) {
     super();
     this.pagination$ = this.paginationData(this.facade);
-    this.loadStudentDetails$ = this.loadStudentDetails(this.facade).pipe(
-      tap((d) => {
-        console.log(d);
-        if (d && d.length) {
-          d.forEach((itm: any) => {
-            this.studentDetails[itm?.admissionNo] = itm
-          });
-        }
-      })
-    );
+    this.loadStudentDetails$ = this.loadStudentDetails(this.facade).pipe()
   }
 
   ngOnInit() {

@@ -22,9 +22,9 @@ const routes: Routes = [
       {
         path: 'form/:action/:admissionNo',
         component: StudentFormsComponent,
-        // resolve: {
-        //   student: StudentFormBasedResolver,
-        // },
+        resolve: {
+          student: StudentFormBasedResolver,
+        },
       },
       {
         path: 'table',

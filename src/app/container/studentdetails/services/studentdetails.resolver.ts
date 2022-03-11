@@ -37,7 +37,7 @@ export class StudentdetailsResolver implements Resolve<boolean> {
     //       .pipe(map((d: any) => (d?.data ? d.data : [])));
     //   })
     // );
-    return  this.facade.getStudentListFacade(initPage)
+    return this.facade.getStudentListFacade(initPage);
   }
 }
 
@@ -51,11 +51,16 @@ export class StudentFormBasedResolver implements Resolve<boolean> {
     state: RouterStateSnapshot
   ): Observable<any> {
     let studentId = route.paramMap.get('admissionNo') || '';
-
-    return this.api.getStudentDetailsById(studentId).pipe(
-      catchError((e) => {
-        throw e;
-      })
-    );
+    if (studentId) {
+      return this.api.getStudentDetailsById(studentId).pipe(
+        map((d:any) => {
+          return d?.data && d.data.length > 0  ? d.data[0] : [];
+        }),
+        catchError((e) => {
+          throw e;
+        })
+      );
+    }
+    else return of([])
   }
 }

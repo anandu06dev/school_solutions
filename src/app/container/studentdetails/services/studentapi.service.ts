@@ -74,10 +74,13 @@ export class StudentapiService {
       })
       .pipe(catchError((e) => handleError(e)));
 
-  getStudentDetailsById = (studId: string) =>
-    this.http
-      .get(`${this.baseURL}/${this.targetResource}/${studId}`)
+  getStudentDetailsById = (aid: string) =>{
+
+    const params = buildParams({aid});
+   return this.http
+      .get(`${this.baseURL}/${this.targetResource}`,{params})
       .pipe(catchError((e) => handleError(e)));
+}
 
   getStudentDetailsForSearch = () =>
     this.http

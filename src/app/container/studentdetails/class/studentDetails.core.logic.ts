@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
 import { Page } from '@utils/interfaces/page.meta';
@@ -6,10 +5,8 @@ import { Observable, map, switchMap, take, Subscription } from 'rxjs';
 import { RouterString } from 'src/app/routerStringDeclaration';
 import {
   BottomsheetsComponent,
-  IShowTableOnBottomSheet,
 } from '../components/bottomsheets/bottomsheets.component';
 import { StudentFacadeService } from '../services/students.facade.service';
-import { StudentDetailsFacade } from '../services/students.facade_bck';
 
 export interface IStudentDetailsCoreLogicFacade {
   abstractingOpenBottomSheet(student: any, bottomSheet: MatBottomSheet, router: Router): void;
@@ -20,11 +17,11 @@ export interface IStudentDetailsCoreLogicFacade {
 
 export abstract class StudentDetailsCoreLogicFacade
   implements IStudentDetailsCoreLogicFacade {
-  paginationData(facade: StudentFacadeService): Observable<any> {
-    throw new Error('Method not implemented.');
+  paginationData(facade: StudentFacadeService){
+    return facade.pageStudentDetails
   }
-  loadStudentDetails(facade: StudentFacadeService): Observable<any> {
-    throw new Error('Method not implemented.');
+  loadStudentDetails(facade: StudentFacadeService) {
+    return facade.selectAllStudentDetails
   }
   public abstract pagination$: Observable<Page>;
   public abstract loadStudentDetails$: Observable<any>;
@@ -53,23 +50,18 @@ export abstract class StudentDetailsCoreLogicFacade
       });
   }
 
-  // public paginationData = (facade: StudentDetailsFacade): Observable<any> =>
-  //   facade.getPaginationData();
-
-  // public loadStudentDetails = (facade: StudentDetailsFacade) =>
-  //   facade.loadStudentDetails();
 
   public abstractingLoadNextSetOfRecords = (
     facade: StudentFacadeService
   ): Subscription =>
-    this.loadNextRec()
+    this.loadNextRec(facade)
       .pipe(
         take(1),
         switchMap((d) => facade.getStudentListFacade(d))
       )
       .subscribe();
-  private loadNextRec = () =>
-    this.pagination$.pipe(map((d) => this.mapPages(d)));
+  private loadNextRec = (facade:StudentFacadeService) =>
+    facade.pageStudentDetails.pipe(map((d) => this.mapPages(d)));
 
   private mapPages(d: Page): { page: number; take: number } {
     let { page, take } = d;
