@@ -18,7 +18,7 @@ import {
     OrderByFields,
     RecordStatus,
 } from '../constants'
-
+//main pagination file
 export class BaseQueryPageOptionsDto {
     @ApiPropertyOptional({
         enum: Order,
@@ -51,14 +51,14 @@ export class BaseQueryPageOptionsDto {
 
     @ApiPropertyOptional({
         minimum: 1,
-        maximum: 1000,
+        maximum: 100000,
         default: 10,
         description: 'Describes about no of records',
     })
     @Type(() => Number)
     @IsInt()
     @Min(1)
-    @Max(1000)
+    @Max(100000)
     @IsOptional()
     readonly take?: number = 10
 
