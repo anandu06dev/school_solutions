@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DEFAULT_LIST_PATH } from '@utils/utility';
 import { BusRouteComponent } from './bus-route.component';
 import { BusRouteformsComponent } from './container/bus-routeforms/bus-routeforms.component';
 import { BusRoutelistComponent } from './container/bus-routelist/bus-routelist.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'table/:students', component: BusRoutetableComponent },
       { path: 'list', component: BusRoutelistComponent },
       { path: 'list/:students', component: BusRoutelistComponent },
+      DEFAULT_LIST_PATH
     ],
   },
 ];

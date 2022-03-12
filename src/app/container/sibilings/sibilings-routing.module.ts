@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DEFAULT_LIST_PATH } from '@utils/utility';
 import { SibilingsListComponent } from './container/sibilings-list/sibilings-list.component';
 import { SibilingsformsComponent } from './container/sibilingsforms/sibilingsforms.component';
 import { SibilingstableComponent } from './container/sibilingstable/sibilingstable.component';
@@ -45,7 +46,7 @@ const routes: Routes = [
           siblings: SiblingStudentBasedResolver,
         },
       },
-      { path: '', redirectTo: 'list', pathMatch: 'full', },
+      DEFAULT_LIST_PATH
     ],
   },
 ];

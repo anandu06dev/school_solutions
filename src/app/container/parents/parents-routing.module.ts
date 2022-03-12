@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DEFAULT_LIST_PATH } from '@utils/utility';
 import { ParentsFormsComponent } from './containers/parents-forms/parents-forms.component';
 import { ParentsListComponent } from './containers/parents-list/parents-list.component';
 import { ParentsTableComponent } from './containers/parents-table/parents-table.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
      
     
       { path: 'list/:students', component: ParentsListComponent },
+      DEFAULT_LIST_PATH
     ],
   },
 ];

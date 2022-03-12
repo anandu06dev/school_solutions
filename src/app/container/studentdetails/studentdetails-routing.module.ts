@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DEFAULT_LIST_PATH } from '@utils/utility';
 import { StudentFormsComponent } from './container/student-forms/student-forms.component';
 import { StudentGridComponent } from './container/student-grid/student-grid.component';
 import { StudentListComponent } from './container/student-list/student-list.component';
 import { StudentTableComponent } from './container/student-table/student-table.component';
 import {
-  StudentdetailsResolver,
   StudentFormBasedResolver,
 } from './services/studentdetails.resolver';
 import { StudentdetailsComponent } from './studentdetails.component';
@@ -47,8 +47,7 @@ const routes: Routes = [
         //   students: StudentdetailsResolver,
         // },
       },
-      { path: '', redirectTo: 'list', pathMatch: 'full', },
-
+      DEFAULT_LIST_PATH
     ],
   },
 ];

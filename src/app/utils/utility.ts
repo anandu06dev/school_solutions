@@ -141,6 +141,12 @@ export const listInitSubData = {
   trim: 0,
 };
 
+export const DEFAULT_LIST_PATH = { path: '', redirectTo: 'list', pathMatch: 'full'}
+export const DEFAULT_TABLE_PATH = { path: '', redirectTo: 'table', pathMatch: 'full'}
+export const DEFAULT_GRID_PATH = { path: '', redirectTo: 'grid', pathMatch: 'full'}
+
+
+
 export const RootMenu: IToolBarMenu[] = [
   {
     label: 'Dashboard',
