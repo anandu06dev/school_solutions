@@ -1,6 +1,6 @@
 <ng-container *ngIf="(loadLayout$|async);else layout">
     <ng-container *ngTemplateOutlet="loader"></ng-container>
-
+    <div class="">Alert</div>
 </ng-container>
 
 <ng-template #loader>
@@ -12,7 +12,6 @@
 
 <ng-template #layout>
     <!-- <div class="loading position-absolute top-50 start-50 translate-middle" *ngIf="showText">Loading</div> -->
-
     <ng-container *ngIf="loadAuthModules">
         <!-- <div [@routeAnimations]="prepareRoute(outlet)">
             <router-outlet #outlet="outlet"></router-outlet>
@@ -40,6 +39,10 @@
             <ng-container *ngTemplateOutlet="dynamicDropDown"></ng-container>
         </div>
         <div container>
+            <p class="alert p-0 m-0 text-center shadow-sm border-0" [ngClass]="!networkStatus ? 'alert-danger' : 'alert-success'" *ngIf="!networkStatus" role="alert" style="height: 1rem;line-height: 1;">
+                You are in {{!networkStatus ? 'offline' : 'online'}} mode
+            </p>
+
             <ng-container *ngIf="showText">
                 <div class="position-absolute start-50 top-50 translate-middle">
                     <div *appLoading="showText"></div>
@@ -73,8 +76,8 @@
 
     <ng-container *ngFor="let item of menuItems">
 
-        <a class="menu-button text-white text-decoration-none" mat-ripple
-            [routerLink]="item?.url" routerLinkActive="active" (click)="loadRouteToStorage(item)">
+        <a class="menu-button text-white text-decoration-none" mat-ripple [routerLink]="item?.url"
+            routerLinkActive="active" (click)="loadRouteToStorage(item)">
             <div class="d-flex align-items-center p-1" role="button" mat-button>
                 <div>
                     <mat-icon class="mt-1">{{item.icon}}</mat-icon>

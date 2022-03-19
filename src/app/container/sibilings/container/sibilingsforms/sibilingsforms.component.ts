@@ -92,14 +92,13 @@ export class SibilingsformsComponent implements OnInit {
   }
 
   getIndividualSiblingDetails(id?: string) {
-    if(id){
-
+    if (id) {
       this.api
         .getIndividualSiblingdetails(id)
         .pipe(take(1))
         .subscribe((d) => {
-          this.siblingDetails = {...this.siblingDetails,...d}
-          this.updateForm({ ...this.siblingDetails});
+          this.siblingDetails = { ...this.siblingDetails, ...d };
+          this.updateForm({ ...this.siblingDetails });
         });
     }
   }
@@ -140,6 +139,7 @@ export class SibilingsformsComponent implements OnInit {
   }
 
   updateAddmissinNo(value: any) {
-    this.siblingDetailsForms.patchValue({ admissionNo: value });
+    let { admissionNo } = value;
+    this.siblingDetailsForms.patchValue({ admissionNo:admissionNo });
   }
 }

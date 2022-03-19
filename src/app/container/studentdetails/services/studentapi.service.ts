@@ -69,7 +69,7 @@ export class StudentapiService {
 
   updateStudentDetails = (stud: IStudentDetails) =>
     this.http
-      .patch(`${this.baseURL}/${this.targetResource}/${stud.admissionNo}`, {
+      .patch(`${this.baseURL}/${this.targetResource}`, {
         ...stud,
       })
       .pipe(catchError((e) => handleError(e)));

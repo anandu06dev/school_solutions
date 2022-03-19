@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Page, initPage } from '@utils/interfaces/page.meta';
 import { IStudentDetails } from '@utils/interfaces/studentData';
-import { Observable, tap } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 import {
   CreateAction,
   Query,
@@ -13,6 +13,9 @@ import { StudentapiService } from './studentapi.service';
 export namespace ActionLabels {
   export const addNewStudentDetails = CreateAction(
     `[studentDetails StoreFeatureModule] Add new studentDetails`
+  );
+  export const addNewStudentPageDetails = CreateAction(
+    `[studentDetails StoreFeatureModule] Add new studentDetails Page Info`
   );
   export const concatNewStudentdetails = CreateAction(
     `[studentDetails StoreFeatureModule] Concat new studentDetails`
@@ -44,9 +47,9 @@ export class StudentFacadeService {
   @setStateByProp({
     featureKey: 'studentDetails',
     key: 'studentLastPaginationData',
-    action: ActionLabels.addNewStudentDetails,
+    action: ActionLabels.addNewStudentPageDetails,
   })
-  paginationStudentDetails: Page = { ...initPage };
+  paginationStudentDetails: Page = {};
 
   getStudentListFacade(page: Page = initPage) {
     return this.api.getListOfStudentDetails(page).pipe(
@@ -55,5 +58,11 @@ export class StudentFacadeService {
         this.paginationStudentDetails = d.meta;
       })
     );
+  }
+  getBulkStudentDetails(){
+    return this.api.getListOfStudentDetails({page:1,take:100000}).pipe(take(1)).subscribe((d:any)=>{
+      this.studentDetails = d.data;
+      this.paginationStudentDetails = d.meta;
+    })
   }
 }

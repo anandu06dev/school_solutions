@@ -1,0 +1,1 @@
+in this student details gets loaded in APPINITIALIZER and appart from that it gets loaded imediately after login

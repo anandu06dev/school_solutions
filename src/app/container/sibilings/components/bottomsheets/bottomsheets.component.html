@@ -1,4 +1,5 @@
-<div class="bottom-sheet card border-0 bg-transparent" [ngClass]="!listIcon ? 'small-sheet-height' : ''" style="overflow-y: auto;">
+<div class="bottom-sheet card border-0 bg-transparent" [ngClass]="!listIcon ? 'small-sheet-height' : ''"
+    style="overflow-y: auto;">
 
 
     <div class="card-header w-100 bg-transparent d-flex justify-content-between align-item-center">
@@ -53,23 +54,49 @@
 
 <ng-template #quickLink let-list="list">
 
-    <app-quick-navigation-menu [name]="name" [admissionNo]="list?.admissionNo"> 
-      
-        <ng-container *ngIf="!listIcon">
-            <div>
+    <app-quick-navigation-menu [name]="name" [admissionNo]="list?.admissionNo">
 
-                <button class="p-0 m-0 bg-transparent btn-link text-purple border-0" (click)="toggleList()">
-                    <mat-icon class="text-purple"  matTooltip="Show lists">subject</mat-icon>
+        <!-- <ng-container *ngIf="!listIcon">
+            <div class="list-group list-group-horizontal-sm">
+                <div class="list-group-item">
+
+                    <button class="p-0 m-0 bg-transparent btn-link text-purple border-0 quickLink-icon"
+                        (click)="toggleList()">
+                        <mat-icon class="text-purple" matTooltip="Show lists">subject</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </ng-container> -->
+        <div class="social_links">
+            <div class="combo text-center">
+
+                <button class="p-0 m-0 bg-transparent btn-link text-purple border-0 quickLink-icon"
+                    (click)="toggleList()">
+                    <mat-icon class="text-purple" matTooltip="Show lists">subject</mat-icon>
                 </button>
             </div>
-        </ng-container>
 
-        <ng-container *ngFor="let routes of router">
-            <div>
-                <a class="btn-link text-purple" [routerLink]="[routes?.url ,'list',list?.admissionNo]"  (click)="clearBar(false)">
-                    <mat-icon class="text-purple"  matTooltip="Links {{routes?.label}} forms">{{routes?.icon}}</mat-icon>
-                </a>
-            </div>
-        </ng-container>
+            <ng-container *ngFor="let routes of router">
+                <!-- <div class="list-group list-group-horizontal-sm">
+                <div class="list-group-item list">
+                    <a class="btn-link text-purple" [routerLink]="[routes?.url ,'form','edit',list?.admissionNo]"
+                        (click)="clearBar(false)">
+                        <mat-icon class="text-purple quickLink-icon" matTooltip="Links {{routes?.label}} forms">{{routes?.icon}}</mat-icon>
+                    </a>
+
+                </div>
+            </div> -->
+                <div class="combo text-center">
+
+                    <a class="btn-link text-purple " [routerLink]="[routes?.url ,'form','edit',list?.admissionNo]"
+                        (click)="clearBar(false)">
+                        <mat-icon class="text-purple quickLinks-icon" matTooltip="Links {{routes?.label}} forms">
+                            {{routes?.icon}}</mat-icon>
+                    </a>
+                </div>
+
+
+            </ng-container>
+        </div>
     </app-quick-navigation-menu>
 </ng-template>

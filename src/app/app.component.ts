@@ -1,4 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import {
   NavigationCancel,
@@ -9,10 +10,16 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { BreakPointService } from '@shared/services/breakpoint.service';
+import { ConnectionService } from '@shared/services/connection-service.service';
 import { LocalstorageService } from '@shared/services/localstorage.service';
 import { fader } from '@utils/animations/fader';
 import { IToolBarMenu } from '@utils/interfaces/toolbarmenu.interface';
-import { currentViewMapTable, RootMenu, screenObserve } from '@utils/utility';
+import {
+  AUTH_URLS,
+  currentViewMapTable,
+  RootMenu,
+  screenObserve,
+} from '@utils/utility';
 import {
   delay,
   EMPTY,
@@ -20,6 +27,7 @@ import {
   Observable,
   of,
   Subject,
+  take,
   takeUntil,
   tap,
 } from 'rxjs';
@@ -31,7 +39,7 @@ import { StudentFacadeService } from './container/studentdetails/services/studen
   styleUrls: ['./app.component.scss'],
   animations: [fader],
 })
-export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+export class AppComponent implements OnInit, OnDestroy {
   username = 'Srini';
   role = 'Admin';
   showText: boolean = true;
@@ -49,16 +57,19 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedMenu!: IToolBarMenu;
 
   loadAuthModules: boolean = true;
+  networkStatus: boolean = true;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private breakPointService: BreakPointService,
     private storageService: LocalstorageService,
     private router: Router,
-    private facade: StudentFacadeService
+    private facade: StudentFacadeService,
+    private connectionService: ConnectionService,
+    private http:HttpClient
   ) {
     this.loadLayout$ = of(true);
-    let auth = ['/auth/login', '/auth/register', '/noAccess'];
+    let auth = AUTH_URLS;
 
     router.events
       .pipe(
@@ -105,6 +116,24 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.loadLayout$ = of(false).pipe(delay(2 * 1000)); // jsut for fancy animation
     this.storageService.setData({ role: 'FULL_ADMIN' });
+    this.connectionService
+      .monitor()
+      .pipe(takeUntil(this.destroyed))
+      .subscribe((d) => {
+
+        if(this.networkStatus === false && d === true){
+          console.log('Went from offline to online')
+          this.syncCacheRequest();
+        }
+
+        if(this.networkStatus === true && d === false){
+          console.log('Went from online to offline')
+        }
+
+        this.networkStatus = d;
+
+        
+      });
   }
 
   loadRouteToStorage(menu: IToolBarMenu): void {
@@ -139,11 +168,22 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.showText = false;
     return EMPTY;
   }
-  ngAfterViewInit() {
-    if (this.loadAuthModules === false)
-      this.facade
-        .getStudentListFacade({ page: 1, take: 1*100000 })
-        .pipe(takeUntil(this.destroyed))
-        .subscribe();
+
+  syncCacheRequest() {
+    const offline = this.storageService.get('offline');
+    if(offline.length){
+
+      for(let i=0;i<offline.length;i++){
+        let item = offline[i];
+        if(item.method === 'POST'){
+          this.http.post(item.url,item.body).pipe(take(1),delay(i*10)).subscribe()
+        }
+        if(item.method === 'PUT'){
+          this.http.put(item.url,item.body).pipe(take(1),delay(i*10)).subscribe()
+        }
+        if(offline.length === i+1) this.storageService.setData({offline:[]})
+      }
+    }
   }
+
 }

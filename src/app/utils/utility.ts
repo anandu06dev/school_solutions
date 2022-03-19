@@ -145,7 +145,7 @@ export const DEFAULT_LIST_PATH = { path: '', redirectTo: 'list', pathMatch: 'ful
 export const DEFAULT_TABLE_PATH = { path: '', redirectTo: 'table', pathMatch: 'full'}
 export const DEFAULT_GRID_PATH = { path: '', redirectTo: 'grid', pathMatch: 'full'}
 
-
+export const AUTH_URLS = ['/auth/login', '/auth/register', '/noAccess'];
 
 export const RootMenu: IToolBarMenu[] = [
   {

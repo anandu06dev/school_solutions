@@ -33,15 +33,15 @@ export class HttpErrorFilter implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: any) => {
       
-        if (error.status.toString() === '500') {
+        if (error.status?.toString() === '500') {
           this.genericMessage({message:`Something went wrong. Please try later`})
         }
-        if (error.status.toString() === '401') {
+        if (error.status?.toString() === '401') {
           this.router.navigateByUrl('auth/login');
           // window.location.reload()
           
         }
-        if (error.status.toString() === '400') {
+        if (error.status?.toString() === '400') {
           if (error?.error?.name?.toLowerCase() === 'httperrorresponse') {
             this.handleHTTPErrorResponse(error.error);
           }

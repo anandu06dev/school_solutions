@@ -11,6 +11,8 @@ import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { ILogin } from '@utils/interfaces/auth';
 import { ConfirmedValidator, deleteMentionedKeys } from '@utils/utility';
 import { pluck, takeUntil } from 'rxjs';
+import { StudentFacadeService } from 'src/app/container/studentdetails/services/students.facade.service';
+import { StudentDetailsFacade } from 'src/app/container/studentdetails/services/students.facade_bck';
 import { RouterString } from 'src/app/routerStringDeclaration';
 import { AuthapiService } from '../../services/authapi.service';
 
@@ -28,7 +30,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthapiService,
     private router:Router,
     private destroy$: AutoUnsubscribe,
-    private storage: LocalstorageService
+    private storage: LocalstorageService,
+    private facade:StudentFacadeService
   ) {
     this.LoginForm = this.fb.group({
       username: ['Srinivasan', Validators.required],
@@ -60,6 +63,7 @@ export class LoginComponent implements OnInit {
       .subscribe((d: any) => {
         if (d?.accessToken) {
           this.storage.setData({ token: d.accessToken });
+          this.facade.getBulkStudentDetails();
           this.router.navigateByUrl(RouterString.DASHBOARD);
         }
       });

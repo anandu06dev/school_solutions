@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve --proxy-config proxy.conf.json --hmr",
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/client",
     "doc:client": "npx @compodoc/compodoc -p tsconfig.json -s",
-    "pwa:check":"cd dist && cd client && http-server -p 4200"
+    "pwa:check": "cd dist && cd client && http-server -p 4200"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +33,7 @@
     "@ngneat/overview": "^3.0.0",
     "ag-grid-angular": "^26.2.0",
     "ag-grid-community": "^26.2.0",
+    "idb": "^7.0.1",
     "jspdf": "^2.5.0",
     "ng-mask": "^3.1.1",
     "ngx-mask": "^13.0.1",

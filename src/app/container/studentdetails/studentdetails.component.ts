@@ -24,11 +24,7 @@ export class StudentdetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-   const initPaged:Page = {...initPage};
-    initPaged.page = 1;
-    initPaged.take = 100000;
-
-    this.facade.getStudentListFacade(initPaged).pipe(take(1)).subscribe();
+    ()=>{}
   }
 
 
