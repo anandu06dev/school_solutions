@@ -1,0 +1,20 @@
+.form-control {
+  box-shadow: none;
+}
+.table {
+  height: 200px;
+  overflow: auto;
+}
+thead tr th {
+  position: sticky;
+  top: 0;
+}
+
+:host ::ng-deep {
+  &.mat-expansion-panel-body {
+    height: 15rem;
+  }
+  &.mat-expansion-panel-header-description{
+      flex-grow: 1
+  }
+}

@@ -8,6 +8,8 @@ import { FeeslistComponent } from './container/feeslist/feeslist.component';
 import { FeestableComponent } from './container/feestable/feestable.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { WidgetModule } from '@widgets/widget/widget.module';
+import { NumberToLetterPipe } from './pipes/number-to-letter.pipe';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,9 @@ import { WidgetModule } from '@widgets/widget/widget.module';
     FeesformComponent,
     FeestableComponent,
     FeeslistComponent,
+    NumberToLetterPipe,
   ],
-  imports: [CommonModule, FeesRoutingModule,WidgetModule],
+  imports: [CommonModule, FeesRoutingModule,WidgetModule,MatExpansionModule],
 })
 export class FeesModule {
   static FeestableComponent: any;

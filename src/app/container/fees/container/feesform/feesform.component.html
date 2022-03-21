@@ -3,11 +3,129 @@
         <app-student-search></app-student-search>
         <label class="position-relative" style="top:-4.5rem">Search By Admission Number</label>
     </div> -->
-    <div class="card-body mb-0 pb-0">
-           
-        <app-student-search (selectedValueEvent)="selectedValue($event)"></app-student-search>
+    <div class="card-body mx-3 mb-0">
+        <mat-accordion>
+            <mat-expansion-panel [(expanded)]="panelOpenState">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                       To Choose Student Details click here
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-student-search (selectedValueEvent)="selectedValue($event)"></app-student-search>
+                <label class="position-relative" style="top:-4.5rem">Search By Admission Number</label>
+            </mat-expansion-panel>
+        </mat-accordion>
 
-        <label class="position-relative" style="top:-4.5rem">Search By Admission Number</label>
 
+    </div>
+    <div class="card-body shadow-sm border mx-5" *ngIf="studentDetail?.admissionNo">
+        <h2 class="w-100 bg-primary text-white text-center">Bill</h2>
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-transparent border-0" id="billNo">Bill No.</span>
+                    <input type="text" class="form-control border-0" placeholder="XXX XXX XXX" aria-label="Bill Number"
+                        aria-describedby="billNo" readonly>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-transparent border-0" id="admissionNo">Admission No.</span>
+                    <input type="text" class="form-control border-0" placeholder="XXX XXX XXX"
+                        [value]="studentDetail?.admissionNo" aria-label="Admission Number"
+                        aria-describedby="addmission number" readonly>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-transparent border-0" id="admissionNo" readonly>Date :</span>
+                    <input type="text" class="form-control border-0" placeholder="XXX XXX XXX"
+                        aria-label="Admission Number" aria-describedby="addmission number"
+                        [value]="studentDetail?.admissionDate | date:'YYYY-mm-dd hh:mm:ss'" readonly>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-transparent border-0" id="tenure">Tenure :</span>
+                    <input type="text" class="form-control border-0" placeholder="XXX XXX XXX" aria-label="tennure"
+                        aria-describedby="tennure" [value]="tenure" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <div class="input-group mb-1">
+                    <span class="input-group-text bg-transparent border-0" id="name">Name </span>
+                    <input type="text" class="form-control border-0" placeholder="Name" aria-label="name"
+                        aria-describedby="name" readonly [value]="studentDetail?.studentFirstName">
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="input-group mb-1">
+                    <span class="input-group-text bg-transparent border-0" id="class">Class </span>
+                    <input type="text" class="form-control border-0" placeholder="Class" aria-label="class"
+                        aria-describedby="class" readonly [value]="studentDetail?.studentClass">
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="input-group mb-1">
+                    <span class="input-group-text bg-transparent border-0" id="class">Section </span>
+                    <input type="text" class="form-control border-0" placeholder="Section" aria-label="section"
+                        aria-describedby="section">
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table mx-2 shadow-sm my-2 table-bordered table-hover" style="border-radius: 0rem;">
+                    <thead class="text-center">
+                        <th>Sl.No</th>
+                        <th>Temp Bill No</th>
+                        <th>Scheme</th>
+                        <th>Particular</th>
+                        <th>Amount</th>
+                        <th style="width: 10rem;">Action</th>
+                    </thead>
+                    <tbody [formGroup]="billForm">
+                        <ng-container formArrayName="bills" *ngFor="let bill of bills.controls; let i = index">
+
+                            <tr [formGroupName]="i" class="my-2 align-middle">
+
+                                <td>{{i+1}}</td>
+                                <td><input type="text" formControlName="billNo" class="form-control"></td>
+                                <td><input type="text" formControlName="scheme" class="form-control"></td>
+                                <td><textarea formControlName="particular" class="form-control" rows="1"></textarea>
+                                </td>
+                                <td><input type="number" formControlName="amount" class="form-control"></td>
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <div><button type="button" class="btn-sm btn-primary"
+                                                (click)="addBills()">Add</button></div>
+                                        <div><button type="button" class="btn-sm  btn-danger"
+                                                (click)="removeBill(i)">Remove</button></div>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </ng-container>
+                        <tr class="my-0 align-middle p-0">
+                            <td class="fw-bold">Total</td>
+                            <td colspan="3" class="text-end fw-bold text-capitalize">{{number | numberToLetter}}</td>
+                            <td colspan="1">{{number}}</td>
+                            <td colspan="1" class="text-end"><button type="button" class="btn btn-sm btn-primary"
+                                    [disabled]="!billForm.valid" (click)="onSubmit()">Submit</button></td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
     </div>
 </div>
