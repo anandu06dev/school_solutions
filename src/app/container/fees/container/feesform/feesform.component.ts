@@ -5,7 +5,10 @@ import { AutoUnsubscribe } from '@utils/auto-unsubscribe.service';
 import { ListConfig } from '@utils/interfaces/listConfig.interface';
 import { IStudentDetails } from '@utils/interfaces/studentData';
 import { takeUntil } from 'rxjs';
-import { studentList, studentListSearch } from 'src/app/container/studentdetails/util/student.util';
+import {
+  studentList,
+  studentListSearch,
+} from 'src/app/container/studentdetails/util/student.util';
 
 @Component({
   selector: 'app-feesform',
@@ -20,13 +23,19 @@ export class FeesformComponent implements OnInit {
   tempBillNo: number = 0;
   listconfig: ListConfig = studentListSearch;
   billForm!: FormGroup;
-  studentDetail:IStudentDetails = {};
+  studentDetail: IStudentDetails = {};
   panelOpenState = false;
-  constructor(private fb: FormBuilder, private destroy$: AutoUnsubscribe,    private notifier: NotificationService) {}
+  constructor(
+    private fb: FormBuilder,
+    private destroy$: AutoUnsubscribe,
+    private notifier: NotificationService
+  ) {}
 
   ngOnInit(): void {
     this.billForm = this.fb.group({
-      admissionNo:['',Validators.required],
+      toggleSwitch: [false],
+      admissionNo: ['', Validators.required],
+      discount:[this.studentDetail.studentDiscount ?? 0],
       bills: this.fb.array([]),
     });
     this.addBills();
@@ -50,13 +59,15 @@ export class FeesformComponent implements OnInit {
     this.updateAddmissinNo(event);
   }
   updateAddmissinNo(value: any) {
-    this.studentDetail = {...value};
-    console.log(value);
+    this.studentDetail = { ...value };
     this.panelOpenState = false;
     this.billForm.patchValue({ admissionNo: this.studentDetail.admissionNo });
   }
   get bills(): FormArray {
     return this.billForm.get('bills') as FormArray;
+  }
+  get toggleSwitch() {
+    return this.billForm.get('toggleSwitch')?.value
   }
 
   newBill(): FormGroup {

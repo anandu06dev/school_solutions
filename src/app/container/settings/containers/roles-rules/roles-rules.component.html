@@ -8,22 +8,25 @@
             </div>
         </div>
     </div>
-    <div class="card-body" style="">
+    <!-- <div class="card-body" style="">
         <ng-container *ngFor="let table of mainRoleTableNames">
             <mat-expansion-panel *ngIf="rolesConfig[table]" class="clay">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        {{table}}
+                        {{table}} 
+                       
                     </mat-panel-title>
                     <mat-panel-description>
                         Define rules for {{table}}
                         
                     </mat-panel-description>
+                    <div class="mx-3">
+                    
+                    </div>
                 </mat-expansion-panel-header>
                 <ng-container *ngFor="let item of rolesConfig[table] | keyvalue">
                     <div class="shadow p-4 my-3 clay" style="border-radius: 2rem;">
-                        <p class="badge bg-secondary fs-6 fst-italic">{{item?.key}}</p>
-                        
+                        <p class="badge bg-secondary fs-6 fst-italic">{{item?.key}}</p>                        
                         <app-access-checkbox [access]="item?.value" 
                             (accessRolesEmitter)="emitRoles($event,item.key,table)">
                         </app-access-checkbox>
@@ -32,6 +35,33 @@
             </mat-expansion-panel>
 
         </ng-container>
+    </div> -->
+    <div class="card-body" style="">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Left Menu Access
+                </mat-panel-title>
+                <mat-panel-description>
+                    Define Access rules for submenu
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="row">
+
+                <ng-container *ngFor="let item of menu">
+                    <div class="col-3 my-2">
+                        <mat-slide-toggle class="" [checked]="item?.checkbox" (change)="toggleSwitch(item)">
+                            <div class="d-flex">
+                                <div class="mx-1 fs-4">
+                                    <mat-icon class="text-primary">{{item.icon}}</mat-icon> 
+                                </div>
+                                <div>{{item.label}}</div>
+                            </div>
+                        </mat-slide-toggle>
+                    </div>
+                </ng-container>
+            </div>
+        </mat-expansion-panel>
     </div>
     <div class="card-body text-end">
         <button class="btn btn-primary mx-1" type="button" (click)="submit()">Submit</button>

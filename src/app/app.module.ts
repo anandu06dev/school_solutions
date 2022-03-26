@@ -29,6 +29,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { StudentFacadeService } from './container/studentdetails/services/students.facade.service';
 import { AUTH_URLS } from '@utils/utility';
 import { take } from 'rxjs';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent, NotfoundComponent, AccessDeniedComponent,],
@@ -47,6 +48,7 @@ import { take } from 'rxjs';
       registrationStrategy: 'registerWhenStable:30000',
     }),
     HotToastModule.forRoot({}),
+    NgChartsModule,
   ],
   providers: [
     { provide: MatBottomSheetRef, useValue: {} },

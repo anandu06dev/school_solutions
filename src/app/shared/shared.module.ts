@@ -22,6 +22,18 @@ import { DebounceDirective } from './directives/debounce.directive'
 import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
 import { NgxMaskModule } from 'ngx-mask'
+import { FullCalendarModule } from '@fullcalendar/angular'
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+import listPlugin from '@fullcalendar/list'; // a plugin!
+import { NgChartsModule } from 'ng2-charts'
+
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+  listPlugin
+]);
 
 
 const SHARED_MODS = [
@@ -43,7 +55,11 @@ const SHARED_MODS = [
     MatListModule,
     MatSelectModule,    
     NgxMaskModule.forRoot(),
-    HotToastModule.forRoot(),    
+    HotToastModule.forRoot(),  
+    FullCalendarModule,
+    NgChartsModule.forRoot({
+      defaults: {},
+    }),
 ]
 
 const SHARED_DECL = [AppLoadingDirective,RoleDirective,DebounceDirective]

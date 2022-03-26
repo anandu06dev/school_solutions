@@ -14,6 +14,7 @@ const routes: Routes = [
 
       { path: 'dashboard-settings', component: DashboardComponent },
       { path: 'roles-rules', component: RolesRulesComponent },
+
     ],
   },
 ];

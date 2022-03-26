@@ -1,5 +1,7 @@
 .form-control {
   box-shadow: none;
+  font-size: 0.8rem;
+  margin:0 ;
 }
 .table {
   height: 200px;
@@ -11,6 +13,14 @@ thead tr th {
 }
 
 :host ::ng-deep {
+    font-size: 0.8rem;
+    &.mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+        background-color: rgb(103 58 183 / 80%)
+
+    }
+    &.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+        background-color: var(--bs-primary);
+    }
   &.mat-expansion-panel-body {
     height: 15rem;
   }

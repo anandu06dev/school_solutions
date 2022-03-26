@@ -3,7 +3,7 @@
         <app-student-search></app-student-search>
         <label class="position-relative" style="top:-4.5rem">Search By Admission Number</label>
     </div> -->
-    <div class="card-body mx-3 mb-0">
+    <div class="card-body mx2 mb-0">
         <mat-accordion>
             <mat-expansion-panel [(expanded)]="panelOpenState">
                 <mat-expansion-panel-header>
@@ -11,7 +11,7 @@
                         <mat-icon>account_circle</mat-icon>
                     </mat-panel-title>
                     <mat-panel-description>
-                       To Choose Student Details click here
+                        To Choose Student Details click here
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <app-student-search (selectedValueEvent)="selectedValue($event)"></app-student-search>
@@ -21,8 +21,8 @@
 
 
     </div>
-    <div class="card-body shadow-sm border mx-5" *ngIf="studentDetail?.admissionNo">
-        <h2 class="w-100 bg-primary text-white text-center">Bill</h2>
+    <div class="card-body m-0 p-2 shadow-sm border mx-3" *ngIf="studentDetail?.admissionNo">
+        <h2 class="w-100 bg-primary text-white text-center mb-1">Bill</h2>
         <div class="row">
             <div class="col-6 col-sm-3">
                 <div class="input-group mb-3">
@@ -82,13 +82,18 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <table class="table mx-2 shadow-sm my-2 table-bordered table-hover" style="border-radius: 0rem;">
+                <table class="table shadow-sm table-bordered table-hover" style="border-radius: 0rem;">
                     <thead class="text-center">
                         <th>Sl.No</th>
-                        <th>Temp Bill No</th>
-                        <th>Scheme</th>
+                        <!-- <th>Temp Bill No</th> -->
+                        <th>Scheme
+
+                            <small class="d-block p-0 m-0 text-warning">Mandatory Fields</small>
+                        </th>
                         <th>Particular</th>
-                        <th>Amount</th>
+                        <th>Amount
+                            <small class="d-block p-0 m-0 text-warning">Mandatory Fields</small>
+                        </th>
                         <th style="width: 10rem;">Action</th>
                     </thead>
                     <tbody [formGroup]="billForm">
@@ -97,27 +102,46 @@
                             <tr [formGroupName]="i" class="my-2 align-middle">
 
                                 <td>{{i+1}}</td>
-                                <td><input type="text" formControlName="billNo" class="form-control"></td>
+                                <!-- <td><input type="text" formControlName="billNo" class="form-control"></td> -->
                                 <td><input type="text" formControlName="scheme" class="form-control"></td>
                                 <td><textarea formControlName="particular" class="form-control" rows="1"></textarea>
                                 </td>
                                 <td><input type="number" formControlName="amount" class="form-control"></td>
                                 <td>
                                     <div class="d-flex justify-content-between">
-                                        <div><button type="button" class="btn-sm btn-primary"
-                                                (click)="addBills()">Add</button></div>
-                                        <div><button type="button" class="btn-sm  btn-danger"
-                                                (click)="removeBill(i)">Remove</button></div>
+                                        <div><button type="button" class="btn-sm btn-primary border-0 shadow-sm"
+                                                (click)="addBills()">
+                                                <mat-icon>add_circle</mat-icon>
+                                            </button></div>
+                                        <div><button type="button" class="btn-sm  btn-danger border-0 shadow-sm"
+                                                (click)="removeBill(i)">
+                                                <mat-icon>remove_circle</mat-icon>
+                                            </button></div>
 
                                     </div>
                                 </td>
 
                             </tr>
                         </ng-container>
+                        <tr>
+                            <td colspan="3">Discount Applied</td>
+                            <td colspan="1">{{studentDetail?.studentDiscount}}</td>
+
+                            <td>
+                                <mat-slide-toggle formControlName="toggleSwitch">Slide me!</mat-slide-toggle>
+                            </td>
+                        </tr>
+                        <tr *ngIf="toggleSwitch">
+                            <td colspan="3">Note: If you wish to update discount we use the same in future</td>
+                            <td colspan="1"><input type="number" steps="5" formControlName=""></td>
+
+                        </tr>
                         <tr class="my-0 align-middle p-0">
                             <td class="fw-bold">Total</td>
-                            <td colspan="3" class="text-end fw-bold text-capitalize">{{number | numberToLetter}}</td>
-                            <td colspan="1">{{number}}</td>
+                            <td colspan="2" class="text-end fw-bold text-capitalize">{{number | numberToLetter}}</td>
+                            <td colspan="1">
+                                {{number}}
+                            </td>
                             <td colspan="1" class="text-end"><button type="button" class="btn btn-sm btn-primary"
                                     [disabled]="!billForm.valid" (click)="onSubmit()">Submit</button></td>
 
