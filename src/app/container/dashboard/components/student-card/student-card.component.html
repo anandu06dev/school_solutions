@@ -1,9 +1,9 @@
 <div class="row">
-    <div class="col-sm-6">
-        <div class="card mb-3">
+    <div class="col-sm-4">
+        <div class="card border-0 shadow-sm">
             <div class="row g-0">
                 <div class="col-md-4 my-auto">
-                    <img src="/assets/icons/undraw_male_avatar.png" class="img-fluid rounded-start"
+                    <img src="/assets/icons/undraw_male_avatar.png" class="img-fluid rounded-start h-50 w-50"
                         alt="male students avatar">
                 </div>
                 <div class="col-md-8">
@@ -15,19 +15,40 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
-        <div class="card mb-3">
+    <div class="col-sm-4">
+        <div class="card mb-0 border-0 shadow-sm">
             <div class="row g-0">
                 <div class="col-md-4 my-auto">
-                    <img src="/assets/icons/undraw_female_avatar.png" class="img-fluid rounded-start"
-                        alt="male students avatar">
+                    <img src="/assets/icons/undraw_female_avatar.png" class="img-fluid rounded-start h-50 w-50"
+                        alt="female students avatar">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Total Male Students Count</h5>
+                        <h5 class="card-title">Total Female Students Count</h5>
                         <h3>{{femaleCount}}</h3>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card mb-0 border-0 shadow-sm p-2">
+            <div class="card-title bg-primary py-2 text-center text-white">Student class wise count</div>
+            <div class="card-body p-2" style="height: 200px;overflow-y: auto;">
+
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item d-flex justify-content-between align-items-start"
+                        *ngFor="let item of classBasedCount">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">{{item.label}}</div>
+                            Total student strength for a specific class
+                        </div>
+                        <span class="badge bg-primary rounded-pill">{{item.count}}</span>
+                    </li>
+                </ol>
             </div>
         </div>
     </div>

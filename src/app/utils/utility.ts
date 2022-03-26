@@ -238,6 +238,19 @@ export const generateBloodGroup = () => {
     { label: 'O -ve', value: 'O -ve' },
   ];
 };
+export function groupBy(key: any, array: any) {
+  return array.reduce((all: any, current: any) => {
+    const existingKey = all.find(
+      (existing: any) => existing.key === current[key]
+    );
+    if (!existingKey) {
+      all.push({ key: current[key], values: [current] });
+    } else {
+      existingKey.values.push(current);
+    }
+    return all;
+  }, []);
+}
 
 export const generateStudentClass = (): any => {
   let studentClass: string[] = ['preKG', 'LKG', 'UKG'];
