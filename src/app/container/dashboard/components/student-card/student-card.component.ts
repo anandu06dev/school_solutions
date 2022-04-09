@@ -30,12 +30,18 @@ export class StudentCardComponent implements OnInit {
     //   return {label:`class ${i.key}`,count:i.values.length}
     // })
     this.classBasedCount = Array(15).fill(0).map((i:any,index)=>{
-      return {label:`class ${index}`,count:Math.random()}
+      return {label:`class ${index}`,count:this.tempgetRandomInt(20,35)}
     })
     for (let item of arr) {
       if (item.studentGender.toLowerCase() === 'male') this.maleCount++;
       if (item.studentGender.toLowerCase() === 'female') this.femaleCount++;
     }
+  }
+
+  tempgetRandomInt(min:any, max:any) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
   
 }
